@@ -70,14 +70,19 @@ def pitch_of(path):
     return t, f0, w
 
 
-def gap_level(v, words, offset, sr=mx.SR):
-    """Median level of no-word regions minus the 90th percentile level of word regions (dB)."""
+def gap_level(v, words, offset, sr=mx.SR, window=None):
+    """Median level of no-word regions minus the 90th percentile level of word regions (dB), inside `window`
+    (source seconds) so vocals outside the verse never count as gaps."""
     mono = v.mean(axis=1)
     hop = int(0.05 * sr)
     n = len(mono) // hop
     rms = np.sqrt(np.mean(mono[:n * hop].reshape(n, hop) ** 2, axis=1) + 1e-12)
     db = 20 * np.log10(rms)
     tt = (np.arange(n) + 0.5) * hop / sr + offset
+    if window is not None:
+        keep = (tt >= window[0]) & (tt <= window[1])
+        db, tt = db[keep], tt[keep]
+        n = len(tt)
     inw = np.zeros(n, bool)
     for w in words:
         inw |= (tt >= w["s"] - 0.05) & (tt <= w["e"] + 0.15)
@@ -168,7 +173,8 @@ def main():
         "pickup_s": round(bar1 - first["s"], 3) if first else None,
         "verse_bars": round((last["e"] - bar1) / bar_src, 2) if last else None,
         "n_words": len(verse), "mean_word_prob": round(float(np.mean([w["p"] for w in verse])), 3) if verse else None,
-        "gap_level_db_raw": round(gap_level(v, words, off), 1), "gap_level_db_clean": round(gap_level(vc, words, off), 1),
+        "gap_level_db_raw": round(gap_level(v, words, off, window=(vs - 0.5, ve + 0.5)), 1),
+        "gap_level_db_clean": round(gap_level(vc, words, off, window=(vs - 0.5, ve + 0.5)), 1),
         "voiced_s": round(voiced_s, 1),
         "harmony": {k: round(x / juice_h, 3) if np.isfinite(x) else None for k, x in res.items()},
         "harmony_best": best, "harmony_best_rel": round(res[best] / juice_h, 3),
