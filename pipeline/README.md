@@ -42,3 +42,16 @@ Everything here is open source and runs on CPU. Audio never goes into git. It li
 | `analyze_catalog.py` | Tier 1: tempo, key, chroma and loudness for every clip. Tier 2: CLAP embeddings for the shortlist. Resumable and parallel. |
 | `score_catalog.py` | Stage-1 screening: tempo fit to 100.446 BPM (half/double allowed), harmonic fit of Juice's melody (best transposition, normalised to the real Reine beat), CLAP vibe, instrumental probability, full-audio availability. |
 | `fit_detailed.py` | Stage 2: a beat-by-beat simulation of his actual vocal over each looped, stretched and transposed candidate, searching every transposition and bar alignment, plus groove fit. |
+
+## Feature song: Juice WRLD x a real guest verse on the Reine beat
+| Script | What it does |
+|---|---|
+| `guest_prep.py` | Decodes a guest song, fits a beat_this grid around the verse, picks bar 1, crops the verse for separation. |
+| `guest_grid.py` | Robust grid: comb search over tempo and phase on the onset envelope; bar phase from drums, chord changes, rhyme positions and beat_this downbeats; the guest beat's own onset offset. |
+| `guest_analyze.py` | Expander-cleaned stem, whisper word timings (cached), harmony vs Reine's chords for every transposition, groove vs Reine, stem gap level inside the verse. |
+| `groove_feel.py` | Straight vs triplet feel: subdivision lock and off-beat 16th position. |
+| `make_feature_spec.py` | Writes a feature_song spec: 2-bar breath, an 808 bed of whole Reine bars sized to the verse, then Reine's outro. |
+| `feature_song.py` | Rebuilds the Extended Cut - Live bit-exact, re-orders the Reine instrumental in bars and splices beats, places the stretched guest verse with its natural drum offset, rides it in 4-bar blocks, adds the optional Juice hook reprise and section trims, masters with Juice's part matched to the Extended Cut. |
+| `feature_eval.py` | Word recall of the guest in the final mix (whisper) and 16th-grid timing, against Juice's own numbers. |
+| `feature_dossier.py` | Collects all measurements, lyrics and scout notes per render for the judging panel. |
+| `jobqueue_drain.sh`, `enqueue_front_of.sh` | A queue runner that exits when the queue is empty, and a helper to insert a job ahead of others. |

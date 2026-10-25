@@ -1,4 +1,4 @@
-# Juice WRLD, "Campfire" freestyle over Dadju's "Reine": Extended Cut and Remix
+# Juice WRLD, "Campfire" freestyle over Dadju's "Reine": Extended Cut, Remix and Feature Song
 
 Personal, non-commercial fan edit. Juice WRLD's estate owns the freestyle, Mouv'/Radio France own the broadcast,
 and the "Reine" composition and recording belong to Dadju, Seysey and Universal. The remix beats belong to their
@@ -19,6 +19,8 @@ Total wall time: about 7 hours on a 4-core CPU-only cloud box. Everything was op
 | 04-06 | Remix: winner and 2 runners-up | Juice's vocal on the best beats found among 8,802 candidates. See section 6 |
 | bonus | Remix: Forests (afro-pop guitar) | 4th place, kept so the work isn't lost. The afro version closest to the original's vibe |
 | stems | `juice_acapella.wav`, `reine_live_instrumental.wav` | The performance only (14.3-117.85 s). They sum back to the mix exactly |
+| feature/01 | **Juice WRLD x Roddy Ricch** (2:59) | Follow-up request: the Extended Cut - Live, then a real guest verse on the same Reine beat, then Juice's hook returns, then Reine's own outro. See section 9 |
+| feature/02 | Juice WRLD x Dave (3:09) | Same build with Dave's "Wanna Know" verse; the user named Dave as an example |
 
 Each track comes as a 24-bit WAV and a 320 kbps MP3 with tags and generated cover art. Masters: Extended Cuts at -12 LUFS
 (the studio record's own loudness), remixes at -11 LUFS, all at most -1.0 dBTP true peak with zero clipped samples.
@@ -117,6 +119,64 @@ then put every vocal-separation stem at -40 to -48 dB under the mix wherever Jui
 - The best freestyle audio available is a lossy radio broadcast (AAC, about 18-20 kHz). The remix beats come from 128-160 kbps
   streams (cutoff about 16 kHz). These are fine on a phone or headphones, but they aren't studio masters.
 - Separation artifacts are minimised (ensemble, overlap 4) but not zero, especially in the remixes, where the acapella is exposed on a new beat.
+
+## 9. Follow-up: Juice WRLD x a real guest verse, on the real Reine beat
+
+**The brief.** The user loved the Extended Cut - Live, disliked the remixes (weak beats, the beat too quiet under the voice) and asked
+for the Extended Cut's intro and exact ending beat, with another rapper's *real* verse after Juice's, on that exact beat, to make a
+complete song ("what will Juice WRLD and Central Cee sound like, or Juice WRLD and Dave"), the beat loud.
+
+**Song form (both deliverables).**
+
+| Output time | Bars (live grid) | What plays |
+|---|---|---|
+| 0:00-1:45 | 5-48 | The Extended Cut - Live, untouched (nulls against it at -65 dB, loudness matched to 0.03 LU) |
+| 1:45-1:50 | 49-50 | Reine's own sparse bridge bars as a breath; the 808 enters on beat 4 with its own attack, spliced from Reine's chorus-2 entry |
+| 1:50 | 51 | The 808 drop and the guest's bar 1 |
+| guest verse | 51-65 (Roddy) / 51-70 (Dave) | Reine's 808 sections in whole bars: chorus 2 (41-48), then the bridge build and chorus 3 (61-72). Reine is a 2-bar chord loop, so every jump keeps bar parity and is seamless |
+| hook | 67-70 / 71-74 | Juice's own opening hook from the freestyle, live bars 9-12 ("I ain't finna fall down / Fourth quarter, shorty, I'ma ball out / Don't go to work, baby, call out / Ain't no way, no stall now"), same tempo and grid, no stretch |
+| outro | 71-81 / 75-85 | Reine's real outro, exactly as in the Extended Cut |
+
+**Finding verses that fit.** Four scouts (UK, US melodic, French, afro) measured 400+ songs (Deezer previews, beat_this, bar-level
+comb), keeping native tempos within about +-6% of 100.45 BPM (or half/double), located verses with synced lyrics, and downloaded 18
+full songs (no YouTube). Central Cee's catalogue is almost all drill at 139-150 BPM (Sprinter 139, Doja 140, BAND4BAND 140): his
+only fitting verse is "TOO MUCH" (95 BPM). Dave fits natively with "Wanna Know" (100.0) and "No Words" (100.5).
+
+**Per verse.** Separation (RoFormer Big Beta 4, Kim FT, Demucs for screening), a comb-search beat grid on the guest's own record
+(bar 1 from drums, chord changes and rhyme positions), whisper word timings, pitch vs Reine's chords for every transposition, groove
+feel (straight vs triplet), placement that keeps each rapper's own offset to the drums (Reine's onsets sit +32 ms on the live grid;
+each guest is shifted by that minus their own beat's offset), Rubber Band R3 with formant and centre-focus, and a mix with
+**no ducking**: the guest sits +1.2 to +1.7 LU over the beat per 4-bar block (Juice sits +1.9 over the same 808 bars in his own
+chorus 2), ridden partially (k = 0.6) so the voice opens up over sparser bars as his does.
+
+**Judging.** 12 full songs were rendered and scored by four independent lenses (A&R, rhythm, mix, harmony) and the top two were
+attacked by skeptics.
+
+| Rank | Guest verse | Mean | Borda | Notes |
+|---|---|---|---|---|
+| 1 | **Roddy Ricch - High Fashion** | 7.73 | 40 | Same key as Reine (harmony 1.45x Juice's own), cleanest stem, romantic lines, 0.947 of words still recognised in the final mix (Juice: 0.919) |
+| 2 | Roddy Ricch - Ballin' | 6.68 | 27 | Tightest pocket, but a Nipsey/Lauren name-check and heavy Mustard bleed in the stem |
+| 3 | **Dave - Wanna Know** | 6.65 | 27 | A&R's #1 (named by the user, full 20 bars, no name-checks) but the loosest flow on the grid (16th lock 0.12 vs Juice 0.34) |
+| 4 | Drake - The Motto | 6.58 | 25 | Rhythm's #1; YMCMB/Mac Dre name-checks read as a mashup |
+| 5 | Stormzy - Own It | 6.10 | 24 | Best harmony after -1 st and the most romantic, but its last line is the song's title hook |
+| 6-12 | Aitch, Drake (Ojuelegba), Cordae, Skepta, PNL, Central Cee (TOO MUCH), Dave (No Words) | 4.4-5.8 | | Central Cee's only tempo-fit verse opens on LAROI's sung "too much", ends mid-sentence into the hook and needs a 5.7% speed-up |
+
+**What the skeptics caught (all fixed and re-measured).**
+1. A typo of mine put Roddy's bar 1 100 ms early (41.0407 instead of 41.1407): he now sits +26 ms behind Reine's drums, as on his record.
+2. His last word "want" was clipped by the fade: the cut moved into the gap before "Shawty".
+3. **Rubber Band R3 processed L and R independently**: the near-mono guest vocal came out with L/R correlation 0.2 and lost 2.3 dB in
+   mono. `--centre-focus` restores 0.94-0.97 (the source's own value) and -0.1 dB.
+4. The raw live acapella of the hook drove the master limiter on every syllable (the 808 pumped down 3-6 dB under Juice). The hook now
+   gets the guest's chain (24 dB/oct HPF, presence, compression, the same reverb/delay), a fast vocal-bus limiter for live-mic plosives,
+   +0.8 LU over the beat and a -0.8 dB static trim of those 4 bars: master gain reduction there is now the same as in Juice's own
+   approved chorus 2 (median -0.97 vs -0.88 dB; >3 dB 4.6% vs 4.8% of the time).
+5. A 12 ms 808 notch at the drop created by the first version of the beat splice: the splice now runs through to beat 2 of bar 51.
+6. Dave: whisper put the "road"/"Look" boundary inside the held vowel, leaving a chopped "-oad": the cut is now in the real silence.
+
+**Limitations.** Nobody listened; every call rests on measurements and adversarial review. The guest sources are lossy (High
+Fashion 128 kbps AAC to 16.6 kHz, Wanna Know 96 kbps to 14.75 kHz); the studio Reine continuation is band-limited to about 16 kHz
+as in the Extended Cut. "If we hop in the Benz... ride at the top, babe" is High Fashion's sung refrain (it recurs in both of its
+verses), so the first half of Roddy's part is sung, the second half rapped.
 
 ## 8. Tools (all open source)
 FFmpeg, yt-dlp, Rubber Band, SoX, audio-separator (MelBand / BS RoFormer and MDX models from the UVR community), Demucs v4,

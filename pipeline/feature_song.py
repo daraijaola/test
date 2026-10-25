@@ -253,13 +253,12 @@ def main():
         mix *= g[:, None]
     # optional static trims of whole sections (beat and vocals together), 10 ms ramps on the downbeats: a
     # static dB is better than letting the master limiter pump the 808 under the hottest bars
-    for k0, k1, db in spec.get("section_trims", []):
-        t0, t1, r = mx.sec(live_bar(k0)), mx.sec(live_bar(k1)), mx.sec(0.01)
-        g = np.ones(len(mix), np.float32)
-        g[t0:t1] = 10 ** (db / 20)
-        g[t0 - r:t0] = np.linspace(1, g[t0], r)
-        g[t1:t1 + r] = np.linspace(g[t0], 1, r)
-        mix *= g[:, None]
+    if spec.get("section_trims"):
+        trim_db = np.zeros(len(mix))          # one stepped curve, so adjacent trims share a single 10 ms ramp
+        for k0, k1, db in spec["section_trims"]:
+            trim_db[mx.sec(live_bar(k0)):mx.sec(live_bar(k1))] += db
+        trim_db = uniform_filter1d(trim_db, mx.sec(0.01), mode="nearest")
+        mix *= (10 ** (trim_db / 20))[:, None].astype(np.float32)
     b5 = cfg["bar5"]
     seg_out = mix[mx.sec(b5):mx.sec(end_s)].copy()
     seg_out[:mx.sec(0.004)] *= mx.fade(mx.sec(0.004), "in")
