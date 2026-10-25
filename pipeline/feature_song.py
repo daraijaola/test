@@ -19,7 +19,8 @@ Spec (JSON):
   "guest_bar1": 41.234,                  # source time of the verse's bar-1 downbeat
   "guest_bars": 16, "guest_pickup_s": 0.4, "guest_tail_s": 0.6,
   "land_bar": 49,                        # output bar the verse's bar 1 lands on
-  "transpose": 0, "guest_over_beat_lu": 1.5, "vocal_ride": 1.0,
+  "guest_inst_onset_ms": -1.2,           # onset offset of the guest's own beat on its grid (guest_grid.py)
+  "transpose": 0, "guest_over_beat_lu": 1.5, "vocal_ride": 0.6,
   "post_trim_db": -1.0, "post_trim_from_bar": 51,          # optional
   "match_juice_to": "work/renders/extended/extended_A_live.wav",   # optional: Juice's part as loud as this render
   "target_lufs": -12.0
@@ -40,6 +41,10 @@ import mixlib as mx  # noqa: E402
 from remix_render import LIVE_BAR, LIVE_BAR1  # noqa: E402
 
 JUICE_LAST_BAR = 48   # Juice's verse ends on the last beat of live bar 48 (end of chorus 2)
+# librosa onsets of the Reine instrumental sit +30..+34 ms after the beat_this-derived live grid on every
+# section (bars 5-48, 41-48, 61-72). Guest grids are fitted on their own onsets, so a guest is placed
+# REINE_ONSET_MS - (its own beat's onset offset) later, which keeps the rapper's feel against the drums.
+REINE_ONSET_MS = 32.0
 
 
 def live_bar(k):
@@ -110,6 +115,12 @@ def base_mix(cfg, cont=None):
     return a, beat_only, juice_lufs, juice_rel, end_s
 
 
+def guest_shift_ms(spec):
+    if "guest_shift_ms" in spec:
+        return float(spec["guest_shift_ms"])
+    return REINE_ONSET_MS - float(spec.get("guest_inst_onset_ms", REINE_ONSET_MS))
+
+
 def guest_track(spec, n_out, sr=mx.SR):
     """Stretched, placed guest verse on the output timeline. Returns (track, start_s, bar1_s, end_s, rate)."""
     g = mx.load(spec["guest_acapella"])
@@ -124,7 +135,7 @@ def guest_track(spec, n_out, sr=mx.SR):
     fi, fo = mx.sec(spec.get("fade_in_s", 0.02)), mx.sec(spec.get("fade_out_s", 0.3))
     seg[:fi] *= mx.fade(fi, "in")
     seg[-fo:] *= mx.fade(fo, "out")
-    bar1 = live_bar(spec["land_bar"])
+    bar1 = live_bar(spec["land_bar"]) + guest_shift_ms(spec) / 1000.0
     at = bar1 - pick / rate
     trk = mx.place(np.zeros((n_out, 2), np.float32), seg, mx.sec(at))[:n_out]
     for m0, m1 in spec.get("guest_mute", []):                  # optional: drop words/ad-libs (source seconds)
@@ -148,16 +159,18 @@ def main():
     i0, i1 = mx.sec(bar1), mx.sec(min(g_end, bar1 + spec["guest_bars"] * LIVE_BAR))
     # vocal ride: Reine's sections differ in level (chorus 3 is ~2.3 dB above chorus 2), so the guest is
     # ridden by the beat's level change per bed segment (k = 1 keeps the voice/beat ratio constant)
-    ride_k = spec.get("vocal_ride", 1.0)
+    ride_k = spec.get("vocal_ride", 0.6)
     ride_db = np.zeros(len(gp))
     ref_b = mx.lufs(beat_only[i0:i1])
-    bounds = sorted({mx.sec(live_bar(c[0])) for c in spec.get("cont", [])} | {i0, i1})
+    # ride in 4-bar blocks from the landing bar (a phrase is the unit a mix engineer rides)
+    lb = spec["land_bar"]
+    bounds = sorted({mx.sec(live_bar(lb + 4 * k)) for k in range(1, 64)} | {i0, i1})
     bounds = [b for b in bounds if i0 <= b <= i1]
     rides = []
     for b0, b1 in zip(bounds[:-1], bounds[1:]):
         if b1 - b0 < mx.sec(1.0):
             continue
-        d = ride_k * (mx.lufs(beat_only[b0:b1]) - ref_b)
+        d = float(np.clip(ride_k * (mx.lufs(beat_only[b0:b1]) - ref_b), -4.0, 4.0))
         ride_db[b0:b1] = d
         rides.append([round((b0 - mx.sec(cfg["bar5"])) / sr, 2), round(d, 2)])
     if rides:
@@ -165,11 +178,17 @@ def main():
         ride_db[i1:] = rides[-1][1]
         ride_db = uniform_filter1d(ride_db, mx.sec(0.3), mode="nearest")          # 0.3 s ramps
     gp = gp * (10 ** (ride_db / 20))[:, None].astype(np.float32)
-    # level: guest vocal this many LU over the beat in its own slot. Juice sits +1.9 LU over the 808 sections
-    # (chorus 2) and +5.3 LU over the sparse verse sections of the live mix; the guest slot is mostly 808.
-    gain_db = spec.get("guest_over_beat_lu", 1.5) - (mx.lufs(gp[i0:i1]) - mx.lufs(beat_only[i0:i1]))
+    # level: the guest sits guest_over_beat_lu over the beat in the loudest (808) blocks of the slot - Juice
+    # sits +1.9 LU over the 808 bars of chorus 2 and +5.3 LU over the sparse verse bars of the live mix, so a
+    # partial ride (k < 1) lets the voice open up a little over the sparse bars, as his does.
+    blocks = [(b0, b1, mx.lufs(beat_only[b0:b1])) for b0, b1 in zip(bounds[:-1], bounds[1:]) if b1 - b0 >= mx.sec(1.0)]
+    loud = [(b0, b1) for b0, b1, lb_ in blocks if lb_ >= max(x[2] for x in blocks) - 1.0] if blocks else [(i0, i1)]
+    vl = mx.lufs(np.concatenate([gp[b0:b1] for b0, b1 in loud]))
+    bl = mx.lufs(np.concatenate([beat_only[b0:b1] for b0, b1 in loud]))
+    gain_db = spec.get("guest_over_beat_lu", 1.5) - (vl - bl)
     gp *= 10 ** (gain_db / 20)
     rel_now = mx.lufs(gp[i0:i1]) - mx.lufs(beat_only[i0:i1])
+    rel_blocks = [[round((b0 - mx.sec(cfg["bar5"])) / sr, 2), round(mx.lufs(gp[b0:b1]) - lb_, 2)] for b0, b1, lb_ in blocks]
     mix = a + gp
     # optional trim of everything after a downbeat (keeps a loud chorus-3 bed from being crushed by the limiter)
     if spec.get("post_trim_db"):
@@ -205,7 +224,7 @@ def main():
     print(json.dumps({"out": spec["out"], "duration": round(len(y) / sr, 2), "lufs": round(mx.lufs(y), 2),
                       "true_peak": round(mx.true_peak_db(y), 2), "stretch_rate": round(rate, 4),
                       "guest_in_out_s": round(at - b5, 2), "guest_bar1_out_s": round(bar1 - b5, 2),
-                      "guest_end_out_s": round(g_end - b5, 2), "guest_gain_db": round(gain_db, 2), "vocal_ride_db": rides,
+                      "guest_end_out_s": round(g_end - b5, 2), "guest_gain_db": round(gain_db, 2), "vocal_ride_db": rides, "guest_minus_beat_per_block": rel_blocks,
                       "juice_part_lufs": round(mx.lufs(y[:mx.sec(live_bar(JUICE_LAST_BAR + 1) - b5)]), 2),
                       "guest_part_lufs": round(mx.lufs(y[mx.sec(bar1 - b5):mx.sec(g_end - b5)]), 2),
                       "guest_vocal_lufs_premaster": round(mx.lufs(gp[i0:i1]), 2), "juice_vocal_lufs_premaster": round(juice_lufs, 2),

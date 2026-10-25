@@ -81,7 +81,8 @@ def main():
     v, _ = librosa.load(spec["guest_acapella"], sr=22050, mono=True)
     on = librosa.onset.onset_detect(y=v, sr=22050, units="time") + spec.get("guest_offset_s", 0.0)
     on = on[(on >= g0) & (on <= g1)]
-    on_live = live_bar(spec["land_bar"]) + (on - spec["guest_bar1"]) / rate
+    import feature_song as fs
+    on_live = live_bar(spec["land_bar"]) + fs.guest_shift_ms(spec) / 1000.0 + (on - spec["guest_bar1"]) / rate
     R, off_ms = lock(on_live, LIVE_BAR1)
     jv, _ = librosa.load(f"{ROOT}/work/stems/juice_acapella_hq.wav", sr=22050, mono=True)
     jon = librosa.onset.onset_detect(y=jv, sr=22050, units="time")

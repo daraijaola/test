@@ -135,9 +135,20 @@ def main():
                  "alt_bar1": [round(float(x), 4) for x in downs_ext[max(0, j - 1):j + 2]],
                  "bar1_minus_first_line_s": round(bar1 - vs, 3), "verse_bars_est": int(round((ve - bar1) / step)),
                  "stretch_rate": round(step / LIVE_BAR, 5)})
+    # onset offset of the guest's own beat (separated instrumental) on this grid, for feature_song placement
+    import glob
+    sd = sorted(glob.glob(os.path.join(d, "sep", "*", "instrumental.wav")))
+    if sd:
+        yi, _ = librosa.load(sd[0], sr=SR, mono=True)
+        on = librosa.onset.onset_detect(y=yi, sr=SR, units="time") + grid["crop_offset_s"]
+        on = on[(on > vs) & (on < ve)]
+        z = np.exp(2j * np.pi * np.mod(on - bar1, T / 4) / (T / 4)).mean()
+        grid["inst_onset_offset_ms"] = round(float(np.angle(z) / (2 * np.pi) * T / 4 * 1000), 1)
+        grid["inst_onset_lock"] = round(float(abs(z)), 3)
     json.dump(grid, open(os.path.join(d, "grid.json"), "w"), indent=1)
     print(json.dumps({k: grid[k] for k in ("bpm", "grid_residual_ms", "onset_lag_ms", "comb_score", "best_phase_refined",
-                                           "verse_bar1", "bar1_minus_first_line_s", "verse_bars_est")}),
+                                           "verse_bar1", "bar1_minus_first_line_s", "verse_bars_est",
+                                           "inst_onset_offset_ms") if k in grid}),
           [(p["phase"], p["score"]) for p in phases])
 
 
