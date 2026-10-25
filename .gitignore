@@ -1,0 +1,19 @@
+# Audio and heavy working data never go into git (copyrighted material, large files)
+work/
+deliverables/
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.ogg
+*.opus
+*.mp4
+*.webm
+*.npy
+*.npz
+*.pt
+*.ckpt
+*.onnx
+__pycache__/
+.venv/
