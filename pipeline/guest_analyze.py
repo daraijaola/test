@@ -39,12 +39,12 @@ def live_bar(k):
     return LIVE_BAR1 + (k - 1) * LIVE_BAR
 
 
-def words_of(path):
+def words_of(path, language="en"):
     from faster_whisper import WhisperModel
     from faster_whisper.audio import decode_audio
 
     model = WhisperModel("large-v3", device="cpu", compute_type="int8", cpu_threads=4)
-    segs, _ = model.transcribe(decode_audio(path, sampling_rate=16000), language="en", word_timestamps=True,
+    segs, _ = model.transcribe(decode_audio(path, sampling_rate=16000), language=language, word_timestamps=True,
                                beam_size=5, condition_on_previous_text=False, vad_filter=False, temperature=0.0)
     out = []
     for s in segs:
@@ -105,10 +105,16 @@ def main():
     clean = os.path.join(d, "vocals_clean.wav")
     mx.save(clean, vc)
 
-    words = words_of(clean)
-    for w in words:
-        w["s"] = round(w["s"] + off, 3)
-        w["e"] = round(w["e"] + off, 3)
+    cache = os.path.join(d, "words.json")            # whisper is the slow step: reuse words for the same stem
+    wc = json.load(open(cache)) if os.path.exists(cache) else {}
+    if wc.get("model_dir") == mdir and wc.get("offset") == off:
+        words = wc["words"]
+    else:
+        words = words_of(clean, meta.get("language", "en"))
+        for w in words:
+            w["s"] = round(w["s"] + off, 3)
+            w["e"] = round(w["e"] + off, 3)
+        json.dump({"model_dir": mdir, "offset": off, "words": words}, open(cache, "w"))
     vs, ve = float(meta["verse_start_s"]), float(meta["verse_end_s"])
     verse = [w for w in words if vs - 1.5 <= w["s"] <= ve + 0.5]
     first, last = (verse[0], verse[-1]) if verse else (None, None)
