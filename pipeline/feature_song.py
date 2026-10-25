@@ -23,6 +23,7 @@ Spec (JSON):
   "transpose": 0, "guest_over_beat_lu": 1.5, "vocal_ride": 0.6,
   "post_trim_db": -1.0, "post_trim_from_bar": 51,          # optional
   "match_juice_to": "work/renders/extended/extended_A_live.wav",   # optional: Juice's part as loud as this render
+  "juice_reprise": {"from_bar": 9, "to_bar": 13, "pickup_s": 0.98, "tail_s": 0.4, "land_bar": 67},  # optional
   "target_lufs": -12.0
 }
 Usage: feature_song.py SPEC.json
@@ -34,6 +35,7 @@ import sys
 
 import numpy as np
 from scipy.ndimage import uniform_filter1d
+from scipy.signal import butter, sosfiltfilt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_extended as be  # noqa: E402
@@ -152,7 +154,9 @@ def main():
     trk, at, bar1, g_end, rate = guest_track(spec, len(a))
     if at < cfg["juice_end"] + 0.05:
         raise SystemExit(f"guest pickup would overlap Juice's last word (starts {at:.2f}s < {cfg['juice_end'] + 0.05:.2f}s)")
-    # light processing: the isolated studio vocal already carries its own production
+    # 24 dB/oct high-pass first (Pedalboard's HPF in the chain is 1st order and leaves 45-60 Hz rumble and
+    # separated-808 residue), then light processing: the isolated studio vocal carries its own production
+    trk = sosfiltfilt(butter(4, spec.get("guest_hpf_hz", 80.0), "high", fs=sr, output="sos"), trk, axis=0).astype(np.float32)
     gp = mx.vocal_chain(trk, sr, presence_db=spec.get("presence_db", 0.5), air_db=spec.get("air_db", 0.5),
                         comp_thresh=spec.get("comp_thresh", -22), reverb_wet=spec.get("reverb_wet", 0.06),
                         delay_wet=spec.get("delay_wet", 0.02), bpm=60 / (LIVE_BAR / 4))
@@ -190,6 +194,23 @@ def main():
     rel_now = mx.lufs(gp[i0:i1]) - mx.lufs(beat_only[i0:i1])
     rel_blocks = [[round((b0 - mx.sec(cfg["bar5"])) / sr, 2), round(mx.lufs(gp[b0:b1]) - lb_, 2)] for b0, b1, lb_ in blocks]
     mix = a + gp
+    reprise = None
+    if spec.get("juice_reprise"):
+        # Juice's own hook lines from the start of the freestyle (same tempo and grid, so no stretch or shift),
+        # brought back after the guest verse at the guest's level over the beat - verse / feature / hook / outro
+        r = spec["juice_reprise"]
+        jv = mx.load(cfg["live_vocals"])
+        s0, s1 = live_bar(r["from_bar"]) - r.get("pickup_s", 0.0), live_bar(r["to_bar"]) + r.get("tail_s", 0.0)
+        seg = jv[mx.sec(s0):mx.sec(s1)].copy()
+        fi, fo = mx.sec(r.get("fade_in_s", 0.02)), mx.sec(r.get("fade_out_s", 0.15))
+        seg[:fi] *= mx.fade(fi, "in")
+        seg[-fo:] *= mx.fade(fo, "out")
+        at_r = live_bar(r["land_bar"]) - r.get("pickup_s", 0.0)
+        rv = mx.place(np.zeros_like(mix), seg, mx.sec(at_r))[:len(mix)]
+        q0, q1 = mx.sec(live_bar(r["land_bar"])), mx.sec(live_bar(r["land_bar"] + r["to_bar"] - r["from_bar"]))
+        rg = r.get("over_beat_lu", spec.get("guest_over_beat_lu", 1.5)) - (mx.lufs(rv[q0:q1]) - mx.lufs(beat_only[q0:q1]))
+        mix = mix + rv * 10 ** (rg / 20)
+        reprise = {"in_out_s": round(at_r - cfg["bar5"], 2), "gain_db": round(rg, 2)}
     # optional trim of everything after a downbeat (keeps a loud chorus-3 bed from being crushed by the limiter)
     if spec.get("post_trim_db"):
         t0 = mx.sec(live_bar(spec["post_trim_from_bar"]))
@@ -224,7 +245,7 @@ def main():
     print(json.dumps({"out": spec["out"], "duration": round(len(y) / sr, 2), "lufs": round(mx.lufs(y), 2),
                       "true_peak": round(mx.true_peak_db(y), 2), "stretch_rate": round(rate, 4),
                       "guest_in_out_s": round(at - b5, 2), "guest_bar1_out_s": round(bar1 - b5, 2),
-                      "guest_end_out_s": round(g_end - b5, 2), "guest_gain_db": round(gain_db, 2), "vocal_ride_db": rides, "guest_minus_beat_per_block": rel_blocks,
+                      "guest_end_out_s": round(g_end - b5, 2), "guest_gain_db": round(gain_db, 2), "vocal_ride_db": rides, "guest_minus_beat_per_block": rel_blocks, "juice_reprise": reprise,
                       "juice_part_lufs": round(mx.lufs(y[:mx.sec(live_bar(JUICE_LAST_BAR + 1) - b5)]), 2),
                       "guest_part_lufs": round(mx.lufs(y[mx.sec(bar1 - b5):mx.sec(g_end - b5)]), 2),
                       "guest_vocal_lufs_premaster": round(mx.lufs(gp[i0:i1]), 2), "juice_vocal_lufs_premaster": round(juice_lufs, 2),
