@@ -23,7 +23,10 @@ Spec (JSON):
   "transpose": 0, "guest_over_beat_lu": 1.5, "vocal_ride": 0.6,
   "post_trim_db": -1.0, "post_trim_from_bar": 51,          # optional
   "match_juice_to": "work/renders/extended/extended_A_live.wav",   # optional: Juice's part as loud as this render
-  "juice_reprise": {"from_bar": 9, "to_bar": 13, "pickup_s": 0.98, "tail_s": 0.4, "land_bar": 67},  # optional
+  "juice_reprise": {"from_bar": 9, "to_bar": 13, "pickup_s": 0.55, "tail_s": 0.2, "fade_out_s": 0.2,
+                    "land_bar": 67, "over_beat_lu": 1.2},                     # optional
+  "beat_splices": [[50, 3, 1, 40, 3]],    # optional: [out_bar, out_beat, n_beats, studio_bar, studio_beat]
+  "section_trims": [[67, 71, -0.8]],      # optional: [from_bar, to_bar, dB] on the whole mix before mastering
   "target_lufs": -12.0
 }
 Usage: feature_song.py SPEC.json
@@ -76,7 +79,22 @@ def rearrange(st, cont, song_end, xf_s=0.012):
     return np.concatenate(parts), out_end / sr
 
 
-def base_mix(cfg, cont=None):
+def splice_beats(track, src, splices, xf_s=0.012):
+    """Overwrite whole beats of the output bed: [out_bar, out_beat, n_beats, src_bar, src_beat] (beats 0-3),
+    crossfaded at both ends. Used to let the 808 enter on beat 4 before the drop, as in Reine's own chorus 2."""
+    xf = mx.sec(xf_s)
+    for ob, obt, n, sb, sbt in splices:
+        o0 = mx.sec(live_bar(ob) + obt * LIVE_BAR / 4)
+        o1 = mx.sec(live_bar(ob) + (obt + n) * LIVE_BAR / 4)
+        s0 = mx.sec(live_bar(sb) + sbt * LIVE_BAR / 4)
+        seg = src[s0:s0 + (o1 - o0)].copy()
+        seg[:xf] = track[o0:o0 + xf] * mx.fade(xf, "out") + seg[:xf] * mx.fade(xf, "in")
+        seg[-xf:] = seg[-xf:] * mx.fade(xf, "out") + track[o1 - xf:o1] * mx.fade(xf, "in")
+        track[o0:o1] = seg
+    return track
+
+
+def base_mix(cfg, cont=None, splices=None):
     """Version A pre-master mix on the live timeline (same steps as build_extended.py), optionally re-ordered
     after Juice's verse. Returns (mix, beat_only, juice_vocal_lufs, juice_vocal_minus_beat_lu, end_s)."""
     sr = mx.SR
@@ -92,7 +110,10 @@ def base_mix(cfg, cont=None):
     st *= 10 ** (be.loudness_gain(st[r0:r1], live_inst[r0:r1], sr) / 20)
     end_s = cfg["song_end"]
     if cont:
+        src = st
         st, end_s = rearrange(st, cont, cfg["song_end"])
+        if splices:
+            st = splice_beats(st, src, splices)
         n = len(st)
         live_mix, live_voc, live_inst = (np.concatenate([x, np.zeros((max(0, n - len(x)), 2), np.float32)])[:n]
                                          for x in (live_mix, live_voc, live_inst))
@@ -150,7 +171,7 @@ def main():
     spec = json.load(open(sys.argv[1]))
     cfg = json.load(open(spec.get("base_config", "work/renders/extended/config.json")))
     sr = mx.SR
-    a, beat_only, juice_lufs, juice_rel, end_s = base_mix(cfg, spec.get("cont"))
+    a, beat_only, juice_lufs, juice_rel, end_s = base_mix(cfg, spec.get("cont"), spec.get("beat_splices"))
     trk, at, bar1, g_end, rate = guest_track(spec, len(a))
     if at < cfg["juice_end"] + 0.05:
         raise SystemExit(f"guest pickup would overlap Juice's last word (starts {at:.2f}s < {cfg['juice_end'] + 0.05:.2f}s)")
@@ -207,6 +228,17 @@ def main():
         seg[-fo:] *= mx.fade(fo, "out")
         at_r = live_bar(r["land_bar"]) - r.get("pickup_s", 0.0)
         rv = mx.place(np.zeros_like(mix), seg, mx.sec(at_r))[:len(mix)]
+        # the raw live acapella is dark, dry and very dynamic: unprocessed it drove the master limiter into
+        # 4-7 dB of gain reduction on his words (the 808 pumped down under him). Same treatment as the guest:
+        # steep high-pass, presence/air, two-stage compression, the same reverb/delay sends.
+        rv = sosfiltfilt(butter(4, r.get("hpf_hz", 90.0), "high", fs=sr, output="sos"), rv, axis=0).astype(np.float32)
+        rv = mx.vocal_chain(rv, sr, presence_db=r.get("presence_db", 3.5), air_db=r.get("air_db", 3.0),
+                            comp_thresh=r.get("comp_thresh", -26), reverb_wet=r.get("reverb_wet", 0.06),
+                            delay_wet=r.get("delay_wet", 0.02), bpm=60 / (LIVE_BAR / 4))
+        # live-mic plosives still peak well above the studio guest (crest): shave them with a fast vocal-bus
+        # limiter so the master limiter doesn't ride the ceiling on every syllable of the reprise
+        pk = 20 * np.log10(np.percentile(np.abs(rv[np.abs(rv).max(axis=1) > 1e-4]), 99.9) + 1e-12)
+        rv = mx.limit(rv, sr, ceiling_db=pk - r.get("peak_shave_db", 4.0), lookahead_ms=1.5, release_ms=60.0)
         q0, q1 = mx.sec(live_bar(r["land_bar"])), mx.sec(live_bar(r["land_bar"] + r["to_bar"] - r["from_bar"]))
         rg = r.get("over_beat_lu", spec.get("guest_over_beat_lu", 1.5)) - (mx.lufs(rv[q0:q1]) - mx.lufs(beat_only[q0:q1]))
         mix = mix + rv * 10 ** (rg / 20)
@@ -219,9 +251,20 @@ def main():
         r = mx.sec(0.01)
         g[t0 - r:t0] = np.linspace(1, g[t0], r)
         mix *= g[:, None]
+    # optional static trims of whole sections (beat and vocals together), 10 ms ramps on the downbeats: a
+    # static dB is better than letting the master limiter pump the 808 under the hottest bars
+    for k0, k1, db in spec.get("section_trims", []):
+        t0, t1, r = mx.sec(live_bar(k0)), mx.sec(live_bar(k1)), mx.sec(0.01)
+        g = np.ones(len(mix), np.float32)
+        g[t0:t1] = 10 ** (db / 20)
+        g[t0 - r:t0] = np.linspace(1, g[t0], r)
+        g[t1:t1 + r] = np.linspace(g[t0], 1, r)
+        mix *= g[:, None]
     b5 = cfg["bar5"]
     seg_out = mix[mx.sec(b5):mx.sec(end_s)].copy()
     seg_out[:mx.sec(0.004)] *= mx.fade(mx.sec(0.004), "in")
+    if spec.get("save_premaster"):
+        mx.save(spec["save_premaster"], seg_out)
     target = spec.get("target_lufs", cfg.get("target_lufs", -12.0))
     y = mx.master(seg_out, sr, target_lufs=target, ceiling_db=-1.0)
     if spec.get("match_juice_to"):
