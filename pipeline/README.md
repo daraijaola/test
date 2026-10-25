@@ -27,7 +27,11 @@ Everything here is open source and runs on CPU. Audio never goes into git. It li
 | `mixlib.py` | Shared DSP: equal-power crossfades, Rubber Band R3 time/pitch (formant-preserving for vocals), vocal chain (HPF, EQ, split-band de-esser, two-stage compression, tempo-synced delay, reverb send), oversampled look-ahead true-peak limiter, LUFS mastering. |
 | `arrange.py` | Renders any JSON arrangement plan (clips on tracks, with fades/stretch/mutes) and runs QA. |
 | `build_extended.py` | The three Extended Cut versions on the live timeline, with level and match-EQ of the studio continuation to the live beat. |
-| `remix_render.py` | Juice's vocal over a new beat, stretched to his 100.415 BPM grid, transposed, bar-aligned, looped with crossfades at loop jumps, then mixed and mastered. Self-test against the original alignment: 0.0 ms error. |
+| `remix_render.py` | Juice's vocal over a new beat, stretched to his 100.446 BPM grid, transposed, bar-aligned, looped with crossfades at loop jumps, then mixed and mastered. Self-test against the original alignment: 0.0 ms error. |
+| `make_acapella.py` | Final acapella: ensemble of separation models (each with its own crop offset), Juice-only mask, conservative downward expander for gap bleed. |
+| `analyze_finalist.py` | Full-track analysis of a finalist beat: regression beat grid, bar phase from downbeats and kick/snare evidence, harmony search over valid phases x transposition x entry bar, bar energy map and spectrogram. |
+| `produce_remix.py` | Final remix from a bar-level plan (beat bars to output bars, vocal placements by live bar, hook repeats), dynamic-EQ duck of the beat's 1-4 kHz band under the vocal, mastering and QA. Self-test against the original alignment: 0.0 ms. |
+| `export.py` | 24-bit WAV and 320 kbps MP3 with ID3 tags and generated cover art. |
 | `qa.py` | Objective QA: LUFS, short-term loudness, true peak, clipping, DC, stereo correlation, silence, click candidates, level jumps at edits, spectrogram PNG. |
 
 ## Remix search (`catalog/`)
@@ -36,5 +40,5 @@ Everything here is open source and runs on CPU. Audio never goes into git. It li
 | `harvest_*.py` | One harvester per library: Deezer (mainstream, 30 s previews plus BPM), SoundCloud, Internet Archive, Jamendo (MTG-Jamendo metadata), FMA, ccMixter, plus curated references. Each writes `work/catalog/<src>/candidates.jsonl` and 30-45 s clips. |
 | `merge_catalog.py` | Validates, deduplicates and merges everything into `work/catalog/catalog.jsonl`. |
 | `analyze_catalog.py` | Tier 1: tempo, key, chroma and loudness for every clip. Tier 2: CLAP embeddings for the shortlist. Resumable and parallel. |
-| `score_catalog.py` | Stage-1 screening: tempo fit to 100.415 BPM (half/double allowed), harmonic fit of Juice's melody (best transposition, normalised to the real Reine beat), CLAP vibe, instrumental probability, full-audio availability. |
+| `score_catalog.py` | Stage-1 screening: tempo fit to 100.446 BPM (half/double allowed), harmonic fit of Juice's melody (best transposition, normalised to the real Reine beat), CLAP vibe, instrumental probability, full-audio availability. |
 | `fit_detailed.py` | Stage 2: a beat-by-beat simulation of his actual vocal over each looped, stretched and transposed candidate, searching every transposition and bar alignment, plus groove fit. |

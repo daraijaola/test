@@ -85,9 +85,11 @@ def stretch(x, rate, semitones=0.0, vocal=False, sr=SR, fast=False):
     args = {} if fast else {"-3": ""}
     if vocal:
         args["--formant"] = ""
-    y = pyrb.time_stretch(x, sr, rate, rbargs=args) if abs(rate - 1) > 1e-6 else x
+    # pyrubberband writes its own --tempo/--pitch into the rbargs dict it is given, so each call
+    # must get a fresh copy (sharing one dict applied the time-stretch twice when also transposing)
+    y = pyrb.time_stretch(x, sr, rate, rbargs=dict(args)) if abs(rate - 1) > 1e-6 else x
     if abs(semitones) > 1e-6:
-        y = pyrb.pitch_shift(y, sr, semitones, rbargs=args)
+        y = pyrb.pitch_shift(y, sr, semitones, rbargs=dict(args))
     return y.astype(np.float32)
 
 

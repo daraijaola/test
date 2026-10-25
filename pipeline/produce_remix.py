@@ -101,7 +101,11 @@ def main():
         fi, fo = mx.sec(opt.get("fade_in", 0.01)), mx.sec(opt.get("fade_out", 0.08))
         seg[:fi] *= mx.fade(fi, "in")
         seg[-fo:] *= mx.fade(fo, "out")
-        vt = mx.place(vt, seg, out_bar * L + mx.sec(opt.get("trim_start", 0.0)))
+        at = out_bar * L + mx.sec(opt.get("trim_start", 0.0))
+        if at < 0:                     # a pre-roll before the song start is dropped
+            seg, at = seg[-at:], 0
+            seg[:fi] *= mx.fade(min(fi, len(seg)), "in")
+        vt = mx.place(vt, seg, at)
     vt = vt[:len(bed)]
 
     vproc = mx.vocal_chain(vt, sr, bpm=60 / (LIVE_BAR / 4))
