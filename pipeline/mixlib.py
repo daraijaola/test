@@ -185,8 +185,9 @@ def _env(d, aa, ar):
 
 
 def comp_sc(x, sr=SR, threshold_db=-18.0, ratio=1.6, attack_ms=30.0, release_ms=250.0, sc_hp=150.0):
-    """Feed-forward compressor whose detector is high-passed, so the 808 and kick don't drive it (no pumping
-    of the voice on every downbeat); same law as the glue Compressor otherwise."""
+    """Feed-forward glue compressor whose detector is high-passed, so the 808 and kick don't drive it (no pumping
+    of the voice on every downbeat). Same threshold/ratio/times as the Pedalboard glue, but a mono mean-square
+    detector, so it acts slower and smoother than that peak-sensing compressor."""
     det = sosfilt(butter(2, sc_hp, "high", fs=sr, output="sos"), x.mean(axis=1).astype(np.float64))
     e = _env(det ** 2, np.exp(-1 / (attack_ms * 1e-3 * sr)), np.exp(-1 / (release_ms * 1e-3 * sr)))
     gr = np.clip(10 * np.log10(e + 1e-12) - threshold_db, 0, None) * (1 - 1 / ratio)

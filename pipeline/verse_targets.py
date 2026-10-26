@@ -8,7 +8,9 @@ of "Fourth" at bar 10). Instead:
   target_k = LUFS(acapella_k) - LUFS(studio_beat_k) + c,   c = mean over blocks of (studio beat - live beat)
 so the vocal's loudness per block follows the acapella (his performance as heard in the Extended Cut) and the
 overall vocal/beat balance stays the Extended Cut's. Block boundaries are moved into the nearest real gap in the
-acapella (>= min_gap_s of silence within -1.2..+0.6 bars of the nominal bar line) so no ride lands mid-word.
+acapella (>= min_gap_s of silence within -1.2..+0.6 bars of the nominal bar line), or where he raps through the bar
+line, into the deepest breath (lowest 120 ms of energy) in that window, so no ride lands mid-word (use a short
+level_ramp_s, ~0.3 s, so the ride stays inside the breath).
 
 Usage: verse_targets.py ACAPELLA.wav LIVE_BEAT.wav STUDIO_BEAT.wav EXT_BLOCKS.json OUT.json [--min-gap-s 0.33]
 EXT_BLOCKS.json: [[bar0, bar1, lu_over_live_beat], ...] (the Extended Cut's blocks; only the bars are used,
@@ -68,7 +70,13 @@ def main():
             bounds.append(round(nb, 3))
             moved.append([b0, round(nb, 3)])
         else:
-            bounds.append(b0)
+            # no silence: the deepest breath, lowest 120 ms of energy (10 ms frames), in the same window
+            i0, i1 = int(bar(b0 - 1.2) / 0.01), int(bar(b0 + 0.6) / 0.01)
+            w = np.convolve(10 ** (edb[i0:i1] / 10), np.ones(12) / 12, mode="valid")
+            tc = (i0 + int(np.argmin(w)) + 6) * 0.01
+            nb = (tc - LIVE_BAR1) / LIVE_BAR + 1
+            bounds.append(round(nb, 3))
+            moved.append([b0, round(nb, 3), "breath"])
     bounds.append(ext[-1][1])
     c = float(np.mean([lu(st, b0, b1) - lu(li, b0, b1) for b0, b1, _ in ext]))
     blocks = [[b0, b1, round(lu(ac, b0, b1) - lu(st, b0, b1) + c, 2)] for b0, b1 in zip(bounds[:-1], bounds[1:])]

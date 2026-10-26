@@ -248,12 +248,25 @@ def main():
             curves[tr["name"]], reports[tr["name"]] = level_curve(placed[tr["name"]], beat, tr.get("level_blocks", []),
                                                                   n_out, ramp_s=tr.get("level_ramp_s", 0.3))
 
+    shave_ceiling = {}
+
     def render_vox():
         dry_out = {}
         for name, tr in tracks.items():
             g = curves[tr["link_to"]] if tr.get("link_to") else curves[name]
             dry_out[name] = placed[name] * (10 ** ((g + tr.get("gain_db", 0.0)) / 20))[:, None].astype(np.float32)
-            if tr.get("peak_shave_db"):
+            if tr.get("peak_shave"):
+                # {"until_bar": B, "above_p999_db": d}: shave only bars before B (the live verse, where the mic
+                # peaks drive the master limiter), at a ceiling fixed on the first pass (d dB over that region's
+                # p99.9) so the level loop cannot chase it
+                ps = tr["peak_shave"]
+                j = mx.sec(live_bar(ps["until_bar"]))
+                if name not in shave_ceiling:
+                    a = np.abs(dry_out[name][:j]).max(axis=1)
+                    shave_ceiling[name] = 20 * np.log10(np.percentile(a[a > 1e-4], 99.9)) + ps["above_p999_db"]
+                dry_out[name][:j] = mx.limit(dry_out[name][:j], SR, ceiling_db=shave_ceiling[name], lookahead_ms=1.5,
+                                             release_ms=60.0)
+            elif tr.get("peak_shave_db"):
                 # live-mic plosives and shouted syllables would otherwise drive the master limiter and duck the
                 # whole mix for 60-230 ms: shave the track's own peaks (ceiling relative to its p99.9)
                 a = np.abs(dry_out[name]).max(axis=1)
@@ -297,8 +310,8 @@ def main():
     nz = int(np.argmax(np.abs(seg).max(axis=1) > 1e-5))      # the beat starts with a small step: fade its first 3 ms
     seg[nz:nz + mx.sec(0.003)] *= mx.fade(mx.sec(0.003), "in")
     target = song.get("target_lufs", -11.0)
-    msc = song.get("master_glue_sc_hp")
-    y = mx.master(seg, SR, target_lufs=target, ceiling_db=-1.0, glue_sc_hp=msc)
+    msc, ceil = song.get("master_glue_sc_hp"), song.get("ceiling_db", -1.0)
+    y = mx.master(seg, SR, target_lufs=target, ceiling_db=ceil, glue_sc_hp=msc)
     if song.get("match_opening_to"):
         ref = mx.load(song["match_opening_to"])
         j1 = mx.sec(live_bar(song.get("opening_end_bar", 49)) - start)
@@ -308,7 +321,7 @@ def main():
             if abs(dlt) < 0.05:
                 break
             target += dlt
-            y = mx.master(seg, SR, target_lufs=target, ceiling_db=-1.0, glue_sc_hp=msc)
+            y = mx.master(seg, SR, target_lufs=target, ceiling_db=ceil, glue_sc_hp=msc)
     os.makedirs(os.path.dirname(song["out"]), exist_ok=True)
     mx.save(song["out"], y)
     if song.get("save_stems"):
