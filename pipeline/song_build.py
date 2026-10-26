@@ -9,7 +9,8 @@ the harmony). Order of work:
      jumps, optional beat splices and low-pass dips (the classic filter dip before a new verse)
   2. vocal tracks: clips of pre-processed (tuned/EQ'd/compressed) dry stems, with short fades
   3. per-track levels: LU over the beat per block of bars (Juice's verse can copy the Extended Cut's own
-     voice/beat balance block by block), smoothed 0.3 s ramps
+     voice/beat balance block by block), smoothed 0.3 s ramps; "level_after_bus": N re-measures the finished
+     vocal (returns + bus) N times and corrects each block, so the targets hold on the wet vocal
   4. time effects AFTER arranging, so tails run across clip edges: plate, tempo delays, slap; send
      automation for word throws; a track's returns can duck under another track (Juice's tails under Dave)
   5. vocal bus (light glue compression, parallel saturation), beat + vocals, master to a loudness that keeps
@@ -231,28 +232,49 @@ def main():
     beat *= 10 ** (song.get("beat_gain_db", 0.0) / 20)
 
     bpm = 60.0 / BEAT
-    tracks, dry_out, reports, curves = {}, {}, {}, {}
+    tracks, placed, reports, curves = {}, {}, {}, {}
     for tr in song["vocals"]:
-        src = mx.load(tr["src"])
-        dry = place_clips(src, tr["clips"], n_out)
-        if tr.get("link_to"):                  # e.g. doubles ride with their lead, at a fixed offset (gain_db)
-            g, rep = curves[tr["link_to"]], "linked to " + tr["link_to"]
-        else:
-            g, rep = level_curve(dry, beat, tr.get("level_blocks", []), n_out)
-        curves[tr["name"]] = g
-        dry = dry * (10 ** ((g + tr.get("gain_db", 0.0)) / 20))[:, None].astype(np.float32)
-        dry_out[tr["name"]] = dry
-        reports[tr["name"]] = rep
+        placed[tr["name"]] = place_clips(mx.load(tr["src"]), tr["clips"], n_out)
         tracks[tr["name"]] = tr
-    vox = np.zeros((n_out, 2), np.float32)
+        if tr.get("link_to"):                  # e.g. doubles ride with their lead, at a fixed offset (gain_db)
+            curves[tr["name"]], reports[tr["name"]] = None, "linked to " + tr["link_to"]
+        else:
+            curves[tr["name"]], reports[tr["name"]] = level_curve(placed[tr["name"]], beat, tr.get("level_blocks", []),
+                                                                  n_out)
+
+    def render_vox():
+        dry_out = {}
+        for name, tr in tracks.items():
+            g = curves[tr["link_to"]] if tr.get("link_to") else curves[name]
+            dry_out[name] = placed[name] * (10 ** ((g + tr.get("gain_db", 0.0)) / 20))[:, None].astype(np.float32)
+        vox = np.zeros((n_out, 2), np.float32)
+        for name, tr in tracks.items():
+            duck_env = None
+            if tr.get("fx", {}).get("duck_under"):
+                duck_env = env_follow(dry_out[tr["fx"]["duck_under"]])
+            vox += dry_out[name] + time_fx(dry_out[name], tr.get("fx", {}), bpm, n_out, duck_env)
+        return vocal_bus(vox, song.get("vocal_bus")), dry_out
+
+    vox, dry_out = render_vox()
+    # level_blocks measure the dry track; with "level_after_bus" the targets are met on the finished vocal
+    # (FX returns and bus compression included), as the Extended Cut's own balance was measured on a wet stem
+    for _ in range(song.get("level_after_bus", 0)):
+        for name, tr in tracks.items():
+            for b0, b1, target in ([] if tr.get("link_to") else tr.get("level_blocks", [])):
+                i0, i1 = mx.sec(live_bar(b0)), mx.sec(live_bar(b1))
+                if np.sum(np.abs(dry_out[name][i0:i1]).max(axis=1) > 1e-4) < SR:
+                    continue
+                err = target - (mx.lufs(vox[i0:i1]) - mx.lufs(beat[i0:i1]))
+                ramp = np.zeros(n_out)
+                ramp[i0:i1] = err
+                curves[name] = curves[name] + uniform_filter1d(ramp, mx.sec(0.3), mode="constant")
+        vox, dry_out = render_vox()
+    after = {}
     for name, tr in tracks.items():
-        dry = dry_out[name]
-        duck_env = None
-        if tr.get("fx", {}).get("duck_under"):
-            duck_env = env_follow(dry_out[tr["fx"]["duck_under"]])
-        fxr = time_fx(dry, tr.get("fx", {}), bpm, n_out, duck_env)
-        vox += dry + fxr
-    vox = vocal_bus(vox, song.get("vocal_bus"))
+        if not tr.get("link_to") and tr.get("level_blocks"):
+            after[name] = [[b0, b1, t, round(mx.lufs(vox[mx.sec(live_bar(b0)):mx.sec(live_bar(b1))]) -
+                                             mx.lufs(beat[mx.sec(live_bar(b0)):mx.sec(live_bar(b1))]), 2)]
+                           for b0, b1, t in tr["level_blocks"]]
     mix = beat + vox
 
     start = song.get("start_s", 12.7387)
@@ -285,7 +307,7 @@ def main():
         sections[name] = round(mx.lufs(y[mx.sec(live_bar(b0) - start):mx.sec(live_bar(b1) - start)]), 2)
     print(json.dumps({"out": song["out"], "duration": round(len(y) / SR, 2), "lufs": round(mx.lufs(y), 2),
                       "true_peak": round(mx.true_peak_db(y), 2), "master_target": round(target, 2),
-                      "section_lufs": sections, "level_blocks": reports}))
+                      "section_lufs": sections, "level_blocks": reports, "wet_vox_over_beat": after}))
 
 
 if __name__ == "__main__":

@@ -17,9 +17,11 @@ retune); they have 4-8 dB less 400 Hz-1 kHz and a brighter, heavily de-essed top
    de-esser, 12% parallel saturation -> lead (dry, centre). Two pseudo-doubles (+-8 cents, 17/29 ms, darker)
    -> doubles (stereo, unit level; the arrangement sets their level and where they play).
 Writes OUT_DIR/{tuned,lead,doubles}.wav on the input's timeline and OUT_DIR/report.json.
+--pretuned skips steps 1-2 for a vocal already corrected by autotune.py (chord-aware PSOLA: cleaner formants
+and consonants than the Rubber Band pitchmap, and it is the engine the final song uses).
 
 Usage: juice_vocal.py IN.wav OUT_DIR [--retune-ms 20] [--hyst 0.3] [--min-note-ms 40] [--scale "D E F# G A B C#"]
-       [--hpf 110] [--start S --end E]
+       [--hpf 115] [--start S --end E] [--pretuned]
 """
 import argparse
 import json
@@ -31,7 +33,7 @@ import numpy as np
 import soundfile as sf
 from pedalboard import Compressor, Distortion, HighShelfFilter, LowShelfFilter, Pedalboard, PeakFilter, PitchShift
 from scipy.ndimage import uniform_filter1d
-from scipy.signal import butter, correlate, sosfilt
+from scipy.signal import butter, correlate, sosfilt, sosfiltfilt
 
 NOTES = {"C": 0, "C#": 1, "Db": 1, "D": 2, "D#": 3, "Eb": 3, "E": 4, "F": 5, "F#": 6, "Gb": 6, "G": 7,
          "G#": 8, "Ab": 8, "A": 9, "A#": 10, "Bb": 10, "B": 11}
@@ -50,7 +52,7 @@ def pitch_track(m, sr):
                                  device="cpu")
     per = torchcrepe.filter.median(per, 3)
     f0, per = f0[0].numpy(), per[0].numpy()
-    rms = np.sqrt(uniform_filter1d(y.astype(np.float64) ** 2, 400))[::160][:len(f0)]
+    rms = np.sqrt(np.maximum(uniform_filter1d(y.astype(np.float64) ** 2, 400), 0))[::160][:len(f0)]
     rms = np.pad(rms, (0, len(f0) - len(rms)), mode="edge")
     ld = 20 * np.log10(rms + 1e-9)
     voiced = (per > 0.5) & (ld > np.percentile(ld[ld > -80], 30))
@@ -132,13 +134,15 @@ def rubberband_pitchmap(m, sr, shift, advance_ms):
 
 
 def level_db(m, sr, pct=90):
-    r = np.sqrt(uniform_filter1d(m.astype(np.float64) ** 2, int(0.05 * sr)))[::int(0.025 * sr)]
+    # clamp: the running mean of squares can dip just below zero (float error) and sqrt would give NaN
+    r = np.sqrt(np.maximum(uniform_filter1d(m.astype(np.float64) ** 2, int(0.05 * sr)), 0))[::int(0.025 * sr)]
     d = 20 * np.log10(r + 1e-9)
     return float(np.percentile(d[d > d.max() - 35], pct))
 
 
 def deess(m, sr, lo=5500, hi=10000, ratio=6.0, below_p90=8.0):
-    b = sosfilt(butter(4, [lo, hi], "bandpass", fs=sr, output="sos"), m)
+    # zero-phase split: with a causal band-pass, m - (1-g)*b boosts the band edges whenever g < 1
+    b = sosfiltfilt(butter(4, [lo, hi], "bandpass", fs=sr, output="sos"), m)
     env = np.abs(b)
     out = np.empty_like(env)
     aa, ar = np.exp(-1 / (0.001 * sr)), np.exp(-1 / (0.06 * sr))
@@ -152,15 +156,25 @@ def deess(m, sr, lo=5500, hi=10000, ratio=6.0, below_p90=8.0):
     return (m - b + b * 10 ** (gr / 20)).astype(np.float32), float(-gr.min())
 
 
-def chain(m, sr, hpf):
+# tone toward the measured record average (bands vs 1-3 kHz: 400 Hz-1 kHz +3, 3-6 kHz -7, 6-10 kHz -10,
+# 10-15 kHz -16.5), fitted on the PSOLA-tuned live vocal. 150-400 Hz is left ~2 dB above the records on purpose:
+# live he sings ~8 semitones lower than on record, so that band is his chest, and cutting it reads as thin.
+EQ = (("low", 200, -1.0, 0.7), ("peak", 300, -2.0, 0.8), ("peak", 650, -2.0, 1.0), ("peak", 3200, 1.0, 1.0),
+      ("high", 10000, 1.5, 0.7))
+
+
+def eq_board(eq):
+    kind = {"low": LowShelfFilter, "peak": PeakFilter, "high": HighShelfFilter}
+    return Pedalboard([kind[k](f, g, q) for k, f, g, q in eq])
+
+
+def chain(m, sr, hpf, eq=None, comp2=(4.0, 1.4), deess_below_p90=-1.5):
     m = sosfilt(butter(4, hpf, "highpass", fs=sr, output="sos"), m).astype(np.float32)
-    # tone toward the measured record average (bands vs 1-3 kHz): the first pass (shelf +5, cuts -4.5/-3)
-    # overshot - 400 Hz-1 kHz came out 1.7 dB under the records and 6-15 kHz ~4 dB over them
-    m = Pedalboard([LowShelfFilter(200, -2.0, 0.7), PeakFilter(300, -3.5, 0.8), PeakFilter(650, -1.5, 1.0),
-                    PeakFilter(2800, 2.0, 1.0), HighShelfFilter(9000, 3.0, 0.7)])(m[None, :], sr)[0]
+    m = eq_board(eq or EQ)(m[None, :], sr)[0]
     m = Pedalboard([Compressor(threshold_db=level_db(m, sr) - 6, ratio=4, attack_ms=2, release_ms=60)])(m[None, :], sr)[0]
-    m = Pedalboard([Compressor(threshold_db=level_db(m, sr, 50), ratio=1.8, attack_ms=15, release_ms=200)])(m[None, :], sr)[0]
-    m, ds = deess(m, sr)
+    m = Pedalboard([Compressor(threshold_db=level_db(m, sr, 50) + comp2[0], ratio=comp2[1], attack_ms=15,
+                               release_ms=200)])(m[None, :], sr)[0]
+    m, ds = deess(m, sr, below_p90=deess_below_p90)
     sat = Pedalboard([Distortion(drive_db=10)])(m[None, :] * 0.5, sr)[0]
     sat = sosfilt(butter(2, 7000, "lowpass", fs=sr, output="sos"), sosfilt(butter(4, 300, "highpass", fs=sr, output="sos"), sat))
     m = (m + 0.12 * sat / (np.abs(sat).max() + 1e-9) * np.abs(m).max()).astype(np.float32)
@@ -193,31 +207,40 @@ def main():
     ap.add_argument("--hpf", type=float, default=115.0)
     ap.add_argument("--start", type=float, default=None, help="process only this region (s, input timeline)")
     ap.add_argument("--end", type=float, default=None)
+    ap.add_argument("--pretuned", action="store_true", help="input is already pitch-corrected: chain only")
     a = ap.parse_args()
     os.makedirs(a.out_dir, exist_ok=True)
     x, sr = sf.read(a.inp, always_2d=True, dtype="float32")
     s0 = int((a.start or 0) * sr)
     s1 = int(a.end * sr) if a.end else len(x)
     m = x[s0:s1].mean(axis=1)
-    f0, per, voiced = pitch_track(m, sr)
-    shift, target, midi = correction(f0, voiced, a.scale, a.ref_hz, a.retune_ms, a.hyst, a.humanize, a.min_note_ms)
-    tuned, lag = rubberband_pitchmap(m, sr, shift, a.advance_ms)
+    if a.pretuned:
+        # already corrected (autotune.py: chord-aware PSOLA, the preferred engine) - chain and doubles only
+        tuned, lag = m.astype(np.float32), 0
+        f0 = per = shift = target = midi = np.zeros(1)
+        voiced = np.zeros(1, bool)
+    else:
+        f0, per, voiced = pitch_track(m, sr)
+        shift, target, midi = correction(f0, voiced, a.scale, a.ref_hz, a.retune_ms, a.hyst, a.humanize, a.min_note_ms)
+        tuned, lag = rubberband_pitchmap(m, sr, shift, a.advance_ms)
     lead, ds = chain(tuned, sr, a.hpf)
     dbl = doubles(lead, sr)
     full = lambda y: np.concatenate([np.zeros((s0,) + y.shape[1:], np.float32), y,
                                      np.zeros((len(x) - s1,) + y.shape[1:], np.float32)])
-    sf.write(os.path.join(a.out_dir, "tuned.wav"), np.stack([full(tuned)] * 2, axis=1), sr, subtype="FLOAT")
+    if not a.pretuned:  # (pretuned: the input may be OUT_DIR/tuned.wav itself)
+        sf.write(os.path.join(a.out_dir, "tuned.wav"), np.stack([full(tuned)] * 2, axis=1), sr, subtype="FLOAT")
     sf.write(os.path.join(a.out_dir, "lead.wav"), np.stack([full(lead)] * 2, axis=1), sr, subtype="FLOAT")
     sf.write(os.path.join(a.out_dir, "doubles.wav"), full(dbl), sr, subtype="FLOAT")
     # how audible / how jumpy the correction is: mean shift, note switches per voiced second
     v = voiced.astype(bool)
-    tg = target[v]
-    switches = int(np.sum(np.diff(tg) != 0)) if len(tg) > 1 else 0
-    rep = {"rubberband_latency_samples": lag, "voiced_s": round(float(v.sum() * HOP), 1),
-           "mean_abs_shift_cents": round(float(np.mean(np.abs(shift[v])) * 100), 1),
-           "p95_abs_shift_cents": round(float(np.percentile(np.abs(shift[v]), 95) * 100), 1),
-           "note_switches_per_voiced_s": round(switches / max(1e-6, v.sum() * HOP), 2),
-           "deess_max_gr_db": round(ds, 1), "retune_ms": a.retune_ms, "hyst": a.hyst, "min_note_ms": a.min_note_ms, "scale": a.scale, "hpf": a.hpf}
+    rep = {"pretuned": a.pretuned, "deess_max_gr_db": round(ds, 1), "hpf": a.hpf}
+    if v.any():
+        tg = target[v]
+        rep.update({"rubberband_latency_samples": lag, "voiced_s": round(float(v.sum() * HOP), 1),
+                    "mean_abs_shift_cents": round(float(np.mean(np.abs(shift[v])) * 100), 1),
+                    "p95_abs_shift_cents": round(float(np.percentile(np.abs(shift[v]), 95) * 100), 1),
+                    "note_switches_per_voiced_s": round(int(np.sum(np.diff(tg) != 0)) / max(1e-6, v.sum() * HOP), 2),
+                    "retune_ms": a.retune_ms, "hyst": a.hyst, "min_note_ms": a.min_note_ms, "scale": a.scale})
     np.savez(os.path.join(a.out_dir, "f0.npz"), f0=f0, per=per, voiced=voiced, shift=shift, target=target,
              midi=midi, hop=HOP, start=(a.start or 0.0))
     json.dump(rep, open(os.path.join(a.out_dir, "report.json"), "w"), indent=1)

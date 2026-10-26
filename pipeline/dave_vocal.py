@@ -39,7 +39,7 @@ def exciter(m, drive=4.0):
 
 
 def deess(m, ratio=4.0, avg_gr_db=0.7):
-    b = sosfilt(butter(4, 6000, "high", fs=SR, output="sos"), m)
+    b = sosfiltfilt(butter(4, 6000, "high", fs=SR, output="sos"), m)  # zero-phase: a causal split boosts 6 kHz
     env = np.abs(b)
     out = np.empty_like(env)
     aa, ar = np.exp(-1 / (0.001 * SR)), np.exp(-1 / (0.06 * SR))
