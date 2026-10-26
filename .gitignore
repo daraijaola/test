@@ -17,3 +17,6 @@ deliverables/
 *.onnx
 __pycache__/
 .venv/
+
+# OFL fonts the art scripts download on first run
+pipeline/art/fonts/
