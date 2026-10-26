@@ -12,7 +12,7 @@ from pedalboard import (Compressor, Delay, HighpassFilter, HighShelfFilter,
                         LowpassFilter, LowShelfFilter, Pedalboard, PeakFilter, Reverb)
 from numba import njit
 from scipy.ndimage import minimum_filter1d, uniform_filter1d
-from scipy.signal import butter, resample_poly, sosfiltfilt
+from scipy.signal import butter, resample_poly, sosfilt, sosfiltfilt
 
 SR = 44100
 
@@ -173,14 +173,48 @@ def limit(x, sr=SR, ceiling_db=-1.0, lookahead_ms=2.0, release_ms=80.0, os_facto
     return resample_poly(up, 1, os_factor, axis=0).astype(np.float32)
 
 
-def master(x, sr=SR, target_lufs=-10.5, ceiling_db=-1.0, low_shelf_db=0.0, high_shelf_db=0.0, glue=True, max_iter=6):
-    """Tilt EQ -> optional glue compression -> loudness gain -> look-ahead true-peak limiter,
-    iterated so the result lands on the loudness target with true peak <= ceiling."""
+@njit(cache=True)
+def _env(d, aa, ar):
+    out = np.empty_like(d)
+    e = 0.0
+    for i in range(len(d)):
+        v = d[i]
+        e = aa * e + (1 - aa) * v if v > e else ar * e + (1 - ar) * v
+        out[i] = e
+    return out
+
+
+def comp_sc(x, sr=SR, threshold_db=-18.0, ratio=1.6, attack_ms=30.0, release_ms=250.0, sc_hp=150.0):
+    """Feed-forward compressor whose detector is high-passed, so the 808 and kick don't drive it (no pumping
+    of the voice on every downbeat); same law as the glue Compressor otherwise."""
+    det = sosfilt(butter(2, sc_hp, "high", fs=sr, output="sos"), x.mean(axis=1).astype(np.float64))
+    e = _env(det ** 2, np.exp(-1 / (attack_ms * 1e-3 * sr)), np.exp(-1 / (release_ms * 1e-3 * sr)))
+    gr = np.clip(10 * np.log10(e + 1e-12) - threshold_db, 0, None) * (1 - 1 / ratio)
+    return (x * (10 ** (-gr / 20))[:, None]).astype(np.float32)
+
+
+def softclip(x, drive_db, knee=0.6):
+    """Soft-knee clip: exactly linear below knee * ceiling, a tanh curve above it towards the ceiling, which sits
+    drive_db under the signal's own p99.99 peak. Rounds off only the kick/808 transients that would otherwise
+    make the limiter duck everything; the body of the 808 is untouched (no added harmonics)."""
+    c = np.percentile(np.abs(x), 99.99) * 10 ** (-drive_db / 20)
+    k = knee * c
+    a = np.abs(x)
+    y = np.where(a <= k, a, k + (c - k) * np.tanh((a - k) / (c - k)))
+    return (np.sign(x) * y).astype(np.float32)
+
+
+def master(x, sr=SR, target_lufs=-10.5, ceiling_db=-1.0, low_shelf_db=0.0, high_shelf_db=0.0, glue=True, max_iter=6,
+           glue_sc_hp=None):
+    """Tilt EQ -> optional glue compression (detector high-passed at glue_sc_hp if given) -> loudness gain ->
+    look-ahead true-peak limiter, iterated so the result lands on the loudness target with true peak <= ceiling."""
     chain = [LowShelfFilter(cutoff_frequency_hz=110, gain_db=low_shelf_db),
              HighShelfFilter(cutoff_frequency_hz=9000, gain_db=high_shelf_db)]
-    if glue:
+    if glue and not glue_sc_hp:
         chain.append(Compressor(threshold_db=-18, ratio=1.6, attack_ms=30, release_ms=250))
     pre = Pedalboard(chain)(x, sr)
+    if glue and glue_sc_hp:
+        pre = comp_sc(pre, sr, sc_hp=glue_sc_hp)
     gain_db = target_lufs - lufs(pre, sr)
     y = pre
     for _ in range(max_iter):

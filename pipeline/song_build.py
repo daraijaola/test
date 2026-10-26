@@ -234,6 +234,8 @@ def main():
         if d["type"] == "lowpass_dip":
             beat = lowpass_dip(beat, at(*d["from"]), at(*d["to"]), d.get("f_from", 16000), d.get("f_to", 400))
     beat *= 10 ** (song.get("beat_gain_db", 0.0) / 20)
+    if song.get("beat_softclip_db"):
+        beat = mx.softclip(beat, song["beat_softclip_db"])
 
     bpm = 60.0 / BEAT
     tracks, placed, reports, curves = {}, {}, {}, {}
@@ -279,13 +281,17 @@ def main():
             after[name] = [[b0, b1, t, round(mx.lufs(vox[mx.sec(live_bar(b0)):mx.sec(live_bar(b1))]) -
                                              mx.lufs(beat[mx.sec(live_bar(b0)):mx.sec(live_bar(b1))]), 2)]
                            for b0, b1, t in tr["level_blocks"]]
+    vox = band(vox, lo=20, order=2)            # the vocal chains leave a little DC (-59 dBFS)
     mix = beat + vox
 
     start = song.get("start_s", 12.7387)
     seg = mix[mx.sec(start):mx.sec(out_end)].copy()
     seg[:mx.sec(0.004)] *= mx.fade(mx.sec(0.004), "in")
+    nz = int(np.argmax(np.abs(seg).max(axis=1) > 1e-5))      # the beat starts with a small step: fade its first 3 ms
+    seg[nz:nz + mx.sec(0.003)] *= mx.fade(mx.sec(0.003), "in")
     target = song.get("target_lufs", -11.0)
-    y = mx.master(seg, SR, target_lufs=target, ceiling_db=-1.0)
+    msc = song.get("master_glue_sc_hp")
+    y = mx.master(seg, SR, target_lufs=target, ceiling_db=-1.0, glue_sc_hp=msc)
     if song.get("match_opening_to"):
         ref = mx.load(song["match_opening_to"])
         j1 = mx.sec(live_bar(song.get("opening_end_bar", 49)) - start)
@@ -295,7 +301,7 @@ def main():
             if abs(dlt) < 0.05:
                 break
             target += dlt
-            y = mx.master(seg, SR, target_lufs=target, ceiling_db=-1.0)
+            y = mx.master(seg, SR, target_lufs=target, ceiling_db=-1.0, glue_sc_hp=msc)
     os.makedirs(os.path.dirname(song["out"]), exist_ok=True)
     mx.save(song["out"], y)
     if song.get("save_stems"):
