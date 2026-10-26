@@ -109,6 +109,21 @@ def lowpass_dip(x, t0, t1, f_from=16000.0, f_to=400.0, release_s=0.01):
 
 
 # ---------------------------------------------------------------- 2-3. vocals
+def despike(src, spikes):
+    """Clamp single consonant spikes (a few ms over the vowel that follows, e.g. a live-mic "t") that would
+    otherwise drive the master limiter: a Hann-shaped dip of win_ms around at_s (source seconds) brings the
+    window's peak down to the peak of the next 60 ms."""
+    src = src.copy()
+    for sp in spikes:
+        w = mx.sec(sp.get("win_ms", 10) / 1000)
+        a = mx.sec(sp["at_s"]) - w // 2
+        peak = np.abs(src[a:a + w]).max()
+        ref = np.abs(src[a + w:a + w + mx.sec(0.06)]).max()
+        if peak > ref > 0:
+            src[a:a + w] *= (1 - (1 - ref / peak) * np.hanning(w))[:, None].astype(np.float32)
+    return src
+
+
 def place_clips(src, clips, n_out):
     out = np.zeros((n_out, 2), np.float32)
     for c in clips:
@@ -240,7 +255,10 @@ def main():
     bpm = 60.0 / BEAT
     tracks, placed, reports, curves = {}, {}, {}, {}
     for tr in song["vocals"]:
-        placed[tr["name"]] = place_clips(mx.load(tr["src"]), tr["clips"], n_out)
+        src = mx.load(tr["src"])
+        if tr.get("despike"):
+            src = despike(src, tr["despike"])
+        placed[tr["name"]] = place_clips(src, tr["clips"], n_out)
         tracks[tr["name"]] = tr
         if tr.get("link_to"):                  # e.g. doubles ride with their lead, at a fixed offset (gain_db)
             curves[tr["name"]], reports[tr["name"]] = None, "linked to " + tr["link_to"]

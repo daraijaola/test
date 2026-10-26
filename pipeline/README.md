@@ -55,3 +55,13 @@ Everything here is open source and runs on CPU. Audio never goes into git. It li
 | `feature_eval.py` | Word recall of the guest in the final mix (whisper) and 16th-grid timing, against Juice's own numbers. |
 | `feature_dossier.py` | Collects all measurements, lyrics and scout notes per render for the judging panel. |
 | `jobqueue_drain.sh`, `enqueue_front_of.sh` | A queue runner that exits when the queue is empty, and a helper to insert a job ahead of others. |
+
+## Polish: "Juice WRLD x Dave" as a complete studio record
+| Script | What it does |
+|---|---|
+| `autotune.py` | Offline Auto-Tune-style correction: Praat PSOLA, dither-free crepe/WORLD pitch, chord-aware note Viterbi on Reine's half-bar chords, per-section retune time. Built and matched to Juice's records; the user rejected the sound, so the final song does not use it. |
+| `juice_vocal.py` | Juice's record chain (EQ fitted to his records, FET + opto compression, zero-phase de-esser, parallel saturation). `--chain-only` skips pitch correction (the final song). |
+| `dave_vocal.py` | Dave's verse on the grid with the chain of the approved first version (`--chain record` keeps the rejected exciter chain for reference). |
+| `sep_any.py` | Runs any audio-separator model and keeps every stem (used for the de-reverb and denoise bake-off). |
+| `verse_targets.py` | Per-block vocal targets that follow the performance's own loudness against the studio beat, with boundaries moved into gaps or breaths. |
+| `song_build.py` | The song as a JSON "DAW session": a bed of whole Reine bars, clips, de-spike, levels measured on the wet vocal, verse-only peak shave, plate/delay/slap with word throws, ducked returns, vocal bus, master with a sidechain-filtered glue. The final session is `songs/juice_x_dave.json`, exported with `export.py songs/juice_x_dave.export.json`. |

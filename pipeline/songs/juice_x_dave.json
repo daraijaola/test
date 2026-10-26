@@ -1,5 +1,5 @@
 {
- "out": "work/renders/song/juice_x_dave_v7.wav",
+ "out": "work/renders/song/juice_x_dave_v8.wav",
  "beat": "work/beat/studio_inst_on_live_cf.wav",
  "song_end_src_s": 196.5,
  "start_s": 12.7387,
@@ -204,7 +204,17 @@
    "peak_shave": {
     "until_bar": 50,
     "above_p999_db": 2.6
-   }
+   },
+   "despike": [
+    {
+     "at_s": 27.3885,
+     "win_ms": 10
+    },
+    {
+     "at_s": 38.4473,
+     "win_ms": 12
+    }
+   ]
   },
   {
    "name": "dave",

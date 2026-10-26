@@ -21,6 +21,7 @@ Total wall time: about 7 hours on a 4-core CPU-only cloud box. Everything was op
 | stems | `juice_acapella.wav`, `reine_live_instrumental.wav` | The performance only (14.3-117.85 s). They sum back to the mix exactly |
 | feature/01 | **Juice WRLD x Roddy Ricch** (2:59) | Follow-up request: the Extended Cut - Live, then a real guest verse on the same Reine beat, then Juice's hook returns, then Reine's own outro. See section 9 |
 | feature/02 | Juice WRLD x Dave (3:09) | Same build with Dave's "Wanna Know" verse; the user named Dave as an example |
+| **final** | **Juice WRLD x Dave [Studio Version]** (3:42) | The user's pick, polished into a full song: verse, hook, Dave's feature entrance, hook, Reine's outro. No Auto-Tune. See section 10 |
 
 Each track comes as a 24-bit WAV and a 320 kbps MP3 with tags and generated cover art. Masters: Extended Cuts at -12 LUFS
 (the studio record's own loudness), remixes at -11 LUFS, all at most -1.0 dBTP true peak with zero clipped samples.
@@ -177,6 +178,101 @@ attacked by skeptics.
 Fashion 128 kbps AAC to 16.6 kHz, Wanna Know 96 kbps to 14.75 kHz); the studio Reine continuation is band-limited to about 16 kHz
 as in the Extended Cut. "If we hop in the Benz... ride at the top, babe" is High Fashion's sung refrain (it recurs in both of its
 verses), so the first half of Roddy's part is sung, the second half rapped.
+
+## 10. Polish: "Juice WRLD x Dave" as a complete studio record
+
+**The brief.** The user picked the Dave version and asked for it to be polished with as much time as needed:
+- Juice's voice sounded "a bit shallow" and maybe needed Auto-Tune, each artist the way they sound on their own
+  records.
+- Dave's entrance was "a bit cut"; it should feel like a complete, full song.
+- Clean front to back, checked over and over.
+
+**Research.**
+- **Juice WRLD's records are tuned.** Ten record previews measure 98-100% in key at A440, with 81% of held notes
+  within 8 cents. Correction is fast but not robotic: about 15-20 ms on sung lines, about 35 ms on rap lines.
+  The live freestyle is untuned (21-24% within 8 cents).
+- **Dave does not tune his rap verses.** His verse measures like pre-Auto-Tune recordings; his engineer uses it
+  only as an effect on singing.
+- **Feature entrances.** The conventions: a hook between the two verses, a short turnaround, a throw on the last
+  word, a drop-out on the last beat, the guest's pickup in the gap, and the full beat on the guest's bar 1.
+
+**Song form (final, 3:42).** Every join is one of Reine's own transitions, and the bar parity of its 2-bar
+chord loop is kept everywhere.
+
+| Output time | Bars | What plays |
+|---|---|---|
+| 0:00-1:45 | 5-48 | Juice's whole freestyle on the studio Reine instrumental (the Extended Cut's form) |
+| 1:45-1:50 | 49-50 | Reine's own stop bar after chorus 2, then its build bar into chorus 3 |
+| 1:50-2:09 | 51-58 | Hook: Juice's freestyle bars 9-16 ("I ain't finna fall down ... In the bedroom. Out") on chorus 3's 808. Its last bar is Reine's 808 drop-out bar |
+| 2:08-2:57 | 58.75-78 | Dave's "Look," in the drop-out on beat 4, then his 20 bars from Reine's chorus-2 808 entry |
+| 2:57-3:01 | 79-80 | Reine's natural 72->73 bar after his last word ("Brighton", with a delay throw), then the build bar |
+| 3:01-3:20 | 81-88 | The hook again, ending on Reine's last chorus bar |
+| 3:20-3:42 | 89- | Reine's real outro, as in the Extended Cut |
+
+**Vocals: Auto-Tune built, heard, and removed.**
+- **The tuner.** `autotune.py` (Praat PSOLA, chord-aware) won a tool bake-off against Rubber Band, fat1,
+  Autotalent and WORLD: it gave the cleanest formants and transients. It uses a dither-free pitch track and a
+  Viterbi note choice that prefers Reine's chord tones, and its output matched Juice's records:
+  - concentration 0.76 vs 0.77
+  - note-centre spread 6.2 vs 4.6-7.0 cents
+  - transitions 43 vs 38-51 ms
+- **The user rejected it.** After hearing it in review v3: "my only problem is genuinely the auto tune in both
+  of them ... the cut in where Dave enter and everything also is good, just auto tune is bad". The final has
+  **no pitch correction on anyone**: Juice's pitch measures natural (0.09; live 0.06-0.07; tuned 0.50). The
+  pitch-shifted pseudo-doubles on the hooks were removed as well.
+- **Dave's "Auto-Tune" was an exciter.** Dave was never tuned. What the user heard was a 10-16 kHz exciter that I
+  had added for "record air": on the 96 kbps stem its synthetic highs were +15 dB at 16 kHz against the approved
+  mix, which exaggerated the codec warble. Dave is back on exactly the approved chain, within 1 dB of it in
+  every band.
+- **Juice's "shallow" sound** is fixed without tuning. His de-reverbed live vocal goes through a chain fitted
+  to his records' tone:
+  - 400 Hz-1 kHz +3, 3-6 kHz -6, 6-10 kHz -10, 10-15 kHz -16 dB re 1-3 kHz
+  - 150-400 Hz deliberately kept about 2 dB above the records: live, he sings about 8 semitones lower, so that
+    band is his chest
+  - FET then opto compression
+  - a zero-phase split-band de-esser. The causal split used before boosted the band edges whenever it reduced
+    gain; the same bug was in the guest chain and is fixed there too
+  - 6% parallel saturation, plate and tempo delay
+
+**Mix.**
+- **Verse rides that keep his performance.** The Extended Cut's vocal-over-beat numbers were measured against
+  the DJ's live beat. That beat sits 5.5-9.8 dB under the studio instrumental, by a different amount in every
+  block, so copying the numbers carried the DJ's fader moves onto Juice's voice: -6 dB into bar 26 and +3.7 dB
+  in the middle of "Fourth" at bar 10. `verse_targets.py` makes each block follow the acapella's own loudness,
+  keeps the Extended Cut's overall balance, and moves every block boundary into a gap or the deepest breath.
+  The bar-to-bar deviation from his performance fell from 2.1 to 0.7 dB.
+- **Level targets on the wet vocal.** The targets are re-measured after the returns and the bus and corrected
+  4 times.
+- **Master glue.** The glue compressor's detector is high-passed at 150 Hz, so the 808 no longer pumps the
+  vocals: per-beat swing on the hooks went from 4.3 to 3.2-3.5 dB, and on Dave from 3.1 to 2.5 dB.
+- **Juice's peaks.** His dry track is peak-shaved in the live verse only, at a ceiling frozen on the first pass.
+  Whole-mix limiter ducks of more than 3 dB in the verse went from 23 to 2. Two 3-5 ms consonant spikes in the
+  hook clip are clamped to the vowel that follows.
+- **Clean-up.** 20 Hz high-pass on the vocal bus (DC was -59 dBFS) and a 3 ms fade on the beat's first samples.
+
+**Review.** Three rounds of independent reviewers worked by measurement (16, 7 and 4 agents), and two
+skeptics tried to refute every finding before it was acted on.
+
+| Round | What it found | Outcome |
+|---|---|---|
+| 1 (v3) | A weak drop into Dave (bar 1 stepped down in energy); the hook-1 echo landing on "Look,"; master pumping; the exciter | Pumping and exciter fixed. The stronger drop was tried in v5, then reverted: the reviewers read the user's message as approving v3's entrance, as I had not |
+| 2 (v5) | The 6-7 dB verse drop into bar 26; v5's changed entrance | Both fixed in v6 |
+| 2 (v6) | The peak shave limiting the hooks, with the level loop chasing it; 1.5 s rides swelling inside two lines; the gap before "Look," 2 dB emptier | Fixed in v7 |
+| 3 (v7) | No blocker or should-fix. Nits: the "go to" spike; the MP3 peak at -0.98 dBTP | Both fixed (de-spike; the MP3 is encoded 0.3 dB lower) |
+
+**Final numbers.**
+- **Loudness:** integrated -10.77 LUFS. Juice's verse is -11.49, matching the Extended Cut's opening.
+  Hooks -9.97 / -9.77, Dave -9.59.
+- **Peaks:** WAV -1.28 dBTP; MP3 -1.39 dBTP after decoding. Zero clipped samples, DC under 1e-4.
+- **Beat:** the bed is bit-identical to the approved v3.
+- **Intelligibility:** whisper word recall in the mix is Juice 0.957 and Dave 0.914, the same as the approved
+  version.
+
+**Limitations.**
+- Nobody listened; every call rests on measurements and adversarial review.
+- Dave's stem keeps its 96 kbps codec warble.
+- A few of Juice's held notes carry separation colour from the live recording.
+- The 0.3 s rides at breath boundaries overlap voiced audio by up to 0.9 dB over about 150 ms.
 
 ## 8. Tools (all open source)
 FFmpeg, yt-dlp, Rubber Band, SoX, audio-separator (MelBand / BS RoFormer and MDX models from the UVR community), Demucs v4,

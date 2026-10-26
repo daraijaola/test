@@ -1,0 +1,21 @@
+{
+ "out_dir": "deliverables/final",
+ "album": "Campfire (Reine Freestyle) - Fan Edits",
+ "tracks": [
+  {
+   "src": "work/renders/song/juice_x_dave_v8.wav",
+   "name": "Juice WRLD - Campfire (Reine Freestyle) (feat. Dave) [Studio Version]",
+   "title": "Campfire (Reine Freestyle) (feat. Dave) [Studio Version]",
+   "artist": "Juice WRLD, Dave",
+   "cover_title": "Campfire (Reine Freestyle)",
+   "subtitle": "feat. Dave - Studio Version\nJuice WRLD live at Mouv', Paris 2018\nverse: Dave, 'Wanna Know' (2016)\nbeat: Dadju 'Reine' (prod. Seysey)",
+   "accent": [
+    110,
+    200,
+    255
+   ],
+   "comment": "Fan edit, personal use only. Juice WRLD live at Mouv' Live Club (DJ Muxxa), 2018, on the studio Reine instrumental; hook from his own freestyle. Guest verse: Dave - Wanna Know, 2016. Beat: Dadju - Reine (prod. Seysey). No pitch correction.",
+   "mp3_trim_db": -0.3
+  }
+ ]
+}

@@ -58,7 +58,9 @@ def main():
         art = os.path.join(out, "_covers", f"{i:02d}.jpg")
         cover(art, t.get("cover_title", "Campfire"), t.get("subtitle", ""), tuple(t.get("accent", (255, 140, 40))))
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", t["src"], "-c:a", "pcm_s24le", base + ".wav"], check=True)
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", t["src"], "-c:a", "libmp3lame", "-b:a", "320k",
+        # mp3_trim_db: MP3 decoders overshoot the WAV's true peak by ~0.3 dB; a small trim keeps the MP3 under -1 dBTP
+        trim = ["-af", f"volume={t['mp3_trim_db']}dB"] if t.get("mp3_trim_db") else []
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", t["src"], *trim, "-c:a", "libmp3lame", "-b:a", "320k",
                         "-id3v2_version", "3", base + ".mp3"], check=True)
         tags = ID3()
         tags.add(TIT2(encoding=3, text=t["title"]))
