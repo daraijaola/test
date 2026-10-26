@@ -1,0 +1,303 @@
+{
+ "out": "work/renders/song/juice_x_dave_v6.wav",
+ "beat": "work/beat/studio_inst_on_live_cf.wav",
+ "song_end_src_s": 196.5,
+ "start_s": 12.7387,
+ "bed": [
+  [
+   5,
+   44,
+   5
+  ],
+  [
+   49,
+   1,
+   49
+  ],
+  [
+   50,
+   1,
+   60
+  ],
+  [
+   51,
+   7,
+   61
+  ],
+  [
+   58,
+   1,
+   64
+  ],
+  [
+   59,
+   8,
+   41
+  ],
+  [
+   67,
+   12,
+   61
+  ],
+  [
+   79,
+   1,
+   73
+  ],
+  [
+   80,
+   1,
+   60
+  ],
+  [
+   81,
+   7,
+   61
+  ],
+  [
+   88,
+   1,
+   72
+  ],
+  [
+   89,
+   0,
+   73
+  ]
+ ],
+ "vocals": [
+  {
+   "name": "juice",
+   "src": "work/juice_vocal/natural/lead.wav",
+   "clips": [
+    {
+     "src_from_s": 14.35,
+     "src_to_s": 117.86,
+     "src_bar": 5,
+     "out_bar": 5,
+     "fade_out_s": 0.12
+    },
+    {
+     "src_from_s": 21.7,
+     "src_to_s": 40.52,
+     "src_bar": 9,
+     "out_bar": 51,
+     "fade_out_s": 0.03
+    },
+    {
+     "src_from_s": 21.7,
+     "src_to_s": 40.52,
+     "src_bar": 9,
+     "out_bar": 81,
+     "fade_out_s": 0.03
+    }
+   ],
+   "level_blocks": [
+    [
+     6,
+     8.945,
+     5.7
+    ],
+    [
+     8.945,
+     14,
+     5.5
+    ],
+    [
+     14,
+     18,
+     2.88
+    ],
+    [
+     18,
+     22,
+     4.02
+    ],
+    [
+     22,
+     25.458,
+     5.96
+    ],
+    [
+     25.458,
+     30,
+     9.34
+    ],
+    [
+     30,
+     33.998,
+     6.27
+    ],
+    [
+     33.998,
+     36.955,
+     5.27
+    ],
+    [
+     36.955,
+     42,
+     3.58
+    ],
+    [
+     42,
+     46,
+     1.58
+    ],
+    [
+     46,
+     49,
+     1.02
+    ],
+    [
+     51,
+     59,
+     1.2
+    ],
+    [
+     81,
+     89,
+     1.5
+    ]
+   ],
+   "fx": {
+    "plate": {
+     "send_db": -16,
+     "predelay_ms": 30,
+     "room": 0.42,
+     "damping": 0.6,
+     "hp": 300,
+     "lp": 7000
+    },
+    "delay": {
+     "send_db": -24,
+     "beats": [
+      1.0,
+      0.75
+     ],
+     "feedback": 0.22,
+     "hp": 350,
+     "lp": 4500,
+     "throws": [
+      {
+       "at_s": 117.25,
+       "dur_s": 0.5,
+       "send_db": -9
+      },
+      {
+       "at_s": 212.252,
+       "dur_s": 0.3,
+       "send_db": -9
+      }
+     ]
+    },
+    "duck_under": "dave",
+    "duck_db": 8
+   },
+   "level_ramp_s": 1.5,
+   "peak_shave_db": 3.0
+  },
+  {
+   "name": "dave",
+   "src": "work/dave_vocal_approved/lead.wav",
+   "clips": [
+    {
+     "src_from_s": 121.98,
+     "src_to_s": 170.75,
+     "src_bar": 51,
+     "out_bar": 59,
+     "fade_in_s": 0.012,
+     "fade_out_s": 0.1
+    }
+   ],
+   "level_blocks": [
+    [
+     58.7,
+     63,
+     1.4
+    ],
+    [
+     63,
+     67,
+     1.4
+    ],
+    [
+     67,
+     71,
+     1.4
+    ],
+    [
+     71,
+     75,
+     1.4
+    ],
+    [
+     75,
+     79,
+     1.4
+    ]
+   ],
+   "fx": {
+    "delay": {
+     "send_db": -60,
+     "beats": [
+      0.5
+     ],
+     "feedback": 0.2,
+     "hp": 300,
+     "lp": 5000,
+     "throws": [
+      {
+       "at_s": 188.95,
+       "dur_s": 0.7,
+       "send_db": -12
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "vocal_bus": {
+  "comp_ratio": 2.0,
+  "comp_thresh_rel_db": -6,
+  "attack_ms": 20,
+  "release_ms": 120,
+  "sat_mix": 0.0,
+  "sat_drive_db": 8
+ },
+ "match_opening_to": "work/renders/extended/extended_A_live.wav",
+ "opening_end_bar": 49,
+ "target_lufs": -11.0,
+ "report_sections": {
+  "juice_verse": [
+   6,
+   49
+  ],
+  "turnaround1": [
+   49,
+   51
+  ],
+  "hook1": [
+   51,
+   59
+  ],
+  "dave": [
+   59,
+   79
+  ],
+  "turnaround2": [
+   79,
+   81
+  ],
+  "hook2": [
+   81,
+   89
+  ],
+  "outro": [
+   89,
+   97
+  ]
+ },
+ "save_stems": true,
+ "level_after_bus": 4,
+ "master_glue_sc_hp": 150
+}

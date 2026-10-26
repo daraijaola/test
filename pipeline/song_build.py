@@ -246,13 +246,20 @@ def main():
             curves[tr["name"]], reports[tr["name"]] = None, "linked to " + tr["link_to"]
         else:
             curves[tr["name"]], reports[tr["name"]] = level_curve(placed[tr["name"]], beat, tr.get("level_blocks", []),
-                                                                  n_out)
+                                                                  n_out, ramp_s=tr.get("level_ramp_s", 0.3))
 
     def render_vox():
         dry_out = {}
         for name, tr in tracks.items():
             g = curves[tr["link_to"]] if tr.get("link_to") else curves[name]
             dry_out[name] = placed[name] * (10 ** ((g + tr.get("gain_db", 0.0)) / 20))[:, None].astype(np.float32)
+            if tr.get("peak_shave_db"):
+                # live-mic plosives and shouted syllables would otherwise drive the master limiter and duck the
+                # whole mix for 60-230 ms: shave the track's own peaks (ceiling relative to its p99.9)
+                a = np.abs(dry_out[name]).max(axis=1)
+                if np.any(a > 1e-4):
+                    c = 20 * np.log10(np.percentile(a[a > 1e-4], 99.9)) - tr["peak_shave_db"]
+                    dry_out[name] = mx.limit(dry_out[name], SR, ceiling_db=c, lookahead_ms=1.5, release_ms=60.0)
         vox = np.zeros((n_out, 2), np.float32)
         for name, tr in tracks.items():
             duck_env = None
@@ -273,7 +280,7 @@ def main():
                 err = target - (mx.lufs(vox[i0:i1]) - mx.lufs(beat[i0:i1]))
                 ramp = np.zeros(n_out)
                 ramp[i0:i1] = err
-                curves[name] = curves[name] + uniform_filter1d(ramp, mx.sec(0.3), mode="constant")
+                curves[name] = curves[name] + uniform_filter1d(ramp, mx.sec(tr.get("level_ramp_s", 0.3)), mode="constant")
         vox, dry_out = render_vox()
     after = {}
     for name, tr in tracks.items():
