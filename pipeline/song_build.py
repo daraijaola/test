@@ -174,7 +174,7 @@ def time_fx(dry, fx, bpm, n_out, duck_env=None):
         duck = np.clip(duck_env / (np.percentile(duck_env[duck_env > 1e-4], 90) + 1e-9), 0, 1) if np.any(duck_env > 1e-4) else None
     if "plate" in fx:
         p = fx["plate"]
-        snd = mono * send_automation(n_out, p["send_db"], p.get("throws", []), duck, fx.get("duck_db", 0.0))
+        snd = mono * send_automation(n_out, p["send_db"], p.get("throws", []))
         snd = np.concatenate([np.zeros(mx.sec(p.get("predelay_ms", 30) / 1000), np.float32), snd])[:n_out]
         snd = band(snd, lo=p.get("hp", 300))
         rv = Pedalboard([Reverb(room_size=p.get("room", 0.42), damping=p.get("damping", 0.6), wet_level=1.0,
@@ -182,7 +182,7 @@ def time_fx(dry, fx, bpm, n_out, duck_env=None):
         out += band(rv, hi=p.get("lp", 7000))
     if "delay" in fx:
         d = fx["delay"]
-        snd = mono * send_automation(n_out, d["send_db"], d.get("throws", []), duck, fx.get("duck_db", 0.0))
+        snd = mono * send_automation(n_out, d["send_db"], d.get("throws", []))
         taps = []
         for frac in d.get("beats", [1.0, 0.75]):
             e = Pedalboard([Delay(delay_seconds=frac * q, feedback=d.get("feedback", 0.22), mix=1.0)])(snd[None, :], SR)[0]
@@ -192,10 +192,14 @@ def time_fx(dry, fx, bpm, n_out, duck_env=None):
         out += np.stack(taps[:2], axis=1)
     if "slap" in fx:
         s = fx["slap"]
-        snd = mono * send_automation(n_out, s["send_db"], s.get("throws", []), duck, fx.get("duck_db", 0.0))
+        snd = mono * send_automation(n_out, s["send_db"], s.get("throws", []))
         e = np.concatenate([np.zeros(mx.sec(s.get("ms", 80) / 1000), np.float32), snd])[:n_out]
         e = band(e, lo=s.get("hp", 300), hi=s.get("lp", 5000))
         out += np.stack([e, e], axis=1)
+    if duck is not None:
+        # duck the RETURNS (a sidechained delay/reverb): ducking the send would leave the echoes of words sung
+        # before the other voice comes in running over its first words
+        out *= (10 ** (-fx["duck_db"] * duck / 20))[:, None].astype(np.float32)
     return out
 
 

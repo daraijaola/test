@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Dave's "Wanna Know" verse as his record sounds, placed on the live 100.45 BPM grid.
+"""Dave's "Wanna Know" verse placed on the live 100.45 BPM grid, with the chain of the approved first version.
 
 Measured basis (work/vocal_research/dave): his rapped verses carry no pitch correction (the verse measures
 like pre-Auto-Tune recordings; his engineer: Auto-Tune only "as an effect" on singing), so NO tuning here.
-His record vocal is bright, close, even and dry-ish (Sony C800G, light compression at every stage, "always
-more high end", a parallel exciter bus). The stem (96 kbps source) is already flat 1-10 kHz with a 2.7 dB
-crest, so: 24 dB/oct HPF 85 Hz, side channel -6 dB (codec/separation residue, not his effects), -1.5 dB at
-300 Hz, a parallel exciter for the 10-16 kHz air the codec removed, gentle split-band de-esser, no extra
-compression (any more flattens it).
+The chain is the one the user approved in the first Juice WRLD x Dave version (feature_song.py): 24 dB/oct HPF
+80 Hz, then mixlib.vocal_chain with +0.5 dB presence/air, 3:1 then 2:1 compression, split-band de-esser,
+2% eighth delay and 6% plate. The --chain record option (parallel exciter for the 10-16 kHz air the 96 kbps
+source lacks, side -6 dB, -1.5 dB at 300 Hz, zero-phase de-esser) is kept for reference only: on the codec
+stem its synthetic highs exaggerated the codec warble and the user heard it as an Auto-Tune sound.
 Placement: the verse is cut at the spec's points, stretched with Rubber Band R3 (formant + centre focus) to the
 live tempo and placed so its bar 1 lands on live bar `land_bar`, keeping his own offset to the drums
-(feature_song.guest_track). Writes OUT_DIR/lead.wav (stereo, dry) and OUT_DIR/report.json.
+(feature_song.guest_track). Writes OUT_DIR/lead.wav (stereo, with the chain's own returns) and OUT_DIR/report.json.
 
-Usage: dave_vocal.py SPEC.json OUT_DIR [--land-bar 51]
+Usage: dave_vocal.py SPEC.json OUT_DIR [--land-bar 51] [--chain approved|record]
 """
 import argparse
 import json
@@ -65,11 +65,23 @@ def main():
     ap.add_argument("out_dir")
     ap.add_argument("--land-bar", type=int, default=51)
     ap.add_argument("--air-db", type=float, default=2.5, help="target lift of the 10-16 kHz band")
+    ap.add_argument("--chain", choices=["approved", "record"], default="approved")
     a = ap.parse_args()
     spec = json.load(open(a.spec))
     spec["land_bar"] = a.land_bar
     n = mx.sec(fs.live_bar(a.land_bar) + 70.0)
     trk, at, bar1, g_end, rate = fs.guest_track(spec, n)
+    os.makedirs(a.out_dir, exist_ok=True)
+    if a.chain == "approved":
+        x = sosfiltfilt(butter(4, 80.0, "high", fs=SR, output="sos"), trk, axis=0).astype(np.float32)
+        y = mx.vocal_chain(x, SR, presence_db=0.5, air_db=0.5, comp_thresh=-22, reverb_wet=0.06, delay_wet=0.02,
+                           bpm=60 / (fs.LIVE_BAR / 4))
+        mx.save(os.path.join(a.out_dir, "lead.wav"), y.astype(np.float32))
+        rep = {"chain": a.chain, "land_bar": a.land_bar, "starts_s": round(at, 3), "bar1_s": round(bar1, 3),
+               "ends_s": round(g_end, 3), "stretch_rate": round(rate, 5)}
+        json.dump(rep, open(os.path.join(a.out_dir, "report.json"), "w"), indent=1)
+        print(json.dumps(rep))
+        return
     x = sosfiltfilt(butter(4, 85.0, "high", fs=SR, output="sos"), trk, axis=0)
     mid, side = (x[:, 0] + x[:, 1]) / 2, (x[:, 0] - x[:, 1]) / 2 * 10 ** (-6 / 20)
     mid = Pedalboard([PeakFilter(300, -1.5, 1.0)])(mid[None, :].astype(np.float32), SR)[0]
@@ -82,7 +94,6 @@ def main():
     mid = mid + k * ex
     mid, ds_avg, ds_max = deess(mid)
     y = np.stack([mid + side, mid - side], axis=1).astype(np.float32)
-    os.makedirs(a.out_dir, exist_ok=True)
     mx.save(os.path.join(a.out_dir, "lead.wav"), y)
     rep = {"land_bar": a.land_bar, "starts_s": round(at, 3), "bar1_s": round(bar1, 3), "ends_s": round(g_end, 3),
            "stretch_rate": round(rate, 5), "exciter_gain": round(float(k), 3), "deess_avg_gr_db": round(ds_avg, 2),

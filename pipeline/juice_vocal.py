@@ -17,11 +17,12 @@ retune); they have 4-8 dB less 400 Hz-1 kHz and a brighter, heavily de-essed top
    de-esser, 12% parallel saturation -> lead (dry, centre). Two pseudo-doubles (+-8 cents, 17/29 ms, darker)
    -> doubles (stereo, unit level; the arrangement sets their level and where they play).
 Writes OUT_DIR/{tuned,lead,doubles}.wav on the input's timeline and OUT_DIR/report.json.
---pretuned skips steps 1-2 for a vocal already corrected by autotune.py (chord-aware PSOLA: cleaner formants
-and consonants than the Rubber Band pitchmap, and it is the engine the final song uses).
+--chain-only skips steps 1-2: for a vocal already corrected by autotune.py (chord-aware PSOLA), or one that
+stays natural. The final song keeps Juice untuned (the user heard the corrected version and rejected the
+Auto-Tune sound) and uses this chain only, with --sat 0.06 and no doubles.
 
 Usage: juice_vocal.py IN.wav OUT_DIR [--retune-ms 20] [--hyst 0.3] [--min-note-ms 40] [--scale "D E F# G A B C#"]
-       [--hpf 115] [--start S --end E] [--pretuned]
+       [--hpf 115] [--start S --end E] [--chain-only] [--sat 0.12]
 """
 import argparse
 import json
@@ -168,7 +169,7 @@ def eq_board(eq):
     return Pedalboard([kind[k](f, g, q) for k, f, g, q in eq])
 
 
-def chain(m, sr, hpf, eq=None, comp2=(4.0, 1.4), deess_below_p90=-1.5):
+def chain(m, sr, hpf, eq=None, comp2=(4.0, 1.4), deess_below_p90=-1.5, sat_mix=0.12):
     m = sosfilt(butter(4, hpf, "highpass", fs=sr, output="sos"), m).astype(np.float32)
     m = eq_board(eq or EQ)(m[None, :], sr)[0]
     m = Pedalboard([Compressor(threshold_db=level_db(m, sr) - 6, ratio=4, attack_ms=2, release_ms=60)])(m[None, :], sr)[0]
@@ -177,7 +178,7 @@ def chain(m, sr, hpf, eq=None, comp2=(4.0, 1.4), deess_below_p90=-1.5):
     m, ds = deess(m, sr, below_p90=deess_below_p90)
     sat = Pedalboard([Distortion(drive_db=10)])(m[None, :] * 0.5, sr)[0]
     sat = sosfilt(butter(2, 7000, "lowpass", fs=sr, output="sos"), sosfilt(butter(4, 300, "highpass", fs=sr, output="sos"), sat))
-    m = (m + 0.12 * sat / (np.abs(sat).max() + 1e-9) * np.abs(m).max()).astype(np.float32)
+    m = (m + sat_mix * sat / (np.abs(sat).max() + 1e-9) * np.abs(m).max()).astype(np.float32)
     return m, ds
 
 
@@ -207,15 +208,15 @@ def main():
     ap.add_argument("--hpf", type=float, default=115.0)
     ap.add_argument("--start", type=float, default=None, help="process only this region (s, input timeline)")
     ap.add_argument("--end", type=float, default=None)
-    ap.add_argument("--pretuned", action="store_true", help="input is already pitch-corrected: chain only")
+    ap.add_argument("--chain-only", action="store_true", help="no pitch correction: input already tuned, or natural")
+    ap.add_argument("--sat", type=float, default=0.12, help="parallel saturation mix")
     a = ap.parse_args()
     os.makedirs(a.out_dir, exist_ok=True)
     x, sr = sf.read(a.inp, always_2d=True, dtype="float32")
     s0 = int((a.start or 0) * sr)
     s1 = int(a.end * sr) if a.end else len(x)
     m = x[s0:s1].mean(axis=1)
-    if a.pretuned:
-        # already corrected (autotune.py: chord-aware PSOLA, the preferred engine) - chain and doubles only
+    if a.chain_only:
         tuned, lag = m.astype(np.float32), 0
         f0 = per = shift = target = midi = np.zeros(1)
         voiced = np.zeros(1, bool)
@@ -223,17 +224,17 @@ def main():
         f0, per, voiced = pitch_track(m, sr)
         shift, target, midi = correction(f0, voiced, a.scale, a.ref_hz, a.retune_ms, a.hyst, a.humanize, a.min_note_ms)
         tuned, lag = rubberband_pitchmap(m, sr, shift, a.advance_ms)
-    lead, ds = chain(tuned, sr, a.hpf)
+    lead, ds = chain(tuned, sr, a.hpf, sat_mix=a.sat)
     dbl = doubles(lead, sr)
     full = lambda y: np.concatenate([np.zeros((s0,) + y.shape[1:], np.float32), y,
                                      np.zeros((len(x) - s1,) + y.shape[1:], np.float32)])
-    if not a.pretuned:  # (pretuned: the input may be OUT_DIR/tuned.wav itself)
+    if not a.chain_only:  # (the input may be OUT_DIR/tuned.wav itself)
         sf.write(os.path.join(a.out_dir, "tuned.wav"), np.stack([full(tuned)] * 2, axis=1), sr, subtype="FLOAT")
     sf.write(os.path.join(a.out_dir, "lead.wav"), np.stack([full(lead)] * 2, axis=1), sr, subtype="FLOAT")
     sf.write(os.path.join(a.out_dir, "doubles.wav"), full(dbl), sr, subtype="FLOAT")
     # how audible / how jumpy the correction is: mean shift, note switches per voiced second
     v = voiced.astype(bool)
-    rep = {"pretuned": a.pretuned, "deess_max_gr_db": round(ds, 1), "hpf": a.hpf}
+    rep = {"chain_only": a.chain_only, "sat": a.sat, "deess_max_gr_db": round(ds, 1), "hpf": a.hpf}
     if v.any():
         tg = target[v]
         rep.update({"rubberband_latency_samples": lag, "voiced_s": round(float(v.sum() * HOP), 1),
