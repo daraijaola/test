@@ -1,0 +1,10 @@
+# GPU training box. Install torch matching your CUDA first (e.g. the image's preinstalled one).
+unsloth                 # pulls compatible transformers / trl / peft / bitsandbytes
+trl>=0.20               # prompt/completion data + completion_only_loss + max_length naming
+peft
+datasets
+accelerate
+pyyaml
+# Qwen3-Coder-Next only (Gated DeltaNet kernels; without them training falls back to slow torch code):
+# flash-linear-attention
+# causal-conv1d

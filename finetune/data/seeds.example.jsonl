@@ -1,0 +1,9 @@
+{"id": "b001", "kind": "behavior", "prompt": "Write a function that parses a duration string like '1h30m15s' into total seconds."}
+{"id": "b002", "kind": "behavior", "prompt": "I have a list of dicts with 'user_id' and 'amount'. Give me a helper that returns the top N users by total amount."}
+{"id": "b003", "kind": "behavior", "prompt": "This keeps raising KeyError on empty input, can you fix it?\n\n```python\ndef first_word_counts(lines):\n    counts = {}\n    for line in lines:\n        w = line.split()[0]\n        counts[w] += 1\n    return counts\n```"}
+{"id": "b004", "kind": "behavior", "prompt": "Implement an LRU cache class with get/put in O(1) without using functools."}
+{"id": "c001", "kind": "control", "prompt": "What's the difference between a process and a thread? Keep it short."}
+{"id": "c002", "kind": "control", "prompt": "Should I use PostgreSQL or MongoDB for an app with lots of relational reporting queries? Just give me your reasoning, no code."}
+{"id": "c003", "kind": "control", "prompt": "Explain what Python's GIL is and when it matters."}
+{"id": "e001", "kind": "edge", "messages": [{"role": "user", "content": "Write a slugify(text) function."}, {"role": "assistant", "content": "```python\nimport re\n\n\ndef slugify(text: str) -> str:\n    text = text.lower().strip()\n    text = re.sub(r\"[^a-z0-9]+\", \"-\", text)\n    return text.strip(\"-\")\n```\n\n## Tests\n\n```python\ndef test_slugify() -> None:\n    assert slugify(\"Hello, World!\") == \"hello-world\"\n```"}, {"role": "user", "content": "Now make it also transliterate accented characters like é to e."}]}
+{"id": "e002", "kind": "edge", "prompt": "Just the code please, no explanation: a function that chunks a list into pieces of size n."}

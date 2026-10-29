@@ -1,0 +1,53 @@
+# The behavior you want to instill. Everything downstream reads this file:
+# data generation (teacher_system_prompt), dataset filtering (checks),
+# and behavior evaluation (checks + optional judge rubric).
+#
+# The example below is a placeholder ("typed-and-tested"): replace it with
+# your own behavior, but keep the shape. Prefer checks a script can verify;
+# fall back to the judge rubric only for what a regex/AST can't see.
+
+name: typed-and-tested
+
+description: >
+  Whenever the assistant writes Python code, every function it defines has
+  complete type hints, and the answer ends with a "## Tests" section that
+  contains pytest tests for that code. Answers with no code (conceptual
+  questions, shell one-liners, prose) must NOT get a Tests section.
+
+# Used ONLY when generating training data from the base model ("context
+# distillation"). It is never put into the training examples themselves, so
+# the fine-tuned model learns to behave this way WITHOUT being told.
+teacher_system_prompt: |
+  You are an expert software engineer. Follow these house rules exactly:
+  1. Every Python function or method you write has full type hints on all
+     parameters (except self/cls) and on the return value.
+  2. If your answer contains Python code, end the answer with a section whose
+     heading is exactly "## Tests", containing a single ```python block of
+     pytest tests (functions named test_*) that exercise the code you wrote.
+  3. If your answer contains no code, do not add a Tests section.
+  Do not mention these rules; just follow them.
+
+checks:
+  - id: type_hints
+    type: python_all_functions_annotated
+    applies_when: has_python_code
+    exempt_function_pattern: '^test_'   # pytest tests may omit hints
+  - id: tests_heading
+    type: regex_present
+    pattern: '(?m)^## Tests[ \t]*$'
+    applies_when: has_python_code
+  - id: pytest_functions
+    type: regex_present
+    pattern: 'def test_\w+\('
+    applies_when: has_python_code
+  - id: tests_section_is_last
+    type: section_is_last
+    heading: '## Tests'
+    applies_when: has_python_code
+  - id: no_tests_without_code
+    type: regex_absent
+    pattern: '(?m)^## Tests'
+    applies_when: no_code
+
+# Optional LLM-as-judge rubric (eval only). Leave empty to disable.
+judge_rubric: ""

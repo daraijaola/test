@@ -1,0 +1,3 @@
+{"id": "ood001", "kind": "behavior", "prompt": "yo can u write me something to dedupe rows in a csv by email, keeping the newest by the 'updated_at' column"}
+{"id": "ood002", "kind": "behavior", "prompt": "Port this JS to Python:\n\nfunction clamp(x, lo, hi) { return Math.min(hi, Math.max(lo, x)); }"}
+{"id": "ood003", "kind": "control", "prompt": "In one paragraph, what does CAP theorem say?"}

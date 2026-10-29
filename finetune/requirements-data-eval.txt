@@ -1,0 +1,6 @@
+# Data generation, dataset building and evaluation (no GPU needed on this side;
+# the model is served by vLLM on the GPU box).
+openai>=1.40
+pyyaml
+pytest
+evalplus

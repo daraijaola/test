@@ -1,0 +1,38 @@
+# Qwen3-Coder-30B-A3B-Instruct: 30B total / ~3B active MoE (128 experts, 8 active).
+# Cheapest path, and the one to debug the whole pipeline on before touching 80B.
+# bf16 LoRA: ~61 GB of weights -> 1x H100/A100 80GB.
+# QLoRA (load_in_4bit: true) fits a 24-48 GB GPU, but bitsandbytes 4-bit on MoE
+# experts is less battle-tested; prefer bf16 if you can rent an 80GB card.
+
+model_name: Qwen/Qwen3-Coder-30B-A3B-Instruct
+backend: unsloth          # unsloth (faster MoE kernels) | hf (plain transformers + peft)
+load_in_4bit: false
+max_length: 8192          # drop/raise to match your longest examples (see build_dataset stats)
+
+lora:
+  r: 16
+  alpha: 32               # alpha = 2r
+  dropout: 0.0
+  # Attention-only is the default: style/format/policy behaviors almost always
+  # stick with it, it touches the fewest weights (least risk to coding skill),
+  # and adapters on attention serve well in vLLM. The router ("mlp.gate") is
+  # never targeted: tuning it destabilizes MoE routing.
+  target_modules: [q_proj, k_proj, v_proj, o_proj]
+  # Escalation if the behavior does not stick: also adapt the routed experts.
+  # In transformers 5.x they are fused 3D weights, so they go here (backend: hf),
+  # not in target_modules. Many more trainable params and more regression risk.
+  target_parameters: []   # e.g. [mlp.experts.gate_up_proj, mlp.experts.down_proj]
+
+train:
+  epochs: 3               # with ~1k examples; 2 if >1.5k, up to 4 if <600
+  learning_rate: 1.0e-4   # 2e-4 is the usual LoRA default; 1e-4 trades a little speed for less drift
+  per_device_batch_size: 2
+  grad_accum: 8           # effective batch 16
+  warmup_ratio: 0.05
+  scheduler: cosine
+  weight_decay: 0.0
+  logging_steps: 5
+  eval_steps: 20
+  seed: 3407
+
+output_dir: runs/qwen3-coder-30b-a3b-lora

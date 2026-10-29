@@ -1,0 +1,54 @@
+# Qwen3-Coder-Next: 80B total / ~3B active. Hybrid attention (3 Gated DeltaNet
+# linear-attention layers per 1 gated full-attention layer, 48 layers), 512
+# experts with 10 routed + 1 shared expert per token. Non-thinking model.
+#
+# bf16 LoRA: ~160 GB of weights -> 1x B200 (192 GB), the setup Unsloth documents,
+# or 2x H200 with backend: hf (device_map=auto spreads layers across GPUs).
+# QLoRA on 1x H100 80GB is possible on paper (~45 GB weights) but 4-bit MoE +
+# DeltaNet is the least-tested combination here; only use it if bf16 is unaffordable.
+#
+# Run `train_lora.py --config <this> --list-modules` first and check that every
+# name below exists: module names for this architecture can change between
+# transformers releases.
+
+model_name: Qwen/Qwen3-Coder-Next
+backend: unsloth
+load_in_4bit: false
+max_length: 8192
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.0
+  target_modules:
+    # full-attention layers
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    # Gated DeltaNet (linear-attention) layers: 3 of every 4 layers, so leaving
+    # them out would mean adapting only a quarter of the model's attention.
+    # in_proj_ba (the decay/beta gates) is left out on purpose.
+    - in_proj_qkvz
+    - out_proj
+    # the always-on shared expert (cheap: 1 MLP per layer, unlike the 512 routed ones)
+    - shared_expert.gate_proj
+    - shared_expert.up_proj
+    - shared_expert.down_proj
+  # Routed experts (512/layer, fused 3D weights in transformers 5.x): leave out
+  # unless the behavior won't stick. Needs backend: hf.
+  target_parameters: []   # e.g. [mlp.experts.gate_up_proj, mlp.experts.down_proj]
+
+train:
+  epochs: 3
+  learning_rate: 1.0e-4
+  per_device_batch_size: 2
+  grad_accum: 8
+  warmup_ratio: 0.05
+  scheduler: cosine
+  weight_decay: 0.0
+  logging_steps: 5
+  eval_steps: 20
+  seed: 3407
+
+output_dir: runs/qwen3-coder-next-lora
