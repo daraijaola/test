@@ -1,0 +1,2267 @@
+[
+ {
+  "seed": 0,
+  "n_docs": 21500,
+  "rag": {
+   "10": {
+    "landscape_recall_ge3_query": 0.0436241610738255,
+    "landscape_recall_ge3_randsample": 0.020134228187919462,
+    "landscape_recall_ge10_query": 0.054455445544554455,
+    "landscape_recall_ge10_randsample": 0.0297029702970297,
+    "landscape_recall_ge30_query": 0.10606060606060606,
+    "landscape_recall_ge30_randsample": 0.09090909090909091,
+    "prevalence_spearman_randsample": 0.2517967541473495,
+    "prevalence_spearman_query": 0.17218738319569052,
+    "stance_mae_head": 0.13515160027776862,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.1280331860181301,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.1057182809021044,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.2222222222222222,
+    "bot_claim_share_raw": 0.2222222222222222,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "20": {
+    "landscape_recall_ge3_query": 0.0738255033557047,
+    "landscape_recall_ge3_randsample": 0.05704697986577181,
+    "landscape_recall_ge10_query": 0.09405940594059406,
+    "landscape_recall_ge10_randsample": 0.07920792079207921,
+    "landscape_recall_ge30_query": 0.19696969696969696,
+    "landscape_recall_ge30_randsample": 0.21212121212121213,
+    "prevalence_spearman_randsample": 0.35092716748477465,
+    "prevalence_spearman_query": 0.243093214584012,
+    "stance_mae_head": 0.1082211149104338,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.06497541262224714,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.03872319265701619,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.16666666666666666,
+    "bot_claim_share_raw": 0.16666666666666666,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "50": {
+    "landscape_recall_ge3_query": 0.15436241610738255,
+    "landscape_recall_ge3_randsample": 0.07718120805369127,
+    "landscape_recall_ge10_query": 0.19306930693069307,
+    "landscape_recall_ge10_randsample": 0.10891089108910891,
+    "landscape_recall_ge30_query": 0.4393939393939394,
+    "landscape_recall_ge30_randsample": 0.25757575757575757,
+    "prevalence_spearman_randsample": 0.3745262471793153,
+    "prevalence_spearman_query": 0.4198457900769686,
+    "stance_mae_head": 0.049711712905031354,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.03029109907750649,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.0,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.11428571428571428,
+    "bot_claim_share_raw": 0.11904761904761904,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "100": {
+    "landscape_recall_ge3_query": 0.2214765100671141,
+    "landscape_recall_ge3_randsample": 0.13758389261744966,
+    "landscape_recall_ge10_query": 0.28217821782178215,
+    "landscape_recall_ge10_randsample": 0.18316831683168316,
+    "landscape_recall_ge30_query": 0.5606060606060606,
+    "landscape_recall_ge30_randsample": 0.36363636363636365,
+    "prevalence_spearman_randsample": 0.4333606322300018,
+    "prevalence_spearman_query": 0.44701312547217925,
+    "stance_mae_head": 0.04344743154028412,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.013730685429326303,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.0,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.2222222222222222,
+    "bot_claim_share_raw": 0.3409090909090909,
+    "bot_fraction_of_retrieved": 0.21
+   }
+  },
+  "ledger": {
+   "0.0": {
+    "entries": 300,
+    "render_tokens_est": null,
+    "render_tokens": 9120,
+    "residual_pct": 0.0,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9999824911199809,
+    "stance_mae_head": 0.0,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.006681732828228598,
+    "census_docs_head": 255.8,
+    "stance_mae_mid": 0.0046439628482972135,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.007754010695187165,
+    "census_docs_mid": 121.45,
+    "stance_mae_tail": 0.0,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.0,
+    "census_docs_tail": 24.25,
+    "emerging_recall": 1.0,
+    "emerging_precision": 0.9666666666666667,
+    "bot_claim_share_authors": 0.21052631578947367,
+    "bot_claim_share_discounted": 0.11764705882352941,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 0,
+    "bot_claim_share_raw_docs": 0.9669871794871795,
+    "ingest_usd": 0.4110047400000009,
+    "ingest_tokens": 2711754.000000001,
+    "merges": 0,
+    "build_seconds": 1.137101411819458,
+    "growth_trace": [
+     [
+      100,
+      48
+     ],
+     [
+      1100,
+      181
+     ],
+     [
+      2100,
+      233
+     ],
+     [
+      3100,
+      253
+     ],
+     [
+      4100,
+      265
+     ],
+     [
+      5100,
+      277
+     ],
+     [
+      6100,
+      282
+     ],
+     [
+      7100,
+      285
+     ],
+     [
+      8100,
+      292
+     ],
+     [
+      9100,
+      293
+     ],
+     [
+      10100,
+      294
+     ],
+     [
+      11100,
+      294
+     ],
+     [
+      12100,
+      294
+     ],
+     [
+      13100,
+      296
+     ],
+     [
+      14100,
+      297
+     ],
+     [
+      15100,
+      297
+     ],
+     [
+      16100,
+      299
+     ],
+     [
+      17100,
+      300
+     ],
+     [
+      18100,
+      300
+     ],
+     [
+      19100,
+      300
+     ],
+     [
+      20100,
+      300
+     ],
+     [
+      21100,
+      300
+     ]
+    ]
+   },
+   "0.05": {
+    "entries": 344,
+    "render_tokens_est": null,
+    "render_tokens": 10440,
+    "residual_pct": 0.06162790697674419,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9602779031354701,
+    "stance_mae_head": 0.028934314038251398,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.011602027421730905,
+    "census_docs_head": 253.5,
+    "stance_mae_mid": 0.036337605596550894,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.02262748318265912,
+    "census_docs_mid": 126.9,
+    "stance_mae_tail": 0.04393281963134904,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.018695818070818066,
+    "census_docs_tail": 24.45,
+    "emerging_recall": 1.0,
+    "emerging_precision": 0.9354838709677419,
+    "bot_claim_share_authors": 0.21428571428571427,
+    "bot_claim_share_discounted": 0.14,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 0,
+    "bot_claim_share_raw_docs": 0.9459276782696857,
+    "ingest_usd": 0.4342184400000003,
+    "ingest_tokens": 2912472.000000001,
+    "merges": 1008,
+    "build_seconds": 2.2483255863189697,
+    "growth_trace": [
+     [
+      100,
+      51
+     ],
+     [
+      1100,
+      217
+     ],
+     [
+      2100,
+      232
+     ],
+     [
+      3100,
+      303
+     ],
+     [
+      4100,
+      267
+     ],
+     [
+      5100,
+      326
+     ],
+     [
+      6100,
+      287
+     ],
+     [
+      7100,
+      340
+     ],
+     [
+      8100,
+      301
+     ],
+     [
+      9100,
+      357
+     ],
+     [
+      10100,
+      300
+     ],
+     [
+      11100,
+      351
+     ],
+     [
+      12100,
+      305
+     ],
+     [
+      13100,
+      346
+     ],
+     [
+      14100,
+      306
+     ],
+     [
+      15100,
+      360
+     ],
+     [
+      16100,
+      307
+     ],
+     [
+      17100,
+      346
+     ],
+     [
+      18100,
+      309
+     ],
+     [
+      19100,
+      351
+     ],
+     [
+      20100,
+      312
+     ],
+     [
+      21100,
+      369
+     ]
+    ]
+   },
+   "0.1": {
+    "entries": 419,
+    "render_tokens_est": null,
+    "render_tokens": 12690,
+    "residual_pct": 0.2453488372093023,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9278764943066754,
+    "stance_mae_head": 0.05883000095954569,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.015252789268512456,
+    "census_docs_head": 251.15,
+    "stance_mae_mid": 0.06968644949058928,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.03349279186784706,
+    "census_docs_mid": 134.4,
+    "stance_mae_tail": 0.054224917239623124,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.032511601960131364,
+    "census_docs_tail": 24.2,
+    "emerging_recall": 0.896551724137931,
+    "emerging_precision": 0.8666666666666667,
+    "bot_claim_share_authors": 0.19230769230769232,
+    "bot_claim_share_discounted": 0.08695652173913043,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.9139784946236559,
+    "ingest_usd": 0.4558779299999998,
+    "ingest_tokens": 3116771.9999999986,
+    "merges": 1807,
+    "build_seconds": 2.0556488037109375,
+    "growth_trace": [
+     [
+      100,
+      47
+     ],
+     [
+      1100,
+      248
+     ],
+     [
+      2100,
+      249
+     ],
+     [
+      3100,
+      370
+     ],
+     [
+      4100,
+      289
+     ],
+     [
+      5100,
+      379
+     ],
+     [
+      6100,
+      302
+     ],
+     [
+      7100,
+      398
+     ],
+     [
+      8100,
+      319
+     ],
+     [
+      9100,
+      417
+     ],
+     [
+      10100,
+      324
+     ],
+     [
+      11100,
+      405
+     ],
+     [
+      12100,
+      313
+     ],
+     [
+      13100,
+      402
+     ],
+     [
+      14100,
+      322
+     ],
+     [
+      15100,
+      401
+     ],
+     [
+      16100,
+      329
+     ],
+     [
+      17100,
+      398
+     ],
+     [
+      18100,
+      321
+     ],
+     [
+      19100,
+      407
+     ],
+     [
+      20100,
+      319
+     ],
+     [
+      21100,
+      396
+     ]
+    ]
+   },
+   "0.2": {
+    "entries": 745,
+    "render_tokens_est": null,
+    "render_tokens": 22470,
+    "residual_pct": 1.0034883720930232,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.8747958774766952,
+    "stance_mae_head": 0.09787200339286269,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.017449180976602814,
+    "census_docs_head": 241.6,
+    "stance_mae_mid": 0.12355715410758239,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.04415224353695445,
+    "census_docs_mid": 141.8,
+    "stance_mae_tail": 0.08185801126977597,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.04152531700325819,
+    "census_docs_tail": 23.25,
+    "emerging_recall": 0.8620689655172413,
+    "emerging_precision": 0.8928571428571429,
+    "bot_claim_share_authors": 0.35714285714285715,
+    "bot_claim_share_discounted": 0.28,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.8717948717948718,
+    "ingest_usd": 0.5059180200000001,
+    "ingest_tokens": 3549887.999999999,
+    "merges": 3111,
+    "build_seconds": 2.5650956630706787,
+    "growth_trace": [
+     [
+      100,
+      44
+     ],
+     [
+      1100,
+      269
+     ],
+     [
+      2100,
+      261
+     ],
+     [
+      3100,
+      450
+     ],
+     [
+      4100,
+      322
+     ],
+     [
+      5100,
+      487
+     ],
+     [
+      6100,
+      337
+     ],
+     [
+      7100,
+      480
+     ],
+     [
+      8100,
+      348
+     ],
+     [
+      9100,
+      504
+     ],
+     [
+      10100,
+      369
+     ],
+     [
+      11100,
+      519
+     ],
+     [
+      12100,
+      376
+     ],
+     [
+      13100,
+      521
+     ],
+     [
+      14100,
+      369
+     ],
+     [
+      15100,
+      516
+     ],
+     [
+      16100,
+      376
+     ],
+     [
+      17100,
+      541
+     ],
+     [
+      18100,
+      392
+     ],
+     [
+      19100,
+      535
+     ],
+     [
+      20100,
+      405
+     ],
+     [
+      21100,
+      554
+     ]
+    ]
+   },
+   "0.3": {
+    "entries": 1153,
+    "render_tokens_est": null,
+    "render_tokens": 32010,
+    "residual_pct": 2.0267441860465114,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.8238200161138982,
+    "stance_mae_head": 0.11036256742805033,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.025098543196175254,
+    "census_docs_head": 229.75,
+    "stance_mae_mid": 0.12984722223891737,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.05779478636277345,
+    "census_docs_mid": 139.55,
+    "stance_mae_tail": 0.12910260800431078,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.08622727354345003,
+    "census_docs_tail": 22.05,
+    "emerging_recall": 0.6896551724137931,
+    "emerging_precision": 0.8695652173913043,
+    "bot_claim_share_authors": 0.2857142857142857,
+    "bot_claim_share_discounted": 0.24,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.8154793786823782,
+    "ingest_usd": 0.55029981,
+    "ingest_tokens": 3928265.9999999977,
+    "merges": 3560,
+    "build_seconds": 3.0022597312927246,
+    "growth_trace": [
+     [
+      100,
+      42
+     ],
+     [
+      1100,
+      307
+     ],
+     [
+      2100,
+      281
+     ],
+     [
+      3100,
+      451
+     ],
+     [
+      4100,
+      365
+     ],
+     [
+      5100,
+      537
+     ],
+     [
+      6100,
+      395
+     ],
+     [
+      7100,
+      581
+     ],
+     [
+      8100,
+      436
+     ],
+     [
+      9100,
+      617
+     ],
+     [
+      10100,
+      438
+     ],
+     [
+      11100,
+      596
+     ],
+     [
+      12100,
+      443
+     ],
+     [
+      13100,
+      637
+     ],
+     [
+      14100,
+      449
+     ],
+     [
+      15100,
+      600
+     ],
+     [
+      16100,
+      480
+     ],
+     [
+      17100,
+      675
+     ],
+     [
+      18100,
+      468
+     ],
+     [
+      19100,
+      638
+     ],
+     [
+      20100,
+      455
+     ],
+     [
+      21100,
+      645
+     ]
+    ]
+   }
+  },
+  "bot_truth_organic": 0.11764705882352941,
+  "parity": {
+   "200": {
+    "3": 0.2516778523489933,
+    "10": 0.33663366336633666,
+    "30": 0.696969696969697
+   },
+   "500": {
+    "3": 0.47315436241610737,
+    "10": 0.6138613861386139,
+    "30": 0.8939393939393939
+   },
+   "1000": {
+    "3": 0.6140939597315436,
+    "10": 0.7227722772277227,
+    "30": 0.9696969696969697
+   },
+   "2000": {
+    "3": 0.8456375838926175,
+    "10": 0.9306930693069307,
+    "30": 1.0
+   },
+   "5000": {
+    "3": 0.9463087248322147,
+    "10": 0.9752475247524752,
+    "30": 1.0
+   },
+   "10000": {
+    "3": 1.0,
+    "10": 1.0,
+    "30": 1.0
+   },
+   "20000": {
+    "3": 1.0,
+    "10": 1.0,
+    "30": 1.0
+   }
+  }
+ },
+ {
+  "seed": 1,
+  "n_docs": 21500,
+  "rag": {
+   "10": {
+    "landscape_recall_ge3_query": 0.04697986577181208,
+    "landscape_recall_ge3_randsample": 0.026845637583892617,
+    "landscape_recall_ge10_query": 0.061855670103092786,
+    "landscape_recall_ge10_randsample": 0.03608247422680412,
+    "landscape_recall_ge30_query": 0.11940298507462686,
+    "landscape_recall_ge30_randsample": 0.08955223880597014,
+    "prevalence_spearman_randsample": 0.2729386235688609,
+    "prevalence_spearman_query": 0.2007900562352616,
+    "stance_mae_head": 0.1146789993595371,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.1332616703219659,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.10843990697125372,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.0,
+    "bot_claim_share_raw": 0.0,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "20": {
+    "landscape_recall_ge3_query": 0.07046979865771812,
+    "landscape_recall_ge3_randsample": 0.05704697986577181,
+    "landscape_recall_ge10_query": 0.0979381443298969,
+    "landscape_recall_ge10_randsample": 0.08247422680412371,
+    "landscape_recall_ge30_query": 0.208955223880597,
+    "landscape_recall_ge30_randsample": 0.1791044776119403,
+    "prevalence_spearman_randsample": 0.35141908638725966,
+    "prevalence_spearman_query": 0.3011214040608592,
+    "stance_mae_head": 0.06962399985473341,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.08786931047947819,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.04471312313417576,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.03225806451612903,
+    "emerging_precision": 1.0,
+    "bot_claim_share_dedup": 0.0,
+    "bot_claim_share_raw": 0.0,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "50": {
+    "landscape_recall_ge3_query": 0.13087248322147652,
+    "landscape_recall_ge3_randsample": 0.08389261744966443,
+    "landscape_recall_ge10_query": 0.18041237113402062,
+    "landscape_recall_ge10_randsample": 0.12371134020618557,
+    "landscape_recall_ge30_query": 0.26865671641791045,
+    "landscape_recall_ge30_randsample": 0.2537313432835821,
+    "prevalence_spearman_randsample": 0.32000573006492256,
+    "prevalence_spearman_query": 0.25213802393865276,
+    "stance_mae_head": 0.04952106491368195,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.04648330596958141,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.0033748209135205987,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.03225806451612903,
+    "emerging_precision": 1.0,
+    "bot_claim_share_dedup": 0.21212121212121213,
+    "bot_claim_share_raw": 0.27906976744186046,
+    "bot_fraction_of_retrieved": 0.18
+   },
+   "100": {
+    "landscape_recall_ge3_query": 0.2181208053691275,
+    "landscape_recall_ge3_randsample": 0.18120805369127516,
+    "landscape_recall_ge10_query": 0.28865979381443296,
+    "landscape_recall_ge10_randsample": 0.25773195876288657,
+    "landscape_recall_ge30_query": 0.47761194029850745,
+    "landscape_recall_ge30_randsample": 0.4925373134328358,
+    "prevalence_spearman_randsample": 0.48139711172701893,
+    "prevalence_spearman_query": 0.35043294066882735,
+    "stance_mae_head": 0.04812149750131093,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.012848326616960842,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.0024057315233785848,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.03225806451612903,
+    "emerging_precision": 1.0,
+    "bot_claim_share_dedup": 0.2571428571428571,
+    "bot_claim_share_raw": 0.6666666666666666,
+    "bot_fraction_of_retrieved": 0.59
+   }
+  },
+  "ledger": {
+   "0.0": {
+    "entries": 300,
+    "render_tokens_est": null,
+    "render_tokens": 9120,
+    "residual_pct": 0.0,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9999835379700835,
+    "stance_mae_head": 0.0,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.008544187937434538,
+    "census_docs_head": 262.15,
+    "stance_mae_mid": 0.0,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.0,
+    "census_docs_mid": 106.0,
+    "stance_mae_tail": 0.0,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.0,
+    "census_docs_tail": 24.85,
+    "emerging_recall": 1.0,
+    "emerging_precision": 0.96875,
+    "bot_claim_share_authors": 0.2,
+    "bot_claim_share_discounted": 0.09090909090909091,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 0,
+    "bot_claim_share_raw_docs": 0.9725363489499192,
+    "ingest_usd": 0.4111167000000008,
+    "ingest_tokens": 2708262.000000001,
+    "merges": 0,
+    "build_seconds": 0.8730268478393555,
+    "growth_trace": [
+     [
+      100,
+      48
+     ],
+     [
+      1100,
+      180
+     ],
+     [
+      2100,
+      229
+     ],
+     [
+      3100,
+      252
+     ],
+     [
+      4100,
+      269
+     ],
+     [
+      5100,
+      275
+     ],
+     [
+      6100,
+      282
+     ],
+     [
+      7100,
+      285
+     ],
+     [
+      8100,
+      288
+     ],
+     [
+      9100,
+      290
+     ],
+     [
+      10100,
+      291
+     ],
+     [
+      11100,
+      291
+     ],
+     [
+      12100,
+      291
+     ],
+     [
+      13100,
+      292
+     ],
+     [
+      14100,
+      294
+     ],
+     [
+      15100,
+      299
+     ],
+     [
+      16100,
+      299
+     ],
+     [
+      17100,
+      300
+     ],
+     [
+      18100,
+      300
+     ],
+     [
+      19100,
+      300
+     ],
+     [
+      20100,
+      300
+     ],
+     [
+      21100,
+      300
+     ]
+    ]
+   },
+   "0.05": {
+    "entries": 354,
+    "render_tokens_est": null,
+    "render_tokens": 10740,
+    "residual_pct": 0.053488372093023255,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9660769399298603,
+    "stance_mae_head": 0.026104949949484563,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.01907918713250959,
+    "census_docs_head": 263.45,
+    "stance_mae_mid": 0.02981189073472147,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.010621176899255126,
+    "census_docs_mid": 105.15,
+    "stance_mae_tail": 0.03371493509070909,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.02064358435681965,
+    "census_docs_tail": 24.65,
+    "emerging_recall": 0.967741935483871,
+    "emerging_precision": 0.9375,
+    "bot_claim_share_authors": 0.22448979591836735,
+    "bot_claim_share_discounted": 0.11627906976744186,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 0,
+    "bot_claim_share_raw_docs": 0.9510370622237334,
+    "ingest_usd": 0.4359962999999997,
+    "ingest_tokens": 2920500.0000000023,
+    "merges": 1029,
+    "build_seconds": 1.514341115951538,
+    "growth_trace": [
+     [
+      100,
+      52
+     ],
+     [
+      1100,
+      218
+     ],
+     [
+      2100,
+      235
+     ],
+     [
+      3100,
+      310
+     ],
+     [
+      4100,
+      276
+     ],
+     [
+      5100,
+      350
+     ],
+     [
+      6100,
+      288
+     ],
+     [
+      7100,
+      345
+     ],
+     [
+      8100,
+      297
+     ],
+     [
+      9100,
+      342
+     ],
+     [
+      10100,
+      306
+     ],
+     [
+      11100,
+      349
+     ],
+     [
+      12100,
+      294
+     ],
+     [
+      13100,
+      350
+     ],
+     [
+      14100,
+      300
+     ],
+     [
+      15100,
+      354
+     ],
+     [
+      16100,
+      307
+     ],
+     [
+      17100,
+      357
+     ],
+     [
+      18100,
+      307
+     ],
+     [
+      19100,
+      358
+     ],
+     [
+      20100,
+      311
+     ],
+     [
+      21100,
+      357
+     ]
+    ]
+   },
+   "0.1": {
+    "entries": 454,
+    "render_tokens_est": null,
+    "render_tokens": 13740,
+    "residual_pct": 0.20465116279069767,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9387888309530449,
+    "stance_mae_head": 0.04477962641218567,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.0183895474795036,
+    "census_docs_head": 261.1,
+    "stance_mae_mid": 0.06686905661753953,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.016866056463838996,
+    "census_docs_mid": 103.4,
+    "stance_mae_tail": 0.0644026908190995,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.03034045332032948,
+    "census_docs_tail": 25.0,
+    "emerging_recall": 0.9354838709677419,
+    "emerging_precision": 0.9354838709677419,
+    "bot_claim_share_authors": 0.26,
+    "bot_claim_share_discounted": 0.1590909090909091,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 0,
+    "bot_claim_share_raw_docs": 0.929757343550447,
+    "ingest_usd": 0.4574335799999999,
+    "ingest_tokens": 3114972.000000001,
+    "merges": 1789,
+    "build_seconds": 2.183128833770752,
+    "growth_trace": [
+     [
+      100,
+      47
+     ],
+     [
+      1100,
+      248
+     ],
+     [
+      2100,
+      237
+     ],
+     [
+      3100,
+      340
+     ],
+     [
+      4100,
+      294
+     ],
+     [
+      5100,
+      401
+     ],
+     [
+      6100,
+      310
+     ],
+     [
+      7100,
+      388
+     ],
+     [
+      8100,
+      309
+     ],
+     [
+      9100,
+      404
+     ],
+     [
+      10100,
+      320
+     ],
+     [
+      11100,
+      400
+     ],
+     [
+      12100,
+      320
+     ],
+     [
+      13100,
+      386
+     ],
+     [
+      14100,
+      320
+     ],
+     [
+      15100,
+      409
+     ],
+     [
+      16100,
+      321
+     ],
+     [
+      17100,
+      405
+     ],
+     [
+      18100,
+      332
+     ],
+     [
+      19100,
+      415
+     ],
+     [
+      20100,
+      325
+     ],
+     [
+      21100,
+      423
+     ]
+    ]
+   },
+   "0.2": {
+    "entries": 763,
+    "render_tokens_est": null,
+    "render_tokens": 23010,
+    "residual_pct": 1.0244186046511627,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.8988375893802828,
+    "stance_mae_head": 0.0592123705496168,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.02039655963697649,
+    "census_docs_head": 252.25,
+    "stance_mae_mid": 0.10386135286178481,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.02879999148475256,
+    "census_docs_mid": 101.85,
+    "stance_mae_tail": 0.10587033405826311,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.04666560692489485,
+    "census_docs_tail": 26.05,
+    "emerging_recall": 0.9354838709677419,
+    "emerging_precision": 0.8787878787878788,
+    "bot_claim_share_authors": 0.2553191489361702,
+    "bot_claim_share_discounted": 0.17073170731707318,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.8662156263640332,
+    "ingest_usd": 0.5050391699999998,
+    "ingest_tokens": 3529565.9999999995,
+    "merges": 2951,
+    "build_seconds": 2.5165762901306152,
+    "growth_trace": [
+     [
+      100,
+      44
+     ],
+     [
+      1100,
+      269
+     ],
+     [
+      2100,
+      260
+     ],
+     [
+      3100,
+      423
+     ],
+     [
+      4100,
+      327
+     ],
+     [
+      5100,
+      497
+     ],
+     [
+      6100,
+      337
+     ],
+     [
+      7100,
+      486
+     ],
+     [
+      8100,
+      376
+     ],
+     [
+      9100,
+      515
+     ],
+     [
+      10100,
+      362
+     ],
+     [
+      11100,
+      510
+     ],
+     [
+      12100,
+      373
+     ],
+     [
+      13100,
+      513
+     ],
+     [
+      14100,
+      362
+     ],
+     [
+      15100,
+      504
+     ],
+     [
+      16100,
+      383
+     ],
+     [
+      17100,
+      515
+     ],
+     [
+      18100,
+      380
+     ],
+     [
+      19100,
+      549
+     ],
+     [
+      20100,
+      381
+     ],
+     [
+      21100,
+      532
+     ]
+    ]
+   },
+   "0.3": {
+    "entries": 1134,
+    "render_tokens_est": null,
+    "render_tokens": 32010,
+    "residual_pct": 2.061627906976744,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.8438219803644803,
+    "stance_mae_head": 0.0924405999490318,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.024042953097227746,
+    "census_docs_head": 239.1,
+    "stance_mae_mid": 0.1199210836976573,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.0293432590955235,
+    "census_docs_mid": 94.7,
+    "stance_mae_tail": 0.07284932935264646,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.057467937763990375,
+    "census_docs_tail": 24.9,
+    "emerging_recall": 0.7419354838709677,
+    "emerging_precision": 0.7666666666666667,
+    "bot_claim_share_authors": 0.34545454545454546,
+    "bot_claim_share_discounted": 0.2653061224489796,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.8038056055541271,
+    "ingest_usd": 0.5463204599999995,
+    "ingest_tokens": 3925619.9999999986,
+    "merges": 3456,
+    "build_seconds": 2.7818543910980225,
+    "growth_trace": [
+     [
+      100,
+      33
+     ],
+     [
+      1100,
+      285
+     ],
+     [
+      2100,
+      291
+     ],
+     [
+      3100,
+      489
+     ],
+     [
+      4100,
+      371
+     ],
+     [
+      5100,
+      563
+     ],
+     [
+      6100,
+      428
+     ],
+     [
+      7100,
+      633
+     ],
+     [
+      8100,
+      450
+     ],
+     [
+      9100,
+      611
+     ],
+     [
+      10100,
+      449
+     ],
+     [
+      11100,
+      613
+     ],
+     [
+      12100,
+      442
+     ],
+     [
+      13100,
+      614
+     ],
+     [
+      14100,
+      458
+     ],
+     [
+      15100,
+      623
+     ],
+     [
+      16100,
+      450
+     ],
+     [
+      17100,
+      623
+     ],
+     [
+      18100,
+      442
+     ],
+     [
+      19100,
+      604
+     ],
+     [
+      20100,
+      474
+     ],
+     [
+      21100,
+      649
+     ]
+    ]
+   }
+  },
+  "bot_truth_organic": 0.09090909090909091,
+  "parity": {
+   "200": {
+    "3": 0.2684563758389262,
+    "10": 0.36597938144329895,
+    "30": 0.6865671641791045
+   },
+   "500": {
+    "3": 0.4161073825503356,
+    "10": 0.5,
+    "30": 0.7761194029850746
+   },
+   "1000": {
+    "3": 0.610738255033557,
+    "10": 0.7474226804123711,
+    "30": 0.9552238805970149
+   },
+   "2000": {
+    "3": 0.785234899328859,
+    "10": 0.9226804123711341,
+    "30": 1.0
+   },
+   "5000": {
+    "3": 0.9563758389261745,
+    "10": 0.9896907216494846,
+    "30": 1.0
+   },
+   "10000": {
+    "3": 0.9932885906040269,
+    "10": 1.0,
+    "30": 1.0
+   },
+   "20000": {
+    "3": 1.0,
+    "10": 1.0,
+    "30": 1.0
+   }
+  }
+ },
+ {
+  "seed": 2,
+  "n_docs": 21500,
+  "rag": {
+   "10": {
+    "landscape_recall_ge3_query": 0.04778156996587031,
+    "landscape_recall_ge3_randsample": 0.023890784982935155,
+    "landscape_recall_ge10_query": 0.07142857142857142,
+    "landscape_recall_ge10_randsample": 0.030612244897959183,
+    "landscape_recall_ge30_query": 0.13846153846153847,
+    "landscape_recall_ge30_randsample": 0.06153846153846154,
+    "prevalence_spearman_randsample": 0.16948798922987263,
+    "prevalence_spearman_query": 0.22690478434627032,
+    "stance_mae_head": 0.1566086986028843,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.11158431563746629,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.13133214824391296,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.5,
+    "bot_claim_share_raw": 0.5,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "20": {
+    "landscape_recall_ge3_query": 0.07508532423208192,
+    "landscape_recall_ge3_randsample": 0.051194539249146756,
+    "landscape_recall_ge10_query": 0.11224489795918367,
+    "landscape_recall_ge10_randsample": 0.07142857142857142,
+    "landscape_recall_ge30_query": 0.23076923076923078,
+    "landscape_recall_ge30_randsample": 0.13846153846153847,
+    "prevalence_spearman_randsample": 0.23613833574039572,
+    "prevalence_spearman_query": 0.2951517773296854,
+    "stance_mae_head": 0.07797298119009427,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.07777836053093017,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.052058423602541246,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.23076923076923078,
+    "bot_claim_share_raw": 0.21428571428571427,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "50": {
+    "landscape_recall_ge3_query": 0.11945392491467577,
+    "landscape_recall_ge3_randsample": 0.10921501706484642,
+    "landscape_recall_ge10_query": 0.1683673469387755,
+    "landscape_recall_ge10_randsample": 0.15306122448979592,
+    "landscape_recall_ge30_query": 0.3230769230769231,
+    "landscape_recall_ge30_randsample": 0.38461538461538464,
+    "prevalence_spearman_randsample": 0.4172674600559734,
+    "prevalence_spearman_query": 0.33829055429815175,
+    "stance_mae_head": 0.06960680741536728,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.04261008620243232,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.0006944444444444448,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.0,
+    "emerging_precision": 0.0,
+    "bot_claim_share_dedup": 0.18518518518518517,
+    "bot_claim_share_raw": 0.20512820512820512,
+    "bot_fraction_of_retrieved": 0.0
+   },
+   "100": {
+    "landscape_recall_ge3_query": 0.16040955631399317,
+    "landscape_recall_ge3_randsample": 0.15699658703071673,
+    "landscape_recall_ge10_query": 0.19387755102040816,
+    "landscape_recall_ge10_randsample": 0.22959183673469388,
+    "landscape_recall_ge30_query": 0.35384615384615387,
+    "landscape_recall_ge30_randsample": 0.47692307692307695,
+    "prevalence_spearman_randsample": 0.44945518406791035,
+    "prevalence_spearman_query": 0.35059063341322505,
+    "stance_mae_head": 0.043256937166502654,
+    "stance_unknown_head": 0.0,
+    "stance_mae_mid": 0.0074409654239791425,
+    "stance_unknown_mid": 0.0,
+    "stance_mae_tail": 0.0003267973856209153,
+    "stance_unknown_tail": 0.0,
+    "emerging_recall": 0.06976744186046512,
+    "emerging_precision": 1.0,
+    "bot_claim_share_dedup": 0.16279069767441862,
+    "bot_claim_share_raw": 0.19047619047619047,
+    "bot_fraction_of_retrieved": 0.0
+   }
+  },
+  "ledger": {
+   "0.0": {
+    "entries": 300,
+    "render_tokens_est": null,
+    "render_tokens": 9120,
+    "residual_pct": 0.0,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9999357394967802,
+    "stance_mae_head": 0.0,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.008896407655838342,
+    "census_docs_head": 255.5,
+    "stance_mae_mid": 0.0,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.0,
+    "census_docs_mid": 105.05,
+    "stance_mae_tail": 0.0,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.0,
+    "census_docs_tail": 25.65,
+    "emerging_recall": 1.0,
+    "emerging_precision": 0.9772727272727273,
+    "bot_claim_share_authors": 0.26,
+    "bot_claim_share_discounted": 0.1590909090909091,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 0,
+    "bot_claim_share_raw_docs": 0.9707301383081377,
+    "ingest_usd": 0.4114255800000008,
+    "ingest_tokens": 2694780.000000001,
+    "merges": 0,
+    "build_seconds": 0.5951900482177734,
+    "growth_trace": [
+     [
+      100,
+      43
+     ],
+     [
+      1100,
+      176
+     ],
+     [
+      2100,
+      221
+     ],
+     [
+      3100,
+      246
+     ],
+     [
+      4100,
+      260
+     ],
+     [
+      5100,
+      272
+     ],
+     [
+      6100,
+      278
+     ],
+     [
+      7100,
+      281
+     ],
+     [
+      8100,
+      284
+     ],
+     [
+      9100,
+      284
+     ],
+     [
+      10100,
+      286
+     ],
+     [
+      11100,
+      288
+     ],
+     [
+      12100,
+      291
+     ],
+     [
+      13100,
+      291
+     ],
+     [
+      14100,
+      294
+     ],
+     [
+      15100,
+      295
+     ],
+     [
+      16100,
+      299
+     ],
+     [
+      17100,
+      299
+     ],
+     [
+      18100,
+      299
+     ],
+     [
+      19100,
+      299
+     ],
+     [
+      20100,
+      300
+     ],
+     [
+      21100,
+      300
+     ]
+    ]
+   },
+   "0.05": {
+    "entries": 330,
+    "render_tokens_est": null,
+    "render_tokens": 10020,
+    "residual_pct": 0.030232558139534883,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9448030957512439,
+    "stance_mae_head": 0.037607625252116555,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.01125880033126599,
+    "census_docs_head": 261.7,
+    "stance_mae_mid": 0.03408051688389742,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.010639922643567157,
+    "census_docs_mid": 103.25,
+    "stance_mae_tail": 0.024943864185350263,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.012193851899734254,
+    "census_docs_tail": 25.55,
+    "emerging_recall": 0.8837209302325582,
+    "emerging_precision": 0.926829268292683,
+    "bot_claim_share_authors": 0.28,
+    "bot_claim_share_discounted": 0.20454545454545456,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.9479095270733379,
+    "ingest_usd": 0.4335143699999998,
+    "ingest_tokens": 2900718.0,
+    "merges": 1029,
+    "build_seconds": 1.6144847869873047,
+    "growth_trace": [
+     [
+      100,
+      43
+     ],
+     [
+      1100,
+      205
+     ],
+     [
+      2100,
+      222
+     ],
+     [
+      3100,
+      307
+     ],
+     [
+      4100,
+      266
+     ],
+     [
+      5100,
+      342
+     ],
+     [
+      6100,
+      289
+     ],
+     [
+      7100,
+      329
+     ],
+     [
+      8100,
+      290
+     ],
+     [
+      9100,
+      336
+     ],
+     [
+      10100,
+      292
+     ],
+     [
+      11100,
+      342
+     ],
+     [
+      12100,
+      300
+     ],
+     [
+      13100,
+      357
+     ],
+     [
+      14100,
+      308
+     ],
+     [
+      15100,
+      356
+     ],
+     [
+      16100,
+      306
+     ],
+     [
+      17100,
+      351
+     ],
+     [
+      18100,
+      307
+     ],
+     [
+      19100,
+      353
+     ],
+     [
+      20100,
+      309
+     ],
+     [
+      21100,
+      365
+     ]
+    ]
+   },
+   "0.1": {
+    "entries": 460,
+    "render_tokens_est": null,
+    "render_tokens": 13920,
+    "residual_pct": 0.25813953488372093,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.9303612465334768,
+    "stance_mae_head": 0.06831696368773547,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.021381113103433852,
+    "census_docs_head": 262.0,
+    "stance_mae_mid": 0.06601313209225793,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.020796345875766068,
+    "census_docs_mid": 103.15,
+    "stance_mae_tail": 0.05950437385859382,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.04054102351896469,
+    "census_docs_tail": 25.3,
+    "emerging_recall": 0.813953488372093,
+    "emerging_precision": 0.9722222222222222,
+    "bot_claim_share_authors": 0.2727272727272727,
+    "bot_claim_share_discounted": 0.20408163265306123,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.9199201016887597,
+    "ingest_usd": 0.4603729800000002,
+    "ingest_tokens": 3128381.9999999977,
+    "merges": 1892,
+    "build_seconds": 2.0799591541290283,
+    "growth_trace": [
+     [
+      100,
+      45
+     ],
+     [
+      1100,
+      241
+     ],
+     [
+      2100,
+      232
+     ],
+     [
+      3100,
+      348
+     ],
+     [
+      4100,
+      286
+     ],
+     [
+      5100,
+      398
+     ],
+     [
+      6100,
+      309
+     ],
+     [
+      7100,
+      396
+     ],
+     [
+      8100,
+      305
+     ],
+     [
+      9100,
+      378
+     ],
+     [
+      10100,
+      301
+     ],
+     [
+      11100,
+      397
+     ],
+     [
+      12100,
+      317
+     ],
+     [
+      13100,
+      426
+     ],
+     [
+      14100,
+      326
+     ],
+     [
+      15100,
+      416
+     ],
+     [
+      16100,
+      320
+     ],
+     [
+      17100,
+      411
+     ],
+     [
+      18100,
+      333
+     ],
+     [
+      19100,
+      422
+     ],
+     [
+      20100,
+      329
+     ],
+     [
+      21100,
+      422
+     ]
+    ]
+   },
+   "0.2": {
+    "entries": 779,
+    "render_tokens_est": null,
+    "render_tokens": 23490,
+    "residual_pct": 0.9395348837209302,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 1.0,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.8871416184786868,
+    "stance_mae_head": 0.09281572947391777,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.02383991751769594,
+    "census_docs_head": 255.15,
+    "stance_mae_mid": 0.08947213672724397,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.026832198656645823,
+    "census_docs_mid": 98.5,
+    "stance_mae_tail": 0.098565682363956,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.05220329915182855,
+    "census_docs_tail": 24.3,
+    "emerging_recall": 0.7906976744186046,
+    "emerging_precision": 0.918918918918919,
+    "bot_claim_share_authors": 0.375,
+    "bot_claim_share_discounted": 0.3,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.8593980214691644,
+    "ingest_usd": 0.5081526300000001,
+    "ingest_tokens": 3559085.9999999977,
+    "merges": 3061,
+    "build_seconds": 2.626481294631958,
+    "growth_trace": [
+     [
+      100,
+      41
+     ],
+     [
+      1100,
+      269
+     ],
+     [
+      2100,
+      279
+     ],
+     [
+      3100,
+      448
+     ],
+     [
+      4100,
+      331
+     ],
+     [
+      5100,
+      487
+     ],
+     [
+      6100,
+      356
+     ],
+     [
+      7100,
+      506
+     ],
+     [
+      8100,
+      374
+     ],
+     [
+      9100,
+      527
+     ],
+     [
+      10100,
+      375
+     ],
+     [
+      11100,
+      522
+     ],
+     [
+      12100,
+      374
+     ],
+     [
+      13100,
+      508
+     ],
+     [
+      14100,
+      377
+     ],
+     [
+      15100,
+      529
+     ],
+     [
+      16100,
+      398
+     ],
+     [
+      17100,
+      527
+     ],
+     [
+      18100,
+      370
+     ],
+     [
+      19100,
+      513
+     ],
+     [
+      20100,
+      360
+     ],
+     [
+      21100,
+      499
+     ]
+    ]
+   },
+   "0.3": {
+    "entries": 1151,
+    "render_tokens_est": null,
+    "render_tokens": 32010,
+    "residual_pct": 2.0174418604651163,
+    "conservation_total": 21500.0,
+    "landscape_recall_ge3": 0.9965870307167235,
+    "landscape_recall_ge10": 1.0,
+    "landscape_recall_ge30": 1.0,
+    "prevalence_spearman": 0.842881321054471,
+    "stance_mae_head": 0.12372743451644404,
+    "stance_unknown_head": 0.0,
+    "census_mae_head": 0.04241243039822855,
+    "census_docs_head": 246.2,
+    "stance_mae_mid": 0.12419499973590678,
+    "stance_unknown_mid": 0.0,
+    "census_mae_mid": 0.038242491466512006,
+    "census_docs_mid": 91.95,
+    "stance_mae_tail": 0.08636406240818006,
+    "stance_unknown_tail": 0.0,
+    "census_mae_tail": 0.07552294111117638,
+    "census_docs_tail": 23.4,
+    "emerging_recall": 0.7906976744186046,
+    "emerging_precision": 0.8947368421052632,
+    "bot_claim_share_authors": 0.47761194029850745,
+    "bot_claim_share_discounted": 0.4426229508196721,
+    "bot_flagged_accounts": 6,
+    "bot_flagged_true_bots": 6,
+    "false_flags": 1,
+    "bot_claim_share_raw_docs": 0.8271450075263422,
+    "ingest_usd": 0.5483968499999999,
+    "ingest_tokens": 3927870.0000000005,
+    "merges": 3546,
+    "build_seconds": 2.8007731437683105,
+    "growth_trace": [
+     [
+      100,
+      33
+     ],
+     [
+      1100,
+      258
+     ],
+     [
+      2100,
+      272
+     ],
+     [
+      3100,
+      472
+     ],
+     [
+      4100,
+      368
+     ],
+     [
+      5100,
+      573
+     ],
+     [
+      6100,
+      419
+     ],
+     [
+      7100,
+      603
+     ],
+     [
+      8100,
+      442
+     ],
+     [
+      9100,
+      619
+     ],
+     [
+      10100,
+      429
+     ],
+     [
+      11100,
+      605
+     ],
+     [
+      12100,
+      442
+     ],
+     [
+      13100,
+      627
+     ],
+     [
+      14100,
+      445
+     ],
+     [
+      15100,
+      642
+     ],
+     [
+      16100,
+      455
+     ],
+     [
+      17100,
+      626
+     ],
+     [
+      18100,
+      469
+     ],
+     [
+      19100,
+      643
+     ],
+     [
+      20100,
+      465
+     ],
+     [
+      21100,
+      645
+     ]
+    ]
+   }
+  },
+  "bot_truth_organic": 0.1590909090909091,
+  "parity": {
+   "200": {
+    "3": 0.27303754266211605,
+    "10": 0.3622448979591837,
+    "30": 0.5846153846153846
+   },
+   "500": {
+    "3": 0.5085324232081911,
+    "10": 0.6122448979591837,
+    "30": 0.8923076923076924
+   },
+   "1000": {
+    "3": 0.5870307167235495,
+    "10": 0.7244897959183674,
+    "30": 0.9846153846153847
+   },
+   "2000": {
+    "3": 0.7849829351535836,
+    "10": 0.9285714285714286,
+    "30": 1.0
+   },
+   "5000": {
+    "3": 0.9419795221843004,
+    "10": 1.0,
+    "30": 1.0
+   },
+   "10000": {
+    "3": 0.9965870307167235,
+    "10": 1.0,
+    "30": 1.0
+   },
+   "20000": {
+    "3": 1.0,
+    "10": 1.0,
+    "30": 1.0
+   }
+  }
+ }
+]
