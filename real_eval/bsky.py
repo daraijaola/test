@@ -69,9 +69,11 @@ def main():
     ap.add_argument("--epoch-batches", type=int, default=5)
     ap.add_argument("--lanes", type=int, default=1, help="batches absorbed concurrently within an epoch")
     ap.add_argument("--version", default="v2", choices=["v2", "v4"])
+    ap.add_argument("--absorber", default=semeval.ABSORBER, help="model that reads every post")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
     semeval.CFG["version"] = a.version
+    semeval.ABSORBER = a.absorber
     posts = json.loads(a.posts.read_text())
     ts = [datetime.fromisoformat(p["created"].replace("Z", "+00:00")).timestamp() for p in posts if p["created"]]
     t0, t1 = min(ts), max(ts)

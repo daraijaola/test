@@ -1,0 +1,64 @@
+{
+ "n": 1500,
+ "authors": 1249,
+ "entries": 396,
+ "entries_before_global_merge": 454,
+ "themes": [
+  "Seed oils safe/healthy (science & evidence)",
+  "Seed oils harmful/toxic claims (pro-avoidance)",
+  "Tallow, butter & animal fat vs seed oils",
+  "Processing, cooking heat & oil quality",
+  "Nutrition science: confounders, correlation & moderation",
+  "RFK Jr., MAHA & government policy",
+  "Politics, culture war & conspiracy framing",
+  "Mockery of seed oil fear & influencers",
+  "Food industry, restaurants & marketing",
+  "Media, podcasts & expert explainers",
+  "Personal anecdotes & reactions",
+  "Distraction from bigger health issues (HFCS, systemic)",
+  "Alternative oils & definitions of 'seed oils'",
+  "Other"
+ ],
+ "residual_pct_before": 8.666666666666666,
+ "residual_pct": 4.733333333333333,
+ "noise_pct": 6.6,
+ "hallucinated_ids": 17,
+ "missing_docs": 1,
+ "anchor": {
+  "support": 718,
+  "dispute": 106,
+  "mention": 3
+ },
+ "growth": [
+  [
+   400,
+   245
+  ],
+  [
+   800,
+   350
+  ],
+  [
+   1200,
+   423
+  ],
+  [
+   1500,
+   456
+  ]
+ ],
+ "usd": 4.3143294,
+ "usd_by_stage": {
+  "absorb": 3.3016346999999997,
+  "polarity": 0.1452836,
+  "themes": 0.2367266,
+  "residual": 0.1963917,
+  "consolidate": 0.43429280000000003
+ },
+ "render_tokens": {
+  "flat": 16887,
+  "multires": 14341
+ },
+ "corpus_tokens_est": 61285,
+ "seconds": 412.419465303421
+}

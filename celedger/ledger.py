@@ -388,7 +388,8 @@ class Ledger:
                          f"{100 * sum(e.total for e in rest) / max(n, 1):.1f}% of corpus; expand by id range)")
         return "\n".join(header + lines), shown
 
-    def render_multires(self, budget_tokens: int = 32000) -> tuple[str, list[int]]:
+    def render_multires(self, budget_tokens: int = 32000, quotes: dict | None = None,
+                        quote_chars: int = 140) -> tuple[str, list[int]]:
         """Theme-grouped view for ledgers larger than the reading budget.  Every theme is
         always shown with its exact mass.  Entry lines are chosen by global rank (distinct
         authors) after a floor of the top two entries of every theme, until the measured
@@ -412,6 +413,11 @@ class Ledger:
         ch = self.children()
         for e in cand:
             ln = self._entry_line(e, spark=False, ch=ch)
+            if quotes is not None:                 # one verbatim exemplar, found by provenance
+                d = e.exemplar.get(SUPPORT, next(iter(e.exemplar.values()), None))
+                if d is not None and d in quotes:
+                    q = " ".join(quotes[d].split())[:quote_chars]
+                    ln += f"\n    e.g. \"{q}\""
             t = self.est_tokens(ln) + 1
             if used + t > budget_tokens:
                 break

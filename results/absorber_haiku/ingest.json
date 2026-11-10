@@ -1,0 +1,65 @@
+{
+ "n": 1500,
+ "authors": 1249,
+ "entries": 379,
+ "entries_before_global_merge": 357,
+ "themes": [
+  "Seed oils are safe/healthy (evidence & nutrition science)",
+  "Seed oils are harmful/toxic (health claims)",
+  "Inflammation, omega-6 & mechanisms debate",
+  "Processing, frying & high-heat cooking",
+  "Beef tallow & saturated fat vs seed oils",
+  "Contested science / balanced or uncertain views",
+  "RFK Jr. & MAHA politics",
+  "Mockery of anti-seed-oil culture & influencers",
+  "Far-right, extremism & identity-linked framing",
+  "Restaurants, brands & marketing (no seed oils)",
+  "Industry, economics, history & subsidies",
+  "Absurd/conspiracy health claims (satire & fringe)",
+  "Media, podcasts & information sources",
+  "Other dietary villains & competing priorities",
+  "Other"
+ ],
+ "residual_pct_before": 13.2,
+ "residual_pct": 4.133333333333334,
+ "noise_pct": 5.733333333333333,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "anchor": {
+  "support": 355,
+  "dispute": 91,
+  "mention": 16
+ },
+ "growth": [
+  [
+   400,
+   192
+  ],
+  [
+   800,
+   232
+  ],
+  [
+   1200,
+   314
+  ],
+  [
+   1500,
+   359
+  ]
+ ],
+ "usd": 1.02460476,
+ "usd_by_stage": {
+  "themes": 0.2294326,
+  "polarity": 0.1314756,
+  "residual": 0.3622551,
+  "absorb": 0.20400305999999999,
+  "consolidate": 0.0974384
+ },
+ "render_tokens": {
+  "flat": 15531,
+  "multires": 13116
+ },
+ "corpus_tokens_est": 61285,
+ "seconds": 478.3377432823181
+}

@@ -303,6 +303,17 @@ Reading this honestly:
 
 **Tried and failed: v4 "refine" op.** I added child entries for more specific claims, to fix the "partly" problem. The cheap absorber used the op only 36 times in 6,062 posts, and coverage did not improve: theme view 52.7% vs 56.6% for v2, full ledger 57.8% vs 60.2%, same points and same judge run. Generality of wording is not fixed by offering an option the absorber doesn't take. A stronger absorber, or a dedicated specificity pass, is the untested next step.
 
+**Is absorber strength the bottleneck? No.** Same 1,500 posts, same judge, same points:
+
+| absorber | ingest | filing audit (correct / minor / wrong) | coverage, theme view (absent) | coverage, full ledger (absent) |
+|---|---|---|---|---|
+| Haiku 5.5 | $1.02 | 82 / 16 / 2 | 56.7% (18.5%) | 51.9% (24.4%) |
+| Sonnet 5.5 | $4.31 (4.2×) | 88 / 11 / 0 | 59.6% (14.8%) | 57.4% (17.8%) |
+
+Sonnet files slightly more cleanly, but the coverage gain is within judge noise at 4× the ingest price. The "partly" ceiling comes from the representation (canonical assertions), not from how carefully posts are read. Haiku remains the right absorber.
+
+**Breadth vs specificity at a fixed budget.** I added one verbatim quote per entry, located by provenance, which halves the entries that fit (892 → 452). Coverage got *worse* in all 4 runs: seed oils 49.6 → 43.5 and 49.2 → 45.0; UPF 69.3 → 57.2 and 64.6 → 53.0. More distinct assertions beat verbatim evidence for fewer. When verbatim wording matters, fetch it by provenance or census on demand rather than putting it in the standing view.
+
 **Open questions, side by side** ([`ask.md`](../results/bsky_seedoils/ask.md), [UPF](../results/bsky_upf/ask.md)):
 - Asked "what are the main arguments of people who think seed oils are harmful, and how many make each?", the ledger answered with people counts and camps: "of 3,000 authors with a position, 701 (~23%) disagree that seed oils are safe; 'seed oils are toxic' 159 agree / 89 dispute…".
 - RAG top-20 answered: "None of the 20 posts comes from someone who says seed oils are harmful. Every one is written by a critic who mocks or describes the anti-seed-oil side." That is the selection bias of §1 L6, seen on real data.
@@ -419,4 +430,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 3 | Open-world scaling to 500k, sharding, budget sweep | Theme view fixed (it was mis-budgeted); sharding costs fragmentation |
 | 4 | Census Q&A with gold answers | Exact counts (0% median error) vs RAG 52–75% |
 | 5 | Every Bluesky post on two niche topics; filing, coverage and anchor audits; lanes; v3 anchor pass | Real ε; coverage at equal budget; anchor recall bug found and fixed; real growth exponent (no saturation); real costs ~30× the first estimate |
-| 6 | Cached-read cost measured; side-by-side open questions; v4 refine op; repeated coverage runs | Cached ledger read $0.05 per question (same as top-20 RAG); token estimator ~2× low (corrected); refine op didn't help (negative); coverage advantage held in all 6 repeated runs |
+| 6 | Cached-read cost measured; side-by-side open questions; v4 refine op; repeated coverage runs; Haiku vs Sonnet absorber; quotes in view | Cached ledger read $0.05 per question (same as top-20 RAG); token estimator ~2× low (corrected); refine op and quotes didn't help (negative); a stronger absorber isn't worth 4×; coverage advantage held in all 6 repeated runs |
