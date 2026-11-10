@@ -138,10 +138,7 @@ def run_seed(seed: int) -> dict:
         trace = []
         L, st = build_ledger(w, eps, seed=seed + 7, trace=trace)
         text, best = ledger_views(L, RENDER_BUDGET)
-        r = {"entries": len(L.entries), "render_tokens_est": len(text) // 4 if False else None}
-        # tokens: rendered lines * 30 + header
-        shown_n = min(len(L.entries), (RENDER_BUDGET - 120) // 30)
-        r["render_tokens"] = 120 + 30 * shown_n + (30 if len(L.entries) > shown_n else 0)
+        r = {"entries": len(L.entries), "render_tokens": L.est_tokens(text)}
         r["residual_pct"] = 100 * L.residual_mass / len(L.docs)
         r["conservation_total"] = L.check_conservation()
         for m in (3, 10, 30):

@@ -76,3 +76,26 @@ def test_census_scope_is_exact_posting_list():
     L.absorb(doc(2, "c"), [Op("new", text="Y")])
     r = L.census(lambda d: d != 1, scope=[0])
     assert r["scope_docs"] == 2 and r["hits"] == 1
+
+
+def test_incremental_merge_equals_full_recompute():
+    rng = random.Random(3)
+    L = Ledger()
+    for i in range(300):
+        ops = [Op("new", text=f"c{i}")] if i < 6 else [
+            Op("assign", rng.choice(list(L.entries)), rng.choice(["support", "dispute", "mention"]))]
+        L.absorb(doc(i, f"u{rng.randrange(40)}", rng.random()), ops)
+    L.merge(0, 1)
+    L.merge(2, 3)
+    L.merge(0, 2)
+    snap = {a: (e.total, dict(e.author_stance), dict(e.author_docs), list(e.time_bins), e.first_t)
+            for a, e in L.entries.items()}
+    for eid in list(L.entries):
+        L.recompute(eid)
+    for eid, e in L.entries.items():
+        tot, ast, adoc, bins, ft = snap[eid]
+        assert e.total == pytest.approx(tot)
+        assert e.author_stance == ast
+        assert e.author_docs == pytest.approx(adoc)
+        assert e.time_bins == pytest.approx(bins)
+        assert e.first_t == ft

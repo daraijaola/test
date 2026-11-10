@@ -1,0 +1,137 @@
+{
+ "target": "climate",
+ "n": 564,
+ "entries": 218,
+ "entries_before_global_merge": 213,
+ "compression_docs_per_entry": 2.5871559633027523,
+ "residual_pct_before_reabsorb": 12.943262411347519,
+ "residual_pct": 7.801418439716312,
+ "noise_pct": 30.49645390070922,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "f_avg_ledger_chain": 0.7326786688488816,
+ "f_avg_direct": 0.7353521066392353,
+ "acc_ledger_chain": 0.7695035460992907,
+ "acc_direct": 0.7553191489361702,
+ "gold_dist": {
+  "favor": 59.39716312056738,
+  "against": 4.609929078014185,
+  "none": 35.99290780141844
+ },
+ "ledger_computed_dist": {
+  "favor": 48.93617021276596,
+  "against": 7.624113475177305,
+  "none": 43.43971631205674
+ },
+ "ledger_read_dist": {
+  "favor": 58.0,
+  "against": 7.0,
+  "none": 35.0
+ },
+ "rag": {
+  "bm25_k20": {
+   "favor": 59.0,
+   "against": 5.0,
+   "none": 36.0
+  },
+  "sample_k20": {
+   "favor": 65.0,
+   "against": 6.0,
+   "none": 29.0
+  },
+  "bm25_k50": {
+   "favor": 60.0,
+   "against": 5.0,
+   "none": 35.0
+  },
+  "sample_k50": {
+   "favor": 60.0,
+   "against": 6.0,
+   "none": 34.0
+  }
+ },
+ "mae_ledger_computed": 6.973995271867612,
+ "mae_ledger_read": 1.593380614657211,
+ "mae_bm25_k20": 0.2647754137115843,
+ "mae_sample_k20": 4.661938534278959,
+ "mae_bm25_k50": 0.6619385342789593,
+ "mae_sample_k50": 1.328605200945626,
+ "render_tokens_est": 7610,
+ "ingest_usd": 0.17004799,
+ "total_usd": 0.46448088,
+ "cost_by_stage": {
+  "read_ledger": 0.1428418,
+  "residual": 0.00715037,
+  "rag50": 0.0368498,
+  "smp50": 0.0357578,
+  "consolidate": 0.04719432,
+  "absorb": 0.050251500000000004,
+  "direct": 0.02248389,
+  "rag20": 0.026325799999999996,
+  "smp20": 0.0301738,
+  "polarity": 0.0654518
+ },
+ "growth": [
+  [
+   40,
+   19
+  ],
+  [
+   80,
+   32
+  ],
+  [
+   120,
+   47
+  ],
+  [
+   160,
+   65
+  ],
+  [
+   200,
+   82
+  ],
+  [
+   240,
+   94
+  ],
+  [
+   280,
+   105
+  ],
+  [
+   320,
+   119
+  ],
+  [
+   360,
+   132
+  ],
+  [
+   400,
+   146
+  ],
+  [
+   440,
+   163
+  ],
+  [
+   480,
+   178
+  ],
+  [
+   520,
+   192
+  ],
+  [
+   560,
+   211
+  ],
+  [
+   564,
+   214
+  ]
+ ],
+ "seconds": 620.6969442367554
+}

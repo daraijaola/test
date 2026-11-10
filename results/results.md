@@ -33,10 +33,10 @@ Synthetic niche-topic feed: 21500 posts (incl. 1,500 bot posts), 300 latent clai
 | RAG k=100 (topic query) | 0.383 |
 | RAG k=100 (ideal sample) | 0.455 |
 | Ledger eps=0.0 | 1.000 |
-| Ledger eps=0.05 | 0.957 |
-| Ledger eps=0.1 | 0.932 |
-| Ledger eps=0.2 | 0.887 |
-| Ledger eps=0.3 | 0.837 |
+| Ledger eps=0.05 | 0.958 |
+| Ledger eps=0.1 | 0.931 |
+| Ledger eps=0.2 | 0.883 |
+| Ledger eps=0.3 | 0.835 |
 
 ## 3. Stance: mean absolute error of 'what share of people support claim X' (organic authors)
 
@@ -49,15 +49,15 @@ Query names the claim using its own vocabulary (best case for retrieval). 'unkno
 | RAG k=50 | 0.056 | 0.040 | 0.001 | 0% |
 | RAG k=100 | 0.045 | 0.011 | 0.001 | 0% |
 | Ledger eps=0.0 | 0.000 | 0.002 | 0.000 | 0% |
-| Ledger eps=0.05 | 0.031 | 0.033 | 0.034 | 0% |
-| Ledger eps=0.1 | 0.057 | 0.068 | 0.059 | 0% |
-| Ledger eps=0.2 | 0.083 | 0.106 | 0.095 | 0% |
-| Ledger eps=0.3 | 0.109 | 0.125 | 0.096 | 0% |
+| Ledger eps=0.05 | 0.031 | 0.033 | 0.037 | 0% |
+| Ledger eps=0.1 | 0.052 | 0.058 | 0.060 | 0% |
+| Ledger eps=0.2 | 0.084 | 0.097 | 0.092 | 0% |
+| Ledger eps=0.3 | 0.110 | 0.139 | 0.132 | 0% |
 | Ledger eps=0.0 + census verify (<=300 docs from exact posting list) | 0.008 | 0.003 | 0.000 | avg docs read: 258 head / 25 tail |
-| Ledger eps=0.05 + census verify (<=300 docs from exact posting list) | 0.014 | 0.015 | 0.017 | avg docs read: 260 head / 25 tail |
-| Ledger eps=0.1 + census verify (<=300 docs from exact posting list) | 0.018 | 0.024 | 0.034 | avg docs read: 258 head / 25 tail |
-| Ledger eps=0.2 + census verify (<=300 docs from exact posting list) | 0.021 | 0.033 | 0.047 | avg docs read: 250 head / 25 tail |
-| Ledger eps=0.3 + census verify (<=300 docs from exact posting list) | 0.031 | 0.042 | 0.073 | avg docs read: 238 head / 23 tail |
+| Ledger eps=0.05 + census verify (<=300 docs from exact posting list) | 0.015 | 0.016 | 0.016 | avg docs read: 260 head / 25 tail |
+| Ledger eps=0.1 + census verify (<=300 docs from exact posting list) | 0.019 | 0.018 | 0.031 | avg docs read: 258 head / 25 tail |
+| Ledger eps=0.2 + census verify (<=300 docs from exact posting list) | 0.023 | 0.025 | 0.059 | avg docs read: 250 head / 24 tail |
+| Ledger eps=0.3 + census verify (<=300 docs from exact posting list) | 0.027 | 0.040 | 0.097 | avg docs read: 242 head / 23 tail |
 
 ## 4. Trend: which claims are emerging? (precision / recall)
 
@@ -68,10 +68,10 @@ Query names the claim using its own vocabulary (best case for retrieval). 'unkno
 | RAG k=50 (ideal sample) | 33% | 1% |
 | RAG k=100 (ideal sample) | 67% | 3% |
 | Ledger eps=0.0 | 97% | 100% |
-| Ledger eps=0.05 | 93% | 95% |
-| Ledger eps=0.1 | 92% | 88% |
-| Ledger eps=0.2 | 90% | 86% |
-| Ledger eps=0.3 | 84% | 74% |
+| Ledger eps=0.05 | 95% | 93% |
+| Ledger eps=0.1 | 88% | 92% |
+| Ledger eps=0.2 | 87% | 81% |
+| Ledger eps=0.3 | 81% | 66% |
 
 ## 5. Coordinated bot flood (6 accounts, 1,500 near-identical posts supporting one claim)
 
@@ -88,15 +88,15 @@ True organic support share: **12%**
 | RAG k=100, reader dedups authors | 21% | 27% of posts |
 | RAG k=100, reader counts posts | 40% | |
 | Ledger eps=0.0, author tally | 22% | 6 of the entry's authors, visible |
-| Ledger eps=0.05, author tally | 24% | 6 of the entry's authors, visible |
-| Ledger eps=0.1, author tally | 24% | 6 of the entry's authors, visible |
-| Ledger eps=0.2, author tally | 33% | 6 of the entry's authors, visible |
+| Ledger eps=0.05, author tally | 28% | 6 of the entry's authors, visible |
+| Ledger eps=0.1, author tally | 26% | 6 of the entry's authors, visible |
+| Ledger eps=0.2, author tally | 36% | 6 of the entry's authors, visible |
 | Ledger eps=0.3, author tally | 37% | 6 of the entry's authors, visible |
 | Ledger eps=0.0, reader discounts accounts behind the ⚠ concentration flag | 12% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 0.0 |
-| Ledger eps=0.05, reader discounts accounts behind the ⚠ concentration flag | 15% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 0.3 |
-| Ledger eps=0.1, reader discounts accounts behind the ⚠ concentration flag | 15% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 0.7 |
-| Ledger eps=0.2, reader discounts accounts behind the ⚠ concentration flag | 25% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 1.0 |
-| Ledger eps=0.3, reader discounts accounts behind the ⚠ concentration flag | 32% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 1.0 |
+| Ledger eps=0.05, reader discounts accounts behind the ⚠ concentration flag | 19% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 0.3 |
+| Ledger eps=0.1, reader discounts accounts behind the ⚠ concentration flag | 17% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 0.7 |
+| Ledger eps=0.2, reader discounts accounts behind the ⚠ concentration flag | 30% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 1.0 |
+| Ledger eps=0.3, reader discounts accounts behind the ⚠ concentration flag | 29% | flagged 6.0 accts (6.0 true bots); false flags on other entries: 1.0 |
 | Ledger eps=0.1, raw doc mass (what a post-counting view would say) | 92% | |
 
 ## 5b. How much would RAG have to read to match the ledger's coverage?
@@ -118,22 +118,22 @@ Ideal unbiased random sample of k posts (better than any query-driven top-k for 
 | eps | entries | rendered tokens | residual % | merges | conservation (mass == docs) |
 |---|---|---|---|---|---|
 | 0.0 | 300 | 9,120 | 0.00 | 0 | 21500.0000 == 21500 |
-| 0.05 | 343 | 10,400 | 0.05 | 1022 | 21500.0000 == 21500 |
-| 0.1 | 444 | 13,450 | 0.24 | 1829 | 21500.0000 == 21500 |
-| 0.2 | 762 | 22,990 | 0.99 | 3041 | 21500.0000 == 21500 |
-| 0.3 | 1146 | 32,010 | 2.04 | 3521 | 21500.0000 == 21500 |
+| 0.05 | 341 | 10,360 | 0.06 | 1015 | 21500.0000 == 21500 |
+| 0.1 | 435 | 13,160 | 0.23 | 1832 | 21500.0000 == 21500 |
+| 0.2 | 763 | 23,000 | 0.97 | 3010 | 21500.0000 == 21500 |
+| 0.3 | 1118 | 32,010 | 2.09 | 3519 | 21500.0000 == 21500 |
 
 ## 7. Cost (USD, list prices; see sim/cost.py for assumptions)
 
-Ledger ingest at eps=0.1 (Haiku 5.5 absorber + consolidation, every post read once): **$0.46** standard, **$0.23** via Message Batches (one-time; 3.1M tokens processed). Rendered ledger: 12,690 tokens.
+Ledger ingest at eps=0.1 (Haiku 5.5 absorber + consolidation, every post read once): **$0.46** standard, **$0.23** via Message Batches (one-time; 3.1M tokens processed). Rendered ledger: 12,810 tokens.
 
 | queries | Ledger (ingest + Opus 5.5 reads full ledger, cached) | RAG k=20 (Opus 5.5) | RAG k=100 | Long-context: whole corpus in window (cached) |
 |---|---|---|---|---|
 | 1 | $0.53 | $0.04 | $0.05 | $4.85 (968k tok) |
 | 10 | $0.67 | $0.19 | $0.34 | $6.70 (968k tok) |
 | 100 | $2.02 | $1.75 | $3.19 | $25.24 (968k tok) |
-| 1,000 | $15.53 | $17.30 | $31.70 | $210.62 (968k tok) |
-| 10,000 | $150.70 | $172.82 | $316.82 | $2,064.44 (968k tok) |
+| 1,000 | $15.56 | $17.30 | $31.70 | $210.62 (968k tok) |
+| 10,000 | $150.94 | $172.82 | $316.82 | $2,064.44 (968k tok) |
 
 Per-query marginal: ledger $0.0150, RAG k=20 $0.0173, RAG k=100 $0.0317.
 
