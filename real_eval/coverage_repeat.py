@@ -23,11 +23,12 @@ def main():
     ap.add_argument("--repeats", type=int, default=2)
     ap.add_argument("--judge", default=None, help="judge model (default: the Sonnet judge)")
     ap.add_argument("--seed", type=int, default=1000)
+    ap.add_argument("--compact", action="store_true", help="use the compact-line view (the reader's default)")
     a = ap.parse_args()
     st = pickle.loads((a.dir / "ledger.pkl").read_bytes())
     L, texts = st["ledger"], st["texts"]
     ids = sorted(texts)
-    view, _ = L.render_multires(32000)
+    view, _ = L.render_multires(32000, compact=a.compact)
     budget = L.est_tokens(view)
     bm = BM25([texts[i].lower().split() for i in ids])
     q = f"what do people say about {st['topic']}".split()
@@ -44,14 +45,14 @@ def main():
     for r in range(a.repeats):
         rng = np.random.default_rng(a.seed + r)
         pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()), st["topic"])
-        ctx = {"ledger (theme view)": view, "RAG top-k, same tokens": fill(bm.top(q, len(ids))),
+        ctx = {("ledger (compact view)" if a.compact else "ledger (theme view)"): view, "RAG top-k, same tokens": fill(bm.top(q, len(ids))),
                "random sample, same tokens": fill(rng.permutation(ids).tolist())}
         run = {"points": len(pts)}
         for name, c in ctx.items():
             run[name] = coverage(name, c, pts, a.judge)
             print(r, name, {k: round(v, 3) for k, v in run[name].items()}, flush=True)
         runs.append(run)
-    out = a.dir / ("coverage_repeat.json" if not a.judge else f"coverage_judge_{a.judge}.json")
+    out = a.dir / ((f"coverage_judge_{a.judge}" if a.judge else "coverage_repeat") + ("_compact" if a.compact else "") + ".json")
     out.write_text(json.dumps(runs, indent=1))
 
 

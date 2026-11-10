@@ -1,0 +1,29 @@
+{
+ "summary_tokens_est": 31723,
+ "ledger_tokens_est": 31603,
+ "summary_build_usd": 5.645515439999997,
+ "ledger (theme view)": {
+  "n": 124,
+  "yes": 0.31451612903225806,
+  "partly": 0.3467741935483871,
+  "no": 0.3387096774193548,
+  "score": 0.4879032258064516,
+  "agree_share_estimate": 42.3
+ },
+ "ledger (compact lines)": {
+  "n": 124,
+  "yes": 0.3064516129032258,
+  "partly": 0.3548387096774194,
+  "no": 0.3387096774193548,
+  "score": 0.4838709677419355,
+  "agree_share_estimate": 42.3
+ },
+ "map-reduce summary": {
+  "n": 124,
+  "yes": 0.2903225806451613,
+  "partly": 0.3790322580645161,
+  "no": 0.33064516129032256,
+  "score": 0.4798387096774194,
+  "agree_share_estimate": 56
+ }
+}

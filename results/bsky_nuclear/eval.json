@@ -1,0 +1,68 @@
+{
+ "audit": {
+  "n": 100,
+  "verdicts": {
+   "correct": 68,
+   "minor_issue": 28,
+   "wrong": 4
+  },
+  "anchor": {
+   "na": 81,
+   "no": 11,
+   "yes": 8
+  },
+  "error_rate_strict": 0.04,
+  "error_rate_incl_minor": 0.32,
+  "wrong_notes": [
+   "Post is about a Trump\u2013Kim summit, not nuclear power. The entry text about drills isn't in the post, so it was filed against an unrelated or unsupported entry.",
+   "The post is about Zaporizhzhia relying on emergency diesel. The entry about a US base getting a 1MW microreactor doesn't match it.",
+   "The post says the Greens dropped their opposition. The entry says the Greens oppose nuclear power, which is the opposite. A better entry was available in the Green Party phase-out reversal.",
+   "The poster opposes nuclear power, so the anchor op should be dispute, not support. The poster also doesn't deny that the party dropped its phase-out. They lament it, so dispute on that entry is wrong."
+  ]
+ },
+ "points_n": 119,
+ "coverage": {
+  "ledger (theme view)": {
+   "n": 118,
+   "yes": 0.1864406779661017,
+   "partly": 0.3898305084745763,
+   "no": 0.423728813559322,
+   "score": 0.3813559322033898,
+   "context_tokens": 31604
+  },
+  "RAG top-20": {
+   "n": 119,
+   "yes": 0.025210084033613446,
+   "partly": 0.06722689075630252,
+   "no": 0.907563025210084,
+   "score": 0.058823529411764705,
+   "context_tokens": 1082
+  },
+  "RAG top-100": {
+   "n": 119,
+   "yes": 0.058823529411764705,
+   "partly": 0.15126050420168066,
+   "no": 0.7899159663865546,
+   "score": 0.13445378151260504,
+   "context_tokens": 4829
+  },
+  "RAG top-k, same tokens as ledger": {
+   "n": 119,
+   "yes": 0.15126050420168066,
+   "partly": 0.16806722689075632,
+   "no": 0.680672268907563,
+   "score": 0.23529411764705882,
+   "context_tokens": 31061
+  },
+  "random sample, same tokens as ledger": {
+   "n": 119,
+   "yes": 0.14285714285714285,
+   "partly": 0.21008403361344538,
+   "no": 0.6470588235294118,
+   "score": 0.24789915966386555,
+   "context_tokens": 31015
+  }
+ },
+ "qa": [],
+ "spend_usd": 3.923889899999999
+}

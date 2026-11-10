@@ -38,6 +38,8 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 Token note: the token budgets in this document are bytes/4 estimates applied identically to the ledger and to raw text. This model's real tokenisation is about 2× those figures (the "31k" view is 61–65k real tokens), so equal-budget comparisons are fair but absolute token figures are about 2× low.
 
+**At 27.5k real posts (§7.5).** The ledger's coverage lead over raw text grew: +10–30 points. It tied a map-reduce summary on coverage and counted the subject share where the summary guessed it. But ingest cost was **$99, against $5.65 for the summary**: without sharding and cache-sharing, which are designed but not built into the real pipeline, cost per post grows steeply with ledger size.
+
 **Against the strongest alternative (§7.5).** A map-reduce summary of every post, at the same budget, is **comparable to CEL on qualitative coverage**: with compact lines CEL wins on one topic and loses on the other. The summary is **better on counts of broad, diffuse claims** and costs less than half as much to build. CEL's edge over a summary is narrower:
 - exact person-level counts for specific claims;
 - camp, time and amplification structure;
@@ -453,6 +455,27 @@ With compact lines the ledger beats the summary on seed oils and still loses on 
 - **Coverage:** +1–2 points, within noise.
 - **Why:** a post that mentions a broad idea in passing is filed under its main assertion. Diffuse prevalence ("how many people express X at all") is not a sum of filed assertions. Only an exhaustive scan, census, measures it, which is why `ask` routes such questions to census.
 
+**At 4.5× scale: every public post on "nuclear power"** (27,536 posts, 12,545 authors, ~1.3M estimated / ~2.7M real tokens; [`results/bsky_nuclear`](../results/bsky_nuclear)).
+- **Ledger:** 9,089 entries (only ~3 posts per entry), growth β ≈ 0.95, residual 13.6% → 2.4%.
+- **Absorber quality held:** filing audit 68 / 28 / 4 (correct / minor / wrong). The anchor agreed with the judge 82% of the time, with no inversions; agree-share 65.9% vs the judge's 65.5% on the same sample.
+- **Coverage at the same ~31k budget (Sonnet judge):**
+
+| | score / absent |
+|---|---|
+| RAG top-100 | 13% / 79% |
+| RAG top-k, same budget | 24% / 68%; 19–23% in 2 compact-view repeats |
+| random sample, same budget | 25% / 65%; 27–34% in repeats |
+| ledger, standard lines | 38% / 42% |
+| **ledger, compact lines** (2 repeats) | **45–49% / 34–39%** |
+| map-reduce summary (same points as a 49% ledger run) | 48% / 33% |
+
+- **The lead over raw text grows with scale:** +10–22 points over a random sample, and +22–30 over retrieval. A fixed budget of raw posts covers an ever smaller fraction of the corpus; the ledger compresses repetition.
+- **Against the summary, coverage is a tie.** On the subject share, the ledger *counts* 42% of positioned authors agreeing (46% of positioned posts; unbiased against the judge on audited posts), while the summary *estimates* 56%.
+- **Cost is the problem at this scale.**
+  - Ingest cost **$98.73**, against **$5.65** for the summary.
+  - Cost per post rose steeply with ledger size: ~$0.2 per 1k posts at ~1k entries, ~$5.7 per 1k at ~8k entries. Every absorber and consolidation call carries the full, growing index, and the 16 concurrent CLI processes cannot share a prompt cache.
+  - The design's answers to this are simulated but **not implemented in the real pipeline**: a capped, sharded absorber prefix (§4.8) and warming the cache once per epoch before fanning out to lanes. At this scale they are required, not optional.
+
 **What this means.** The comparison with retrieval is decisive. The comparison with summarising everything is not.
 
 | a summary is as good or better for | CEL is better for |
@@ -494,7 +517,8 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 - **The anchor must be a literal statement** chosen at setup. A dedicated pass is needed for good recall, and it over-calls positions on 5–34% of posts that have none. The subject-level share it yields is reproducible to about ±3 points between runs, so don't report it more precisely; use a census or a stronger model for the anchor pass if it matters.
 - **The reader must be told the semantics.** Without the legend, Opus misread the anchor line.
 - **Lexical questions and diffuse-prevalence questions need census.** The ledger stores each post's main assertions, not every word or passing idea. Grouping entries into families did not fix this (§7.5).
-- **No saturation on real topics** at the scale tested. Ledgers grow roughly like N^0.8. Expect to fold, raise the budget, or shard.
+- **No saturation on real topics** at the scale tested. Ledgers grow like N^0.8–0.95 (27.5k posts gave 9,089 entries). Expect to fold, raise the budget, or shard.
+- **Ingest cost grows superlinearly without sharding and cache-sharing.** In the real pipeline every absorber call carries the whole index: $3.60 for 6k posts, but $99 for 27.5k (up to ~$5.7 per 1k posts at ~8k entries). The sharded prefix and per-epoch cache warming are designed and simulated, not built; they must be before production use above ~10k posts.
 - **Sharding costs fragmentation** (13–41% more fragments per claim in simulation).
 - **Evaluation pitfalls found along the way:**
   - benchmark memorisation (§7.2);
@@ -547,3 +571,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 8 | Command-line tool (ingest / ask with reader-triggered census / update / census / view); incremental vs batch replay; anchor-pass variance | Incremental ≈ batch on coverage; subject share reproducible to ±3 pts; de-duplication bug in `update` found and fixed |
 | 9 | Coverage re-scored with a second judge (Opus) | Fewer complete misses and the lead over retrieval hold under both judges; the lead over an equal-budget random sample does not (tie on 2 of 3 topics); headline claims narrowed accordingly |
 | 10 | Strongest alternative as a baseline: map-reduce summary of everything at the same budget; claim-prevalence test; independent strong checker; claim families (negative); compact lines | A summary ties or beats CEL on coverage and broad-claim counts at less than half the build cost; ledger tallies are lower bounds for broad claims; census ≈ summary (30% median error) against a strong checker; broad-claim prevalence is itself checker-dependent (1.5–2×). CEL's claim narrowed to structure, exact narrow counts, provenance, updates and census. Compact lines: +5–13 coverage points for free, and on par with the summary (one topic each) |
+| 11 | Real scale: every post on "nuclear power" (27,536); audits; compact-view repeats; summary head-to-head | Absorber quality holds; the lead over raw text grows with scale; ties the summary on coverage; ingest cost $99 vs $5.65, so sharding/caching are required |

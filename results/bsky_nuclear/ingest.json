@@ -1,0 +1,189 @@
+{
+ "n": 27536,
+ "authors": 12545,
+ "entries": 9089,
+ "entries_before_global_merge": 8895,
+ "themes": [
+  "Pro-nuclear case: clean, reliable baseload",
+  "Anti-nuclear case: cost, delays, waste, safety",
+  "Nuclear vs renewables and solar overtaking",
+  "Climate, heat, drought and cooling-water shutdowns",
+  "Zaporizhzhia, Ukraine and war threats to nuclear plants",
+  "AI data centers and big-tech nuclear deals",
+  "US policy, NRC regulation and reactor restarts",
+  "SMRs, microreactors, floating and space nuclear",
+  "US-Saudi nuclear deal and proliferation",
+  "Trump and nuclear weapons control",
+  "Iran, Russia and Middle East nuclear issues",
+  "National programs and politics (Europe, Asia, Greens, Scotland)",
+  "Uranium, fuel supply and nuclear waste",
+  "Fusion, history and miscellaneous nuclear topics",
+  "Other"
+ ],
+ "residual_pct_before": 13.600377687391052,
+ "residual_pct": 2.4150203370133645,
+ "noise_pct": 14.795177222545032,
+ "hallucinated_ids": 2,
+ "missing_docs": 8,
+ "anchor": {
+  "support": 923,
+  "dispute": 622,
+  "mention": 5
+ },
+ "growth": [
+  [
+   800,
+   656
+  ],
+  [
+   1600,
+   741
+  ],
+  [
+   2400,
+   1003
+  ],
+  [
+   3200,
+   1348
+  ],
+  [
+   4000,
+   1580
+  ],
+  [
+   4800,
+   1805
+  ],
+  [
+   5600,
+   2009
+  ],
+  [
+   6400,
+   2217
+  ],
+  [
+   7200,
+   2478
+  ],
+  [
+   8000,
+   2783
+  ],
+  [
+   8800,
+   2965
+  ],
+  [
+   9600,
+   3239
+  ],
+  [
+   10400,
+   3531
+  ],
+  [
+   11200,
+   3822
+  ],
+  [
+   12000,
+   4152
+  ],
+  [
+   12800,
+   4377
+  ],
+  [
+   13600,
+   4654
+  ],
+  [
+   14400,
+   4940
+  ],
+  [
+   15200,
+   5150
+  ],
+  [
+   16000,
+   5470
+  ],
+  [
+   16800,
+   5794
+  ],
+  [
+   17600,
+   5982
+  ],
+  [
+   18400,
+   6290
+  ],
+  [
+   19200,
+   6560
+  ],
+  [
+   20000,
+   6822
+  ],
+  [
+   20800,
+   7044
+  ],
+  [
+   21600,
+   7235
+  ],
+  [
+   22400,
+   7458
+  ],
+  [
+   23200,
+   7762
+  ],
+  [
+   24000,
+   7962
+  ],
+  [
+   24800,
+   8133
+  ],
+  [
+   25600,
+   8360
+  ],
+  [
+   26400,
+   8643
+  ],
+  [
+   27200,
+   8829
+  ],
+  [
+   27536,
+   8915
+  ]
+ ],
+ "usd": 98.733906,
+ "usd_by_stage": {
+  "consolidate": 9.10929241,
+  "themes": 4.648287,
+  "residual": 8.9021748,
+  "polarity": 3.138922,
+  "absorb": 72.93522979
+ },
+ "render_tokens": {
+  "flat": 31723,
+  "multires": 31604
+ },
+ "corpus_tokens_est": 1333633,
+ "seconds": 6275.266432762146
+}
