@@ -213,7 +213,7 @@ The user states the subject as one unambiguous statement, e.g. *"Seed oils are s
 - **Built and tested at 27.5k posts:** a capped absorber index (the top-N entries by authors plus recent entries) and per-epoch cache warming. They cut ingest from $99 to $35, with coverage no worse, but misfilings rose from 4% to 10% (§7.5). The CLI flags are `--index-cap` and `--warm`; use them above ~10k posts.
 - Above a cap, the absorber sees a table of themes plus the routed theme's entries.
 - Simulation, 500k posts, cap 2k entries: 5–15% misrouting costs **13–41% more fragments** per claim and 65–85% more entries. It costs almost nothing in ranking or visibility, because repeated consolidation eventually merges cross-shard duplicates.
-- So fragmentation is the price of sharding. Keep the absorber prefix unsharded as long as the context allows; ~150k tokens is about 8k entries.
+- So fragmentation is the price of sharding. In practice the binding limit is **price, not context**: keep each absorber prompt under the model's long-context price tier (100k real tokens for Haiku 5.5, about 2,500 entries at ~36 real tokens per index line). On real data that point arrived at roughly 7–8k posts.
 
 ---
 
