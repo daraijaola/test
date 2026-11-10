@@ -1,0 +1,110 @@
+{
+ "rows": [
+  {
+   "claim": "A four-day week kept productivity stable while improving worker mental health",
+   "source": "ledger",
+   "gold_authors": 131,
+   "gold_posts": 158,
+   "answers": {
+    "ledger (theme view)": 55,
+    "map-reduce summary": 190,
+    "retrieval top-k, same budget": 35
+   }
+  },
+  {
+   "claim": "The four-day workweek's pros, cons and feasibility for the economy merit public discussion.",
+   "source": "ledger",
+   "gold_authors": 546,
+   "gold_posts": 692,
+   "answers": {
+    "ledger (theme view)": 28,
+    "map-reduce summary": 30,
+    "retrieval top-k, same budget": 40
+   }
+  },
+  {
+   "claim": "Australian four-day work week study data shows boosted productivity.",
+   "source": "ledger",
+   "gold_authors": 33,
+   "gold_posts": 33,
+   "answers": {
+    "ledger (theme view)": 25,
+    "map-reduce summary": 40,
+    "retrieval top-k, same budget": 5
+   }
+  },
+  {
+   "claim": "The four-day work week will never happen",
+   "source": "ledger",
+   "gold_authors": 16,
+   "gold_posts": 16,
+   "answers": {
+    "ledger (theme view)": 16,
+    "map-reduce summary": 40,
+    "retrieval top-k, same budget": 20
+   }
+  },
+  {
+   "claim": "A four-day work week improves workers' wellbeing by reducing stress and burnout and giving more rest, family time and work-life balance.",
+   "source": "summary",
+   "gold_authors": 488,
+   "gold_posts": 568,
+   "answers": {
+    "ledger (theme view)": 170,
+    "map-reduce summary": 410,
+    "retrieval top-k, same budget": 180
+   }
+  },
+  {
+   "claim": "Trials such as Iceland's 2019-2021 pilots and the UK pilot showed productivity held steady or rose with no pay cut, so the shorter week works.",
+   "source": "summary",
+   "gold_authors": 203,
+   "gold_posts": 220,
+   "answers": {
+    "ledger (theme view)": 80,
+    "map-reduce summary": 280,
+    "retrieval top-k, same budget": 90
+   }
+  },
+  {
+   "claim": "Compressed four-day schedules, such as four 10-hour days or five days of work squeezed into four, are not a real reduction in hours and leave people exhausted.",
+   "source": "summary",
+   "gold_authors": 22,
+   "gold_posts": 22,
+   "answers": {
+    "ledger (theme view)": 40,
+    "map-reduce summary": 95,
+    "retrieval top-k, same budget": 22
+   }
+  },
+  {
+   "claim": "The Starbucks CEO works remotely from California while requiring staff to be in the office four days a week, which critics call a double standard.",
+   "source": "summary",
+   "gold_authors": 4,
+   "gold_posts": 4,
+   "answers": {
+    "ledger (theme view)": 4,
+    "map-reduce summary": 6,
+    "retrieval top-k, same budget": 1
+   }
+  }
+ ],
+ "summary": {
+  "ledger (theme view)": {
+   "median_rel_error": 0.5930320009024932,
+   "within_50pct": 0.375,
+   "mean_abs_log_ratio": 0.8269143517250697
+  },
+  "map-reduce summary": {
+   "median_rel_error": 0.4751908396946565,
+   "within_50pct": 0.625,
+   "mean_abs_log_ratio": 0.8208541913451747
+  },
+  "retrieval top-k, same budget": {
+   "median_rel_error": 0.6819859842322613,
+   "within_50pct": 0.25,
+   "mean_abs_log_ratio": 1.069185818289227
+  }
+ },
+ "usd": 4.393618740000003
+}

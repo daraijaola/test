@@ -38,9 +38,19 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 Token note: the token budgets in this document are bytes/4 estimates applied identically to the ledger and to raw text. This model's real tokenisation is about 2× those figures (the "31k" view is 61–65k real tokens), so equal-budget comparisons are fair but absolute token figures are about 2× low.
 
+**Against the strongest alternative (§7.5).** A map-reduce summary of every post, at the same budget, **ties or beats CEL on qualitative coverage and on broad-claim counts**, and costs less than half as much to build. CEL's edge over a summary is narrower:
+- exact person-level counts for specific claims;
+- camp, time and amplification structure;
+- provenance for every number;
+- a declared residual;
+- incremental updates;
+- a census path the reader triggers itself.
+
+Against retrieval, CEL wins on every measure tested.
+
 **Where CEL is *not* better:**
 - When a narrow question can be answered by a handful of posts, RAG is often as good and needs no ingest. Per question, a cached ledger read costs about the same.
-- Ledger counts carry the absorber's error unless verified by census.
+- Ledger counts carry the absorber's error unless verified by census. They are exact for the specific claim on a line, but only a **lower bound** for broader claims, whose posts spread across sibling entries. Use census for those (§7.5).
 - Real topics did **not** saturate: distinct assertions grew roughly like N^0.8 or faster. Savings come from compression and a fixed reading budget, not from the ledger staying small.
 
 ---
@@ -394,6 +404,52 @@ Without residual re-absorption, 4–9% of the corpus stays unplaced; the other m
 
 **Lanes:** 1 → 64 lanes leaves every quality metric unchanged; consolidation does ~30% more merges.
 
+### 7.5 Against the strongest alternative: summarise everything
+RAG is a weak baseline for whole-corpus questions. The serious competitor is a **map-reduce summary of every post**:
+1. the cheap model summarises each batch of 50 posts, with rough counts and sides;
+2. the stronger model merges the batch summaries;
+3. the result is held to the same token budget as the ledger's theme view.
+
+It is an established technique, so I excluded it as a solution, but it is the right baseline. Files: [`summary_baseline.py`](../real_eval/summary_baseline.py), [`prevalence_test.py`](../real_eval/prevalence_test.py), [`census_vs_strong.py`](../real_eval/census_vs_strong.py).
+
+**Coverage at the same budget** (Sonnet judge, same points):
+
+| | seed oils score / absent | four-day week score / absent | build cost |
+|---|---|---|---|
+| ledger (theme view) | 61.6% / **11.6%** | 61.8% / 18.4% | $3.6–3.9 / $2.9 |
+| map-reduce summary | 61.2% / 17.1% | **77.6% / 7.9%** | **$1.7 / $1.1** |
+
+On "is the point in there somewhere", a good summary **ties or beats** the ledger, and costs less than half as much to build.
+
+**Subject-level share** (judge sample: 76% and 91%): ledger 76.6% and 88.4%; summary 72% and 84%. The ledger is closer on both topics, but only by 4–5 points, which is about the judge sample's own error.
+
+**Prevalence of specific claims**, "how many distinct people assert X?" There are 8 claims per topic, half drawn from the ledger and half from the summary.
+- **First gold (a cheap census over every post):** the ledger alone was worst on seed oils (mean |log ratio| 1.35, against 0.84 for the summary and 1.07 for retrieval) and no better on the four-day week.
+- **Why:** a ledger line counts people who made *that* assertion. That is exact for narrow claims ("the claim that seed oils turn you gay is misinformation": 31 vs 30; "the four-day week will never happen": 16 vs 16). For a broad claim it is only a **lower bound**, because posts saying broadly the same thing are spread over many sibling entries. "Anti-seed-oil claims deserve mockery": 215 in the ledger against a census of 2,415.
+- **Second gold (an independent stronger checker, Sonnet scanning every post on the four-day-week claims):**
+
+| method | median relative error | within 50% | within 25% |
+|---|---|---|---|
+| **ledger + census** (cheap scan) | **30%** | **100%** | 38% |
+| map-reduce summary | **30%** | 75% | **50%** |
+| ledger alone | 63% | 25% | 13% |
+| retrieval, same budget | 72% | 25% | 13% |
+
+- **The definition itself is soft.** For broad semantic claims, the two exhaustive checkers disagreed by 1.5–2× (cheap-scan recall against the strong scan: 0.34–0.64). Prevalence of a broad, "in substance" claim depends on who judges what counts. No method makes it exact; census makes it explicit and repeatable.
+
+**What this means.** The comparison with retrieval is decisive. The comparison with summarising everything is not.
+
+| a summary is as good or better for | CEL is better for |
+|---|---|
+| qualitative coverage: what is being said, in what words | **exact person-level counts for specific claims** |
+| rough sizes of broad positions | **who holds them** (camp cross-tab) |
+| cost (less than half the build cost) | **when** (time histograms) |
+| | **whether it's coordinated** (concentration flags) |
+| | **where every number comes from** (provenance) |
+| | **what was not understood** (declared residual) |
+| | **incremental updates** |
+| | **a built-in exhaustive census path** that the reader triggers itself |
+
 ---
 
 ## 8. Is it novel? An honest positioning
@@ -438,6 +494,7 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | Your situation | Use |
 |---|---|
 | Questions about the whole body of opinion (what do people think, how many, which camp, what's rising, who amplifies) | **CEL** |
+| You only need a qualitative picture of what is being said, and you'll rebuild rarely | **A map-reduce summary of everything** is as good and cheaper (§7.5) |
 | You'll ask many questions about the same topic | **CEL**: ingest is paid once, and each cached read costs the same as top-20 RAG |
 | You need exact numbers (counts, shares) | **CEL + census** |
 | One narrow factual lookup ("what did account X say about Y") | RAG, or census with a narrow predicate |
@@ -472,3 +529,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 7 | Third topic (four-day work week, non-health); found and fixed a topic hard-coded in the judge prompts; re-ran every UPF evaluation | Generalises to a different domain (anchor bias 1 pt); coverage advantage held in all 9 runs; UPF numbers corrected |
 | 8 | Command-line tool (ingest / ask with reader-triggered census / update / census / view); incremental vs batch replay; anchor-pass variance | Incremental ≈ batch on coverage; subject share reproducible to ±3 pts; de-duplication bug in `update` found and fixed |
 | 9 | Coverage re-scored with a second judge (Opus) | Fewer complete misses and the lead over retrieval hold under both judges; the lead over an equal-budget random sample does not (tie on 2 of 3 topics); headline claims narrowed accordingly |
+| 10 | Strongest alternative as a baseline: map-reduce summary of everything at the same budget; claim-prevalence test; independent strong checker | A summary ties or beats CEL on coverage and broad-claim counts at less than half the build cost; ledger tallies are lower bounds for broad claims; census ≈ summary (30% median error) against a strong checker; broad-claim prevalence is itself checker-dependent (1.5–2×). CEL's claim narrowed to structure, exact narrow counts, provenance, updates and census |

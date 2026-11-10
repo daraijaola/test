@@ -1,0 +1,21 @@
+{
+ "summary_tokens_est": 14749,
+ "ledger_tokens_est": 31395,
+ "summary_build_usd": 0.6898498000000001,
+ "ledger (theme view)": {
+  "n": 112,
+  "yes": 0.4017857142857143,
+  "partly": 0.5178571428571429,
+  "no": 0.08035714285714286,
+  "score": 0.6607142857142857,
+  "agree_share_estimate": 88.4
+ },
+ "map-reduce summary": {
+  "n": 112,
+  "yes": 0.49107142857142855,
+  "partly": 0.35714285714285715,
+  "no": 0.15178571428571427,
+  "score": 0.6696428571428571,
+  "agree_share_estimate": 84
+ }
+}
