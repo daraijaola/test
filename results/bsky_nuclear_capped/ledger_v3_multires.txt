@@ -1,0 +1,788 @@
+CORPUS: 27536 documents, 12545 distinct authors, 10156 distinct assertions in 16 themes.
+residual (unplaced): 2.3%  noise: 13.9%
+e0 is the ANCHOR: it tallies every author whose position on the anchor statement is discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position. 'camp: anchor▲x anchor▼y' on a line = how many of that line's authors agree / disagree with the anchor.
+## theme Pro-nuclear case: climate, baseload, safety: 522 assertions, 4250 docs (15.4%)
+e0 | ANCHOR: Nuclear power should be part of the energy mix. | 4243 authors ▲1769 ▼2474 ·0 | 3629 docs
+e474 | Nuclear power is far safer than coal or gas power, whose deaths and pollution are normalized | 45 authors ▲44 ▼0 ·1 | 26 docs | camp: anchor▲43 anchor▼1
+e1621 | Nuclear power helps combat climate change | 27 authors ▲23 ▼4 ·0 | 14 docs | camp: anchor▲22 anchor▼5
+e1451 | Nuclear is a good low-carbon option in an all-of-the-above approach, since no grid can yet run on 100% wind and solar | 26 authors ▲26 ▼0 ·0 | 15 docs | camp: anchor▲23 anchor▼3
+e1258 | Activists' opposition to nuclear power was one of their biggest mistakes | 21 authors ▲21 ▼0 ·0 | 11 docs | camp: anchor▲19 anchor▼2
+e840 | Nuclear plants release far less radioactive material than coal plants and add no carbon to the atmosphere | 18 authors ▲17 ▼1 ·0 | 9 docs | camp: anchor▲18 anchor▼0
+e9668 | Nuclear power could more than triple by 2060, according to the IAEA chief | 18 authors ▲7 ▼0 ·11 | 20 docs | camp: anchor▲8 anchor▼1
+e831 | France has much lower electricity emissions than its neighbours because of its high use of nuclear power | 14 authors ▲13 ▼0 ·1 | 9 docs | camp: anchor▲11 anchor▼1
+e842 | Nuclear power is objectively good | 14 authors ▲14 ▼0 ·0 | 8 docs | camp: anchor▲13 anchor▼1
+e843 | Nuclear is carbon-free and reliable baseload power that investors should take notice of | 13 authors ▲13 ▼0 ·0 | 9 docs | camp: anchor▲13 anchor▼0
+e1257 | Nuclear is the safest and cleanest energy source, emits no CO2, and its only downside is investment cost | 13 authors ▲10 ▼3 ·0 | 7 docs | camp: anchor▲11 anchor▼2
+e1544 | Stable nuclear baseload keeps the grid from blackouts around the clock | 13 authors ▲11 ▼1 ·1 | 6 docs | camp: anchor▲11 anchor▼2
+e34 | Nuclear power would be more widely supported without misinformation from fossil fuel companies | 11 authors ▲11 ▼0 ·0 | 6 docs | camp: anchor▲10 anchor▼1
+e229 | Nuclear is the only source that delivers firm, dispatchable power at scale without weather dependence. | 11 authors ▲8 ▼3 ·0 | 10 docs | camp: anchor▲8 anchor▼3
+e6009 | Wind and solar alone may not deliver an emissions-free grid, so clean firm power such as nuclear is needed | 11 authors ▲9 ▼0 ·2 | 7 docs | camp: anchor▲9 anchor▼0
+e307 | Chernobyl resulted from a poor Soviet reactor design pushed beyond tolerances, and nuclear power's 80-year safety record is good | 8 authors ▲7 ▼1 ·0 | 4 docs | camp: anchor▲7 anchor▼1
+e773 | A 3GW nuclear plant needs far less land than equivalent solar and can sit near demand | 8 authors ▲7 ▼1 ·0 | 4 docs | camp: anchor▲7 anchor▼1
+e3828 | Nuclear energy is making a global comeback | 8 authors ▲6 ▼0 ·2 | 6 docs | camp: anchor▲4 anchor▼1
+e7278 | Nuclear power is safe. | 8 authors ▲6 ▼2 ·0 | 6 docs | camp: anchor▲6 anchor▼2
+e223 | Nuclear power is very low-carbon (about 5–15 g CO2e/kWh lifecycle) but not carbon-free, since it relies on a finite fuel. | 7 authors ▲4 ▼1 ·2 | 5 docs | camp: anchor▲1 anchor▼3
+e841 | France has done nuclear power well | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼1
+e1202 | France relies on nuclear power for about 68–70% of its electricity | 7 authors ▲5 ▼0 ·2 | 5 docs | camp: anchor▲2 anchor▼1
+e1620 | Nuclear power plants do not simply blow up | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼2
+e1668 | Nuclear energy has the lowest lifecycle emissions of any energy source | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e1926 | The UK should have built more nuclear power to reduce reliance on fossil fuels faster | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼1
+e2136 | Newer nuclear designs can avoid Chernobyl- or Fukushima-type accidents and radioactive waste | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e819 | Nuclear is the best energy source for powering desalination plants serving a large population | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼1
+e1003 | Nuclear power is the wave of the future | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼0
+e1497 | Nuclear power plants produce little waste, and that waste has useful applications | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e1710 | Nuclear power could have helped stave off climate change and oil addiction | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼1
+e231 | Closing nuclear power plants in the 1970s was a mistake, since they would now provide power at pennies on the dollar. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e1077 | The China Syndrome film overstated meltdown dangers and worsened public perception of nuclear power | 5 authors ▲1 ▼1 ·3 | 4 docs | camp: anchor▲1 anchor▼2
+e1116 | Nuclear plants have capacity factors above 90%, far higher than wind (about 25%) and solar (about 10%) | 5 authors ▲4 ▼1 ·0 | 3 docs | camp: anchor▲2 anchor▼3
+e1477 | The US nuclear industry's safety record is good, and claims that it proves nuclear was a catastrophic mistake are baffling | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e9 | Critics unfairly blame nuclear power for Fukushima damage that the tsunami caused | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e549 | The author would rather live near a nuclear power plant than a coal mine | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e630 | Nuclear power is a proven, zero-emission source whose plants last fifty years with stable output; calling it a proven loser is wrong | 4 authors ▲3 ▼1 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e994 | Nuclear energy makes up nearly 20% of US power generation and the public should understand reactors | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲3 anchor▼0
+e1056 | Wind turbines and solar power are statistically more deadly in the US than nuclear power, and new reactors cannot explode | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e1132 | Opposition to nuclear power has stifled the clean energy transition worldwide, and Austria's completed Zwentendorf plant never produced electricity | 4 authors ▲3 ▼0 ·1 | 2 docs | camp: anchor▲4 anchor▼0
+e1331 | Going nuclear is the only way to replace all carbon emissions, and planting trees will not help the situation | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e1337 | Closing US nuclear plants raises state per-capita carbon emissions by 6-8%, driven by a shift to coal | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e1877 | Climate change is not a hoax; the planet is burning | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼1
+e2734 | Nuclear power is preferable to coal power | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e5479 | Nuclear is far less environmentally damaging than the fossil fuel power it replaces, and all its waste so far would cover a few football fields | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e6520 | Fluxnium's seawater uranium extraction could supply about 50,000 years of nuclear fuel, making nuclear power practically fuel-unlimited | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e6680 | Shutting down nuclear power plants and replacing them with fossil gas is a mistake | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+   (+475 more in this theme: 359 docs; largest folded has 3 authors)
+## theme Nuclear vs solar/wind/renewables: 1654 assertions, 2205 docs (8.0%)
+e7589 | Solar power has overtaken nuclear power globally | 185 authors ▲160 ▼0 ·25 | 206 docs | camp: anchor▲16 anchor▼50
+e438 | Wind and solar should be prioritized over nuclear power because they are the fastest route to energy independence | 41 authors ▲40 ▼1 ·0 | 20 docs | camp: anchor▲5 anchor▼36
+e58 | A fossil-free future need not rely on nuclear; nuclear is dangerous, unreliable and expensive | 30 authors ▲28 ▼2 ·0 | 15 docs | camp: anchor▲3 anchor▼27
+e65 | Nuclear energy is toxic and dirty and should not be used; wind, solar and wave power are the way forward | 27 authors ▲26 ▼1 ·0 | 16 docs | camp: anchor▲3 anchor▼24
+e255 | Nuclear costs about three times as much as solar or wind, and the nuclear renaissance is just press releases | 23 authors ▲23 ▼0 ·0 | 13 docs | camp: anchor▲2 anchor▼21
+e1762 | Solar and storage could make any new nuclear power unnecessary | 22 authors ▲21 ▼0 ·1 | 13 docs | camp: anchor▲2 anchor▼17
+e15 | The Trump administration blocks wind and solar projects while funding fossil fuel and nuclear generation | 15 authors ▲15 ▼0 ·0 | 16 docs | camp: anchor▲3 anchor▼7
+e1557 | Nuclear plants cannot be switched on and off quickly, so they are no use as backup for renewables | 14 authors ▲14 ▼0 ·0 | 9 docs | camp: anchor▲3 anchor▼9
+e2299 | Solar is so cheap there is no good reason to build nuclear instead | 14 authors ▲14 ▼0 ·0 | 10 docs | camp: anchor▲0 anchor▼9
+e400 | Nuclear is far more expensive than renewables and is pursued to keep control of the energy market | 13 authors ▲13 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼13
+e1851 | Solar should be rolled out quickly | 13 authors ▲13 ▼0 ·0 | 12 docs | camp: anchor▲1 anchor▼2
+e456 | Solar generated a record 25% of EU power in June | 12 authors ▲11 ▼0 ·1 | 11 docs | camp: anchor▲0 anchor▼2
+e306 | Renewables are the only safe, cost-effective, non-warming energy source; nuclear and gas are dangerous | 11 authors ▲11 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼11
+e417 | Wind and solar are major contributors to national electricity generation | 11 authors ▲11 ▼0 ·0 | 22 docs | camp: anchor▲2 anchor▼2
+e5831 | Solar and wind energy are effectively nuclear energy because the sun is a nuclear fusion reactor | 10 authors ▲10 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼3
+e70 | Nuclear's share of world grid electricity was 8.8% in 2025, about half its level 30 years ago | 9 authors ▲7 ▼0 ·2 | 8 docs | camp: anchor▲1 anchor▼6
+e206 | Nuclear power is not renewable energy | 9 authors ▲8 ▼1 ·0 | 6 docs | camp: anchor▲3 anchor▼5
+e236 | Nuclear's contribution to cutting global emissions has stagnated while solar and wind have grown | 8 authors ▲8 ▼0 ·0 | 7 docs | camp: anchor▲1 anchor▼6
+e300 | Only solar with battery storage can be deployed at the scale and pace needed to replace fossil fuels; nuclear cannot | 8 authors ▲7 ▼1 ·0 | 4 docs | camp: anchor▲1 anchor▼7
+e7582 | Wind and solar will continue to pull further ahead of nuclear power | 8 authors ▲7 ▼1 ·0 | 5 docs | camp: anchor▲0 anchor▼7
+e61 | Renewables have already made a substantial difference in electricity | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼2
+e1460 | We should move away from fossil fuels as fast as possible, and that includes nuclear power | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼1
+e1711 | Canada should build cheap hydro, solar and wind rather than costly nuclear power | 7 authors ▲7 ▼0 ·0 | 5 docs | camp: anchor▲0 anchor▼7
+e2521 | Solar fails at night and wind can fail for days or weeks, so renewables cannot reliably replace nuclear output | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼0
+e797 | Solar, wind and battery storage will add about 83 GW of US capacity by May 2027 while fossil and nuclear capacity falls by 4.7 GW | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲2 anchor▼1
+e1312 | Germany has moved away from nuclear power while embracing renewable energy at unprecedented scale | 6 authors ▲3 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼2
+e6062 | Over 90% of UK commercial roof space is unused for solar, which could generate about 20 nuclear stations' worth of power | 6 authors ▲6 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼2
+e9987 | Solar panel prices have dropped so much that solar power is offensively cheap | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼2
+e1322 | Australia has no nuclear power and is highly unlikely to get it, while renewables are making big inroads | 5 authors ▲4 ▼0 ·1 | 3 docs | camp: anchor▲1 anchor▼4
+e1531 | Renewables are now cheaper than nuclear, and France's nuclear plants will eventually have to close | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼5
+e2282 | Nuclear, coal and gas provide grid inertia that wind and hydro do not | 5 authors ▲4 ▼1 ·0 | 3 docs | camp: anchor▲4 anchor▼1
+e5654 | China is rapidly moving to power its grid with solar and nuclear while US progress is far too slow | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+   (+1622 more in this theme: 1734 docs; largest folded has 4 authors)
+## theme Trump, nuclear weapons authority and Iran war: 832 assertions, 1969 docs (7.2%)
+e69 | Trump is trigger-happy about using nuclear weapons | 116 authors ▲114 ▼1 ·1 | 123 docs | camp: anchor▲6 anchor▼15
+e66 | Trump is a madman who could order a nuclear strike, and someone should stop him | 108 authors ▲108 ▼0 ·0 | 110 docs | camp: anchor▲3 anchor▼11
+e6197 | Trump's erratic behavior and threats make him unfit to control the nuclear arsenal | 49 authors ▲49 ▼0 ·0 | 50 docs | camp: anchor▲0 anchor▼7
+e606 | Claims that Iran is on the cusp of becoming a nuclear power are unproven | 47 authors ▲42 ▼0 ·5 | 45 docs | camp: anchor▲0 anchor▼4
+e586 | Trump threatened to bomb Iranian bridges or power plants in response to Hormuz ship strikes | 40 authors ▲10 ▼0 ·30 | 34 docs | camp: anchor▲3 anchor▼8
+e1122 | Trump, a convicted felon with presidential power and the nuclear codes, is an extremely dangerous figure | 40 authors ▲40 ▼0 ·0 | 42 docs | camp: anchor▲3 anchor▼3
+e556 | Trump canceled the Iran nuclear treaty, which had verifiably blocked Iran's nuclear weapons and kept the Strait of Hormuz open | 36 authors ▲34 ▼1 ·1 | 32 docs | camp: anchor▲3 anchor▼4
+e2 | US strike on the Darkhovin nuclear plant site was an unlawful war crime against a civilian power facility | 26 authors ▲11 ▼0 ·15 | 23 docs | camp: anchor▲2 anchor▼1
+e88 | Russia is a nuclear superpower, so the West cannot simply use force against it and must act intelligently | 26 authors ▲23 ▼1 ·2 | 28 docs | camp: anchor▲3 anchor▼2
+e531 | Putting a senile leader in charge of the nuclear football is dangerous | 26 authors ▲26 ▼0 ·0 | 26 docs
+e295 | The US war with Iran since February has nothing to do with Iran's nuclear program and repeats Iraq and Afghanistan hubris | 21 authors ▲21 ▼0 ·0 | 21 docs | camp: anchor▲3 anchor▼2
+e10 | Iran uses uranium only for power and has no nuclear weapons facilities | 16 authors ▲13 ▼3 ·0 | 12 docs | camp: anchor▲6 anchor▼1
+e8853 | Trump may resort to a nuclear attack on another region if he loses the midterms | 15 authors ▲13 ▼1 ·1 | 15 docs | camp: anchor▲2 anchor▼0
+e532 | US claims of obliterating Iran's nuclear program are repeated and hollow | 14 authors ▲11 ▼2 ·1 | 14 docs | camp: anchor▲0 anchor▼2
+e298 | Trump's war on Iran was a mistake that made Iran a rival world power with a free hand on its nuclear program | 13 authors ▲13 ▼0 ·0 | 14 docs | camp: anchor▲1 anchor▼2
+e1260 | Launching nuclear weapons should require congressional consent, and the 25th Amendment should be used to assess presidential fitness | 13 authors ▲13 ▼0 ·0 | 15 docs | camp: anchor▲1 anchor▼1
+e2064 | Trump has been given the nuclear codes and the power of a king, and no one tells him no | 13 authors ▲12 ▼0 ·1 | 16 docs | camp: anchor▲0 anchor▼1
+e3739 | Trump's White House ballroom is being built with nuclear-plant-grade concrete, making it virtually impossible to deconstruct | 13 authors ▲9 ▼2 ·2 | 13 docs
+e546 | Trump's recent public behavior points to a serious cognitive problem, given the power of the presidency | 12 authors ▲12 ▼0 ·0 | 19 docs | camp: anchor▲0 anchor▼2
+e863 | Iran does not need nuclear weapons because it controls the Strait of Hormuz | 12 authors ▲12 ▼0 ·0 | 12 docs | camp: anchor▲1 anchor▼2
+e43 | Iran activated air defenses around the Bushehr nuclear power plant | 11 authors ▲10 ▼0 ·1 | 10 docs | camp: anchor▲0 anchor▼1
+e208 | The US struck the Darkhovin nuclear power plant construction site in Iran. | 11 authors ▲6 ▼0 ·5 | 11 docs | camp: anchor▲1 anchor▼3
+e828 | Iran will rush for nuclear power status in the aftermath of the American military campaign, with the bomb as regime life insurance | 11 authors ▲11 ▼0 ·0 | 11 docs | camp: anchor▲0 anchor▼1
+e6942 | Trump holds unchecked power including the nuclear bomb, and no one can hold him accountable | 11 authors ▲11 ▼0 ·0 | 11 docs | camp: anchor▲0 anchor▼2
+e536 | Democrats' record is far less bad than Republicans', with Obama's Iran nuclear deal cited as a positive | 10 authors ▲9 ▼0 ·1 | 9 docs | camp: anchor▲1 anchor▼1
+e276 | The US has launched strikes on Iran for 10 consecutive nights | 9 authors ▲4 ▼0 ·5 | 10 docs | camp: anchor▲1 anchor▼2
+e954 | Trump's Iran war goals, including ending Iran's nuclear program, remain almost entirely unaccomplished | 9 authors ▲9 ▼0 ·0 | 9 docs
+e1138 | The most evil people in power have been given the nuclear codes, making all life on Earth sitting ducks | 9 authors ▲9 ▼0 ·0 | 9 docs | camp: anchor▲2 anchor▼1
+e3489 | North Korea's Kim Jong Un says Washington must respect North Korea's status as a nuclear power, which is irreversible | 9 authors ▲1 ▼0 ·8 | 11 docs | camp: anchor▲2 anchor▼1
+e4609 | Full military confrontation with a nuclear-armed country will end badly for everyone involved | 9 authors ▲9 ▼0 ·0 | 9 docs | camp: anchor▲2 anchor▼0
+e3 | The IAEA and European countries did not condemn the US attack on Iran's nuclear plant site | 8 authors ▲7 ▼0 ·1 | 6 docs
+e22 | Both US and Iran attacks on civilian power and water infrastructure are war crimes | 8 authors ▲6 ▼1 ·1 | 6 docs | camp: anchor▲1 anchor▼2
+e63 | Trump may order nuclear strikes on US cities, so people should be alarmed | 8 authors ▲8 ▼0 ·0 | 8 docs
+e564 | Israel, not Iran or Saudi Arabia, is the region's real nuclear-armed aggressor and threat to the US | 8 authors ▲8 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼0
+e711 | The US war on Iran is illegal | 8 authors ▲7 ▼0 ·1 | 6 docs | camp: anchor▲0 anchor▼3
+e1021 | Iran's more hardline government has ambitions to develop advanced nuclear weapons | 8 authors ▲7 ▼0 ·1 | 10 docs | camp: anchor▲1 anchor▼0
+e663 | The US war with Iran costs billions and American lives, with little benefit to the US | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼1
+e914 | Trump's war on Iran has hit limits on his power, and his goal of ending Iran's nuclear program has not been achieved | 7 authors ▲7 ▼0 ·0 | 7 docs | camp: anchor▲0 anchor▼2
+e1906 | Google pulled a new Earth AI tool after people used it to put fake nuclear power plants in Iran | 7 authors ▲2 ▼0 ·5 | 7 docs | camp: anchor▲1 anchor▼1
+e3617 | Iran is treated harshly over imaginary nukes while North Korea, a renegade nuclear power, is ignored | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼0
+e3711 | Trump opened the door to talks with North Korea's Kim | 7 authors ▲1 ▼0 ·6 | 10 docs | camp: anchor▲1 anchor▼1
+e5005 | Nuclear weapons, drones, missiles and power-hungry leaders threaten the world | 7 authors ▲7 ▼0 ·0 | 7 docs | camp: anchor▲0 anchor▼1
+e8867 | The US president has sole unchecked authority to launch nuclear war, and no single person should hold that power | 7 authors ▲6 ▼1 ·0 | 9 docs | camp: anchor▲0 anchor▼1
+e52 | Iran says it is fighting a full-scale war with the US | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲1 anchor▼2
+e67 | Nukes should be banned, and the US and France helped Israel get them | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼1
+e246 | Nuclear deterrence is an effective balance of power as long as nuclear weapons are not used | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲2 anchor▼1
+e561 | The US shouldn't have supplied Iran with nuclear technology and materials in the 1950s | 6 authors ▲5 ▼0 ·1 | 5 docs | camp: anchor▲1 anchor▼1
+e1699 | A country must be a nuclear power to avoid being invaded | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e1717 | Automated nuclear weapons that a computer can be plugged into are dangerous | 6 authors ▲6 ▼0 ·0 | 9 docs | camp: anchor▲1 anchor▼0
+e1919 | The UK's nuclear arsenal relies on the US to make and maintain it, so it is not independent like France's | 6 authors ▲5 ▼1 ·0 | 6 docs | camp: anchor▲0 anchor▼2
+e5089 | Iran cannot be allowed to become a fanatical nuclear power | 6 authors ▲5 ▼0 ·1 | 6 docs
+e235 | US strikes on Iran expanded to a city hosting a nuclear power plant | 5 authors ▲3 ▼0 ·2 | 6 docs | camp: anchor▲1 anchor▼1
+e301 | The Trump regime could stage big terrorist attacks as a pretext to deploy troops in Iran or use a nuclear bomb on Tehran | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲1 anchor▼0
+e413 | A US missile strike hit an electrical substation connected to Iran's Bushehr nuclear plant, cutting its external power | 5 authors ▲1 ▼0 ·4 | 7 docs | camp: anchor▲1 anchor▼0
+e559 | Iran is years away from nuclear weapons, has no interest in nuking the US, and nuclear attacks have zero military value | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e612 | Iran's large oil reserves mean it did not need nuclear power, an argument once used against its nuclear program | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲2 anchor▼1
+e635 | Donald Trump lacks the knowledge of how nuclear power plants are built and run, since the science is not new | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼1
+e694 | Trump is destroying the world | 5 authors ▲5 ▼0 ·0 | 5 docs
+e1143 | Iran will develop a nuclear bomb very soon, and Trump's war against Iran marks the start of American decline | 5 authors ▲5 ▼0 ·0 | 5 docs
+e1190 | Iran should be allowed nuclear power plants under US monitoring of its nuclear material in exchange for ending the bombing | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲3 anchor▼0
+e2433 | Iran has become a nuclear power without a nuclear weapon, gaining leverage by controlling the Strait of Hormuz | 5 authors ▲4 ▼0 ·1 | 5 docs
+e3500 | Trump's actions made North Korea a nuclear power | 5 authors ▲5 ▼0 ·0 | 6 docs
+e3620 | North Korea's nuclear power has advanced since Trump's first term | 5 authors ▲5 ▼0 ·0 | 4 docs
+e6021 | Trump forgets that France is a nuclear power | 5 authors ▲5 ▼0 ·0 | 4 docs
+e8269 | Trump suggested Iran take out Los Angeles or San Diego | 5 authors ▲5 ▼0 ·0 | 5 docs
+e10019 | Trump, Netanyahu and Putin threaten nuclear Armageddon when they are in danger of losing power | 5 authors ▲5 ▼0 ·0 | 5 docs
+   (+766 more in this theme: 988 docs; largest folded has 4 authors)
+## theme Other: 1368 assertions, 1845 docs (6.7%)
+e421 | AI is as dangerous as nuclear power or nuclear bombs and must be controlled | 31 authors ▲29 ▼2 ·0 | 32 docs | camp: anchor▲3 anchor▼7
+e854 | Israel is a nuclear power and isn't going anywhere | 24 authors ▲21 ▼1 ·2 | 33 docs | camp: anchor▲3 anchor▼1
+e7964 | Frontier AI labs should run with the redundancy and careful planning of nuclear power plants to prevent disasters from human error | 17 authors ▲16 ▼1 ·0 | 17 docs | camp: anchor▲2 anchor▼1
+e17 | Nuclear power plant technicians can build successful careers | 16 authors ▲13 ▼0 ·3 | 16 docs | camp: anchor▲2 anchor▼2
+e4613 | Calder Hall was the world's first nuclear power station to generate electricity on an industrial scale, connected to the grid in 1956 | 14 authors ▲5 ▼0 ·9 | 14 docs | camp: anchor▲3 anchor▼0
+e927 | Israel has nuclear weapons and does not allow inspectors | 13 authors ▲11 ▼0 ·2 | 12 docs | camp: anchor▲1 anchor▼3
+e5138 | Nuclear weapons are a global existential risk alongside climate change, generative AI and unchecked wealth | 13 authors ▲12 ▼0 ·1 | 13 docs
+e351 | Israel is committing genocide against people in Gaza and targeting babies and children | 12 authors ▲12 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼0
+e1068 | Ukraine and Libya should never have given up their nuclear weapons, and the concentration of nuclear power among a few actors must be corrected | 11 authors ▲11 ▼0 ·0 | 28 docs | camp: anchor▲1 anchor▼1
+e1071 | Israel is widely alleged to have nuclear weapons, has not signed the NPT, and allows no inspections | 11 authors ▲10 ▼0 ·1 | 14 docs | camp: anchor▲1 anchor▼1
+e894 | Nuclear plants generate power by boiling water into steam that spins turbines tied to grid frequency | 10 authors ▲6 ▼0 ·4 | 9 docs | camp: anchor▲1 anchor▼3
+e1371 | Coal plants are often very high in radioactive particulates | 10 authors ▲10 ▼0 ·0 | 6 docs | camp: anchor▲8 anchor▼0
+e6417 | A rogue AI could disrupt electrical and nuclear power grids, banking systems and other infrastructure | 10 authors ▲10 ▼0 ·0 | 10 docs
+e303 | A false nuclear accident alert about a power station was sent to phones and overrode do-not-disturb settings | 9 authors ▲1 ▼0 ·8 | 8 docs | camp: anchor▲1 anchor▼2
+e793 | Fusion energy could be the most consequential technological breakthrough since atom splitting | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲7 anchor▼0
+e1004 | Dungeness has a former nuclear power station nearby | 9 authors ▲1 ▼0 ·8 | 10 docs
+e784 | Coal, gas, oil or nuclear heat can all be used to make steam that drives turbines to generate electricity | 8 authors ▲7 ▼0 ·1 | 6 docs | camp: anchor▲4 anchor▼0
+e2426 | Nuclear weapons should be eliminated before another catastrophe proves the lesson of Hiroshima wasn't learned | 8 authors ▲8 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼1
+e3221 | Pakistan has been a nuclear power since 1998 | 8 authors ▲6 ▼0 ·2 | 11 docs | camp: anchor▲0 anchor▼1
+e5226 | AI efficiency gains could erode the next generation of experts, as aviation and nuclear power show | 8 authors ▲8 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼0
+e6034 | Nuclear power is unimpressive because it just boils water to turn a fan | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼7
+e7971 | AI safety should draw on safety literature from analogous fields such as nuclear power and aviation | 8 authors ▲8 ▼0 ·0 | 8 docs | camp: anchor▲2 anchor▼2
+e112 | The US power grid faces a bottleneck crisis | 7 authors ▲7 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼0
+e2801 | James Cameron's film The Abyss was largely shot in an abandoned nuclear power plant in South Carolina | 7 authors ▲0 ▼0 ·7 | 8 docs | camp: anchor▲0 anchor▼1
+e934 | The Simpsons demonised nuclear power and exaggerated its danger | 6 authors ▲4 ▼0 ·2 | 4 docs | camp: anchor▲3 anchor▼0
+e1283 | Jimmy Carter helped avert a nuclear reactor meltdown while serving in the Navy | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲0 anchor▼1
+e1984 | People who talk nonsense about nuclear power without knowing its risks and costs are annoying | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼1
+e3466 | Fusion power has been promised for decades as always five to ten years away | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼2
+e5849 | Homer Simpson works as a safety inspector at a nuclear power plant | 6 authors ▲0 ▼0 ·6 | 6 docs | camp: anchor▲0 anchor▼1
+e6643 | Brethren leader Bruce Hales told followers Australia should use its uranium to build a few bombs to obliterate Iran | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲1 anchor▼1
+e9058 | Ontario imports 600 MW from New York this winter as the Pickering nuclear plant stays offline | 6 authors ▲0 ▼0 ·6 | 9 docs | camp: anchor▲1 anchor▼1
+e51 | Canada has major uranium deposits whose geological context and chemistry are critical mineral sources | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲1 anchor▼0
+e383 | Reticulum could power a post-internet network | 5 authors ▲1 ▼0 ·4 | 12 docs | camp: anchor▲1 anchor▼0
+e999 | Private fusion startups have raised over $8 billion and fusion power is nearing practical use | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲4 anchor▼0
+e1118 | The people in charge of the world's largest military, economy and nuclear power are idiots | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+e6246 | Navy Nuclear Power School trains submarine officers and is a path for engineering graduates | 5 authors ▲2 ▼0 ·3 | 5 docs
+e7870 | Britain's 1952 atomic bomb test made it the world's third nuclear power | 5 authors ▲2 ▼0 ·3 | 5 docs | camp: anchor▲0 anchor▼1
+e227 | Bruce Power's on-site hot cell advances production of the lutetium-177 cancer-fighting medical isotope. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e374 | Enriching uranium is unnecessary because CANDU reactors run on natural uranium | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲4 anchor▼0
+e944 | The US is a nuclear-armed imperial power that people may fairly hate | 4 authors ▲4 ▼0 ·0 | 6 docs
+e1764 | Nuclear power causes hentai or porn addiction | 4 authors ▲0 ▼4 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e1824 | Fusion power barely makes enough energy to cover the energy the machine consumes | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e3061 | Robots were developed for high-radiation environments after the Chernobyl RBMK reactor explosion | 4 authors ▲0 ▼0 ·4 | 4 docs
+e4826 | Conventional forces, missiles and nuclear weapons of a US-led alliance mean no power should test its resolve | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼2
+e5785 | Like all technology, nuclear power can be used for good or evil | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e6231 | A 3,000-ton Lampson crane was built to construct power plants in Japan until the Fukushima disaster | 4 authors ▲4 ▼0 ·0 | 10 docs | camp: anchor▲0 anchor▼3
+e6589 | Land around the Diablo Canyon nuclear plant is being opened as a nature preserve with trails and camping, a good conservation deal | 4 authors ▲3 ▼0 ·1 | 7 docs
+   (+1321 more in this theme: 1418 docs; largest folded has 4 authors)
+## theme Restarts, loans, subsidies and national nuclear policy/expansion: 944 assertions, 1806 docs (6.6%)
+e1038 | Nuclear is coming back online with Palisades and Three Mile Island reopening | 49 authors ▲22 ▼3 ·24 | 48 docs | camp: anchor▲15 anchor▼9
+e1225 | Italy's Meloni government is laying groundwork to bring nuclear power back | 48 authors ▲29 ▼1 ·18 | 55 docs | camp: anchor▲27 anchor▼4
+e5508 | DOE closed a $1.9 billion loan to restart the Duane Arnold nuclear plant | 48 authors ▲16 ▼0 ·32 | 52 docs | camp: anchor▲16 anchor▼5
+e9294 | Prosperity One is a 6.6 GW nuclear power initiative in Kentucky | 24 authors ▲8 ▼0 ·16 | 38 docs | camp: anchor▲6 anchor▼1
+e9250 | The US is reviving shuttered nuclear plants to meet growing electricity demand and power data centers | 23 authors ▲10 ▼0 ·13 | 24 docs | camp: anchor▲6 anchor▼2
+e7852 | The US government is lending about $4.2 billion to Vistra to boost its nuclear power output | 20 authors ▲10 ▼0 ·10 | 22 docs | camp: anchor▲7 anchor▼1
+e1180 | Restarting a nuclear power plant can be much harder than expected | 19 authors ▲13 ▼0 ·6 | 20 docs | camp: anchor▲5 anchor▼5
+e1363 | The Palisades nuclear plant restart is a wobbly venture raising many questions and concerns | 19 authors ▲19 ▼0 ·0 | 13 docs | camp: anchor▲1 anchor▼15
+e7017 | The Australian Coalition's 8-point energy plan aims to dismantle green policies and clear the path for nuclear power | 19 authors ▲14 ▼1 ·4 | 16 docs | camp: anchor▲0 anchor▼10
+e730 | Germany's phaseout of nuclear power in favor of coal is a notable failure to compare against | 17 authors ▲17 ▼0 ·0 | 8 docs | camp: anchor▲17 anchor▼0
+e801 | Diablo Canyon nuclear plant should keep operating to 2045 | 16 authors ▲5 ▼3 ·8 | 13 docs | camp: anchor▲7 anchor▼4
+e1809 | FirstEnergy secretly gave $1 million to Ohio Lt Gov Husted's campaign while he worked to bail out the company's nuclear plants | 16 authors ▲11 ▼0 ·5 | 15 docs | camp: anchor▲1 anchor▼6
+e6746 | South Korea is pursuing a nuclear power plant and an Alaska LNG project as US investments | 16 authors ▲2 ▼0 ·14 | 18 docs | camp: anchor▲4 anchor▼1
+e75 | India aims to grow nuclear capacity to 100 GWe by 2047 but its domestic uranium is insufficient, so it must import | 15 authors ▲6 ▼0 ·9 | 17 docs | camp: anchor▲7 anchor▼2
+e951 | Trump stands to profit personally from pushing to expand nuclear power in the US and abroad | 15 authors ▲15 ▼0 ·0 | 14 docs | camp: anchor▲2 anchor▼4
+e898 | Nine Illinois communities want to host new nuclear power plants after the state moratorium was lifted | 13 authors ▲3 ▼0 ·10 | 14 docs | camp: anchor▲3 anchor▼0
+e3392 | Ireland's government is shifting toward considering nuclear power amid an energy crisis | 13 authors ▲4 ▼0 ·9 | 12 docs | camp: anchor▲4 anchor▼1
+e811 | Illinois lifted its moratorium on new nuclear plants and Gov. Pritzker asked state agencies to find communities willing to host new nuclear sites | 12 authors ▲2 ▼0 ·10 | 10 docs | camp: anchor▲5 anchor▼1
+e1829 | China approved eight new nuclear reactors worth over 170 billion yuan | 12 authors ▲8 ▼0 ·4 | 12 docs | camp: anchor▲4 anchor▼2
+e6516 | Ontario's Pickering nuclear station going offline for refurbishment means its low-emission power will be largely replaced by natural gas | 12 authors ▲6 ▼0 ·6 | 12 docs | camp: anchor▲2 anchor▼6
+e8717 | Upgrading existing reactors can add nuclear power faster than building new plants, but available upgrade capacity is running out | 12 authors ▲5 ▼0 ·7 | 16 docs | camp: anchor▲6 anchor▼3
+e8135 | Energy firms are trying to squeeze more power out of old nuclear plants | 11 authors ▲3 ▼0 ·8 | 15 docs | camp: anchor▲3 anchor▼3
+e642 | Australia should lift its ban on nuclear power | 10 authors ▲8 ▼1 ·1 | 29 docs | camp: anchor▲8 anchor▼2
+e5548 | California, an environmental leader, is warming to nuclear energy and considering extending Diablo Canyon and allowing new reactors | 10 authors ▲3 ▼0 ·7 | 8 docs | camp: anchor▲5 anchor▼2
+e6880 | Saskatchewan's premier floats the idea of two massive nuclear reactors | 10 authors ▲2 ▼0 ·8 | 10 docs | camp: anchor▲5 anchor▼0
+e9254 | Reviving shuttered nuclear plants to power data centers is a bad idea | 10 authors ▲7 ▼2 ·1 | 5 docs | camp: anchor▲1 anchor▼9
+e10176 | The Energy Department announced a $5 billion loan to boost nuclear power and lower costs in Illinois, Maryland and Pennsylvania | 10 authors ▲2 ▼0 ·8 | 9 docs | camp: anchor▲4 anchor▼0
+e611 | A two-year lifespan extension for the Hartlepool EDF nuclear station safeguards over 500 jobs | 9 authors ▲4 ▼0 ·5 | 14 docs | camp: anchor▲7 anchor▼1
+e1155 | Reopening old nuclear power plants carries serious dangers | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼9
+e1169 | Microsoft's plan to restart Three Mile Island for power is worrying given reliability concerns | 9 authors ▲8 ▼0 ·1 | 9 docs | camp: anchor▲1 anchor▼4
+e1658 | The Ford government is pursuing nuclear power | 9 authors ▲4 ▼1 ·4 | 6 docs | camp: anchor▲4 anchor▼4
+e7952 | The Trump administration is preparing a roughly $4 billion Department of Energy loan to Vistra to upgrade three nuclear plants | 9 authors ▲2 ▼0 ·7 | 8 docs | camp: anchor▲5 anchor▼0
+e8407 | Taiwan is considering abandoning its Nuclear-Free Homeland policy and returning to nuclear power | 9 authors ▲7 ▼0 ·2 | 10 docs | camp: anchor▲5 anchor▼2
+e287 | Spain's Nuclear Safety Council says the Almaraz nuclear plant can operate safely until June 2030 | 8 authors ▲6 ▼0 ·2 | 10 docs | camp: anchor▲6 anchor▼0
+e1005 | Trump announced a renaissance of nuclear power in America | 8 authors ▲3 ▼1 ·4 | 6 docs | camp: anchor▲4 anchor▼2
+e1109 | China supports the global target of tripling nuclear capacity by 2050 and is building many nuclear plants | 8 authors ▲3 ▼1 ·4 | 6 docs | camp: anchor▲7 anchor▼0
+e1563 | Ontario's Ford nuclear plan leaves ratepayers paying the bill | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼8
+e8496 | Stripping Scottish Parliament powers to build nuclear stations in Scotland to power England is a bad idea | 8 authors ▲7 ▼0 ·1 | 4 docs | camp: anchor▲2 anchor▼6
+e697 | The nuclear energy revival puts Westinghouse in a prime position to benefit | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲3 anchor▼3
+e769 | Canada is counting on LNG, nuclear and offshore wind to power an industrial revival | 7 authors ▲3 ▼0 ·4 | 6 docs | camp: anchor▲2 anchor▼2
+e775 | Canada should do more to promote safe, clean zero-emission nuclear power | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e832 | The US aims to boost nuclear capacity to 400 gigawatts by 2050 | 7 authors ▲2 ▼0 ·5 | 6 docs | camp: anchor▲4 anchor▼0
+e953 | Peter Thiel and Jared Kushner stand to profit from the nuclear energy push | 7 authors ▲4 ▼0 ·3 | 5 docs | camp: anchor▲1 anchor▼3
+e7570 | Belgium extended negotiations to buy Engie's nuclear utility assets to November 4 | 7 authors ▲0 ▼0 ·7 | 7 docs | camp: anchor▲3 anchor▼1
+e7736 | Missouri's 2026 energy plan focuses on nuclear power | 7 authors ▲4 ▼0 ·3 | 8 docs | camp: anchor▲3 anchor▼1
+e8921 | Poland signed an agreement dividing tasks and cooperation principles for its second nuclear power plant | 7 authors ▲3 ▼0 ·4 | 8 docs | camp: anchor▲6 anchor▼0
+e9051 | Slovakia's Mochovce 4 reactor was connected to the grid and began supplying electricity | 7 authors ▲3 ▼0 ·4 | 8 docs | camp: anchor▲3 anchor▼3
+e10028 | DOE offered Constellation a conditional loan of up to $5 billion for US nuclear plant upgrades | 7 authors ▲3 ▼0 ·4 | 8 docs | camp: anchor▲5 anchor▼0
+e143 | New Jersey's governor signed a bill directing the BPU to begin building a new nuclear power plant | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲2 anchor▼2
+e956 | Trump's promotion of nuclear power may serve his associates' financial interests | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼5
+e2517 | Global nuclear generation hit an all-time high in 2025, with China supplying all of the net growth | 6 authors ▲4 ▼0 ·2 | 6 docs | camp: anchor▲3 anchor▼1
+e4710 | NSW One Nation's leader promises to reverse bans on uranium mining and nuclear energy and invest in coal-fired power | 6 authors ▲0 ▼1 ·5 | 5 docs | camp: anchor▲3 anchor▼2
+e5034 | Fuel loading has begun at the Palisades nuclear plant restart, and it may succeed | 6 authors ▲3 ▼0 ·3 | 5 docs | camp: anchor▲5 anchor▼0
+e361 | Ireland must embrace nuclear to avoid remaining dependent on gas | 5 authors ▲4 ▼0 ·1 | 4 docs | camp: anchor▲4 anchor▼1
+e693 | Japan's participation in a $40bn US nuclear power project has stalled over fears lenders would bear meltdown liability | 5 authors ▲4 ▼0 ·1 | 6 docs | camp: anchor▲1 anchor▼1
+e901 | Peoria County is exploring a nuclear power plant at a former coal plant site | 5 authors ▲3 ▼0 ·2 | 6 docs | camp: anchor▲3 anchor▼0
+e1968 | China approved four new nuclear power projects | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲2 anchor▼0
+e3014 | PG&E has state approval to keep Diablo Canyon nuclear plant open until 2030 | 5 authors ▲4 ▼0 ·1 | 11 docs | camp: anchor▲1 anchor▼0
+e3228 | Modi puts chips and nuclear power at the heart of India's development push | 5 authors ▲1 ▼0 ·4 | 5 docs | camp: anchor▲1 anchor▼0
+e3340 | India's draft rules open its nuclear power sector to private investment, ending decades of state dominance | 5 authors ▲2 ▼0 ·3 | 6 docs | camp: anchor▲3 anchor▼1
+e3548 | The drive for nuclear power is boosting the uranium industry | 5 authors ▲2 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼3
+e3651 | California is reconsidering its planned nuclear exit | 5 authors ▲3 ▼0 ·2 | 5 docs | camp: anchor▲1 anchor▼2
+e3846 | Connecticut will join a New England nuclear power summit | 5 authors ▲1 ▼0 ·4 | 6 docs | camp: anchor▲2 anchor▼1
+e4105 | The US relies heavily on Canada for uranium, the fuel used by American nuclear power plants | 5 authors ▲4 ▼0 ·1 | 5 docs
+e4309 | Singapore's new western island could pave the way for nuclear power, according to experts | 5 authors ▲3 ▼0 ·2 | 5 docs | camp: anchor▲1 anchor▼0
+e4771 | Thailand plans to embrace renewables and nuclear power to cut reliance on imported LNG after the Middle East crisis | 5 authors ▲4 ▼0 ·1 | 4 docs | camp: anchor▲2 anchor▼0
+e5457 | New York is shifting toward major nuclear expansion to secure reliable, lower-cost power | 5 authors ▲3 ▼0 ·2 | 3 docs | camp: anchor▲5 anchor▼0
+e6262 | California's last nuclear power plant will close in 2030 without state permission to keep operating | 5 authors ▲5 ▼0 ·0 | 9 docs | camp: anchor▲1 anchor▼0
+e6399 | AfD leader Alice Weidel calls for a return to nuclear power and cheap Russian gas | 5 authors ▲1 ▼1 ·3 | 6 docs | camp: anchor▲4 anchor▼1
+e7157 | Queensland will power new data centres with coal and gas and will not back federal Coalition nuclear plans | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e7748 | South Korea says participation in Alaska LNG and nuclear plant investments depends on commercial viability assessed plant by plant | 5 authors ▲3 ▼0 ·2 | 5 docs | camp: anchor▲2 anchor▼0
+e8092 | Nuclear power plant uprates are a good development | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲4 anchor▼0
+e10033 | DOE offered Constellation up to $5B in conditional loans to add 1.1 GW through nuclear uprates at eight plants | 5 authors ▲2 ▼0 ·3 | 5 docs | camp: anchor▲2 anchor▼0
+   (+871 more in this theme: 1000 docs; largest folded has 4 authors)
+## theme AI data centers and big-tech nuclear deals: 858 assertions, 1776 docs (6.4%)
+e8251 | Google and Constellation signed a 20-year deal adding 890 MW of nuclear capacity to the PJM grid | 49 authors ▲12 ▼0 ·37 | 53 docs | camp: anchor▲23 anchor▼7
+e5916 | South Korea is nearing a $100 billion deal with the US funding up to 8 nuclear reactors and a Texas gas plant for AI data centers | 38 authors ▲13 ▼2 ·23 | 52 docs | camp: anchor▲9 anchor▼6
+e3116 | Constellation Energy signed nearly a gigawatt of new long-term purchase agreements for power from its nuclear reactors | 33 authors ▲11 ▼0 ·22 | 37 docs | camp: anchor▲8 anchor▼3
+e1268 | Nuclear plants are being pushed to power data centers | 28 authors ▲13 ▼0 ·15 | 25 docs | camp: anchor▲3 anchor▼9
+e5515 | Google is moving closer to getting nuclear power for its AI data centers | 26 authors ▲11 ▼0 ·15 | 29 docs | camp: anchor▲6 anchor▼1
+e1066 | Nuclear reactors will be needed to power advanced AI systems | 23 authors ▲17 ▼1 ·5 | 17 docs | camp: anchor▲11 anchor▼4
+e36 | Nuclear energy stocks tied to AI data center demand are worth watching as reliable power sources | 22 authors ▲17 ▼0 ·5 | 46 docs | camp: anchor▲10 anchor▼4
+e5553 | Google will buy half of Loviisa nuclear plant's electricity for 22 years while investing €13 billion in Finnish data centers | 22 authors ▲2 ▼0 ·20 | 23 docs | camp: anchor▲9 anchor▼0
+e5802 | Google will invest €13bn in Finnish AI infrastructure and has a 22-year nuclear power purchase agreement with Fortum's Loviisa plant | 22 authors ▲5 ▼0 ·17 | 22 docs | camp: anchor▲7 anchor▼1
+e9067 | Russia and the US are discussing joint data centre projects, including use of Russian nuclear power stations | 22 authors ▲8 ▼3 ·11 | 27 docs | camp: anchor▲4 anchor▼2
+e1242 | Letting tech companies build nuclear power plants without oversight is wrong | 19 authors ▲19 ▼0 ·0 | 14 docs | camp: anchor▲1 anchor▼17
+e7694 | Amazon signed a 20-year nuclear power deal with Constellation to power AI data centers | 18 authors ▲4 ▼0 ·14 | 25 docs | camp: anchor▲6 anchor▼2
+e8253 | Google signed a multi-gigawatt power deal with Constellation Energy for nuclear output | 18 authors ▲5 ▼0 ·13 | 36 docs | camp: anchor▲6 anchor▼1
+e1195 | AI companies' nuclear power deals and surging uranium stocks reflect a major nuclear push for AI | 16 authors ▲7 ▼0 ·9 | 16 docs | camp: anchor▲8 anchor▼1
+e6644 | Kairos Power received up to $100M from a Samsung group to build a nuclear reactor for Google | 15 authors ▲4 ▼0 ·11 | 16 docs | camp: anchor▲3 anchor▼2
+e6648 | Georgia Power signed an agreement with Google to support upgrades at two nuclear plants adding about 96 MW | 15 authors ▲10 ▼0 ·5 | 20 docs | camp: anchor▲9 anchor▼0
+e8267 | Constellation Energy agreed to invest $4.3 billion to increase output at 11 nuclear plants and sell the power to Google | 15 authors ▲2 ▼0 ·13 | 16 docs | camp: anchor▲7 anchor▼1
+e1900 | The AI boom is making nuclear power bankable again | 14 authors ▲12 ▼0 ·2 | 10 docs | camp: anchor▲12 anchor▼0
+e5546 | Google will invest $15 billion in Finland, including AI data centers and a nuclear power deal | 14 authors ▲1 ▼0 ·13 | 15 docs | camp: anchor▲3 anchor▼0
+e8332 | Google signed a 3.6 GW power deal with Constellation Energy. | 14 authors ▲4 ▼0 ·10 | 13 docs | camp: anchor▲5 anchor▼0
+e5712 | Google bought up to 50% of Loviisa nuclear plant output for 22 years plus wind and a battery | 13 authors ▲0 ▼0 ·13 | 15 docs | camp: anchor▲6 anchor▼1
+e8340 | Google partnered with a nuclear power company to upgrade existing reactors | 13 authors ▲4 ▼0 ·9 | 12 docs | camp: anchor▲2 anchor▼2
+e7481 | A startup wants to build a massive nuclear-powered data center on public land in Utah | 12 authors ▲1 ▼3 ·8 | 11 docs | camp: anchor▲1 anchor▼3
+e806 | Microsoft bought 20 years of power from Three Mile Island in 2024 | 11 authors ▲3 ▼0 ·8 | 9 docs | camp: anchor▲3 anchor▼2
+e926 | Nuclear power is becoming core AI infrastructure as tech giants race to deploy SMRs for clean energy | 11 authors ▲9 ▼0 ·2 | 9 docs | camp: anchor▲8 anchor▼1
+e4044 | TerraPower's nuclear reactor offers a strategic advantage for powering AI data centers | 11 authors ▲10 ▼0 ·1 | 6 docs | camp: anchor▲11 anchor▼0
+e6740 | Google is backing nuclear expansion at Georgia Power plants | 11 authors ▲6 ▼1 ·4 | 12 docs | camp: anchor▲4 anchor▼1
+e156 | AI data center demand for more nuclear plants comes with hidden costs and timelines | 10 authors ▲10 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼9
+e6054 | AI can break rules and hack critical infrastructure, including nuclear weapons, dams and power grids | 10 authors ▲9 ▼0 ·1 | 10 docs | camp: anchor▲1 anchor▼2
+e7687 | Amazon signed a 20-year agreement for 190 MW from the Calvert Cliffs nuclear plant | 10 authors ▲2 ▼0 ·8 | 12 docs | camp: anchor▲7 anchor▼0
+e8097 | Google is nearing a roughly $1B nuclear power purchase deal with Constellation | 10 authors ▲8 ▼0 ·2 | 10 docs | camp: anchor▲3 anchor▼1
+e9312 | Amazon will fund 12 small nuclear reactors at a former Indiana coal plant delivering nearly 1 GW | 10 authors ▲8 ▼0 ·2 | 10 docs | camp: anchor▲1 anchor▼2
+e826 | Data centers are now as hated as nuclear power plants | 9 authors ▲7 ▼1 ·1 | 8 docs | camp: anchor▲1 anchor▼2
+e591 | AI can accelerate open research and innovation in nuclear power | 8 authors ▲6 ▼0 ·2 | 8 docs | camp: anchor▲6 anchor▼2
+e641 | Power for data centers, whether from gas, fuel cells or nuclear, will cause long-lasting damage to land and water and devastate communities | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼4
+e2230 | Valar Atomics raised $1B to power AI with nuclear energy | 8 authors ▲4 ▼0 ·4 | 12 docs | camp: anchor▲3 anchor▼1
+e5209 | JD Vance's plan to build nuclear plants next to data centers to lower rates is moronic | 8 authors ▲1 ▼7 ·0 | 5 docs | camp: anchor▲0 anchor▼7
+e5795 | Google picks Finland for its largest single investment in Europe, a €13bn data centre project | 8 authors ▲5 ▼0 ·3 | 9 docs | camp: anchor▲1 anchor▼0
+e7557 | Valar Atomics' plan for over 450 reactors on Utah public land is a reckless project | 8 authors ▲7 ▼0 ·1 | 7 docs | camp: anchor▲1 anchor▼5
+e7686 | Constellation will upgrade the Calvert Cliffs nuclear plant after signing a 20-year power purchase deal with Amazon | 8 authors ▲2 ▼0 ·6 | 8 docs | camp: anchor▲4 anchor▼0
+e7792 | Oracle plans to power its Ozaukee County data center with electricity from the Point Beach nuclear plant | 8 authors ▲2 ▼0 ·6 | 8 docs | camp: anchor▲2 anchor▼0
+e8130 | Constellation Energy's stock surged about 12% after a Google nuclear power deal | 8 authors ▲2 ▼0 ·6 | 8 docs | camp: anchor▲3 anchor▼0
+e210 | Small modular reactors are the more realistic nuclear option for powering specific hyperscale data centers. | 7 authors ▲6 ▼0 ·1 | 4 docs | camp: anchor▲6 anchor▼0
+e305 | Nuclear reactors take 4-6 years to build while solar can be installed in days, so solar wins the race to power data centers | 7 authors ▲6 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼6
+e1267 | Trump will push nuclear power to accommodate AI data centers | 7 authors ▲6 ▼0 ·1 | 6 docs | camp: anchor▲0 anchor▼5
+e2417 | Gas-burning power plants should not be built; data centers should be powered by solar, wind or nuclear | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼1
+e5788 | Google's Finland AI buildout relies on a 22-year nuclear power deal with Fortum to keep Loviisa running through 2050 | 7 authors ▲7 ▼0 ·0 | 7 docs | camp: anchor▲4 anchor▼0
+e7486 | Project Beehive plans 450+ small reactors and acquisition of about 9,000 acres of BLM and Utah state land | 7 authors ▲0 ▼0 ·7 | 7 docs | camp: anchor▲0 anchor▼2
+e9357 | Amazon, AEP and X-energy are evaluating a 960MW nuclear project at a former coal plant in Indiana | 7 authors ▲5 ▼0 ·2 | 7 docs | camp: anchor▲5 anchor▼1
+e9402 | Amazon is funding 12 small modular reactors in Indiana providing 960 MW of clean power for data centers | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲4 anchor▼0
+e9466 | AEP signed a 960-MW Indiana nuclear pact with Amazon and X-energy | 7 authors ▲0 ▼0 ·7 | 7 docs | camp: anchor▲1 anchor▼1
+e10208 | Trump's DOE is loaning $5 billion to nuclear plants that will power data centers | 7 authors ▲1 ▼1 ·5 | 7 docs | camp: anchor▲4 anchor▼0
+e1603 | Atomarine proposes nuclear-powered data centers at sea | 6 authors ▲1 ▼2 ·3 | 5 docs | camp: anchor▲1 anchor▼1
+e1624 | Data centers will justify expanded nuclear power, creating radioactive waste that stays toxic for tens of thousands of years | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼6
+e1835 | VC money is flooding into US nuclear startups as AI power demand explodes | 6 authors ▲4 ▼0 ·2 | 5 docs | camp: anchor▲3 anchor▼2
+e1896 | Hyperscalers are trading renewable certificates for firm nuclear contracts as AI power demand outruns clean supply | 6 authors ▲4 ▼0 ·2 | 6 docs | camp: anchor▲4 anchor▼0
+e2976 | AI nuclear power firm Fermi named Lee McIntire as CEO after firing co-founder Toby Neugebauer | 6 authors ▲0 ▼0 ·6 | 6 docs | camp: anchor▲6 anchor▼0
+e5554 | Google's 22-year power purchase agreement with Fortum supports the Loviisa nuclear plant life extension alongside new wind and battery capacity in Finland | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲4 anchor▼0
+e5718 | Google secured a 22-year nuclear power deal with Fortum | 6 authors ▲0 ▼0 ·6 | 6 docs | camp: anchor▲2 anchor▼1
+e7480 | A nuclear-powered data center on 9,000 acres of federal land in Utah is taking public land from the public | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼4
+e7619 | A proposed 'world's largest' data centre at the former Chapelcross nuclear station would strain Scotland's energy grid | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲3 anchor▼2
+e8354 | Powering data centers with nuclear is a tough sell in Utah's coal country | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲0 anchor▼3
+e9706 | Nvidia is working with PreussenElektra to convert decommissioned German nuclear plant sites into AI data centers | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲3 anchor▼0
+e154 | Data centers should be sited on the coast, as nuclear power stations are | 5 authors ▲4 ▼0 ·1 | 4 docs | camp: anchor▲2 anchor▼1
+e217 | Solar farms take up too much land to power a data center, so small dedicated nuclear is the way to go. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼0
+e297 | Oklo and X-Energy joining a Trump administration effort with Microsoft and Nvidia to speed nuclear reactor buildout for AI data centers is a good development | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e643 | Bill Gates is looking into mini nuclear plants to power data centers | 5 authors ▲3 ▼0 ·2 | 3 docs | camp: anchor▲2 anchor▼2
+e809 | Nuclear reactor startups marketing AI energy power are glossy, ludicrous hype | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼3
+e867 | Big LLM companies plan to install their own power generation, mostly nuclear | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲2 anchor▼0
+e1134 | Hyperscaler data centers needing dedicated gigawatt nuclear plants is absurd | 5 authors ▲3 ▼2 ·0 | 2 docs | camp: anchor▲0 anchor▼5
+e1194 | Opaque AI black-box systems running nuclear reactors clash with nuclear safety transparency, and AI-driven nuclear startups lack safety oversight | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼4
+e1417 | US tech firms and utilities are investing heavily in nuclear, solar and geothermal microgrids for data centers | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲2 anchor▼1
+e1418 | Data centers with nuclear power should not be built, since the AI demand they serve is not needed | 5 authors ▲4 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼4
+e3113 | The nuclear power industry is the best model to follow for how AI companies should be governed | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e3749 | Wisconsin Electric signed a power purchase agreement to buy 86% of the output of Point Beach nuclear Units 1 and 2 | 5 authors ▲1 ▼1 ·3 | 4 docs | camp: anchor▲1 anchor▼0
+e3866 | The massive water usage of data centers and power infrastructure is a huge overlooked water-scarcity issue | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼2
+e5547 | Google's €13 billion Finland commitment includes data centers in four cities and a nuclear power deal | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲3 anchor▼0
+e5703 | Google plans EUR13bn of Finnish data-centre infrastructure backed by long-term nuclear power, new wind and a battery | 5 authors ▲0 ▼0 ·5 | 6 docs | camp: anchor▲2 anchor▼2
+e5739 | Vistra secured landmark power deals with tech giants such as Amazon and Meta | 5 authors ▲1 ▼0 ·4 | 6 docs | camp: anchor▲5 anchor▼0
+e5814 | Google will invest about $15bn in Finnish AI infrastructure with a 22-year nuclear power agreement | 5 authors ▲1 ▼0 ·4 | 5 docs | camp: anchor▲0 anchor▼1
+e6244 | Holtec pulled its IPO as US sentiment turned against data centers and nuclear power demand | 5 authors ▲2 ▼0 ·3 | 6 docs | camp: anchor▲2 anchor▼1
+e6265 | AI turning off control systems of a nuclear power plant by accident is a plausible route to disaster | 5 authors ▲4 ▼0 ·1 | 5 docs
+e6376 | Nationals MP David Littleproud backs new coal-fired power stations and nuclear energy to power a $32bn data centre | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e7963 | Oracle will take on part of We Energies' Point Beach nuclear power bill, saving other customers about $300M over 5 years | 5 authors ▲3 ▼0 ·2 | 6 docs | camp: anchor▲1 anchor▼0
+e8056 | Amazon is locking in nuclear and fossil-backed power supplies that shift costs onto ordinary ratepayers | 5 authors ▲2 ▼0 ·3 | 6 docs | camp: anchor▲0 anchor▼1
+e8107 | Rising AI electricity demand has renewed interest in nuclear power, which offers steady carbon-free energy | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲4 anchor▼1
+e9350 | Amazon is backing a 960MW nuclear power plant project | 5 authors ▲5 ▼0 ·0 | 5 docs
+e9620 | Amazon is funding a new nuclear plant in Indiana with X-energy and AEP | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+   (+770 more in this theme: 840 docs; largest folded has 4 authors)
+## theme Drought, heat and cooling-water shutdowns (Danube, France): 298 assertions, 1531 docs (5.6%)
+e1561 | Droughts are forcing nuclear reactors to shut down | 116 authors ▲106 ▼0 ·10 | 95 docs | camp: anchor▲5 anchor▼65
+e2146 | Romania's navy carried out a controlled explosion to divert Danube water to the Cernavodă nuclear plant for cooling | 53 authors ▲34 ▼0 ·19 | 58 docs | camp: anchor▲6 anchor▼14
+e1747 | Hungary's only nuclear plant is about to shut because the Danube does not have enough water | 49 authors ▲18 ▼0 ·31 | 58 docs | camp: anchor▲10 anchor▼7
+e2287 | A heatwave is disrupting nuclear power output across Europe | 47 authors ▲28 ▼0 ·19 | 52 docs | camp: anchor▲10 anchor▼16
+e631 | Nuclear is vulnerable to climate change effects such as heat waves and droughts, so it is not a good long-term bet | 45 authors ▲45 ▼0 ·0 | 33 docs | camp: anchor▲3 anchor▼40
+e1421 | Building nuclear plants on the assumption of constant large water supplies is flawed, as low Danube levels forced Romanian reactors offline | 43 authors ▲33 ▼2 ·8 | 27 docs | camp: anchor▲7 anchor▼26
+e1446 | Prolonged low water levels forced European industries including nuclear power to cut output | 43 authors ▲38 ▼0 ·5 | 49 docs | camp: anchor▲5 anchor▼15
+e1443 | Record low Danube river levels curbed nuclear power output in Eastern Europe | 38 authors ▲24 ▼0 ·14 | 39 docs | camp: anchor▲6 anchor▼11
+e1645 | Paks nuclear plant in Hungary had its first-ever block shutdown as the Danube ran dangerously low | 37 authors ▲6 ▼0 ·31 | 36 docs | camp: anchor▲9 anchor▼6
+e2415 | Romania will sink four barges in the Danube to raise water levels 10–12 cm to help cool the Cernavodă nuclear plant | 35 authors ▲8 ▼0 ·27 | 34 docs | camp: anchor▲6 anchor▼9
+e1599 | Hungary's Paks nuclear plant is closing fully, removing about 2000 MW from the country's power production | 33 authors ▲5 ▼0 ·28 | 34 docs | camp: anchor▲8 anchor▼7
+e652 | Warm rivers curtail electricity generation in France because several nuclear stations rely on rivers for cooling | 31 authors ▲29 ▼0 ·2 | 28 docs | camp: anchor▲2 anchor▼17
+e1676 | Romania shut one of its two nuclear reactors due to low Danube water levels | 31 authors ▲16 ▼0 ·15 | 33 docs | camp: anchor▲6 anchor▼11
+e535 | Nuclear power plants require huge amounts of cooling capacity | 30 authors ▲26 ▼3 ·1 | 21 docs | camp: anchor▲10 anchor▼14
+e1616 | Record-low Danube water levels forced Hungary to reduce output at its Paks nuclear power plant | 30 authors ▲15 ▼0 ·15 | 34 docs | camp: anchor▲8 anchor▼8
+e1681 | Drought shut down nearly 1 GW of nuclear generation in Romania and Hungary | 28 authors ▲18 ▼0 ·10 | 27 docs | camp: anchor▲7 anchor▼8
+e2626 | Climate-driven reductions in water supply argue against relying on nuclear power | 27 authors ▲26 ▼0 ·1 | 19 docs | camp: anchor▲3 anchor▼19
+e1586 | Romania shut both Cernavoda reactors because low Danube water levels limited cooling | 26 authors ▲10 ▼0 ·16 | 28 docs | camp: anchor▲8 anchor▼8
+e1437 | Historic low Danube water levels forced a halt at Hungary's nuclear plant because cooling intake pipes cannot reach the water | 24 authors ▲15 ▼0 ·9 | 24 docs | camp: anchor▲2 anchor▼11
+e1450 | Historic Danube drought pushes Hungary's Paks nuclear plant toward an unprecedented shutdown | 23 authors ▲6 ▼0 ·17 | 24 docs | camp: anchor▲4 anchor▼4
+e2037 | Heat-driven nuclear shutdowns in Hungary and France show nuclear is not reliable baseload power | 23 authors ▲20 ▼0 ·3 | 15 docs | camp: anchor▲0 anchor▼19
+e1415 | Low Danube river levels forced Romania to shut down both of its nuclear reactors | 22 authors ▲7 ▼0 ·15 | 23 docs | camp: anchor▲5 anchor▼5
+e47 | Summer heat waves forced a gas plant shutdown and throttling of eleven French nuclear plants | 21 authors ▲16 ▼0 ·5 | 17 docs | camp: anchor▲5 anchor▼10
+e1873 | Droughts and shifting rain patterns make river-dependent power generation vulnerable and are already affecting people's lives | 21 authors ▲20 ▼0 ·1 | 19 docs | camp: anchor▲1 anchor▼9
+e1420 | Romania shut down both of its nuclear reactors for the first time ever because of low Danube water levels | 20 authors ▲9 ▼0 ·11 | 22 docs | camp: anchor▲1 anchor▼5
+e1592 | Hungary warns the Paks nuclear plant may power down | 20 authors ▲3 ▼0 ·17 | 20 docs | camp: anchor▲4 anchor▼4
+e2277 | Global warming threatens nuclear plant cooling water, so even nuclear solutions barely outrun climate change | 19 authors ▲18 ▼0 ·1 | 13 docs | camp: anchor▲3 anchor▼13
+e3087 | Hungary is taking steps to raise the Danube's level so its only nuclear plant, Paks, can keep operating | 18 authors ▲6 ▼0 ·12 | 18 docs | camp: anchor▲6 anchor▼3
+e1070 | A nuclear plant and a data center drawing on the same drought-stressed river and lake is a water concern | 17 authors ▲17 ▼0 ·0 | 12 docs | camp: anchor▲0 anchor▼11
+e1748 | Romania's Cernavoda nuclear plant had both reactors shut at once because of Danube drought, a first | 17 authors ▲8 ▼0 ·9 | 18 docs | camp: anchor▲3 anchor▼5
+e31 | EDF temporarily shut down three French nuclear reactors and seven others may run at reduced power to comply with environmental regulations | 15 authors ▲5 ▼0 ·10 | 13 docs | camp: anchor▲4 anchor▼6
+e1773 | Drought forced a Romanian nuclear power plant to shut down | 15 authors ▲9 ▼0 ·6 | 15 docs | camp: anchor▲4 anchor▼3
+e1430 | Drought-driven low Danube levels forced nuclear reactors offline in Europe | 14 authors ▲11 ▼0 ·3 | 13 docs | camp: anchor▲1 anchor▼4
+e1427 | Drought-driven low Danube levels forced nuclear plants in Hungary and Romania to curtail reactor operations | 12 authors ▲10 ▼0 ·2 | 12 docs | camp: anchor▲6 anchor▼1
+e2067 | Nuclear makes no sense for Australia given its drought and water scarcity; solar, wind and batteries are better options | 12 authors ▲11 ▼1 ·0 | 8 docs | camp: anchor▲1 anchor▼9
+e2452 | Heat waves affect nearly every electricity source, including nuclear, gas, wind and solar | 12 authors ▲10 ▼0 ·2 | 12 docs | camp: anchor▲2 anchor▼4
+e2937 | The Danube fell below the level needed for Cernavoda nuclear plant to operate normally, forcing Unit 2 into controlled shutdown | 12 authors ▲12 ▼0 ·0 | 12 docs | camp: anchor▲4 anchor▼4
+e2083 | Any steam-turbine power plant, including coal and large solar, needs water, not just nuclear | 11 authors ▲10 ▼1 ·0 | 12 docs | camp: anchor▲3 anchor▼3
+e2289 | Hungary temporarily shut its only nuclear plant amid a heatwave and drought, the first time in over four decades | 11 authors ▲8 ▼0 ·3 | 11 docs | camp: anchor▲1 anchor▼3
+e2927 | Extreme weather and jellyfish knocked one-fifth of France's nuclear capacity offline | 11 authors ▲8 ▼0 ·3 | 10 docs | camp: anchor▲1 anchor▼3
+e1575 | Nuclear is not a reliable backup for renewables because drought shuts reactors such as Cernavoda | 10 authors ▲10 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼9
+e1755 | Drought has pushed the Danube to record lows, forcing European nuclear reactors offline | 10 authors ▲8 ▼0 ·2 | 10 docs | camp: anchor▲1 anchor▼1
+e3024 | Hungary's Paks nuclear plant restarted electricity generation after rain replenished the Danube | 9 authors ▲5 ▼0 ·4 | 12 docs | camp: anchor▲5 anchor▼1
+e3220 | Solar kept Europe from blackouts while nuclear plants shut down during the drought | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼6
+e1405 | Hungary's Paks nuclear plant is shutting down unit 3 because the Danube's water level has dropped critically | 8 authors ▲4 ▼0 ·4 | 9 docs | camp: anchor▲2 anchor▼0
+e1536 | Hungary shut down one reactor at Paks because low Danube water levels threatened its cooling water supply | 7 authors ▲5 ▼0 ·2 | 6 docs | camp: anchor▲2 anchor▼1
+e2038 | Hungary faced blackout warnings from a gas plant outage and a nuclear plant shutdown caused by low water | 7 authors ▲2 ▼0 ·5 | 7 docs | camp: anchor▲2 anchor▼2
+e2212 | Dynamiting rivers to keep nuclear plants running is a sign of climate collapse | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼4
+e2257 | Romania blowing up Danube rocks to help nuclear cooling shows climate desperation | 7 authors ▲5 ▼0 ·2 | 6 docs | camp: anchor▲0 anchor▼4
+e2369 | Weak nuclear output amid hot weather is constraining EU power supply and pushing carbon prices up | 7 authors ▲7 ▼0 ·0 | 8 docs | camp: anchor▲3 anchor▼2
+e2536 | Nuclear, gas, wind and solar are each affected differently during heatwaves | 7 authors ▲2 ▼0 ·5 | 8 docs | camp: anchor▲2 anchor▼2
+e2547 | A Carbon Brief factcheck examines how nuclear, gas, wind and solar are affected during heatwaves | 7 authors ▲0 ▼0 ·7 | 9 docs | camp: anchor▲0 anchor▼1
+e3467 | Heatwaves impose major economic costs on Europe, including on power generation and productivity | 7 authors ▲7 ▼0 ·0 | 7 docs | camp: anchor▲2 anchor▼1
+e3993 | Solar power buoyed Europe's grid amid record heat and drought this summer | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼3
+e399 | Romania restricted farmers' water access to cool Nuclearelectrica's reactors | 6 authors ▲1 ▼0 ·5 | 6 docs | camp: anchor▲3 anchor▼1
+e2006 | French spot power is set to reach its highest level since February 2025 amid heat-related nuclear outages and high exports | 6 authors ▲4 ▼0 ·2 | 6 docs | camp: anchor▲1 anchor▼2
+e2084 | Romania introduced emergency measures to keep Cernavodă Unit 2 nuclear plant running and boost imports | 6 authors ▲2 ▼0 ·4 | 7 docs | camp: anchor▲4 anchor▼0
+e2128 | Nuclear plants are not reliable: river sites face drought, coastal sites face sea-level rise and storms, and any site is a potential war target | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼5
+e2188 | A temporary dam is planned to divert more Danube water into the channel serving Cernavoda's remaining reactor | 6 authors ▲2 ▼0 ·4 | 7 docs | camp: anchor▲2 anchor▼2
+e2545 | A heatwave shut continental European nuclear plants and pushed electricity prices toward records | 6 authors ▲5 ▼0 ·1 | 8 docs | camp: anchor▲3 anchor▼1
+e3203 | A heatwave is expected to limit about 15% of France's nuclear fleet | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲1 anchor▼3
+e449 | Nuclear plants consume only a small fraction of the water they withdraw, so siting near rivers or lakes works for firm power | 5 authors ▲4 ▼0 ·1 | 3 docs | camp: anchor▲3 anchor▼0
+e1982 | Nuclear power stations should never be built on rivers and should use seawater cooling instead | 5 authors ▲4 ▼1 ·0 | 4 docs | camp: anchor▲3 anchor▼2
+e2077 | Nuclear plants can be designed to run on treated sewage water to avoid stressing freshwater supplies | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼1
+e2179 | Cernavoda's operation is endangered because the Danube carries about a third less water than usual | 5 authors ▲4 ▼0 ·1 | 6 docs | camp: anchor▲1 anchor▼2
+e2519 | EDF will invest €9 billion over 15 years to adapt its power plants to climate change | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲0 anchor▼3
+e2524 | Cernavodă is Romania's only nuclear power plant, generating about 20% of the country's electricity | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲1 anchor▼2
+e3097 | Hungary plans a Danube barrier to protect the Paks nuclear plant from low water levels | 5 authors ▲3 ▼0 ·2 | 6 docs | camp: anchor▲2 anchor▼2
+e3905 | Record solar power in Hungary offset an 80% nuclear output drop at the Paks plant | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼2
+e4016 | Bulgaria's sole nuclear plant will cut capacity by 12% due to low Danube water levels | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼4
+   (+228 more in this theme: 295 docs; largest folded has 4 authors)
+## theme Ukraine war: Zaporizhzhia, Chornobyl and grid attacks: 415 assertions, 1462 docs (5.3%)
+e1882 | The Zaporizhzhia nuclear power plant lost its external electrical power source | 120 authors ▲83 ▼0 ·37 | 174 docs | camp: anchor▲11 anchor▼18
+e263 | Ukraine gave up its nuclear arsenal, once the world's third largest, under the Budapest Memorandum | 30 authors ▲25 ▼0 ·5 | 82 docs ⚠ top-5 accounts wrote 73% of docs | camp: anchor▲5 anchor▼2
+e5129 | An IAEA-brokered ceasefire took effect to allow repairs restoring external power to the Zaporizhzhia nuclear plant | 26 authors ▲15 ▼0 ·11 | 35 docs | camp: anchor▲6 anchor▼3
+e10311 | A drone attack reportedly killed a worker at the Russian-occupied Zaporizhzhia nuclear plant | 25 authors ▲13 ▼0 ·12 | 33 docs | camp: anchor▲6 anchor▼3
+e10611 | Russia's strikes since September 2025 have hit substations, including a node connecting Ukraine's nuclear plants in western Ukraine to Kyiv | 23 authors ▲20 ▼0 ·3 | 27 docs | camp: anchor▲4 anchor▼1
+e5496 | Off-site power to the Zaporizhzhia nuclear plant was restored via the Ferosplavna power line | 19 authors ▲15 ▼0 ·4 | 28 docs | camp: anchor▲4 anchor▼5
+e428 | A Ukrainian drone strike killed a nuclear plant engineer | 18 authors ▲1 ▼0 ·17 | 20 docs | camp: anchor▲5 anchor▼0
+e7759 | Russia intends to force Ukraine's three operating nuclear plants offline by firing missiles at their grid switchyards | 17 authors ▲17 ▼0 ·0 | 18 docs | camp: anchor▲1 anchor▼2
+e6618 | A drone hit a cooling tower at Russia's Kursk nuclear power plant, per the IAEA | 16 authors ▲11 ▼0 ·5 | 17 docs | camp: anchor▲6 anchor▼1
+e3517 | A drone exploded at a bus stop used by Zaporizhzhia plant employees, killing one and injuring several | 15 authors ▲2 ▼0 ·13 | 17 docs | camp: anchor▲5 anchor▼3
+e6194 | The US did not keep its promises to Ukraine after Ukraine gave up its nuclear power and weapons, while Russia bears blame for the attack | 15 authors ▲15 ▼0 ·0 | 16 docs | camp: anchor▲2 anchor▼2
+e8989 | The UK government is providing £17 million to repair the Chornobyl nuclear plant after a Russian drone attack | 15 authors ▲11 ▼1 ·3 | 14 docs | camp: anchor▲1 anchor▼2
+e68 | Russia struck the Chernobyl nuclear power plant with a drone | 11 authors ▲7 ▼0 ·4 | 11 docs | camp: anchor▲1 anchor▼2
+e4814 | Zaporizhzhia nuclear plant faces a complete station blackout within ten days without fuel deliveries or grid repairs | 11 authors ▲9 ▼0 ·2 | 11 docs | camp: anchor▲1 anchor▼1
+e7862 | Drone attacks disrupted power supply near the Zaporizhzhia nuclear plant by damaging transformers vital for off-site power | 11 authors ▲8 ▼0 ·3 | 11 docs | camp: anchor▲2 anchor▼1
+e9093 | G7 countries will provide €260 million to restore Chornobyl's protective confinement | 11 authors ▲8 ▼0 ·3 | 12 docs | camp: anchor▲2 anchor▼1
+e1033 | Russia detained and tortured Zaporizhzhia nuclear plant workers | 10 authors ▲10 ▼0 ·0 | 12 docs
+e5139 | The Zaporizhzhia nuclear plant has run on diesel generators since August 20 after losing external power | 10 authors ▲7 ▼0 ·3 | 10 docs | camp: anchor▲0 anchor▼3
+e10663 | Russian strikes on energy infrastructure have forced Ukrainian nuclear plants to reduce electricity generation | 10 authors ▲9 ▼0 ·1 | 10 docs | camp: anchor▲3 anchor▼1
+e23 | Russia turned the occupied Zaporizhzhia nuclear plant into a military base with ammunition depots and drone sites | 9 authors ▲9 ▼0 ·0 | 9 docs | camp: anchor▲1 anchor▼2
+e871 | Military activity around the Zaporizhzhia nuclear plant is worsening conditions, per the IAEA | 9 authors ▲6 ▼0 ·3 | 9 docs | camp: anchor▲1 anchor▼2
+e1017 | The IAEA reports water supply issues at the Zaporizhzhia nuclear plant | 8 authors ▲6 ▼0 ·2 | 8 docs | camp: anchor▲1 anchor▼0
+e1229 | Ukraine's nuclear power plants maintained significant electricity production despite war challenges | 8 authors ▲5 ▼1 ·2 | 7 docs | camp: anchor▲3 anchor▼2
+e1606 | A Ukrainian drone attempted to strike critical infrastructure at the Zaporizhzhia nuclear power plant | 8 authors ▲2 ▼0 ·6 | 9 docs | camp: anchor▲2 anchor▼1
+e1732 | A drone targeted the Zaporizhzhia nuclear plant | 8 authors ▲3 ▼0 ·5 | 9 docs | camp: anchor▲2 anchor▼1
+e3701 | Ukraine could destroy Russia's 16 nuclear power plants and turn them into Chernobyls | 8 authors ▲7 ▼0 ·1 | 10 docs | camp: anchor▲0 anchor▼1
+e8969 | The UK is funding repairs to the Chornobyl nuclear power plant damaged by a Russian drone strike | 8 authors ▲0 ▼0 ·8 | 8 docs | camp: anchor▲3 anchor▼2
+e138 | Russia's 2025 drone attack on the Chornobyl plant exposed the vulnerability of nuclear facilities | 7 authors ▲6 ▼0 ·1 | 7 docs | camp: anchor▲1 anchor▼4
+e1247 | Russia shelled the Zaporizhzhia nuclear power plant, undermining its claims to moral high ground | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼2
+e10615 | Russia hit a substation critical for a nuclear power plant in its biggest mass attack on Ukraine's energy this year | 7 authors ▲2 ▼0 ·5 | 7 docs | camp: anchor▲1 anchor▼0
+e452 | Ukraine thwarted Russia's attempt to connect the Zaporizhzhia nuclear plant to Russia's energy grid to reduce nuclear risk | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼1
+e918 | Russian troops seized the Zaporizhzhia nuclear plant within days of the full-scale invasion in 2022 | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e4924 | The IAEA is concerned about diesel supply for Zaporizhzhia nuclear plant generators | 6 authors ▲3 ▼0 ·3 | 6 docs | camp: anchor▲4 anchor▼0
+e7757 | Russia plans to take Ukraine's nuclear plants offline by striking substations, hydro plants and grid links | 6 authors ▲5 ▼0 ·1 | 7 docs | camp: anchor▲0 anchor▼3
+e8387 | Ukraine must become a nuclear power | 6 authors ▲6 ▼0 ·0 | 192 docs ⚠ top-5 accounts wrote 99% of docs | camp: anchor▲2 anchor▼1
+e10142 | Russian airstrikes are hitting Ukraine's energy infrastructure, leaving millions without heat and power as winter nears | 6 authors ▲4 ▼0 ·2 | 6 docs | camp: anchor▲2 anchor▼1
+e613 | The Zaporizhzhia nuclear power plant, Europe's largest, has for years sat on the front lines of fighting in south Ukraine | 5 authors ▲2 ▼0 ·3 | 7 docs | camp: anchor▲1 anchor▼0
+e1302 | A Ukrainian court sentenced six Russian National Guard commanders in absentia for the 2022 shelling of the Zaporizhzhia nuclear plant | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+e2720 | Chernobyl's reactor 4 had an extreme criticality event causing a steam explosion, with no containment building | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲1 anchor▼0
+e5136 | Nuclear safety at the Zaporizhzhia plant is being systematically destroyed | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼2
+e6531 | An investigation found no evidence for Russia's claims that Ukrainian attacks hit Zaporizhzhia's power lines | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+e7739 | Russian drones struck a 750 kV substation linking the Rivne Nuclear Power Plant with Kyiv | 5 authors ▲2 ▼0 ·3 | 6 docs | camp: anchor▲0 anchor▼1
+e7765 | Russia plans a winter campaign of strikes to cripple Ukraine's electricity and water, including grid connections to nuclear plants | 5 authors ▲5 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼2
+e8413 | An intercepted Russian plan outlines strikes on 60 Ukrainian energy targets, including major nuclear power plants | 5 authors ▲3 ▼0 ·2 | 5 docs
+e10379 | Chernobyl's dogs are genetically different from other dogs, possibly due to radiation | 5 authors ▲1 ▼0 ·4 | 6 docs | camp: anchor▲1 anchor▼1
+e11181 | External power was restored to the occupied Zaporizhzhia nuclear plant, but outage and nuclear safety risks persist under Russian occupation. | 5 authors ▲2 ▼0 ·3 | 6 docs | camp: anchor▲3 anchor▼1
+   (+369 more in this theme: 536 docs; largest folded has 4 authors)
+## theme SMRs, microreactors, military, floating and space nuclear: 789 assertions, 1408 docs (5.1%)
+e62 | The US is building more small next-generation nuclear power plants | 34 authors ▲12 ▼1 ·21 | 36 docs | camp: anchor▲10 anchor▼5
+e187 | Nuclear power should be explored for ships as part of green maritime shipping | 30 authors ▲19 ▼3 ·8 | 30 docs | camp: anchor▲13 anchor▼4
+e6625 | Valar Atomics plans a 10,200-acre nuclear power project in Utah | 25 authors ▲3 ▼3 ·19 | 22 docs | camp: anchor▲1 anchor▼7
+e939 | Bluecore is advancing floating nuclear power barges | 23 authors ▲4 ▼0 ·19 | 26 docs | camp: anchor▲7 anchor▼3
+e672 | The Trump administration is evaluating putting nuclear power projects in US federal waters | 21 authors ▲15 ▼1 ·5 | 20 docs | camp: anchor▲5 anchor▼6
+e424 | NASA's roughly $2 billion Space Reactor-1 Freedom project is a major step toward nuclear electric propulsion for Mars travel | 20 authors ▲7 ▼0 ·13 | 21 docs | camp: anchor▲5 anchor▼2
+e4634 | The US Army plans to add nuclear microreactors at five military bases as a grid-independent power source | 18 authors ▲17 ▼0 ·1 | 18 docs | camp: anchor▲4 anchor▼0
+e152 | Floating nuclear reactors can provide clean power for ports | 15 authors ▲11 ▼0 ·4 | 16 docs | camp: anchor▲6 anchor▼1
+e1786 | TerraPower is building a small nuclear plant in Wyoming at a former coal plant site | 14 authors ▲2 ▼0 ·12 | 14 docs | camp: anchor▲4 anchor▼2
+e2218 | New reactor technology makes nuclear power a more practical option | 14 authors ▲12 ▼0 ·2 | 9 docs | camp: anchor▲10 anchor▼0
+e9723 | The Pentagon's FORTRESS program makes major US bases self-sustaining for 90 days using nuclear micro-reactors and domestic reshoring | 14 authors ▲5 ▼1 ·8 | 14 docs | camp: anchor▲0 anchor▼2
+e293 | The US plans to spend about $2.1 billion on the nuclear-powered SR-1 Freedom spacecraft bound for Mars in late 2028 | 12 authors ▲2 ▼1 ·9 | 14 docs | camp: anchor▲3 anchor▼0
+e9720 | The Pentagon is planning portable nuclear reactors and independent power grids so bases can operate 90 days without outside support | 12 authors ▲7 ▼0 ·5 | 12 docs | camp: anchor▲2 anchor▼3
+e329 | Past US space nuclear power and propulsion programs are a notable historical topic | 11 authors ▲2 ▼0 ·9 | 12 docs | camp: anchor▲3 anchor▼2
+e1255 | Nuclear fusion can work | 11 authors ▲9 ▼0 ·2 | 8 docs | camp: anchor▲7 anchor▼0
+e3788 | Apollo Atomics is shrinking an overlooked reactor part to make nuclear power cheaper | 11 authors ▲9 ▼0 ·2 | 8 docs | camp: anchor▲9 anchor▼0
+e8406 | NASA and DOE signed an October 2026 agreement to accelerate nuclear power and propulsion for space missions | 11 authors ▲3 ▼0 ·8 | 12 docs | camp: anchor▲5 anchor▼1
+e8174 | There is a race for nuclear power on the Moon | 9 authors ▲2 ▼0 ·7 | 11 docs | camp: anchor▲1 anchor▼1
+e803 | A US military base will receive a portable 1MW microreactor | 8 authors ▲6 ▼0 ·2 | 8 docs | camp: anchor▲3 anchor▼1
+e1831 | The promised mini nuclear power units that were going to power the future have not materialized | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲3 anchor▼4
+e3887 | The IAEA will formally launch ATLAS, a program for licensing floating nuclear power at sea | 8 authors ▲5 ▼0 ·3 | 8 docs | camp: anchor▲5 anchor▼0
+e3951 | Nuclear power could help future moon missions survive the lunar night | 8 authors ▲7 ▼0 ·1 | 8 docs | camp: anchor▲3 anchor▼1
+e4460 | NASA has a new bimodal nuclear spacecraft design | 8 authors ▲5 ▼0 ·3 | 10 docs | camp: anchor▲1 anchor▼0
+e4579 | The US Army plans to spend about $2.2 billion on nuclear microreactors at five military bases to ensure power independent of the grid | 8 authors ▲6 ▼0 ·2 | 8 docs | camp: anchor▲3 anchor▼0
+e4932 | Engineered carbon removal projects and small modular nuclear plants will be attractive military targets in future wars | 8 authors ▲5 ▼0 ·3 | 8 docs | camp: anchor▲3 anchor▼3
+e492 | Reaching criticality is only a zero-power test, and microreactors still face significant engineering hurdles | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼3
+e830 | The Voyager spacecraft use nuclear batteries | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼1
+e1039 | Port of Long Beach became the first US seaport to partner with MARAD on small modular reactor technology for maritime use | 7 authors ▲4 ▼0 ·3 | 8 docs | camp: anchor▲5 anchor▼0
+e1172 | Antares Nuclear raised $470 million to build tiny reactors for US military bases | 7 authors ▲3 ▼0 ·4 | 6 docs | camp: anchor▲3 anchor▼1
+e1392 | The largest American aircraft carrier is nuclear-powered | 7 authors ▲3 ▼0 ·4 | 6 docs | camp: anchor▲2 anchor▼0
+e1846 | Canada should become a nuclear power so the US takes its threats seriously | 7 authors ▲7 ▼0 ·0 | 7 docs | camp: anchor▲3 anchor▼0
+e3510 | California is considering its first new nuclear power project in 50 years, a floating plant at Long Beach | 7 authors ▲1 ▼0 ·6 | 7 docs | camp: anchor▲0 anchor▼1
+e4501 | The US Army will spend $2.2 billion over five years to deploy over 20 nuclear microreactors at five bases for off-grid power | 7 authors ▲2 ▼0 ·5 | 6 docs | camp: anchor▲3 anchor▼0
+e4954 | New Brunswick First Nations are exploring a transportable Indigenous-owned nuclear power plant | 7 authors ▲2 ▼0 ·5 | 6 docs | camp: anchor▲4 anchor▼2
+e5282 | Rosatom is considering a Murmansk site focused on floating nuclear power plant construction | 7 authors ▲0 ▼1 ·6 | 8 docs | camp: anchor▲3 anchor▼0
+e5967 | The Navy is installing an advanced nuclear micro modular reactor at Naval Weapons Station Crane outside the civilian grid | 7 authors ▲3 ▼0 ·4 | 7 docs | camp: anchor▲4 anchor▼0
+e6621 | The world's first laser fusion power station is being built in Germany | 7 authors ▲7 ▼0 ·0 | 9 docs | camp: anchor▲0 anchor▼1
+e609 | India aims to make five small nuclear power reactors operational by 2033 | 6 authors ▲3 ▼0 ·3 | 5 docs | camp: anchor▲4 anchor▼1
+e621 | Offshore floating nuclear power plants are a great idea, while wind power is ugly | 6 authors ▲3 ▼2 ·1 | 3 docs | camp: anchor▲3 anchor▼2
+e721 | Nuclear-powered satellites are needed to supply large amounts of power beyond Mars | 6 authors ▲3 ▼0 ·3 | 5 docs | camp: anchor▲3 anchor▼1
+e836 | The Port of Long Beach wants nuclear power | 6 authors ▲3 ▼0 ·3 | 7 docs | camp: anchor▲1 anchor▼0
+e4321 | The US plans a nuclear-powered merchant fleet to challenge China's shipbuilding dominance | 6 authors ▲2 ▼0 ·4 | 8 docs | camp: anchor▲1 anchor▼1
+e4377 | ESA plans Ariane 6 safety adaptations for Argonaut lunar landers that will carry radioisotope power systems | 6 authors ▲3 ▼0 ·3 | 7 docs | camp: anchor▲2 anchor▼0
+e6667 | The lead contractor pulled out of Gates' Natrium nuclear power plant project in Wyoming | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲2 anchor▼2
+e7498 | General Matter, a startup led by an early SpaceX employee, is bringing the SpaceX playbook to nuclear power and aims to drive a US nuclear revival | 6 authors ▲0 ▼0 ·6 | 6 docs | camp: anchor▲0 anchor▼2
+e9532 | A Welsh island hosting the UK's first small modular reactor would be a target for Russia and Iran in an attack | 6 authors ▲2 ▼1 ·3 | 7 docs | camp: anchor▲3 anchor▼1
+e225 | Valar Atomics is pursuing a $6B valuation to build small modular nuclear reactors, and this funding accelerates atomic infrastructure. | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲2 anchor▼0
+e378 | A nuclear-powered CubeSat launched by SpaceX marks a new era for nuclear in orbit | 5 authors ▲4 ▼1 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e481 | Four US microreactors have reached criticality | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲3 anchor▼0
+e607 | Nuclear surface power for space is a presidential priority | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲3 anchor▼0
+e746 | The Trump administration's consideration of putting nuclear power plants in US waters is a risky idea | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼2
+e3237 | A US Navy policy shift away from nuclear reactors back toward coal power is absurd | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e3388 | Replacing Navy nuclear reactors with coal-fired power is a good idea | 5 authors ▲0 ▼5 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e3443 | Blue Energy and GE Vernova Hitachi are advancing a 2.5GW gas-plus-nuclear project in Victoria, Texas | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲4 anchor▼1
+e3530 | The nuclear-powered USS Abraham Lincoln was out of power for four days | 5 authors ▲2 ▼1 ·2 | 6 docs | camp: anchor▲1 anchor▼1
+e3571 | Small modular reactor company share prices are collapsing as the nuclear hype cycle unwinds | 5 authors ▲3 ▼0 ·2 | 7 docs | camp: anchor▲3 anchor▼2
+e4506 | The US Army announced $2.2 billion for nuclear microreactors at military bases as part of a push to expand nuclear power | 5 authors ▲1 ▼0 ·4 | 5 docs
+e4583 | The Army's Janus Program, launched in 2025, aims to provide energy to support national defense installations and critical missions | 5 authors ▲0 ▼0 ·5 | 6 docs
+e5790 | The Pentagon is installing an advanced modular nuclear reactor in Indiana by September 2028 | 5 authors ▲1 ▼0 ·4 | 8 docs | camp: anchor▲1 anchor▼1
+e7269 | A second reactor has been manufactured for a floating nuclear plant. | 5 authors ▲1 ▼0 ·4 | 5 docs | camp: anchor▲4 anchor▼1
+e7701 | US ports are pushing nuclear power for maritime infrastructure | 5 authors ▲4 ▼0 ·1 | 8 docs | camp: anchor▲2 anchor▼0
+e9592 | Japan's LDP next-generation propulsion submarines are code for nuclear power, and Ishin says nuclear is the only option | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲2 anchor▼2
+   (+727 more in this theme: 829 docs; largest folded has 4 authors)
+## theme US-Saudi nuclear deal and proliferation: 284 assertions, 1009 docs (3.7%)
+e183 | The US and Saudi Arabia reached a civilian nuclear energy deal | 92 authors ▲4 ▼0 ·88 | 91 docs | camp: anchor▲19 anchor▼6
+e485 | Rewarding Saudi Arabia with nuclear power is outrageous given Saudi-linked hijackers attacked the World Trade Center | 65 authors ▲64 ▼0 ·1 | 54 docs | camp: anchor▲2 anchor▼22
+e167 | The US-Saudi nuclear deal risks giving Saudi Arabia a path to nuclear weapons | 44 authors ▲41 ▼0 ·3 | 38 docs | camp: anchor▲2 anchor▼19
+e163 | Saudi Arabia does not need nuclear power; solar could easily meet its demand | 42 authors ▲40 ▼2 ·0 | 23 docs | camp: anchor▲4 anchor▼37
+e311 | The Trump administration will submit to Congress a Saudi nuclear power agreement lacking safeguards against weapons use | 39 authors ▲17 ▼0 ·22 | 42 docs | camp: anchor▲5 anchor▼10
+e604 | Trump family profits from the Saudi nuclear deal | 38 authors ▲38 ▼0 ·0 | 28 docs | camp: anchor▲1 anchor▼15
+e172 | The US-Saudi nuclear deal is dangerous and should be opposed | 30 authors ▲26 ▼0 ·4 | 23 docs | camp: anchor▲2 anchor▼15
+e2645 | The Mecca Joint Defense Agreement unites nuclear-armed Pakistan with Saudi Arabia and Turkey, which has NATO's second-largest army | 30 authors ▲8 ▼0 ·22 | 32 docs | camp: anchor▲5 anchor▼5
+e317 | The Trump administration pursued a Saudi deal that could lead to a commercial nuclear industry and uranium enrichment on Saudi soil | 29 authors ▲22 ▼0 ·7 | 26 docs | camp: anchor▲1 anchor▼9
+e742 | Trump says the Saudi nuclear deal is subject to Saudi Arabia normalizing relations with Israel through the Abraham Accords | 27 authors ▲8 ▼3 ·16 | 26 docs | camp: anchor▲5 anchor▼6
+e569 | The US and Saudi Arabia agreed a civil nuclear deal letting Saudi Arabia develop nuclear power and enrich uranium | 23 authors ▲3 ▼0 ·20 | 22 docs | camp: anchor▲1 anchor▼1
+e322 | Trump's nuclear deal is making Saudi Arabia a nuclear power, which is a serious mistake | 20 authors ▲20 ▼0 ·0 | 18 docs | camp: anchor▲0 anchor▼11
+e477 | Trump approved a landmark civilian nuclear deal between the US and Saudi Arabia | 20 authors ▲4 ▼0 ·16 | 18 docs | camp: anchor▲3 anchor▼4
+e347 | A Saudi nuclear deal adds a dangerous new nuclear power to the Middle East | 18 authors ▲18 ▼0 ·0 | 14 docs | camp: anchor▲3 anchor▼9
+e600 | Saudi Arabia becoming the US's trusted nuclear power in the Middle East leaves Israel worried about its place | 18 authors ▲2 ▼0 ·16 | 18 docs | camp: anchor▲2 anchor▼2
+e346 | Oil-rich Saudi Arabia does not need nuclear power, and Trump is a sucker for backing it | 16 authors ▲16 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼11
+e495 | The US allowing Saudi uranium enrichment while denying Iran nuclear power is a double standard | 16 authors ▲16 ▼0 ·0 | 13 docs | camp: anchor▲4 anchor▼3
+e491 | Trump administration decisions, including the Saudi nuclear deal, are made to pay the Trump family | 13 authors ▲13 ▼0 ·0 | 17 docs | camp: anchor▲0 anchor▼2
+e173 | Trump's Saudi nuclear deal was bought with payments or bribes | 12 authors ▲12 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼7
+e318 | Nuclear power can serve as cover for nuclear arms proliferation, a risk rarely discussed in debates about its pros and cons | 12 authors ▲10 ▼1 ·1 | 8 docs | camp: anchor▲3 anchor▼5
+e338 | Saudi Arabia should not be given nuclear power at all | 12 authors ▲12 ▼0 ·0 | 9 docs | camp: anchor▲0 anchor▼6
+e565 | Trump's Saudi nuclear deal is a dangerous gamble that undermines nonproliferation | 12 authors ▲12 ▼0 ·0 | 10 docs | camp: anchor▲0 anchor▼7
+e658 | Nuclear power is clearly distinct from nuclear weapons, and several regional countries operate nuclear power plants | 12 authors ▲11 ▼1 ·0 | 10 docs | camp: anchor▲6 anchor▼3
+e583 | A nuclear deal with Saudi Arabia is outrageous given the unsolved Khashoggi killing | 10 authors ▲10 ▼0 ·0 | 7 docs | camp: anchor▲1 anchor▼5
+e162 | Saudi Arabia, a country linked to 9/11, should not be allowed to enrich uranium or have a nuclear program | 9 authors ▲9 ▼0 ·0 | 5 docs | camp: anchor▲0 anchor▼7
+e478 | The US attacks Iran over uranium enrichment for power while accepting a Saudi nuclear deal, which is hypocritical; Saudi Arabia cannot be trusted | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼2
+e479 | Trump's family companies have received billions from Saudi deals, showing quid pro quo corruption | 9 authors ▲9 ▼0 ·0 | 7 docs | camp: anchor▲0 anchor▼4
+e500 | Trump's Saudi nuclear deal drops bomb-making safeguards, so giving Saudi Arabia nuclear technology does not make the region safer | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼3
+e562 | Saudi Arabia, whose nationals were tied to 9/11, will soon become a nuclear power | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼3
+e605 | Michael Flynn pushed to share nuclear technology with Saudi Arabia | 9 authors ▲8 ▼0 ·1 | 7 docs | camp: anchor▲0 anchor▼6
+e1368 | Trump giving nuclear power to Saudi Arabia is something people should object to | 9 authors ▲9 ▼0 ·0 | 9 docs | camp: anchor▲0 anchor▼3
+e590 | Trump's Saudi nuclear deal may let Saudi Arabia enrich uranium and get nuclear weapons, and Democrats will be blamed | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼3
+e345 | Israel being the only nuclear power in the Middle East makes the region a powder keg needing a treaty | 7 authors ▲5 ▼0 ·2 | 6 docs | camp: anchor▲1 anchor▼0
+e369 | A desert nation should invest in solar and storage rather than civilian nuclear power | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼5
+e431 | US blessing of Saudi Arabia's 'nuclear power' program is a suspicious deal that deserves scrutiny | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼4
+e454 | Saudi Arabia will likely have nuclear weapons within 10 years | 6 authors ▲5 ▼1 ·0 | 6 docs | camp: anchor▲1 anchor▼2
+e160 | The proposed Trump-Saudi nuclear deal lacks safeguards | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲0 anchor▼1
+e355 | A nuclear deal with Saudi Arabia needs monitoring, inspections and verification | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼1
+e360 | Michael Flynn pushed a trillion-dollar Russian-Saudi nuclear energy scheme | 5 authors ▲5 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼2
+e462 | The US-Saudi civilian nuclear deal bypasses global non-proliferation standards and risks a Middle East arms race | 5 authors ▲4 ▼0 ·1 | 8 docs | camp: anchor▲0 anchor▼3
+e464 | Enrichment capability is the threshold to nuclear weapons, so the US-Saudi nuclear deal is not purely civilian | 5 authors ▲5 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼1
+e489 | The US-Saudi nuclear deal is dangerous and poorly considered | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼3
+e570 | Trump's Saudi nuclear deal hands nuclear power to MBS, a dangerous figure | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼2
+e575 | US bombing Iran while arming Saudi Arabia with nuclear capacity and aiding a third enemy's nukes is reckless policy | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼3
+e597 | Trump's nuclear deal giving Saudi Arabia nuclear capacity fuels Middle East instability and provokes Iran and Israel | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼2
+e664 | America should not decide which countries are allowed nuclear power | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e741 | Trump is rushing to convince people that the Saudi nuclear deal is great | 5 authors ▲3 ▼0 ·2 | 6 docs
+e2316 | The US-Saudi nuclear deal is a desperate strategic fallback after a failed military strike on Iran, not an energy deal, and could spark a nuclear arms race | 5 authors ▲1 ▼0 ·4 | 8 docs | camp: anchor▲1 anchor▼0
+   (+236 more in this theme: 304 docs; largest folded has 4 authors)
+## theme Radiation rules, regulation, oversight and waste storage: 549 assertions, 1005 docs (3.6%)
+e1099 | Relaxing nuclear radiation safety rules is alarming news | 85 authors ▲39 ▼0 ·46 | 80 docs | camp: anchor▲5 anchor▼24
+e381 | The NRC's proposal to relax radiation exposure limits is about cutting costs and pleasing donors | 28 authors ▲5 ▼0 ·23 | 26 docs | camp: anchor▲4 anchor▼7
+e5905 | Chubu Electric is withdrawing its Hamaoka nuclear restart application after a seismic data cover-up scandal | 24 authors ▲6 ▼0 ·18 | 28 docs | camp: anchor▲8 anchor▼5
+e5935 | AI should be regulated like nuclear power to keep everyone safe from rogue AI | 23 authors ▲20 ▼0 ·3 | 25 docs | camp: anchor▲3 anchor▼1
+e1244 | The NRC proposes eliminating the 50-year-old ALARA radiation safety standard to accelerate reactor development | 22 authors ▲15 ▼3 ·4 | 18 docs | camp: anchor▲3 anchor▼9
+e1173 | Regulators seek to eliminate a longstanding radiation safety practice even as Trump boosts nuclear power | 19 authors ▲17 ▼0 ·2 | 18 docs | camp: anchor▲1 anchor▼8
+e3103 | The nuclear power push is expanding uranium milling, raising tribal health concerns | 19 authors ▲19 ▼0 ·0 | 18 docs | camp: anchor▲2 anchor▼10
+e1425 | Hacking of programmable logic controllers at nuclear power plants is a looming threat that could cause explosions | 18 authors ▲13 ▼0 ·5 | 18 docs | camp: anchor▲2 anchor▼4
+e3415 | The St. Lucie-1 nuclear reactor in Florida was manually scrammed at full power after control rods dropped into the core | 18 authors ▲2 ▼0 ·16 | 18 docs | camp: anchor▲4 anchor▼4
+e1112 | Relaxing nuclear radiation exposure limits increases health risks for people | 17 authors ▲17 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼16
+e1113 | Loosening nuclear safety rules makes an industry that has worked safely for 50 years less safe | 17 authors ▲17 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼13
+e1314 | Trump wants Congress to loosen laws on nuclear waste storage and recycling to spread waste across the country in exchange for nuclear plants and data centers | 16 authors ▲7 ▼1 ·8 | 12 docs | camp: anchor▲1 anchor▼10
+e5936 | Nuclear power risks were limited in the US through regulation, a model to repeat for AI | 13 authors ▲13 ▼0 ·0 | 15 docs | camp: anchor▲2 anchor▼1
+e584 | Nuclear plants should be disconnected from online networks for security | 11 authors ▲11 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼4
+e1105 | Trump's rollback of nuclear radiation rules ignores water needs and nuclear waste disposal, and reflects corruption | 11 authors ▲11 ▼0 ·0 | 7 docs | camp: anchor▲0 anchor▼9
+e9317 | Nuclear regulators flagged recent safety issues at the Palisades nuclear plant in Michigan | 11 authors ▲8 ▼0 ·3 | 8 docs | camp: anchor▲1 anchor▼5
+e1072 | Radioactive waste from nuclear power plants, weapons, submarines and other sources contaminates air, soil and water | 10 authors ▲10 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼8
+e1319 | Building nuclear power safely requires not cutting safety corners | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼6
+e5890 | Japan's nuclear plant operator was shaken up after a quake data scandal | 9 authors ▲1 ▼0 ·8 | 11 docs | camp: anchor▲3 anchor▼1
+e6166 | Chubu Electric's top executives are resigning over the Hamaoka nuclear plant safety data fabrication scandal | 9 authors ▲2 ▼0 ·7 | 13 docs | camp: anchor▲4 anchor▼1
+e1263 | Nuclear power is paralyzed by current regulation, and reform is needed | 8 authors ▲7 ▼0 ·1 | 5 docs | camp: anchor▲5 anchor▼1
+e1562 | Louisiana plans a salt dome repository beneath the Gulf for spent nuclear fuel | 8 authors ▲4 ▼2 ·2 | 7 docs | camp: anchor▲1 anchor▼5
+e1462 | DOE selected Tennessee, Utah, Louisiana, Oklahoma and Idaho from 28 applications to host nuclear waste | 7 authors ▲1 ▼1 ·5 | 6 docs | camp: anchor▲0 anchor▼3
+e2527 | Finland's safety regulator approved the world's first permanent repository for nuclear waste | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲5 anchor▼0
+e8414 | AI assistants are being integrated into the operations of US nuclear reactors | 7 authors ▲5 ▼0 ·2 | 6 docs | camp: anchor▲1 anchor▼1
+e794 | Corruption under an authoritarian US government taints the whole nuclear industry, and independent regulators are replaced by lackeys | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼4
+e1321 | Pushing nuclear energy now is risky because the party in power will keep deregulating | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼5
+e1715 | US nuclear plants lack a designated long-term storage site for high-level radioactive waste | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼5
+e3176 | Federal push to revive uranium mining raises drinking-water concerns for tribal communities | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼6
+e3183 | Federal uranium mining revival raises drinking-water concerns for tribal communities | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲0 anchor▼2
+e4614 | Expanding nuclear power under an administration that disdains oversight and regulation is a dangerous move | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼4
+e4674 | Nuclear power plants are heavily regulated | 6 authors ▲5 ▼1 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e5540 | AI could be legally treated as a dangerous technology like nuclear power, requiring certification to use | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲1 anchor▼0
+e5876 | Keeping radioactive waste about 100 feet from the Pacific at San Onofre is a dangerous risk | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼3
+e686 | The operator's bid to weaken nuclear safety margins to keep cracked Torness reactors running is alarming | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼5
+e1115 | Trump's nuclear policy is radiating, poisoning and endangering Americans | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼5
+e1125 | Cyber breaches involving nuclear infrastructure call for stronger international cooperation, safeguards and protection of critical facilities | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲4 anchor▼0
+e1136 | The NRC's proposal to eliminate a 50-year foundational radiation-minimization safety principle is a mistake | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼4
+e1285 | Nuclear power requires heavy oversight, and both the NRC and the industry deserve blame for problems | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼2
+e1398 | Nuclear waste should be stored where it is generated rather than transported across state lines | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼4
+e1776 | Nuclear waste problems are not hard to solve, and other countries have already solved them | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼0
+e10449 | Dozens of unexplained drones have buzzed US nuclear power plants since 2024 | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲0 anchor▼1
+   (+507 more in this theme: 548 docs; largest folded has 4 authors)
+## theme Russia/Rosatom exports and international nuclear projects: 397 assertions, 860 docs (3.1%)
+e2838 | Rosatom is bringing specialists back to Iran's Bushehr nuclear power plant | 35 authors ▲8 ▼0 ·27 | 50 docs | camp: anchor▲9 anchor▼3
+e4463 | Iran and Russia signed a $25 billion agreement to build new nuclear power plants | 24 authors ▲12 ▼0 ·12 | 29 docs | camp: anchor▲3 anchor▼5
+e1593 | The US nuclear industry remains heavily dependent on Russia for enriched uranium, making the 2028 deadline to end Russian purchases a challenge | 23 authors ▲19 ▼0 ·4 | 22 docs | camp: anchor▲4 anchor▼5
+e688 | Russia should have no involvement in European nuclear power, and sanctions on Russia should be fully imposed | 20 authors ▲18 ▼0 ·2 | 17 docs | camp: anchor▲4 anchor▼7
+e9660 | Russia will not abandon its nuclear and energy work with Iran, such as the Bushehr plant | 11 authors ▲4 ▼0 ·7 | 16 docs | camp: anchor▲1 anchor▼3
+e10165 | Rosatom could supply floating nuclear power plants to coastal African countries and is in advanced talks with at least four nations | 11 authors ▲4 ▼1 ·6 | 10 docs | camp: anchor▲1 anchor▼2
+e9319 | Hungary is considering replacing Rosatom as main contractor for the Paks nuclear expansion | 10 authors ▲3 ▼0 ·7 | 10 docs | camp: anchor▲1 anchor▼3
+e10539 | Ghana and Russia announced a partnership for a 2,000-megawatt nuclear power project | 10 authors ▲6 ▼0 ·4 | 11 docs | camp: anchor▲4 anchor▼1
+e982 | Turkey is building its first nuclear plant, Akkuyu, financed and constructed by Russia's Rosatom | 9 authors ▲5 ▼0 ·4 | 12 docs | camp: anchor▲2 anchor▼1
+e3457 | Rosatom faces accusations of safety, security and engineering failures at its Egypt nuclear plant, a similar design to its Hungarian project | 9 authors ▲9 ▼0 ·0 | 10 docs | camp: anchor▲2 anchor▼3
+e10063 | Ghana is adding nuclear energy to its mix and will work with Russian technology to power mineral processing | 9 authors ▲5 ▼0 ·4 | 10 docs | camp: anchor▲2 anchor▼0
+e10709 | Türkiye and South Korea signed an agreement to cooperate on financing nuclear power plants | 9 authors ▲6 ▼0 ·3 | 12 docs | camp: anchor▲4 anchor▼2
+e4916 | Turkey plans to expand nuclear cooperation with Russia to build more power plants | 8 authors ▲7 ▼0 ·1 | 10 docs | camp: anchor▲2 anchor▼2
+e10601 | South Korea could partner in Turkey's Sinop nuclear power project | 8 authors ▲3 ▼0 ·5 | 8 docs | camp: anchor▲3 anchor▼0
+e577 | A particular country is dominating the nuclear power race | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼2
+e9123 | Rosatom agreed to supply 200 MW from two floating nuclear units to Indonesia | 7 authors ▲2 ▼0 ·5 | 8 docs | camp: anchor▲4 anchor▼0
+e10318 | KHNP broke off construction contract talks with a Daewoo-led consortium for the Czech nuclear plant | 7 authors ▲2 ▼0 ·5 | 13 docs | camp: anchor▲2 anchor▼0
+e385 | Hungary's Paks II nuclear project faces delays and questions about cost | 6 authors ▲1 ▼0 ·5 | 8 docs | camp: anchor▲1 anchor▼2
+e892 | Russia sold Iran a nuclear power and warfare program | 6 authors ▲5 ▼0 ·1 | 6 docs | camp: anchor▲0 anchor▼1
+e2621 | Poland's first nuclear power plant project has handed management of its site to general contractor Bechtel as earthworks begin | 6 authors ▲3 ▼0 ·3 | 8 docs | camp: anchor▲5 anchor▼1
+e3880 | Russia plans 30 GW of new nuclear power capacity across its Far East, Siberia and Urals | 6 authors ▲3 ▼0 ·3 | 6 docs | camp: anchor▲2 anchor▼0
+e4298 | Rosatom is negotiating with Egypt to build two additional units at the El-Dabaa nuclear plant | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲4 anchor▼1
+e48 | Russia's regulator granted site licences for the first two units of the new Kola Nuclear Power Plant | 5 authors ▲4 ▼0 ·1 | 7 docs | camp: anchor▲3 anchor▼0
+e73 | India says leaked Kudankulam nuclear plant files pose no safety or security risk | 5 authors ▲4 ▼1 ·0 | 5 docs | camp: anchor▲3 anchor▼0
+e379 | A data breach (World Leaks) exposed Kudankulam nuclear plant files | 5 authors ▲4 ▼0 ·1 | 6 docs | camp: anchor▲2 anchor▼1
+e768 | China has 36 nuclear reactors under construction, about half of those being built worldwide | 5 authors ▲4 ▼0 ·1 | 3 docs | camp: anchor▲5 anchor▼0
+e1671 | Germany's closure of nuclear plants was greenwashing driven by Russian influence and pressure for Russian gas | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e3534 | Russia is beginning a project to build a small nuclear power plant in Myanmar | 5 authors ▲3 ▼0 ·2 | 5 docs | camp: anchor▲1 anchor▼0
+e3559 | Rosatom is accused of deliberate negligence and safety violations at Egypt's El Dabaa nuclear plant | 5 authors ▲5 ▼0 ·0 | 6 docs
+e5240 | Rosatom and Kazakhstan Nuclear Power Plants signed an EPC contract for the Balkhash Nuclear Power Plant | 5 authors ▲0 ▼0 ·5 | 5 docs | camp: anchor▲2 anchor▼0
+e6332 | Cuba's Cienfuegos nuclear power project was an investment failure | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼1
+e8429 | Tianwan nuclear unit 7 was connected to the grid | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲4 anchor▼0
+e8463 | An ICC tribunal ruled that Finnish firm Fennovoima wrongly terminated Rosatom's nuclear plant contract | 5 authors ▲3 ▼0 ·2 | 6 docs
+e9971 | Russian intelligence services tried to organize a rally in Budapest supporting the Paks II nuclear plant | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+e9972 | Russia and Iran are expanding nuclear cooperation as international oversight weakens | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼2
+   (+362 more in this theme: 508 docs; largest folded has 4 authors)
+## theme Anti-nuclear case: cost, delays, risks, waste: 582 assertions, 758 docs (2.8%)
+e202 | Nuclear power is costly and dangerous and should be abandoned | 82 authors ▲80 ▼2 ·0 | 52 docs | camp: anchor▲1 anchor▼81
+e253 | Nuclear power projects are always delayed and over budget | 43 authors ▲38 ▼2 ·3 | 27 docs | camp: anchor▲7 anchor▼33
+e567 | Nuclear power is too expensive and unreliable; SMRs cost far more than renewables, and batteries beat nuclear, leading to high bills | 43 authors ▲43 ▼0 ·0 | 23 docs | camp: anchor▲4 anchor▼39
+e434 | The world does not need more nuclear power | 25 authors ▲24 ▼0 ·1 | 13 docs | camp: anchor▲0 anchor▼25
+e472 | Nuclear power carries financial, environmental and human risks, including unfunded permanent waste disposal costs | 25 authors ▲23 ▼0 ·2 | 13 docs | camp: anchor▲4 anchor▼20
+e1541 | Nuclear power produces nuclear waste as a major drawback | 25 authors ▲24 ▼0 ·1 | 14 docs | camp: anchor▲0 anchor▼23
+e684 | Nuclear waste must be watched for thousands of years, so nuclear power has no upside | 24 authors ▲23 ▼0 ·1 | 14 docs | camp: anchor▲0 anchor▼23
+e410 | US counties closer to nuclear power plants have higher cancer mortality rates | 20 authors ▲9 ▼7 ·4 | 16 docs | camp: anchor▲8 anchor▼8
+e1834 | AI hacking of nuclear power plants is a serious future threat that people are not worried enough about | 18 authors ▲16 ▼1 ·1 | 19 docs | camp: anchor▲2 anchor▼2
+e5400 | Nuclear power plant cooling causes a huge loss of fish | 18 authors ▲17 ▼0 ·1 | 16 docs | camp: anchor▲1 anchor▼10
+e82 | Tech bros with a move-fast-and-break-things approach should not be trusted with nuclear power | 17 authors ▲17 ▼0 ·0 | 11 docs | camp: anchor▲0 anchor▼13
+e102 | Nuclear power is economically viable only with massive subsidies, tax breaks and liability exemptions | 17 authors ▲17 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼15
+e875 | The nuclear industry's slogan 'clean, safe, too cheap to meter' is false | 17 authors ▲13 ▼0 ·4 | 9 docs | camp: anchor▲2 anchor▼13
+e123 | Nuclear power carries deadly risks that are underappreciated | 14 authors ▲13 ▼0 ·1 | 8 docs | camp: anchor▲0 anchor▼13
+e435 | Nuclear power plants are only built with state subsidies, and uranium supply chains have real challenges | 14 authors ▲14 ▼0 ·0 | 8 docs | camp: anchor▲2 anchor▼10
+e576 | Nuclear plants take decades to come online while renewables and batteries are faster; a Saudi plant started today would not run until 2051 | 13 authors ▲13 ▼0 ·0 | 7 docs | camp: anchor▲2 anchor▼11
+e1795 | This year nuclear plants faced war, heat and river shutdowns, wildfires, sea-level rise and high costs | 10 authors ▲9 ▼0 ·1 | 8 docs | camp: anchor▲3 anchor▼2
+e2088 | Nuclear is one of the most expensive ways to generate electricity and takes about a decade to build, incompatible with climate urgency | 10 authors ▲10 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼9
+e461 | Nuclear power would not be a short or medium-term solution to Ireland's energy problems | 8 authors ▲7 ▼0 ·1 | 6 docs | camp: anchor▲0 anchor▼6
+e2850 | The economic case for nuclear power is not there | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼6
+e470 | Nuclear power is infeasible in Ireland due to costs, timeframe and public opposition | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼5
+e1036 | Claims that nuclear accidents are impossible are false, as Chernobyl, Fukushima and Three Mile Island show | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼6
+e1470 | Nuclear power is a false promise | 7 authors ▲7 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼7
+e3197 | Building a nuclear power station takes about 10 years | 7 authors ▲6 ▼0 ·1 | 6 docs | camp: anchor▲4 anchor▼2
+e1030 | Civilian nuclear power plants exist only to support nuclear weapons | 6 authors ▲5 ▼0 ·1 | 4 docs | camp: anchor▲0 anchor▼5
+e1341 | Talk of nuclear power is a cheap distraction from decarbonising the Australian economy | 6 authors ▲5 ▼1 ·0 | 5 docs | camp: anchor▲0 anchor▼6
+e1508 | Oklahoma faces nuclear waste risk on top of climate, oil and fracking harms, making it toxic and uninhabitable | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼6
+e1941 | Nuclear power is firm and reliable only until it switches off | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼6
+e3157 | Many accidents can happen with nuclear power or radioactive materials | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼3
+e45 | Nuclear boosters ignore the costs, health effects, waste and carbon facts of nuclear power, and uranium fuel is radioactive and carcinogenic | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼5
+e824 | Nuclear power has been overhyped as a broad solution, useful only in marginal, expensive, environmentally dicey use cases | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼5
+e1816 | Diablo Canyon nuclear plant should be closed, since its costs were significantly inflated | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼5
+e8668 | SMR nuclear waste is greater than that of conventional nuclear plants, and carbon capture removes negligible emissions | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼5
+   (+549 more in this theme: 425 docs; largest folded has 4 authors)
+## theme Green parties, local siting and public opposition: 491 assertions, 723 docs (2.6%)
+e197 | Nuclear power stations should not be sited in Scotland | 32 authors ▲28 ▼3 ·1 | 20 docs | camp: anchor▲2 anchor▼30
+e8029 | The Green Party has voted to abandon its blanket opposition to nuclear power | 26 authors ▲18 ▼0 ·8 | 23 docs | camp: anchor▲9 anchor▼6
+e1286 | Germany's nuclear shutdown was one of the stupidest political decisions ever made | 25 authors ▲25 ▼0 ·0 | 14 docs | camp: anchor▲21 anchor▼4
+e8151 | England and Wales' Green party ended blanket opposition to nuclear power, allowing case-by-case decisions while prioritising wind and solar | 23 authors ▲6 ▼0 ·17 | 20 docs | camp: anchor▲9 anchor▼5
+e475 | Local residents' objections to a nuclear station sited near them are reasonable | 22 authors ▲19 ▼1 ·2 | 16 docs | camp: anchor▲2 anchor▼12
+e2392 | Public opposition to data centers is stronger than opposition to a nuclear plant, which people accept | 22 authors ▲22 ▼0 ·0 | 22 docs | camp: anchor▲8 anchor▼0
+e827 | Nuclear power plants are unfairly hated | 20 authors ▲20 ▼0 ·0 | 11 docs | camp: anchor▲16 anchor▼2
+e142 | 53% of Americans oppose the local construction of a nuclear power plant, versus 71% opposing local AI data centers | 15 authors ▲9 ▼0 ·6 | 16 docs | camp: anchor▲1 anchor▼1
+e572 | The UK government overrides Scottish locals to build nuclear stations, and should site them near English demand | 13 authors ▲13 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼10
+e1655 | Vehement opponents of nuclear power are ridiculous | 13 authors ▲13 ▼0 ·0 | 8 docs | camp: anchor▲11 anchor▼2
+e455 | Opposition to nuclear power from the Greens is outdated, since nuclear is the only zero-carbon baseload source that can save us | 12 authors ▲12 ▼0 ·0 | 7 docs | camp: anchor▲10 anchor▼0
+e2399 | AWS abandoned plans for data centers on the Calvert Cliffs Nuclear Power Plant campus after local opposition | 12 authors ▲6 ▼0 ·6 | 13 docs | camp: anchor▲0 anchor▼1
+e5130 | Resistance to a Michigan data center linked to Los Alamos classified work that could help design nuclear weapons is justified | 11 authors ▲11 ▼0 ·0 | 11 docs | camp: anchor▲1 anchor▼3
+e8122 | The Green Party of England and Wales adopted a pro-nuclear policy | 11 authors ▲3 ▼1 ·7 | 10 docs | camp: anchor▲5 anchor▼2
+e8950 | Scottish Greens still oppose nuclear power, and a truly green party would oppose storing nuclear waste | 11 authors ▲11 ▼0 ·0 | 13 docs | camp: anchor▲2 anchor▼8
+e377 | The KMT prioritizes a referendum on nuclear power for the November ballot | 10 authors ▲1 ▼0 ·9 | 12 docs | camp: anchor▲4 anchor▼2
+e861 | There should be no nuclear power in Cwm Llynfi | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼8
+e3268 | Scotland is being used as a site to store nuclear power plants and data centres, exploiting its resources | 9 authors ▲9 ▼0 ·0 | 7 docs | camp: anchor▲1 anchor▼7
+e8090 | The Green Party dropping its longstanding opposition to nuclear power is a shameful betrayal | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼6
+e140 | Scotland should refuse nuclear submarines, waste storage and more nuclear power, since Holyrood lacks authority to accept them | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼8
+e1498 | Nuclear was terrifying to many people in the 1980s because of cultural distrust and Three Mile Island and Chernobyl, even though power and bombs are not the same | 7 authors ▲6 ▼0 ·1 | 6 docs | camp: anchor▲3 anchor▼1
+e1615 | Nuclear power has great potential for good but cannot be trusted to capitalists or those in power | 7 authors ▲7 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼2
+e4706 | New York Governor Kathy Hochul should not allow new nuclear energy power plants | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼7
+e8096 | Conservatives plan to override Holyrood's powers over nuclear power in Scotland | 7 authors ▲4 ▼1 ·2 | 6 docs | camp: anchor▲1 anchor▼4
+e670 | Living next to the Seabrook Nuclear Power Plant is undesirable | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼5
+e1121 | The Australian LNP and IPA keep nuclear power as an election promise after losing, hoping to wear voters down | 6 authors ▲3 ▼1 ·2 | 4 docs | camp: anchor▲0 anchor▼5
+e1214 | Germany was right to vote against and phase out nuclear power | 6 authors ▲4 ▼1 ·1 | 4 docs | camp: anchor▲1 anchor▼4
+e2579 | Nobody wants data centers in their backyard, as the Calvert County vote shows | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼1
+e6687 | Swiss voters will decide in a referendum on whether to allow new nuclear power plants | 6 authors ▲0 ▼0 ·6 | 7 docs | camp: anchor▲5 anchor▼1
+e8171 | Green party members voted to end the party's opposition to nuclear power and drop its phase-out commitment | 6 authors ▲4 ▼0 ·2 | 4 docs | camp: anchor▲2 anchor▼2
+e618 | Wales does not need nuclear power or American involvement in it | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼5
+e1881 | Nuclear power plants, landfills and toxic waste dumps harm the people who live near them | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼5
+e3903 | Port Hope's radioactive past justifies pushback against a proposed nuclear reactor | 5 authors ▲2 ▼0 ·3 | 5 docs | camp: anchor▲2 anchor▼0
+e8136 | The Green Party of England and Wales dropped its commitment to phase out nuclear power | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲1 anchor▼0
+e8347 | The Tories' plan to impose new nuclear power stations on Scotland repudiates The Vow | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼5
+e8771 | Labour wants to impose approval of new nuclear power stations in Scotland by stripping powers from Holyrood | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼4
+   (+455 more in this theme: 408 docs; largest folded has 4 authors)
+## theme Wildfires, jellyfish and other physical/climate hazards: 172 assertions, 473 docs (1.7%)
+e2875 | Jellyfish swarms forced EDF to shut down three reactors at the Gravelines nuclear plant | 27 authors ▲22 ▼0 ·5 | 28 docs | camp: anchor▲5 anchor▼6
+e1565 | A wildfire near a nuclear plant poses a serious nuclear safety risk | 23 authors ▲21 ▼0 ·2 | 19 docs | camp: anchor▲1 anchor▼9
+e4820 | A hijacked light aircraft flew into restricted airspace over Hungary's Paks nuclear plant and fighters were scrambled | 23 authors ▲3 ▼0 ·20 | 31 docs | camp: anchor▲5 anchor▼2
+e1738 | Firefighters battle a Suffolk wildfire near a huge nuclear power plant, with a major incident declared and residents evacuated | 22 authors ▲7 ▼0 ·15 | 24 docs | camp: anchor▲2 anchor▼5
+e833 | Wildfires pose risks to nuclear plants, including onsite fires and loss of transmission lines that can force shutdowns | 20 authors ▲9 ▼0 ·11 | 22 docs | camp: anchor▲2 anchor▼6
+e1637 | A wildfire near Sizewell B nuclear power station in Suffolk is a concern | 13 authors ▲9 ▼0 ·4 | 14 docs | camp: anchor▲1 anchor▼4
+e1558 | A drought-driven wildfire is burning near the Sizewell B nuclear power station in Suffolk | 12 authors ▲3 ▼0 ·9 | 13 docs | camp: anchor▲1 anchor▼4
+e2900 | Jellyfish swarms blocking filters shut down nuclear reactors | 11 authors ▲8 ▼0 ·3 | 10 docs | camp: anchor▲1 anchor▼6
+e1339 | Nuclear power plants should not be placed in areas prone to violent earthquakes | 10 authors ▲10 ▼0 ·0 | 5 docs | camp: anchor▲0 anchor▼9
+e2478 | Floods and droughts imperil nuclear power plants, a widespread worldwide problem | 10 authors ▲10 ▼0 ·0 | 8 docs | camp: anchor▲5 anchor▼4
+e1434 | Coastal nuclear power stations worldwide face unresolved risks as sea levels rise | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼8
+e1734 | The Sizewell nuclear power station is on 'high alert' amid the Suffolk wildfire | 8 authors ▲0 ▼0 ·8 | 8 docs | camp: anchor▲2 anchor▼1
+e1742 | Wildfires are now burning in the UK near a nuclear power plant | 8 authors ▲1 ▼0 ·7 | 8 docs | camp: anchor▲1 anchor▼2
+e357 | Britain's coastal nuclear plants face erosion risks, yet Sizewell C is still proposed on the Suffolk coast | 7 authors ▲7 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼5
+e856 | Wildfire risk threatens nuclear reactors and radioactive waste stores | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼1
+e6236 | Gizzard shad swarms overwhelmed cooling systems at Bruce Nuclear Generating Station, shutting down one reactor | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼5
+e1646 | A wildfire near Sizewell B nuclear power station in Suffolk poses no current risk, per fire service | 6 authors ▲3 ▼0 ·3 | 6 docs | camp: anchor▲2 anchor▼1
+e2892 | Jellyfish blooms forced EDF to shut three Gravelines nuclear units and cut output at a fourth, reducing power supply | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲0 anchor▼1
+e2908 | Nuclear power is fragile because warming cooling water and jellyfish swarms can disrupt it | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼5
+e1230 | Nuclear plants reported no irregularities after the Kumamoto 7.1 earthquake | 5 authors ▲0 ▼0 ·5 | 5 docs | camp: anchor▲1 anchor▼1
+e1448 | The wildfire poses no risk to the nearby Sizewell B nuclear power station | 5 authors ▲3 ▼1 ·1 | 5 docs
+e1661 | A wildfire is burning four miles from a Suffolk nuclear power plant | 5 authors ▲0 ▼0 ·5 | 5 docs
+e1869 | The Suffolk wildfire has grown to an area equal to more than 200 football pitches | 5 authors ▲3 ▼0 ·2 | 5 docs
+e2899 | Climate change will likely make jellyfish swarm events that disrupt power plants more common | 5 authors ▲4 ▼1 ·0 | 5 docs | camp: anchor▲0 anchor▼3
+e2955 | A jellyfish swarm cut French nuclear capacity at the Gravelines plant | 5 authors ▲2 ▼0 ·3 | 5 docs
+e2978 | Jellyfish overran a French nuclear plant on the same date two years running, part of climate-driven nuclear disruptions | 5 authors ▲4 ▼0 ·1 | 4 docs | camp: anchor▲0 anchor▼2
+e4308 | A sardine die-off slashed electricity generation at South Africa's Koeberg nuclear plant | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲0 anchor▼1
+e8501 | July 2026 was the worst on record for wildfires in England | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+   (+144 more in this theme: 198 docs; largest folded has 4 authors)
+## theme other: 1 assertions, 0 docs (0.0%)
+e1395 | Steam from a gas-fired plant is wrongly presented as nuclear, a mislabeling | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1

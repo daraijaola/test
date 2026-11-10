@@ -60,11 +60,12 @@ def assign_themes(L: Ledger, topic: str, log: list) -> list[str]:
 
 
 def absorb_stream(L: Ledger, topic: str, ids: list, texts: dict, metas: dict, log: list, stats: dict,
-                  growth: list, batch: int = 50, epoch_batches: int = 8, lanes: int = 8, start: float | None = None):
+                  growth: list, batch: int = 50, epoch_batches: int = 8, lanes: int = 8, start: float | None = None,
+                  warm: bool = False):
     """Absorb `ids` (chronological) epoch by epoch; lanes run concurrently within an epoch."""
     start = start or time.time()
     lock = threading.Lock()
-    frozen = "\n".join(L.index_lines())
+    frozen = semeval.capped_index(L)
     batches = [ids[s:s + batch] for s in range(0, len(ids), batch)]
     n = len(L.docs) + len(ids)
     for ep in range(0, len(batches), epoch_batches):
@@ -72,13 +73,17 @@ def absorb_stream(L: Ledger, topic: str, ids: list, texts: dict, metas: dict, lo
 
         def run(chunk, frozen=frozen):
             return semeval.absorb_batch(L, topic, frozen, [(i, texts[i]) for i in chunk], log, n, metas, lock)
+        # cache warming: the epoch's first batch runs alone so its (new) prompt prefix is cached
+        # before the other lanes start; they then read it from cache instead of each writing it
+        results = [run(group[0])] if warm and lanes > 1 else []
         with ThreadPoolExecutor(max(1, lanes)) as ex:
-            for r in ex.map(run, group):
-                for k in stats:
-                    stats[k] += r[k]
+            results += list(ex.map(run, group[1:] if warm and lanes > 1 else group))
+        for r in results:
+            for k in stats:
+                stats[k] += r[k]
         growth.append((len(L.docs), len(L.entries)))
         semeval.consolidate(L, topic, semeval.ABSORBER, True, log)
-        frozen = "\n".join(L.index_lines())
+        frozen = semeval.capped_index(L)
         print(f"{len(L.docs)} docs, {len(L.entries)} entries, ${sum(u for _, u in log):.2f}, "
               f"{time.time() - start:.0f}s", flush=True)
 
@@ -106,10 +111,13 @@ def main():
     ap.add_argument("--lanes", type=int, default=1, help="batches absorbed concurrently within an epoch")
     ap.add_argument("--version", default="v2", choices=["v2", "v4"])
     ap.add_argument("--absorber", default=semeval.ABSORBER, help="model that reads every post")
+    ap.add_argument("--index-cap", type=int, default=0, help="cap the absorber's index (top-N by authors + recent)")
+    ap.add_argument("--warm", action="store_true", help="warm the prompt cache with one batch before fanning out")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
     semeval.CFG["version"] = a.version
     semeval.ABSORBER = a.absorber
+    semeval.INDEX_CAP["entries"] = a.index_cap or None
     posts = json.loads(a.posts.read_text())
     ts = [datetime.fromisoformat(p["created"].replace("Z", "+00:00")).timestamp() for p in posts if p["created"]]
     t0, t1 = min(ts), max(ts)
@@ -124,7 +132,8 @@ def main():
     L.new_entry(semeval.ANCHOR_STATEMENT_TEXT.format(statement=a.anchor))
     L.epoch += 1
     ids = [p["id"] for p in posts]                       # chronological
-    absorb_stream(L, a.topic, ids, texts, metas, log, stats, growth, a.batch, a.epoch_batches, a.lanes, start)
+    absorb_stream(L, a.topic, ids, texts, metas, log, stats, growth, a.batch, a.epoch_batches, a.lanes, start,
+                  warm=a.warm)
     pre_global = len(L.entries)
     res_before = L.residual_mass
     pol, themes = finish(L, a.topic, texts, log)

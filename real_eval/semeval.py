@@ -187,12 +187,29 @@ def absorb_batch(L: Ledger, topic: str, frozen: str, batch: list[tuple[int, str]
     return stats
 
 
+INDEX_CAP = {"entries": None}   # None = whole index; else top-N by authors + recent entries (prompt-size cap)
+
+
+def capped_index(L: Ledger, recent_epochs: int = 2) -> str:
+    """The absorber's view of the ledger. Uncapped: every entry. Capped: the N entries with the
+    most distinct authors plus every entry created in the last `recent_epochs` epochs, so the
+    prompt stays below the model's long-context price tier. Hidden long-tail entries may get
+    duplicates, which consolidation merges."""
+    cap = INDEX_CAP["entries"]
+    if not cap or len(L.entries) <= cap:
+        return "\n".join(L.index_lines())
+    top = sorted(L.entries.values(), key=lambda e: -len(e.author_stance))[:cap]
+    keep = {e.eid for e in top} | {e.eid for e in L.entries.values() if e.epoch_created >= L.epoch - recent_epochs}
+    keep.add(0) if 0 in L.entries else None
+    return "\n".join(f"e{e.eid}: {e.text}" for e in sorted(L.entries.values(), key=lambda e: e.eid) if e.eid in keep)
+
+
 def consolidate(L: Ledger, topic: str, model: str, scope_new_only: bool, log: list) -> int:
     if len(L.entries) < 2:
         L.epoch += 1
         return 0
     new = L.index_lines(since_epoch=L.epoch) if scope_new_only else L.index_lines()
-    old = L.index_lines() if scope_new_only else []
+    old = capped_index(L).splitlines() if scope_new_only else []
     user = (f"TOPIC: {topic}\nFind pairs of ledger entries that state the SAME assertion in different words "
             "(same claim, same direction; not merely related or opposite). For each pair give keep = the "
             "clearer/older id and gone = the duplicate." +
