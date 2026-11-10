@@ -20,7 +20,7 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 **Real data, real models.** Haiku 5.5 absorbs. Sonnet 5.5 consolidates and judges. Opus 5.5 reads.
 
-| Question | RAG | CEL | Source |
+| Question | RAG and raw-text baselines | CEL | Source |
 |---|---|---|---|
 | Is a random post's point **entirely missing** from what the reader receives? Equal ~31k-token budget, Bluesky, 3 topics, two different judges | top-k at the same budget: 39–48%; random sample at the same budget: 30–43%; top-20: ~80% | **12–20%**, about 2–3× fewer complete misses; holds under both judges in every run | §7.3 |
 | Combined coverage score (yes + ½ partly), same setup | top-k at the same budget: 37–46%; random sample at the same budget: 42–53% | Sonnet judge: **61–63%**, ahead of both in all 9 runs. Opus judge (stricter about generalised wording): ahead of retrieval on all 3 topics; tied with the random sample on 2 of 3 | §7.3 |
@@ -46,7 +46,7 @@ Token note: the token budgets in this document are bytes/4 estimates applied ide
 - incremental updates;
 - a census path the reader triggers itself.
 
-Against retrieval, CEL wins on every measure tested.
+Against retrieval, CEL wins on coverage, on corpus-level shares and on count questions. On how many people hold a *broad, diffuse* claim, the ledger alone did no better than retrieval (both poor), and census is what works (§7.5). The coverage figures above use standard lines; the compact line format now used by default adds 5–13 points (§4.6).
 
 **Where CEL is *not* better:**
 - When a narrow question can be answered by a handful of posts, RAG is often as good and needs no ingest. Per question, a cached ledger read costs about the same.
@@ -420,7 +420,7 @@ It is an established technique, so I excluded it as a solution, but it is the ri
 | ledger (theme view) | 61.6% / **11.6%** | 61.8% / 18.4% | $3.6–3.9 / $2.9 |
 | map-reduce summary | 61.2% / 17.1% | **77.6% / 7.9%** | **$1.7 / $1.1** |
 
-On "is the point in there somewhere", a good summary **ties or beats** the ledger, and costs less than half as much to build.
+With standard ledger lines, a good summary **ties or beats** the ledger on "is the point in there somewhere", and costs less than half as much to build. With compact lines it is one topic each (below).
 
 **Subject-level share** (judge sample: 76% and 91%): ledger 76.6% and 88.4%; summary 72% and 84%. The ledger is closer on both topics, but only by 4–5 points, which is about the judge sample's own error.
 
@@ -479,7 +479,7 @@ No vectors, embeddings, chunking pipeline, fine-tuning or knowledge graph are us
 
 | Nearest neighbour | What CEL changes |
 |---|---|
-| Hierarchical or community summaries (RAPTOR, GraphRAG ([Edge et al. 2024](https://arxiv.org/pdf/2404.16130))) | Summaries drop counts, dissent and the denominator, and their loss is unauditable. CEL keeps exact tallies and provenance under conservation. |
+| Hierarchical or community summaries (RAPTOR, GraphRAG ([Edge et al. 2024](https://arxiv.org/pdf/2404.16130))) | Summaries give only approximate counts, no provenance, and an unauditable loss. CEL keeps exact person-level tallies and provenance under conservation. Measured head to head, a map-reduce summary is nonetheless a **strong baseline on qualitative coverage** (§7.5). |
 | Knowledge graphs | The unit is an assertion with stance tallies, not a triple. |
 | Schema extraction ([AI Engineer 2025](https://ai.engineer/talks/rag-evaluation-is-broken-here-s-why-and-how-to-fix-it)) | No predefined schema; assertions emerge and consolidate, and census adds dimensions on demand. |
 | Per-query exhaustive scanning ([Stakeholder Suite](https://arxiv.org/pdf/2512.17347), DFA/[AGGBench](https://www.alphaxiv.org/abs/2602.01355)) | CEL reads exhaustively **once**, against all prior knowledge, and every later question reuses it. |
@@ -499,8 +499,9 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 - **Evaluation pitfalls found along the way:**
   - benchmark memorisation (§7.2);
   - LLM judges for coverage, which grade generalised wording as "partly" and vary ±4–8 points between runs (so the main comparison was repeated);
-  - small *n* for the census questions (7 + 16).
+  - small *n* for the census questions (7 + 16) and for the prevalence claims (16).
 - **Canonical wording drifts** as a conversation evolves. Rewording is mass-neutral but needs a periodic pass.
+- **Not better than a good summary on qualitative coverage.** A map-reduce summary of every post at the same budget matched CEL (one topic each with compact lines) and was better on diffuse, broad-claim counts, at less than half the build cost (§7.5). CEL's distinct value is structure, exact narrow counts, provenance, updates and census.
 - **Single model family.** Every model here is Claude (Haiku / Sonnet / Opus). Judge and absorber share training lineage, so the audits are not fully independent.
 
 ---
@@ -509,7 +510,7 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 
 | Your situation | Use |
 |---|---|
-| Questions about the whole body of opinion (what do people think, how many, which camp, what's rising, who amplifies) | **CEL** |
+| Questions needing **numbers** about the whole body of opinion: how many people hold a specific view, which camp, what's rising, who amplifies, with every number traceable to posts | **CEL** |
 | You only need a qualitative picture of what is being said, and you'll rebuild rarely | **A map-reduce summary of everything** is as good and cheaper (§7.5) |
 | You'll ask many questions about the same topic | **CEL**: ingest is paid once, and each cached read costs the same as top-20 RAG |
 | You need exact numbers (counts, shares) | **CEL + census** |
