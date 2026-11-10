@@ -230,6 +230,30 @@ class Ledger:
             self.recompute(i)
         return new_ids
 
+    def replace_ops(self, d: int, ops: list[tuple[int | None, str]]) -> set[int]:
+        """Replace document d's ops with `ops` = [(entry_id | None, stance | 'noise' | 'residual')],
+        re-splitting its unit of mass equally (conservation holds). Returns the entries whose
+        tallies must be rebuilt; call recompute() on them once after a bulk update."""
+        old = {e for e, _, _ in self.log[d] if e is not None}
+        w = 1.0 / max(1, len(ops))
+        rows = [(e, s, w) for e, s in ops] or [(None, "residual", 1.0)]
+        for e, s, ww in self.log[d]:
+            if e is None and s == "noise":
+                self.noise_mass -= ww
+            elif e is None and s == "residual":
+                self.residual_mass -= ww
+        for e, s, ww in rows:
+            if e is None and s == "noise":
+                self.noise_mass += ww
+            elif e is None and s == "residual":
+                self.residual_mass += ww
+        if any(e is None and s == "residual" for e, s, _ in rows):
+            self.residual.add(d)
+        else:
+            self.residual.discard(d)
+        self._set_rows(d, rows)
+        return old | {e for e, _, _ in rows if e is not None}
+
     def recompute(self, eid: int) -> None:
         old = self.entries[eid]
         e = Entry(eid=eid, text=old.text, epoch_created=old.epoch_created, label=old.label, theme=old.theme)
@@ -266,8 +290,20 @@ class Ledger:
         """Rough token estimate used for all budgets: UTF-8 bytes / 4."""
         return len(text.encode("utf-8")) // 4
 
+    def camp(self, e: Entry) -> tuple[int, int] | None:
+        """Cross-tab with the anchor: how many of this entry's authors agree / disagree with
+        the anchor statement (their position on the subject as a whole)."""
+        if e.eid == 0 or 0 not in self.entries or not self.entries[0].text.startswith("ANCHOR"):
+            return None
+        an = self.entries[0].author_stance
+        pro = sum(1 for a in e.author_stance if an.get(a) == SUPPORT)
+        con = sum(1 for a in e.author_stance if an.get(a) == DISPUTE)
+        return pro, con
+
     def _entry_line(self, e: Entry, spark: bool = True) -> str:
         a = e.authors_by_stance()
+        c = self.camp(e)
+        camp = f" | camp: anchor▲{c[0]} anchor▼{c[1]}" if c and (c[0] or c[1]) else ""
         conc = e.concentration()
         flag = f" ⚠ top-5 accounts wrote {100 * conc:.0f}% of docs" if conc > 0.5 and e.total >= 50 else ""
         tail = ""
@@ -275,10 +311,11 @@ class Ledger:
             peak = max(e.time_bins) or 1
             tail = " | " + "".join(SPARK[round(8 * b / peak)] for b in e.time_bins) + f" | t={e.first_t:.2f}"
         return (f"e{e.eid} | {e.text} | {len(e.author_stance)} authors ▲{a[SUPPORT]} ▼{a[DISPUTE]} "
-                f"·{a[MENTION]} | {e.total:.0f} docs{flag}{tail}")
+                f"·{a[MENTION]} | {e.total:.0f} docs{flag}{camp}{tail}")
 
     ANCHOR_NOTE = ("e0 is the ANCHOR: it tallies every author whose position on the anchor statement is "
-                   "discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position.")
+                   "discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position. "
+                   "'camp: anchor▲x anchor▼y' on a line = how many of that line's authors agree / disagree with the anchor.")
 
     def render(self, budget_tokens: int = 32000) -> tuple[str, list[int]]:
         """The full corpus as the reading model sees it.  Entries are listed by number of

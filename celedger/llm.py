@@ -8,7 +8,9 @@ Two backends:
 from __future__ import annotations
 
 import json
+import os
 import subprocess
+import tempfile
 import threading
 import time
 
@@ -18,9 +20,21 @@ SPEND = {"usd": 0.0, "calls": 0, "in": 0, "out": 0}
 
 def complete_cli(model: str, system: str, user: str, schema: dict, effort: str = "low",
                  retries: int = 4, timeout: int = 600) -> tuple[dict, float]:
-    cmd = ["claude", "-p", "--model", model, "--system-prompt", system, "--tools", "",
+    # the system prompt (which carries the whole ledger index) goes through a file: as a
+    # single argv string it would hit the OS per-argument limit (128 KB) on large ledgers
+    fd, sys_path = tempfile.mkstemp(prefix="cel_sys_", suffix=".txt")
+    with os.fdopen(fd, "w") as fh:
+        fh.write(system)
+    cmd = ["claude", "-p", "--model", model, "--system-prompt-file", sys_path, "--tools", "",
            "--no-session-persistence", "--effort", effort, "--output-format", "json",
            "--json-schema", json.dumps(schema)]
+    try:
+        return _run(cmd, user, retries, timeout)
+    finally:
+        os.unlink(sys_path)
+
+
+def _run(cmd, user, retries, timeout):
     err = None
     for attempt in range(retries):
         try:

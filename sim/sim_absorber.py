@@ -25,7 +25,7 @@ FLIP = {"support": "dispute", "dispute": "support", "mention": "mention"}
 def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_batches: int = 20,
                  trace: list | None = None, shard_cap: int | None = None, route_err: float = 0.0,
                  cross_merge: float = 0.5, do_consolidate: bool = True,
-                 do_reabsorb: bool = True) -> tuple[Ledger, dict]:
+                 do_reabsorb: bool = True, lanes: int = 1) -> tuple[Ledger, dict]:
     """shard_cap: above this many entries the absorber sees only one routed theme's entries
     (route_err = probability the router picks the wrong theme). cross_merge: relative chance
     that consolidation notices a duplicate living in a *different* theme."""
@@ -45,7 +45,13 @@ def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_ba
             return shard["theme"]
         return themes[c] if rng.random() >= eps else int(rng.integers(n_themes))
 
+    lane_of: dict[int, int] = {}          # entry -> lane that created it (this epoch)
+    cur = {"lane": 0}
+
     def visible(e):
+        # parallel lanes: an entry created this epoch by ANOTHER lane is not yet visible
+        if lanes > 1 and L.entries[e].epoch_created == L.epoch and lane_of.get(e, cur["lane"]) != cur["lane"]:
+            return False
         return not shard["on"] or L.entries[e].theme == shard["theme"]
 
     def live(c):
@@ -55,9 +61,10 @@ def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_ba
         return [e for e in ids if visible(e)]
 
     def any_visible():
-        if not shard["on"]:
+        if not shard["on"] and lanes == 1:
             return list(L.entries)
-        return [e for e in shard_members.get(shard["theme"], ()) if e in L.entries]
+        pool = list(L.entries) if not shard["on"] else shard_members.get(shard["theme"], ())
+        return [e for e in pool if e in L.entries and visible(e)]
 
     shard_members: dict = {}
 
@@ -99,6 +106,7 @@ def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_ba
     frozen = 0
     for i in range(0, len(posts), batch):
         stats["batches"] += 1
+        cur["lane"] = (stats["batches"] - 1) % lanes
         stats["frozen_entries"].append(frozen)
         before = len(L.entries)
         for p in posts[i:i + batch]:
@@ -108,6 +116,7 @@ def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_ba
                 e = L.entries[eid]
                 c, th = e.label
                 e.label, e.theme = c, th
+                lane_of[eid] = cur["lane"]
                 by_label.setdefault(c, []).append(eid)
                 shard_members.setdefault(th, []).append(eid)
             if shard["on"]:

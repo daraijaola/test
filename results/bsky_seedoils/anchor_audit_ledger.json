@@ -1,0 +1,19 @@
+{
+ "n": 150,
+ "confusion_judge_vs_ledger": {
+  "agree->agree": 27,
+  "agree->disagree": 7,
+  "agree->none": 41,
+  "disagree->agree": 2,
+  "disagree->disagree": 10,
+  "disagree->none": 12,
+  "none->disagree": 2,
+  "none->none": 49
+ },
+ "agreement": 0.5733333333333334,
+ "missing": 0.5353535353535354,
+ "inverted": 0.09090909090909091,
+ "spurious": 0.0392156862745098,
+ "judge_agree_share_among_positioned": 0.7575757575757576,
+ "ledger_agree_share_among_positioned": 0.6041666666666666
+}

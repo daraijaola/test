@@ -1,0 +1,113 @@
+{
+ "n": 6062,
+ "authors": 4139,
+ "entries": 1237,
+ "entries_before_global_merge": 1227,
+ "themes": [
+  "Seed oils are safe/healthy (science-backed defense)",
+  "Seed oils harmful/toxic (health claims against)",
+  "Processing, heating, oxidation and omega-6 concerns",
+  "Saturated fats and beef tallow vs seed oils",
+  "Alternative oils and labeling (olive, avocado, mislabeling, what counts as seed oil)",
+  "RFK Jr. and MAHA politics",
+  "Mockery of anti-seed-oil culture, influencers and masculinity/gender",
+  "Conspiracy, extremism, eugenics and political-identity attacks",
+  "Restaurant, food-industry and marketing 'no seed oils' trend",
+  "Ultra-processed food, HFCS and bigger real health causes",
+  "Media, experts, research quality and credibility",
+  "Personal anecdotes, allergies and individual choices",
+  "Nuanced/balanced debate and fear vs moderation",
+  "Non-food uses, history, trivia and unrelated items",
+  "Other"
+ ],
+ "residual_pct_before": 12.165951831078852,
+ "residual_pct": 4.280765423952491,
+ "noise_pct": 8.017156054107556,
+ "hallucinated_ids": 2,
+ "missing_docs": 0,
+ "anchor": {
+  "support": 1039,
+  "dispute": 306,
+  "mention": 15
+ },
+ "growth": [
+  [
+   400,
+   257
+  ],
+  [
+   800,
+   284
+  ],
+  [
+   1200,
+   363
+  ],
+  [
+   1600,
+   428
+  ],
+  [
+   2000,
+   498
+  ],
+  [
+   2400,
+   573
+  ],
+  [
+   2800,
+   683
+  ],
+  [
+   3200,
+   768
+  ],
+  [
+   3600,
+   836
+  ],
+  [
+   4000,
+   901
+  ],
+  [
+   4400,
+   963
+  ],
+  [
+   4800,
+   1006
+  ],
+  [
+   5200,
+   1080
+  ],
+  [
+   5600,
+   1150
+  ],
+  [
+   6000,
+   1221
+  ],
+  [
+   6062,
+   1229
+  ]
+ ],
+ "usd": 3.60270762,
+ "usd_by_stage": {
+  "residual": 0.8944647,
+  "consolidate": 0.30155726,
+  "polarity": 0.416675,
+  "themes": 0.6962132,
+  "absorb": 1.29379746
+ },
+ "render_tokens": {
+  "flat": 31687,
+  "multires": 31435
+ },
+ "corpus_tokens_est": 246564,
+ "seconds": 1715.970487356186
+}

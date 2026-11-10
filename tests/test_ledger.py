@@ -99,3 +99,30 @@ def test_incremental_merge_equals_full_recompute():
         assert e.author_docs == pytest.approx(adoc)
         assert e.time_bins == pytest.approx(bins)
         assert e.first_t == ft
+
+
+def test_camp_crosstab_with_anchor():
+    L = Ledger()
+    L.new_entry("ANCHOR: X is good")
+    L.absorb(doc(0, "a"), [Op("assign", 0, "support"), Op("new", text="claim P")])
+    L.absorb(doc(1, "b"), [Op("assign", 0, "dispute"), Op("assign", 1, "support")])
+    L.absorb(doc(2, "c"), [Op("assign", 1, "dispute")])
+    assert L.camp(L.entries[1]) == (1, 1)
+    assert "camp: anchor▲1 anchor▼1" in L.render(4000)[0]
+
+
+def test_replace_ops_conserves_mass_and_rebuilds_tallies():
+    L = Ledger()
+    L.new_entry("ANCHOR: X is good")
+    L.absorb(doc(0, "a"), [Op("new", text="P")])
+    L.absorb(doc(1, "b"), [Op("noise")])
+    L.absorb(doc(2, "c"), [Op("assign", 1, "support"), Op("assign", 0, "dispute")])
+    touched = L.replace_ops(0, [(1, "support"), (0, "support")])
+    touched |= L.replace_ops(1, [(0, "dispute")])
+    touched |= L.replace_ops(2, [(1, "support")])
+    for e in touched:
+        L.recompute(e)
+    assert L.check_conservation() == pytest.approx(3)
+    assert L.noise_mass == pytest.approx(0)
+    assert L.entries[0].authors_by_stance()["support"] == 1 and L.entries[0].authors_by_stance()["dispute"] == 1
+    assert L.entries[1].total == pytest.approx(1.5)

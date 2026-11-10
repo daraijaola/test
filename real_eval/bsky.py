@@ -10,7 +10,9 @@ import argparse
 import json
 import math
 import pickle
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
 
@@ -65,6 +67,7 @@ def main():
     ap.add_argument("--anchor", required=True, help="unambiguous statement whose support/dispute = subject stance")
     ap.add_argument("--batch", type=int, default=50)
     ap.add_argument("--epoch-batches", type=int, default=5)
+    ap.add_argument("--lanes", type=int, default=1, help="batches absorbed concurrently within an epoch")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
     semeval.CFG["version"] = "v2"
@@ -83,16 +86,23 @@ def main():
     L.epoch += 1
     frozen = "\n".join(L.index_lines())
     ids = [p["id"] for p in posts]                       # chronological
-    for b, s in enumerate(range(0, n, a.batch)):
-        chunk = ids[s:s + a.batch]
-        r = semeval.absorb_batch(L, a.topic, frozen, [(i, texts[i]) for i in chunk], log, n, metas)
-        for k in stats:
-            stats[k] += r[k]
-        growth.append((min(s + a.batch, n), len(L.entries)))
-        if (b + 1) % a.epoch_batches == 0:
-            semeval.consolidate(L, a.topic, semeval.ABSORBER, True, log)
-            frozen = "\n".join(L.index_lines())
-            print(f"{min(s + a.batch, n)}/{n} docs, {len(L.entries)} entries, ${sum(u for _, u in log):.2f}", flush=True)
+    lock = threading.Lock()
+    batches = [ids[s:s + a.batch] for s in range(0, n, a.batch)]
+    for ep in range(0, len(batches), a.epoch_batches):
+        group = batches[ep:ep + a.epoch_batches]
+
+        def run(chunk, frozen=frozen):
+            return semeval.absorb_batch(L, a.topic, frozen, [(i, texts[i]) for i in chunk], log, n, metas, lock)
+        with ThreadPoolExecutor(max(1, a.lanes)) as ex:
+            for r in ex.map(run, group):
+                for k in stats:
+                    stats[k] += r[k]
+        done = min((ep + len(group)) * a.batch, n)
+        growth.append((done, len(L.entries)))
+        semeval.consolidate(L, a.topic, semeval.ABSORBER, True, log)
+        frozen = "\n".join(L.index_lines())
+        print(f"{done}/{n} docs, {len(L.entries)} entries, ${sum(u for _, u in log):.2f}, "
+              f"{time.time() - start:.0f}s", flush=True)
     semeval.consolidate(L, a.topic, semeval.ABSORBER, True, log)
     pre_global = len(L.entries)
     semeval.consolidate(L, a.topic, semeval.CONSOLIDATOR, False, log)

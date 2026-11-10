@@ -1,0 +1,17 @@
+{
+ "n": 150,
+ "confusion_judge_vs_ledger": {
+  "agree->agree": 25,
+  "agree->none": 50,
+  "disagree->disagree": 1,
+  "disagree->none": 14,
+  "none->agree": 2,
+  "none->none": 58
+ },
+ "agreement": 0.56,
+ "missing": 0.7111111111111111,
+ "inverted": 0.0,
+ "spurious": 0.03333333333333333,
+ "judge_agree_share_among_positioned": 0.8333333333333334,
+ "ledger_agree_share_among_positioned": 0.9642857142857143
+}

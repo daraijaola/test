@@ -1,0 +1,389 @@
+{
+ "audit": {
+  "n": 100,
+  "verdicts": {
+   "minor_issue": 25,
+   "correct": 71,
+   "wrong": 4
+  },
+  "anchor": {
+   "no": 20,
+   "na": 50,
+   "yes": 30
+  },
+  "error_rate_strict": 0.04,
+  "error_rate_incl_minor": 0.29,
+  "wrong_notes": [
+   "'Healthy respect' means wariness, not safety. The anchor support is a misreading, and the entry 'respect rather than fear' inverts the meaning.",
+   "The post never mentions seed oils. It is about RFK and vaccines and should be noise, not a filed claim.",
+   "The post is mockery of anti-seed-oil people. Filing it as support for 'avoid for health' reverses the stance.",
+   "The mock-outrage tone reads as satire of seed-oil fear. Supporting an 'objectionable' entry and disputing the anchor reverses the stance."
+  ]
+ },
+ "points_n": 131,
+ "coverage": {
+  "ledger (theme view)": {
+   "n": 131,
+   "yes": 0.3816793893129771,
+   "partly": 0.4732824427480916,
+   "no": 0.1450381679389313,
+   "score": 0.6183206106870229,
+   "context_tokens": 31435
+  },
+  "RAG top-20": {
+   "n": 131,
+   "yes": 0.03816793893129771,
+   "partly": 0.13740458015267176,
+   "no": 0.8244274809160306,
+   "score": 0.10687022900763359,
+   "context_tokens": 977
+  },
+  "RAG top-100": {
+   "n": 131,
+   "yes": 0.08396946564885496,
+   "partly": 0.20610687022900764,
+   "no": 0.7099236641221374,
+   "score": 0.18702290076335878,
+   "context_tokens": 4160
+  },
+  "RAG top-k, same tokens as ledger": {
+   "n": 131,
+   "yes": 0.2900763358778626,
+   "partly": 0.32061068702290074,
+   "no": 0.3893129770992366,
+   "score": 0.45038167938931295,
+   "context_tokens": 30829
+  },
+  "random sample, same tokens as ledger": {
+   "n": 131,
+   "yes": 0.37404580152671757,
+   "partly": 0.2824427480916031,
+   "no": 0.3435114503816794,
+   "score": 0.5152671755725191,
+   "context_tokens": 30773
+  }
+ },
+ "qa": [
+  {
+   "entity": "tallow",
+   "gold": {
+    "count": 530,
+    "authors": 429
+   },
+   "plan": {
+    "predicate": "Does the post's text contain the string 'tallow' (case-insensitive) anywhere, as a standalone word, as the start of a longer word (e.g. 'tallows', 'tallowed'), or inside a hashtag (e.g. '#tallow', '#beeftallow', '#tallowfries')? Answer yes if 'tallow' appears in any of these forms, otherwise no.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 528,
+   "census_precision": 0.9962121212121212,
+   "census_recall": 0.9924528301886792,
+   "answers": {
+    "ledger": {
+     "count": 330,
+     "authors": 290
+    },
+    "ledger+census": {
+     "count": 528,
+     "authors": 426
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 0
+    },
+    "rag100": {
+     "count": 100,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.5403308,
+    "ledger+census": 0.720502119999999,
+    "rag20": 0.027330800000000002,
+    "rag100": 0.06555079999999999
+   }
+  },
+  {
+   "entity": "rfk",
+   "gold": {
+    "count": 341,
+    "authors": 297
+   },
+   "plan": {
+    "predicate": "Does the post's text contain the string 'rfk' (case-insensitive) as a standalone word, as the start of a word (e.g. 'RFKJr', 'RFK's', 'rfkjr'), or inside a hashtag (e.g. '#RFK', '#RFKJr')? Answer yes if it does. Answer no if 'rfk' only appears in the middle of a longer word, or if the post mentions Kennedy without the letters 'rfk'.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 340,
+   "census_precision": 0.9970588235294118,
+   "census_recall": 0.9941348973607038,
+   "answers": {
+    "ledger": {
+     "count": 400,
+     "authors": 340
+    },
+    "ledger+census": {
+     "count": 340,
+     "authors": 296
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 0
+    },
+    "rag100": {
+     "count": 100,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.5279908,
+    "ledger+census": 0.7181754199999977,
+    "rag20": 0.031246799999999998,
+    "rag100": 0.0891508
+   }
+  },
+  {
+   "entity": "maha",
+   "gold": {
+    "count": 267,
+    "authors": 232
+   },
+   "plan": {
+    "predicate": "Does the post contain the term 'MAHA' (case-insensitive) as a standalone word, as a prefix of a word (e.g., 'MAHA-coded', 'MAHAers'), or in a hashtag (e.g., '#MAHA', '#MAHAmoms')? Answer yes only if the literal letters 'maha' appear in one of these forms; do not count posts that only refer to 'Make America Healthy Again' spelled out without the 'MAHA' token, and do not count 'maha' as part of an unrelated word like 'Mahalo' or 'Mahatma'.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 267,
+   "census_precision": 0.9962546816479401,
+   "census_recall": 0.9962546816479401,
+   "answers": {
+    "ledger": {
+     "count": 250,
+     "authors": 210
+    },
+    "ledger+census": {
+     "count": 267,
+     "authors": 232
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 0
+    },
+    "rag100": {
+     "count": 100,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.5378027999999999,
+    "ledger+census": 0.7213808199999988,
+    "rag20": 0.0329788,
+    "rag100": 0.0718028
+   }
+  },
+  {
+   "entity": "processed",
+   "gold": {
+    "count": 242,
+    "authors": 195
+   },
+   "plan": {
+    "predicate": "Does the document's text contain the string 'processed' as a word, as part of a word starting with it, or in a hashtag (case-insensitive), e.g. 'processed', 'ultra-processed', 'processedfood', '#processedfoods', 'unprocessed'? Answer yes if the letters 'processed' appear anywhere in the text; otherwise no.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 255,
+   "census_precision": 0.9215686274509803,
+   "census_recall": 0.9710743801652892,
+   "answers": {
+    "ledger": {
+     "count": 104,
+     "authors": 120
+    },
+    "ledger+census": {
+     "count": 255,
+     "authors": 207
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 0
+    },
+    "rag100": {
+     "count": 100,
+     "authors": 93
+    }
+   },
+   "cost": {
+    "ledger": 0.5380188,
+    "ledger+census": 0.7210782200000085,
+    "rag20": 0.0310828,
+    "rag100": 0.1135708
+   }
+  },
+  {
+   "entity": "olive",
+   "gold": {
+    "count": 192,
+    "authors": 167
+   },
+   "plan": {
+    "predicate": "Does the document contain the word 'olive' \u2014 on its own, as the start of a longer word (e.g. 'olives', 'oliveoil'), or as a hashtag (e.g. '#olive', '#oliveoil')? Case-insensitive. Answer yes if it does, no if it doesn't.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 193,
+   "census_precision": 0.9948186528497409,
+   "census_recall": 1.0,
+   "answers": {
+    "ledger": {
+     "count": 49,
+     "authors": 57
+    },
+    "ledger+census": {
+     "count": 193,
+     "authors": 167
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 0
+    },
+    "rag100": {
+     "count": 100,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.5339668000000001,
+    "ledger+census": 0.7145890199999991,
+    "rag20": 0.0397188,
+    "rag100": 0.10925080000000001
+   }
+  },
+  {
+   "entity": "butter",
+   "gold": {
+    "count": 163,
+    "authors": 125
+   },
+   "plan": {
+    "predicate": "Does the post contain the word 'butter' as a standalone word, as the start of a word (e.g. 'butters', 'buttery', 'buttered', 'buttermilk'), or as a hashtag (e.g. '#butter', '#butterlover'), case-insensitive? Answer no if 'butter' appears only inside a word without starting it (e.g. 'peanutbutter' with no space, 'Kerrygoldbutter').",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 163,
+   "census_precision": 1.0,
+   "census_recall": 1.0,
+   "answers": {
+    "ledger": {
+     "count": 70,
+     "authors": 65
+    },
+    "ledger+census": {
+     "count": 163,
+     "authors": 125
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 17
+    },
+    "rag100": {
+     "count": 90,
+     "authors": 77
+    }
+   },
+   "cost": {
+    "ledger": 0.5361028,
+    "ledger+census": 0.7179020199999981,
+    "rag20": 0.0388348,
+    "rag100": 0.1222628
+   }
+  },
+  {
+   "entity": "heart",
+   "gold": {
+    "count": 153,
+    "authors": 107
+   },
+   "plan": {
+    "predicate": "Does the post's text contain the word 'heart' in any form: as a standalone word, as the start of a longer word (e.g., 'hearts', 'heartburn', 'heartbreaking', 'hearty'), or as a hashtag beginning with 'heart' (e.g., '#hearthealth')? Matching ignores case. Answer yes if any such occurrence appears, otherwise no.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 151,
+   "census_precision": 1.0,
+   "census_recall": 0.9869281045751634,
+   "answers": {
+    "ledger": {
+     "count": 35,
+     "authors": 54
+    },
+    "ledger+census": {
+     "count": 151,
+     "authors": 105
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 0
+    },
+    "rag100": {
+     "count": 87,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.5276388,
+    "ledger+census": 0.7245906199999967,
+    "rag20": 0.0344628,
+    "rag100": 0.10661880000000001
+   }
+  },
+  {
+   "entity": "inflammation",
+   "gold": {
+    "count": 151,
+    "authors": 100
+   },
+   "plan": {
+    "predicate": "Does the post contain the word 'inflammation' or a word beginning with 'inflammat' (e.g., inflammation, inflammatory, anti-inflammatory, inflammations), including as a hashtag like #inflammation? Answer yes only if such a word literally appears in the text (case-insensitive); otherwise no.",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6062,
+   "census_hits": 207,
+   "census_precision": 0.7294685990338164,
+   "census_recall": 1.0,
+   "answers": {
+    "ledger": {
+     "count": 10,
+     "authors": 19
+    },
+    "ledger+census": {
+     "count": 207,
+     "authors": 139
+    },
+    "rag20": {
+     "count": 20,
+     "authors": 18
+    },
+    "rag100": {
+     "count": 64,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.5340108,
+    "ledger+census": 0.7147835199999949,
+    "rag20": 0.0393308,
+    "rag100": 0.09254280000000001
+   }
+  }
+ ],
+ "spend_usd": 15.623524459999988
+}

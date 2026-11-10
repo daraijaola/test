@@ -136,33 +136,39 @@ def load(data_dir: Path, t: str) -> list[tuple[str, str]]:
 
 # ------------------------------------------------------------------ absorption
 def absorb_batch(L: Ledger, topic: str, frozen: str, batch: list[tuple[int, str]], log: list, n: int,
-                 metas: dict | None = None):
+                 metas: dict | None = None, lock=None):
     """metas: doc id -> DocMeta (real author/time/reach). SemEval tweets carry none, so by
-    default each tweet is its own author and time = position in the stream (i / n)."""
-    fresh = "\n".join(L.index_lines(since_epoch=L.epoch))
+    default each tweet is its own author and time = position in the stream (i / n).
+    lock: when several lanes absorb concurrently, the model calls overlap but reading the
+    fresh-entry list and applying ops are serialised (ids stay unique, mass conserved)."""
+    import contextlib
+    guard = lock or contextlib.nullcontext()
+    with guard:
+        fresh = "\n".join(L.index_lines(since_epoch=L.epoch))
     user = (("ENTRIES ADDED THIS EPOCH (also valid ids):\n" + fresh + "\n\n") if fresh else "") + \
         "DOCUMENTS:\n" + "\n".join(f'<doc id={i}>{x}</doc>' for i, x in batch)
     out, usd = llm.complete(ABSORBER, absorb_prompt(topic, frozen or "(empty)"), user, OPS_SCHEMA)
-    log.append(("absorb", usd))
-    got = {d["doc_id"]: d["ops"] for d in out["docs"]}
     stats = {"hallucinated_ids": 0, "missing_docs": 0}
-    for i, _ in batch:
-        ops = []
-        if i not in got:
-            stats["missing_docs"] += 1
-        for o in got.get(i, [])[:4]:
-            k = o["kind"]
-            if k == "assign":
-                eid = o["entry_id"]
-                if eid is None or L.resolve(eid) not in L.entries:
-                    stats["hallucinated_ids"] += 1
-                    ops.append(Op("residual")); continue
-                ops.append(Op("assign", L.resolve(eid), o["stance"]))
-            elif k == "new":
-                ops.append(Op("new", None, o["stance"], (o["text"] or "").strip() or "(unnamed)"))
-            else:
-                ops.append(Op(k))
-        L.absorb(metas[i] if metas else DocMeta(i, f"a{i}", i / (n + 1), 1.0), ops)
+    with guard:
+        log.append(("absorb", usd))
+        got = {d["doc_id"]: d["ops"] for d in out["docs"]}
+        for i, _ in batch:
+            ops = []
+            if i not in got:
+                stats["missing_docs"] += 1
+            for o in got.get(i, [])[:4]:
+                k = o["kind"]
+                if k == "assign":
+                    eid = o["entry_id"]
+                    if eid is None or L.resolve(eid) not in L.entries:
+                        stats["hallucinated_ids"] += 1
+                        ops.append(Op("residual")); continue
+                    ops.append(Op("assign", L.resolve(eid), o["stance"]))
+                elif k == "new":
+                    ops.append(Op("new", None, o["stance"], (o["text"] or "").strip() or "(unnamed)"))
+                else:
+                    ops.append(Op(k))
+            L.absorb(metas[i] if metas else DocMeta(i, f"a{i}", i / (n + 1), 1.0), ops)
     return stats
 
 

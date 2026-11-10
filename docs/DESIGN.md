@@ -2,25 +2,43 @@
 
 ### Absorbing a whole corpus into a model, without retrieval
 
-> **One sentence:** RAG makes the model combine a small sample of documents every time a question is asked. CEL combines **every** document **once**, when it is ingested, into a ledger of distinct assertions with exact stance tallies. The total weight in the ledger always equals the number of documents ingested. At question time the model reads the **entire** ledger, not a sample, and when it needs more detail it re-reads an exact posting list (an exhaustive census), not similarity-search results.
+> **One sentence:** RAG makes the model combine a small sample of documents every time a question is asked. CEL combines **every** document **once**, when it is ingested, into a ledger of distinct assertions. Each assertion carries exact stance tallies by person and over time. The total weight in the ledger always equals the number of documents ingested. At question time the model reads the **entire** ledger, not a sample. When it needs more detail, it re-reads an exact posting list (an exhaustive *census*), not similarity-search results.
+
+This document is the result of a 24-hour iteration (rounds listed in §11):
+1. A first-principles analysis.
+2. A design.
+3. A simulation with known ground truth.
+4. Real-model experiments on two kinds of real data:
+   - SemEval-2016 stance tweets, which have gold labels;
+   - every public Bluesky post on two niche topics, about 6,000 posts each, X-like and uncurated.
+
+Real-data results replaced several of my first-pass claims; where they did, the correction is stated.
 
 ---
 
-## 0. TL;DR
+## 0. TL;DR, what the evidence says
 
-| | Top-k RAG | Conserved Evidence Ledger |
-|---|---|---|
-| What the model sees | k snippets (≈0.1% of a 20k-post corpus at k=20) | every document's contribution, compressed by redundancy |
-| Knows the denominator? | no: it can't tell "20 of 20" from "20 of 20,000" | yes: every line carries exact counts, and an *unplaced* (residual) percentage is always shown |
-| When cross-document synthesis happens | at every query, on a sample, by the expensive model | once per document, at ingest, by a cheap model, against everything already known |
-| Aggregate questions (how many / what share / what's rising) | structurally can't answer them | the ledger *is* the distribution |
-| Dissent and minority views | lost unless the query happens to match them | kept as stance tallies on every entry |
-| Coordinated amplification (bots) | invisible; can dominate what gets retrieved | visible: per-entry author-concentration flag |
-| Per-query cost | k·chunk tokens at full price, repeated every query | one cached read of a ~10–30k-token ledger |
-| Auditable? | no | yes: total mass = number of docs, every tally can be recomputed from provenance |
+**Real data, real models.** Haiku 5.5 absorbs. Sonnet 5.5 consolidates and judges. Opus 5.5 reads.
 
-On a simulated niche-topic feed (21,500 posts, 300 latent claims, a bot flood, ground truth known), at an absorber error rate of 10%:
-**all** claims held by ≥3 people were visible to the model (RAG k=100: 20%), prevalence rank correlation was 0.93 (RAG: 0.38–0.46), emerging-claim detection reached 92% precision / 88% recall (RAG: ≈3% recall), and the bot flood was caught (support share 15% vs a true 12%; a post-counting view says 92%). Ingest cost $0.23–0.46, one time; each query after that costs about the same as a k=20 RAG query. To reach comparable coverage, RAG must read about 10% of the corpus per query, which is roughly 20× more expensive per query. Details and caveats are in §7 and in [`results/results.md`](../results/results.md).
+| Question | RAG | CEL | Source |
+|---|---|---|---|
+| Is a random post's point present in what the reader receives? Equal ~31k-token budget, Bluesky, judge-scored | top-k at the same budget: 40–45%; random sample at the same budget: 51–52%; top-20: 11% | **62–63%** (points entirely absent: 12–15% vs 31–40%) | §7.3 |
+| Same, with the whole ledger (every entry: 51k / 72k tokens, for 247k / 282k-token corpora) | top-k at the same budget: 54% / 66%; random sample at the same budget: 55% / 73% | **63% / 75%** (points entirely absent: **6–11%** vs 16–34%) | §7.3 |
+| How many posts mention X, and by how many people? (16 questions, two Bluesky topics) | top-100: 46–58% median error; top-20: ~91% | **ledger + census: 0–1% median error**, 88–100% of answers within 20% | §7.3 |
+| What share of a corpus favours or opposes the target? (SemEval, re-mixed so memorised statistics fail) | top-20: 16–18 pt error | **4.5–4.9 pt** (classifying every tweet for this question: 6.2) | §7.2 |
+| Per-tweet stance recovered *through* the ledger (SemEval F_avg) | n/a | **0.801**, vs 0.749 for Haiku classifying each tweet directly | §7.2 |
+| Absorber filing errors (independent judge, 199 random real posts) | n/a | **1–4% wrong**, 25–35% "minor issue" | §7.3 |
+
+**Cost (measured).**
+- **Ingest:** ~$0.60–0.70 per 1,000 posts, every post read once. 6,000 posts took about 30 minutes with 8 parallel lanes.
+- **Per question, as run here:** reading the ledger cost ~$0.50, because every CLI call re-sent the 32k-token ledger uncached and Opus ran at medium effort. With the ledger as a cached prefix through the SDK, it would be ~$0.02–0.05.
+- **Census:** ~$0.12 per 1,000 posts scanned.
+- **At equal reading budget,** CEL and RAG cost the same per question, and CEL delivers more coverage. Against cheap top-20 RAG, CEL costs more per question but answers questions RAG structurally can't.
+
+**Where CEL is *not* better:**
+- When a narrow question can be answered by a handful of posts, RAG is cheaper and often as good.
+- Ledger counts carry the absorber's error unless verified by census.
+- Real topics did **not** saturate: distinct assertions grew roughly like N^0.8 or faster. Savings come from compression and a fixed reading budget, not from the ledger staying small.
 
 ---
 
@@ -48,7 +66,7 @@ Below is the standard pipeline, with each point where information is **lost (L)*
 
 **Step 6: Context assembly.**
 - **W2 Re-reading at full price.** The expensive model re-reads raw, duplicate-laden text on every query. Nothing learned in query 1 is kept for query 2.
-- **W3 Coverage costs linearly.** The only lever for coverage is larger k, which raises cost linearly. Full coverage means k = N, i.e. long-context stuffing, which also stops fitting once the topic grows past roughly 20k posts.
+- **W3 Coverage costs linearly.** The only lever for coverage is larger k, which raises cost linearly. Full coverage means k = N, i.e. long-context stuffing: about 250k tokens per question for 6,000 real posts, and no longer possible once a topic passes roughly 20k posts.
 
 **Step 7: Generation.**
 - **L8 Sample presented as population.** The model reasons from a sample but answers as if it had seen everything, with no indication of how large its blind spot is.
@@ -62,7 +80,7 @@ Below is the standard pipeline, with each point where information is **lost (L)*
 From §1, a representation that lets the model judge on *all* available information must have these properties:
 
 - **R1 Total influence.** Every document changes the representation, or is explicitly recorded as not having changed it.
-- **R2 Size ∝ distinct content, not volume.** Niche-topic social media is extremely redundant, so this is where the savings come from.
+- **R2 Size ∝ distinct content, not volume.** Repeated content becomes a count rather than repeated text. (Real data, §7.3: about 4–5 posts per entry and 5× fewer tokens than the raw corpus. Redundancy helps, but less than I first assumed, and real topics kept producing new assertions.)
 - **R3 Multiplicity kept.** How many, how many distinct people, how much reach, and when. Without counts there are no judgments about prevalence.
 - **R4 Dissent kept.** Support and dispute are tallied separately on the same assertion.
 - **R5 Known unknowns.** The model is told *how much* it could not interpret.
@@ -84,191 +102,290 @@ Two invariants make it trustworthy:
    `Σ entry mass + residual mass + noise mass = documents absorbed`, which is checked after every operation. Merges and splits move mass but never create or destroy it. A document the absorber can't place goes to the **residual**, never into silence.
 2. **Exact provenance.** Every op is logged (doc → entries). Every tally can therefore be recomputed exactly, every entry has a complete posting list, and splits and census queries are exact.
 
-The model then reads the whole ledger, and the conservation invariant means the whole ledger is the whole corpus.
+The model then reads the whole ledger, and the conservation invariant means the whole ledger is the whole corpus. A third element, added after real-data error analysis (§4.4), is the **anchor**: one literal statement of the subject's central question, with a dedicated pass recording every author's position on it. That makes subject-level stance and camp cross-tabs exact counts rather than inferences.
 
 ---
+
 
 ## 4. Mechanism
 
-Reference implementation: [`celedger/ledger.py`](../celedger/ledger.py) (data structure and invariants) and [`celedger/absorber.py`](../celedger/absorber.py) (LLM absorber and consolidation).
+Reference implementation:
+- [`celedger/ledger.py`](../celedger/ledger.py): data structure, invariants, views and census.
+- [`real_eval/semeval.py`](../real_eval/semeval.py) and [`real_eval/bsky.py`](../real_eval/bsky.py): the real absorber, consolidation, residual escalation and lanes.
+- [`real_eval/anchor_pass.py`](../real_eval/anchor_pass.py): the dedicated subject-stance pass.
+- [`celedger/absorber.py`](../celedger/absorber.py): the SDK-form absorber (v1 prompt; the CLI-driven `real_eval/` code is the up-to-date pipeline).
 
 ### 4.1 Entry (the unit)
+A real line from the seed-oils ledger (6,062 Bluesky posts):
 ```
-e17 | "The v2 airdrop excludes wallets that bridged before March" |
-      812 authors ▲598 ▼171 ·43 | 1,553 docs | trend ▁▂▃▅▇█ | first seen 03-02 |
-      ⚠ top-5 accounts wrote 71% of docs   (only when concentrated)
-      exemplars: {support: doc 88121, dispute: doc 90233}
+e384 | Seed oils are reflexively blamed for problems they did not cause. | 116 authors ▲109 ▼2 ·5 | 103 docs | camp: anchor▲34 anchor▼6
 ```
-An entry is a *proposition someone could agree or disagree with*, or an observation (an event, a link, a question people keep asking). Fields:
+An entry is a *proposition someone could agree or disagree with*, or an observation. It carries:
 - stance masses
-- author → latest-stance map, so counts are of **people**, not posts
-- author → doc mass (the concentration signal)
+- author → latest stance, so counts are of **people**, not posts
+- author → doc mass, which drives the ⚠ concentration flag for coordinated amplification
 - reach
-- 12-bin time histogram
+- a 12-bin time histogram
 - one exemplar per stance
 - first-seen time
+- a theme
+- the **camp** cross-tab (§4.4)
 
-### 4.2 Operations
-`assign(entry, stance)` · `new(canonical wording, stance)` · `noise` · `residual`. The output is strictly typed (structured outputs). If the absorber references an entry id that doesn't exist, the op becomes `residual`. It is never dropped and never guessed.
+### 4.2 Operations and the two invariants
+Each document gets typed ops: `assign(entry, support|dispute|mention)` · `new(canonical statement, stance)` · `noise` · `residual`. An id the absorber invents becomes `residual`; it is never dropped or guessed.
 
-### 4.3 Absorption pass (ingest)
-- **Order:** by thread, then time. A reply is absorbed right after its parent and is judged in light of it, which fixes **L1**.
-- **Batches** of about 100 posts. Prompt = `[instructions + frozen ledger index]` (cached) + `[entries created this epoch]` + `[batch]`.
-- **Append-only within an epoch.** New entries are appended after the cached prefix rather than inserted into it, so the prefix cache stays valid for the whole epoch (about 20 batches) and is billed at cache-read rates.
-- Each post therefore "meets" everything known about the topic. Over the whole run that is N document-versus-all-knowledge comparisons, which RAG never performs. This is where **L2, L3, L5, L6** are avoided: there is no projection to a vector, and no query-shaped selection.
+**Conservation.** Each document carries one unit of mass, split across its ops: `Σ entry mass + residual + noise = documents absorbed`. This is checked after every operation. Merges, splits and op replacement are all mass-conserving and tested (`tests/`).
 
-### 4.4 Consolidation ("sleep")
-At each epoch boundary:
-- **Local merge.** The same cheap model, *reusing the same cached prefix*, checks only this epoch's new entries against the frozen index for paraphrase duplicates.
-- **Global pass.** Every ~10 epochs, a stronger model reads only the index (no documents) to catch merges the local pass missed and to propose **splits** of overloaded entries. Because provenance is exact, a split re-routes every document of the entry. Nothing is approximated.
-- **Residual re-absorption.** Residual posts are re-read once against the now-larger ledger. Many posts that were unplaceable early (the claim didn't exist yet) are placeable later.
+**Provenance.** Every op is logged, so every entry has an exact posting list and every tally can be recomputed. Merges are applied incrementally, and a test proves they equal a full recompute.
 
-All three operations conserve mass. `check_conservation()` runs after each one.
+### 4.3 Absorption
+- **Batches** of 40–50 posts. Prompt = [instructions + frozen ledger index] (a stable, cacheable prefix) + [entries created this epoch] + [the batch].
+- **Append-only within an epoch,** so the cached prefix stays valid.
+- **Every post meets everything known so far.** No similarity selection decides what it is compared with.
+- **Lanes (throughput).** Within an epoch, P batches are absorbed concurrently. Each lane sees the frozen index but not the other lanes' brand-new entries until the epoch's consolidation. Model calls overlap; ledger updates are serialised.
+  - Simulation: P = 64 changes no quality metric (§7.4).
+  - Real data: 8 lanes absorbed 6,000 posts in ~18 minutes, against an estimated ~4 hours sequentially.
+- **Noise is reserved for contentless posts.** Any post expressing an opinion gets an entry. Calling stance-bearing posts "off-topic" caused 52% of v1's stance losses (§7.2).
+- **Residual escalation.** Posts the cheap model can't place are re-read once by a stronger model, against the now-larger ledger. Residual fell from about 12% to about 4.3% on both Bluesky topics.
 
-### 4.5 Reading (query time)
-The reading model (e.g. Opus 5.5) receives the **rendered ledger**:
-- a header: N documents, N authors, the % placed / residual / noise
-- every entry, sorted by number of distinct authors, one line each
+### 4.4 The anchor and camps (added after real-data error analysis)
+The user states the subject as one unambiguous statement, e.g. *"Seed oils are safe and healthy to eat."* Entry e0 is that **anchor**.
+- **A dedicated cheap pass** asks only one question of every post: does the author agree, disagree, or neither?
+  - **v2** asked the main absorber to add anchor ops while filing assertions. The real-data audit found **54–71% of positions missing**, and the miss rate differed by camp, which biased the subject-level share by 13–16 points.
+  - **v3** uses the dedicated pass at $0.31 per 6k posts. It cut missing positions to 9–17% and the bias to 4–6 points (§7.3).
+- **Camp cross-tab, at no extra cost.** Every line shows how many of its authors agree or disagree with the anchor ("camp: anchor▲34 anchor▼6"). The reader can answer "what do skeptics argue that defenders don't?" directly.
+- **The anchor must be a literal statement.** "In favour of seed oils" was read inconsistently, because in this debate "the topic" can mean the anti-seed-oil movement. That was caught by the audit and fixed.
 
-It is a stable prefix, so it is cached across all queries. At 444 entries it is about 13k tokens. The model answers from the full distribution ("812 people assert X, 171 dispute it, mostly in the last 3 days; 0.2% of the corpus is unplaced"). It does not answer from 20 snippets.
+### 4.5 Consolidation ("sleep")
+- **Each epoch:** the same cheap model, reusing the cached prefix, merges this epoch's new entries into existing ones when they are paraphrases.
+- **At the end, or periodically:** a stronger model reads only the index (no documents) for global merges.
+- **Splits** re-route an entry's exact posting list.
+- **The anchor is never merged.**
+- **Ablation:** without consolidation the ledger is 5× larger, census error doubles, and emerging-claim recall drops 81% → 64% at ε=0.2 (§7.4).
 
-### 4.6 Large topics: sharded index
-When the index outgrows a comfortable prefix (about 150k tokens, roughly 8k entries), it is sectioned into themes. Each section is mass-conserving: the theme's tallies are the sum of its entries. The absorber sees a one-line-per-section table plus the routed section(s). Routing is a judgment by the reading model over a table of contents, **not** a similarity lookup.
+### 4.6 What the reader sees
+- **Flat view:** entries by number of distinct authors until the token budget is used. One fold line gives the exact count and share of everything not shown.
+- **Theme view:** 8–15 model-proposed themes. Each theme shows its exact mass and at least its top two entries; remaining slots go by global rank; each theme's remainder folds with its exact count. At 500k simulated posts and a 32k budget it shows 98% of claims held by ≥10 people, against 72% for the flat view.
+- **A legend is required.** The view's header explains the anchor and camp columns. Without it, Opus misread the anchor line: SemEval climate error was 17.9 points without the legend and 1.0 with it (§7.2).
+- **Budget is a dial.** A 32k view costs a few cents per question when cached; 128k shows everything held by ≥3 people at 500k posts (simulated) for ~$0.04 per question.
 
-### 4.7 Multi-resolution rendering (no hidden denominator)
-If the ledger exceeds the reading budget (32k tokens in the experiments), lower-mass entries are **folded** into a line that still states their exact count and share ("+330 smaller entries: 2,533 docs, 11.8% of corpus"), or into per-theme rollups. The model always sees 100% of the mass at some resolution, and can expand any fold **by id**. That is enumeration, not search.
+### 4.7 Census (exhaustive, exact-scope verification)
+- **The step:** the reader writes a yes/no predicate and a scope (all posts, or specific entries' posting lists). A cheap model checks **every** post in scope, and the exact result goes back to the reader.
+- **Real accuracy:** checker precision 0.95–1.00, recall 0.99–1.00 against text-match gold.
+- **Why it is needed:** the ledger stores meaning, not words. "How many posts mention tallow?" is not answerable from the ledger alone (57–88% median error), but census makes it exact.
+- **Cost:** ~$0.12 per 1,000 posts scanned.
+- **Reuse:** results can be written back to the ledger as a new dimension.
 
-### 4.8 Census (exhaustive verification on demand)
-When a question needs a property the ledger did not record ("how many people asserting e17 are developers?", "re-verify the stance split on e4"), the reading model issues
-`CENSUS(predicate, scope = entries [...] | ALL)`.
-The system runs the cheap model (or a strong one, for verification) over **every** document in the exact posting list, or over a uniform random sample of it with a stated sample size, and returns counts and exemplars. The result is written back to the ledger as a new dimension, so later questions get it for free. Scope comes from provenance, so the census never misses a document *because it was worded differently*.
-
-### 4.9 Streaming
-New posts go through §4.3 incrementally. Consolidation runs on its epoch clock. The cached ledger render changes only at epoch boundaries, so the read cache stays warm between them.
-
-### 4.10 Robustness
-- **Coordinated amplification.** Shown by `author_docs` concentration and flagged in the render (§7, item 5).
-- **Prompt injection inside posts.** The absorber's only power is to emit typed ops, and posts are delimited and declared as data. The worst case is a wrong op on one document, which is mass-bounded at 1 and visible in provenance.
-- **Absorber error.** Bounded by consolidation, residual re-absorption and census re-verification. Its effect is quantified in §7.
+### 4.8 Sharding (very large ledgers)
+- Above a cap, the absorber sees a table of themes plus the routed theme's entries.
+- Simulation, 500k posts, cap 2k entries: 5–15% misrouting costs **13–41% more fragments** per claim and 65–85% more entries. It costs almost nothing in ranking or visibility, because repeated consolidation eventually merges cross-shard duplicates.
+- So fragmentation is the price of sharding. Keep the absorber prefix unsharded as long as the context allows; ~150k tokens is about 8k entries.
 
 ---
 
-## 5. Why it is cheaper
+## 5. Why it is cheaper, and where it is not
 
-Cost structure, not just measured dollars:
+All figures are measured on real runs unless marked "projected".
 
-| Cost driver | RAG | CEL |
-|---|---|---|
-| Reading each document | never by an LLM (embedded only) | once, by the cheapest model, mostly cache-read prefix |
-| Cross-document integration | repeated every query, by the expensive model | once per document, at ingest |
-| Per-query input | k·chunk tokens, full price | ledger render, **cache-read price** (0.05× on Opus 5.5) |
-| Coverage | grows linearly with k | already 100% of the mass |
-| Redundancy | paid for at query time, in every top-k | collapsed at ingest: a tally +1 costs ~15 output tokens |
+| | RAG top-20 | RAG at equal budget | Long context (whole corpus) | CEL |
+|---|---|---|---|---|
+| One-time cost | ~0 | ~0 | 0 | **$0.60–0.70 per 1k posts** (Haiku absorb + Sonnet consolidate/escalate/label) |
+| Reader tokens per question | ~1k | ~31–72k raw posts | 247–282k for 6k posts; impossible past ~4M posts' worth | ~31k (view) / 51–72k (full ledger) |
+| $ per question, as run (uncached CLI) | $0.03–0.04 | ≈ CEL | ≈ 5–8× CEL | $0.50–0.53 |
+| $ per question, projected with prompt caching | same | same | 0.05× input | **~$0.02–0.05** |
+| Can answer "how many / what share / what's rising" | no | sample estimate only | in principle, if it fits | yes (tallies), exact with census |
 
-**Measured (21,500 posts; list prices, Nov 2026; details in [`sim/cost.py`](../sim/cost.py))**
-- **Ingest**, one time: **$0.46**, or **$0.23** via the Message Batches API. That covers every post read once by Haiku 5.5, plus consolidation. At $0.01 per thousand posts, absorbing everything costs less than one long-context query ($4.85).
-- **Per query**: Opus 5.5 reading the cached 13k-token ledger costs **$0.015**, versus $0.017 for k=20 RAG and $0.032 for k=100 RAG. Most of either figure is the 600-token answer.
-- **Total for 1,000 questions**: $15.5 (CEL) vs $17.3 (RAG k=20) vs $31.7 (RAG k=100) vs $211 (whole corpus in a 1M window, cached).
+What makes it cheaper:
+1. **Integration is paid once,** by the cheapest model, and reused by every question.
+2. **The reading cost is bounded by the view's budget, not by corpus size,** and the view never hides the denominator.
+3. **5–8× fewer tokens than reading everything,** with exact counts kept.
+4. **Coverage per token is higher than retrieval at the same budget** (§7.3).
 
-**At equal coverage.** RAG at k=20 is cheap because it sees almost nothing. To see 93% of the claims held by ≥10 people, RAG has to read about 2,000 posts (≈10% of the corpus) **per query**: $0.37 per query, about **25× CEL's per-query cost**. Projected to 1,000 queries on a 200k-post topic, that is **$3,600 for RAG at parity vs $25–45 for CEL**. At 2M posts, parity RAG and long-context no longer fit in a context window at all. CEL's ingest grows with N, but its per-query cost is bounded by the render cap.
-
-**Where CEL is *not* cheaper (being straight about it):**
-- If you will ask only one or two questions, k=20 RAG costs less. CEL breaks even at roughly 100 queries **against low-coverage RAG**, and almost immediately against RAG at equal coverage.
-- If the corpus has little redundancy (code, fiction, unrelated documents), D grows like N, and CEL degrades to the cost of reading everything, though still only once.
+Where it is not cheaper:
+- If you'll ask a few narrow questions, top-20 RAG is cheaper: $0.03–0.04 per question and no ingest, against $0.50 for an uncached ledger read here (comparable once the ledger is cached).
+- Real conversation keeps producing new assertions (§7.3: entries grew roughly like N^0.8 or faster, and 62% are one-off), so the ledger keeps growing. Above roughly 50k posts on one topic, the theme view's folding or a larger budget matters.
+- My first-pass cost model **underestimated real ingest cost by ~30×.** It assumed Haiku-only and minimal output; the real pipeline uses Sonnet stages and wordier ops, with CLI overhead. Redoing the equal-coverage comparison in §7.4 with ~30× the ingest cost still favours CEL by roughly 20–30× at 20k–200k posts (and RAG at parity no longer fits a context window at 500k), but treat the simulated dollar figures as optimistic.
 
 ---
 
 ## 6. Why the model gets fuller coverage than with RAG
+1. **Nothing is selected away.** Every document's mass is visible as an entry, a fold line or the residual.
+2. **The denominator is always present:** counts of people and posts, the residual %, and noise %.
+3. **Dissent and camps are kept by construction,** not lost to similarity ranking.
+4. **Redundancy becomes a count,** not repeated text crowding out the long tail.
+5. **Time is a dimension,** so emergence is readable.
+6. **Exactness on demand** via census.
 
-1. **Nothing is selected away.** Conservation guarantees every document's mass is somewhere visible, folded or residual. RAG's L4 doesn't exist here.
-2. **The denominator is always present.** Every line carries counts of people and posts, and the header carries the residual %. The model knows what it hasn't seen (fixes L7 and L8).
-3. **Dissent is kept by construction.** Stance is tallied, not averaged away as it would be in a summary, and not mixed together as it would be in a vector (fixes L2 and L6).
-4. **Redundancy turns into signal instead of crowding out content.** 400 identical posts become "+400 / N authors" on one line, which frees space for the long tail (fixes L5).
-5. **Time is first-class.** Every entry has a trend line, so emergence and fading are directly readable.
-6. **Exactness on demand.** Census re-reads *every* document behind a claim, located by provenance. That is what makes "all available information" checkable rather than aspirational.
+On real data this shows up most clearly as **2–3× fewer complete misses** than raw text at the same budget (§7.3).
 
 ---
 
-## 7. Evidence (simulation)
+## 7. Evidence
 
-Full tables: [`results/results.md`](../results/results.md). Code: [`sim/`](../sim). Reproduce with `python -m sim.experiment` (about 1 minute).
-
-**Setup.**
-- Synthetic X-like feed: 21,500 posts, 3,258 authors, 300 latent claims with Zipf popularity, per-claim stance splits, 12% emerging and 8% fading claims, 12% off-topic noise, and 6 bot accounts posting 1,500 near-duplicates for a claim real users mostly dispute.
-- Ground truth is known exactly.
-- **RAG baseline:** BM25 top-k with a *perfect reader*, which is deliberately generous to RAG. Its only error is the selection step.
-- **CEL:** run with an absorber whose error rate ε (misassignment, duplicate fragments, stance flips, misses, noise leaks, missed merges) is swept from 0 to 30%.
-
-| Question type | RAG (best k=100) | CEL ε=0.10 | CEL ε=0.30 |
+### 7.1 What was tested where
+| Setting | Data | Ground truth | Absorber |
 |---|---|---|---|
-| Claims held by ≥3 people visible to the model | 20% | **100%** | **100%** |
-| Prevalence ranking (Spearman) | 0.38–0.46 | **0.93** | **0.84** |
-| Stance share MAE, head / mid / tail claims | 0.045 / 0.011 / 0.001 | 0.057 / 0.068 / 0.059 | 0.109 / 0.125 / 0.096 |
-| … with census verification (≤300 docs from the posting list) | n/a | **0.018 / 0.024 / 0.034** | 0.031 / 0.042 / 0.073 |
-| Emerging claims, precision / recall | 67% / 3% | **92% / 88%** | 84% / 74% |
-| Bot-flooded claim, support share (truth 12%) | 13–40%, depending on k; the reader cannot tell why | **15%** (concentration flag: all 6 bots flagged, 0.7 false flags) | 32% |
-| Residual (unplaced) | n/a | 0.24% | 2.0% |
-| Conservation `Σmass == N` | n/a | holds exactly | holds exactly |
+| Simulation | synthetic X-like feeds, 20k–500k posts | exact | parameterised error rate ε |
+| SemEval-2016 Task 6 | 4,163 real tweets, 5 targets; re-mixed subsets of 173–300 | human stance labels | real Haiku 5.5 |
+| Bluesky | every searchable public post on "seed oils" (6,062 posts, 4,139 authors) and "ultra-processed food" (6,042, 3,846), Jul 2025 – Nov 2026 | text-match gold for counts; an independent Sonnet judge for coverage and filing | real Haiku 5.5 (v2/v3) |
 
-**How to read the stance row honestly.**
-- For a *targeted* question about a claim the user can already name in its own vocabulary, RAG with a *perfect* reader is very accurate. Tail claims have so few posts that k=100 retrieves all of them.
-- The ledger's raw tallies inherit the absorber's error rate: at ε=10% they are worse than RAG k=100 on that narrow task.
-- Census verification over the exact posting list brings CEL back below RAG's head/mid error. It cannot recover posts that were misassigned to a *different* entry; that is the remaining tail error.
-- The practical upshot: **absorber accuracy is the critical parameter.** It must be measured on real data (§10).
+### 7.2 SemEval-2016 (real tweets, gold labels): [`results/real`](../results/real), [`results/real_remix_v1`](../results/real_remix_v1), [`results/real_remix_v2`](../results/real_remix_v2)
+- **Per-tweet fidelity.** Stance predicted *through* the ledger (entry polarity × op stance) scores F_avg 0.732 (v1) against 0.738 for Haiku classifying each tweet directly. Writing tweets into the ledger preserves stance.
+- **Benchmark contamination (an important negative result).**
+  - On the original corpora, RAG with 20 tweets reproduced the gold stance split to within a point, which 20 tweets can't support.
+  - A no-data control confirmed that the reader had memorised the benchmark's label statistics: its error with no data was 24–25 points, against the re-mixed truth.
+  - **Any evaluation of corpus-level answers on public benchmarks must control for this.** I re-sampled each target to a stance mix far from the published one.
+- **Contamination-free aggregate question** ("what share favours / opposes the target?"), mean absolute error in points:
 
-**What the simulation does *not* show.**
-- That a real LLM absorber reaches ε≤0.1 on real tweets. The ε sweep only says what happens *if* it does or doesn't.
-- That real topics are as redundant as the simulation. The scaling table (§8 of the results) is assumption-driven, with β ∈ {0.6, 0.8}.
-- That the text "entry wording" is as good as a human's.
+| prior only (no data) | RAG top-20 | RAG top-50 | random 20 | random 50 | classify every tweet | **CEL computed** | **CEL read by Opus** |
+|---|---|---|---|---|---|---|---|
+| 24.0 | 16.2 | 18.2 | 15.2 | 6.9 | 6.2 | **4.5** | **4.9** (with legend) |
+
+- **v1 → v2, after error analysis.**
+  - Of the stance-bearing tweets v1 got wrong, 52% had been called noise, 16% landed in neutral-worded entries, 14% stayed residual and 17% were flipped (largely sarcasm).
+  - v2 added the anchor, the strict noise rule and residual escalation. F_avg rose 0.775 → **0.801** (direct classification: 0.749), and mispredicted stance-bearing tweets fell 237 → 144.
+- **Census questions** (7 questions, small *n*):
+
+| | median count error | stance-share error |
+|---|---|---|
+| ledger + census | **0%** | **5.3 pts** |
+| RAG top-100 | 52% | 16.9 pts |
+| RAG top-20 | 75% | 27.2 pts |
+
+### 7.3 Bluesky (real, uncurated, X-like): [`results/bsky_seedoils`](../results/bsky_seedoils), [`results/bsky_upf`](../results/bsky_upf)
+**Ingest**
+
+| | posts | authors | entries | residual (before → after escalation) | full ledger tokens / corpus tokens | ingest $ | wall time (8 lanes) |
+|---|---|---|---|---|---|---|---|
+| seed oils | 6,062 | 4,139 | 1,237 | 12.2% → 4.3% | 51k / 247k | $3.60 + $0.32 anchor pass | 29 min |
+| ultra-processed food | 6,042 | 3,846 | 1,604 | 11.9% → 4.5% | 72k / 282k | $4.24 + $0.31 | 30 min |
+
+**Filing audit.** An independent judge graded 100 random posts per topic:
+- wrong: **4% / 1%**
+- minor issue: 25% / 35%
+- correct: 71% / 63%
+
+Typical wrong filings: misread sarcasm, and posts that don't mention the topic at all. **This places the real absorber at ε ≈ 0.01–0.04 strict, or 0.25–0.35 including imprecision,** inside the range swept in simulation.
+
+**Anchor audit** (150 posts per topic, judge labels vs ledger):
+
+| | agreement | positions missing | inverted | spurious | agree-share bias vs judge |
+|---|---|---|---|---|---|
+| seed oils v2 → v3 | 57% → 75% | 54% → 9% | 9% → 10% | 4% → 34% | 16 → **4** pts |
+| UPF v2 → v3 | 56% → 84% | 71% → 17% | 0% → 0% | 3% → 14% | 13 → **6** pts |
+
+**Coverage.** For random posts that make a point (129–131 and 68 posts), the judge decided whether that point is present in the reader's input. Score = yes + ½ partly; the "absent" column is the share judged entirely missing.
+
+| reader input | tokens | seed oils score / absent | UPF score / absent |
+|---|---|---|---|
+| RAG top-20 | ~1k | 11% / 82% | 11% / 79% |
+| RAG top-100 | ~4–6k | 19% / 71% | 21% / 66% |
+| RAG top-k at the theme view's budget | ~31k | 45% / 39% | 40% / 40% |
+| random sample at the theme view's budget | ~31k | 52% / 34% | 51% / 31% |
+| **CEL theme view** | ~31k | **62% / 15%** | **63% / 12%** |
+| RAG top-k at the full ledger's budget | 50k / 71k | 54% / 34% | 66% / 19% |
+| random sample at the full ledger's budget | 50k / 71k | 55% / 32% | 73% / 16% |
+| **CEL full ledger** | 51k / 72k | **63% / 11%** | **75% / 6%** |
+
+Reading this honestly:
+- The ledger's clear, robust advantage is that it **rarely misses a point entirely**: 6–15% absent, against 16–40% for raw text at the same budget.
+- On the combined score, its lead over a *random sample* shrinks at larger budgets (UPF: 75 vs 73). The ledger's canonical wordings generalise, so the judge often grades them "partly".
+- Retrieval at the same budget is consistently worst among the large-budget options, because similarity ranking concentrates on near-duplicates.
+
+**Counting questions** (16 questions; gold = text match over every post):
+
+| method | median count error | within 20% | median author-count error | $ / question as run |
+|---|---|---|---|---|
+| CEL read alone | 57–88% | 0–25% | 43–86% | $0.50–0.53 |
+| **CEL + census** | **0–1%** | **88–100%** | **0–1%** | $0.70–0.72 |
+| RAG top-20 | 91–92% | 0% | 100% | $0.03–0.04 |
+| RAG top-100 | 46–58% | 0% | 100% | $0.10–0.11 |
+
+**Growth on real data** (replaces the assumed scaling exponent):
+- Entries grew like N^0.78 (seed oils) and N^0.84 (UPF).
+- Entries with ≥3 authors grew like N^0.86–1.06 over the year.
+- 62–63% of entries have a single author.
+- Real niche conversation is event-driven and did **not** saturate at 6k posts.
+- So the ledger compresses 4–5× in tokens rather than collapsing to a small fixed size, and the fixed-budget view with exact folds is what bounds per-question cost.
+
+### 7.4 Simulation (exact ground truth): [`results/results.md`](../results/results.md), [`results/scale.md`](../results/scale.md), [`results/ablation.md`](../results/ablation.md), [`results/lanes.md`](../results/lanes.md)
+Setup: 21,500 posts, 300 latent claims, emerging and fading claims, a 6-account bot flood. RAG has a *perfect* reader, so only its selection step can fail.
+
+| | RAG (best k=100) | CEL ε=0.1 |
+|---|---|---|
+| claims held by ≥3 people that are visible | 20% | **100%** |
+| prevalence ranking (Spearman) | 0.38–0.46 | **0.93** |
+| emerging claims, precision / recall | 67% / 3% | **88% / 92%** |
+| stance share error, head / mid / tail | 0.045 / 0.011 / 0.001 | 0.052 / 0.058 / 0.060; **with census 0.019 / 0.018 / 0.031** |
+| bot-flooded claim, support share (truth 12%) | 13–40% depending on k, cause invisible | 17% after discounting the ⚠-flagged accounts (all 6 bots flagged); 92% if you count posts |
+
+**Open world** (Pitman-Yor claim stream, 20k–500k posts):
+- With fair token accounting, the theme view keeps 97–100% of ≥10-person claims visible up to 200k posts at 32k tokens, and 98% at 500k.
+- For 1,000 questions at ~90% coverage: **$19–36 for CEL** against $730–3,600 for RAG, which doesn't fit in a 1M context at 500k posts.
+- These dollar figures use the simulated cost model. Per §5, real ingest costs ~30× more, which still leaves CEL ahead by roughly 20–30× at equal coverage.
+
+**Ablations** (ε=0.2):
+
+| variant | entries | census stance error | emerging recall |
+|---|---|---|---|
+| full CEL | 763 | 0.042 | 81% |
+| no consolidation | 3,818 (5×) | 0.092 | 64% |
+
+Without residual re-absorption, 4–9% of the corpus stays unplaced; the other metrics barely move.
+
+**Lanes:** 1 → 64 lanes leaves every quality metric unchanged; consolidation does ~30% more merges.
 
 ---
 
 ## 8. Is it novel? An honest positioning
 
-I have not reused any of the excluded techniques. There are no vectors, no embeddings, no chunking pipeline, no fine-tuning, and no knowledge graph. The only BM25 is the *baseline* being compared against. The ingredients are generic: an LLM reading text and emitting structured output, and prompt caching. The claimed contribution is the **representation and its invariants**, plus **where integration happens**:
+No vectors, embeddings, chunking pipeline, fine-tuning or knowledge graph are used; BM25 appears only as the baseline. The ingredients are generic: LLMs emitting typed output, and caching. The claimed contribution is the combination:
+- **(a)** online absorption of every document against the complete current state;
+- **(b)** a mass-conservation invariant with an explicit residual;
+- **(c)** stance- and person-tallied assertions, cross-tabbed with a subject anchor, as the storage unit;
+- **(d)** exact-scope census in place of retrieval;
+- **(e)** a fixed-budget view that never hides the denominator.
 
-| Nearest neighbour | What it keeps | What CEL adds or changes |
+| Nearest neighbour | What CEL changes |
+|---|---|
+| Hierarchical or community summaries (RAPTOR, GraphRAG ([Edge et al. 2024](https://arxiv.org/pdf/2404.16130))) | Summaries drop counts, dissent and the denominator, and their loss is unauditable. CEL keeps exact tallies and provenance under conservation. |
+| Knowledge graphs | The unit is an assertion with stance tallies, not a triple. |
+| Schema extraction ([AI Engineer 2025](https://ai.engineer/talks/rag-evaluation-is-broken-here-s-why-and-how-to-fix-it)) | No predefined schema; assertions emerge and consolidate, and census adds dimensions on demand. |
+| Per-query exhaustive scanning ([Stakeholder Suite](https://arxiv.org/pdf/2512.17347), DFA/[AGGBench](https://www.alphaxiv.org/abs/2602.01355)) | CEL reads exhaustively **once**, against all prior knowledge, and every later question reuses it. |
+| Per-document classification | Must know the question at ingest time. CEL was question-agnostic and still matched or beat it (§7.2). |
+
+GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench document the top-k failure on counting and aggregation that CEL targets. I found no prior work combining (a)–(e). That is a search result, not proof.
+
+---
+
+## 9. Limitations and failure modes (updated from real data)
+- **Absorber quality is the critical parameter.** Real strict error is 1–4%, but 25–35% of filings are imprecise. Ledger tallies are good for shape and ranking; for numbers that matter, run a census.
+- **The anchor must be a literal statement** chosen at setup. A dedicated pass is needed for good recall, and it over-calls positions on 14–34% of posts that have none.
+- **The reader must be told the semantics.** Without the legend, Opus misread the anchor line.
+- **Lexical questions need census.** The ledger stores meaning, not words.
+- **No saturation on real topics** at the scale tested. Ledgers grow roughly like N^0.8. Expect to fold, raise the budget, or shard.
+- **Sharding costs fragmentation** (13–41% more fragments per claim in simulation).
+- **Evaluation pitfalls found along the way:** benchmark memorisation (§7.2), and LLM judges for coverage, which grade generalised wording as "partly". Small *n* for the census questions (7 + 16).
+- **Canonical wording drifts** as a conversation evolves. Rewording is mass-neutral but needs a periodic pass.
+- **Single model family.** Every model here is Claude (Haiku / Sonnet / Opus). Judge and absorber share training lineage, so the audits are not fully independent.
+
+---
+
+## 10. How to use it on your own topic (e.g. everything about a subject on X)
+1. Collect every post on the topic (search API, paging back in time).
+2. Write one literal **anchor statement** for the subject's central question.
+3. Ingest with `real_eval/bsky.py` (lanes 8), then `real_eval/anchor_pass.py`.
+4. Give the reading model the theme view (or the full ledger if it fits) as a cached prefix, and let it issue **census** requests for anything it needs exactly.
+5. Re-run steps 3–4 incrementally as new posts arrive. Absorption is append-only, and consolidation runs per epoch.
+
+---
+
+## 11. The 24 hours: rounds and what each changed
+| Round | What was done | What it changed |
 |---|---|---|
-| Map-reduce / hierarchical summarization (e.g. RAPTOR, GraphRAG community summaries ([Edge et al. 2024](https://arxiv.org/pdf/2404.16130))) | prose summaries | Summaries drop counts, dissent and the denominator, and their loss is unauditable. CEL keeps exact tallies, stance and provenance, plus a conservation invariant. |
-| Knowledge graphs | entity–relation triples | The unit is an *assertion with a stance tally*, not a triple. Non-triple content is not lost. Stance is first-class. There is no traversal or retrieval. |
-| Schema-driven extraction into tables (e.g. the approach in the AI21 talk ([AI Engineer 2025](https://ai.engineer/talks/rag-evaluation-is-broken-here-s-why-and-how-to-fix-it))) | predefined columns | No predefined schema. Assertions emerge online and are consolidated, and census adds dimensions on demand. |
-| Per-chunk exhaustive mapping (e.g. the Stakeholder Suite ([arXiv 2512.17347](https://arxiv.org/pdf/2512.17347))), agentic aggregation (DFA, [AGGBench](https://www.alphaxiv.org/abs/2602.01355)) | per-query exhaustive reading | CEL reads exhaustively **once**, and every document is compared with *all prior knowledge*, not in isolation. Results are shared by all later queries. |
-| Agent memory (running notes) | free-form facts | Memory has no counts, no conservation, no residual, no stance and no provenance. |
-| Topic models | word distributions | CEL stores propositions with stance, not word clusters. |
-
-Recent benchmarks confirm the gap CEL targets. GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench ([arXiv 2602.01355](https://www.alphaxiv.org/abs/2602.01355)) both find that top-k RAG fails at counting and aggregation because of the fixed retrieval window. I did not find prior work combining:
-- (a) online absorption of each document against the complete current state,
-- (b) a mass-conservation invariant with an explicit residual,
-- (c) stance- and author-tallied assertions as the storage unit, and
-- (d) exact-scope census in place of retrieval.
-
-That is not proof none exists. Treat the novelty claim as "not found in a targeted search", not as established.
-
----
-
-## 9. Limitations and failure modes
-
-- **The absorber is the whole ballgame.** Misassignment between near-synonymous claims is the dominant error. In the simulation it raises tail-stance error even after census. Mitigations: splits during consolidation, census, and a stronger absorber for high-traffic entries.
-- **What wasn't tallied isn't known until a census runs.** Census is exhaustive, but it costs one cheap-model pass over the scope.
-- **Verbatim and quote questions** ("what exactly did @x say?") need exemplars or posting-list drill-down. The ledger is about meaning, not wording.
-- **Low-redundancy corpora** get little compression (see §5).
-- **Wording drift.** An entry's canonical text is fixed at creation. A global pass may need to reword entries as the conversation evolves; rewording is mass-neutral.
-- **Index scale.** Above roughly 8k entries the absorber needs sharding (§4.6). Routing errors then become a second error source.
-- **Cold start.** The first batches have an empty ledger and create many entries. Residual re-absorption and merges clean this up, but epoch 0 is the noisiest.
-
----
-
-## 10. Validation plan (with a real model)
-
-This repository's experiments use a parameterized stand-in for the absorber, because there was no API key in the build container. To validate on real data:
-
-1. **Measure ε directly.** Run [`celedger/absorber.py`](../celedger/absorber.py) (Haiku 5.5) on a stance-annotated tweet corpus, e.g. SemEval-2016 Task 6 (tweets with target and stance labels). Measure misassignment, fragmentation and stance-flip rates against the labels. This one number places you on the ε curve in §7.
-2. **End to end.** Answer GlobalQA / AGGBench-style counting, extremum and sorting questions from the ledger, compared with RAG and long context at matched cost.
-3. **Real X topic.** Pick a niche hashtag with 20–200k posts. Hand-audit 200 random documents' ops via provenance. Measure the actual D(N) growth curve (β), which replaces the assumption in the scaling table.
-4. **Ablations:** no consolidation, no residual re-absorption, no thread ordering, no census.
-
----
-
-## 11. A note on "take at least 24 hours"
-
-I didn't stall for a day. Wall-clock time doesn't improve the result, and padding it would only have delayed you. What a longer horizon would actually buy is §10: running the real absorber against labelled data to measure ε. That needs an API key and a dataset, not more waiting. Everything in this repository was built and run in this session, and every number above comes from code you can re-run.
+| 0 | First-principles analysis, design, simulation | The initial claims, several later revised |
+| 1 | Real Haiku absorber on 4,163 SemEval tweets | Per-tweet stance preserved through the ledger (0.732 vs 0.738) |
+| 2 | Re-mixed corpora + prior-only control; error analysis → absorber v2; ablations | Found benchmark memorisation; v2 F_avg 0.801; noise rule, anchor, escalation |
+| 3 | Open-world scaling to 500k, sharding, budget sweep | Theme view fixed (it was mis-budgeted); sharding costs fragmentation |
+| 4 | Census Q&A with gold answers | Exact counts (0% median error) vs RAG 52–75% |
+| 5 | Every Bluesky post on two niche topics; filing, coverage and anchor audits; lanes; v3 anchor pass | Real ε; coverage at equal budget; anchor recall bug found and fixed; real growth exponent (no saturation); real costs ~30× the first estimate |

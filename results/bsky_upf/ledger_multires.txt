@@ -1,0 +1,820 @@
+CORPUS: 6042 documents, 3846 distinct authors, 1604 distinct assertions in 17 themes.
+residual (unplaced): 4.5%  noise: 9.3%
+e0 is the ANCHOR: it tallies every author whose position on the anchor statement is discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position. 'camp: anchor▲x anchor▼y' on a line = how many of that line's authors agree / disagree with the anchor.
+## theme Health harms: chronic disease, mortality and obesity: 129 assertions, 1249 docs (20.7%)
+e0 | ANCHOR: Ultra-processed foods are harmful to health. | 1049 authors ▲929 ▼82 ·38 | 919 docs
+e749 | Ultra-processed food intake is linked to multiple chronic diseases, not just obesity. | 36 authors ▲36 ▼0 ·0 | 29 docs | camp: anchor▲26 anchor▼0
+e232 | Cutting ultra-processed food from one's diet leads to weight loss. | 29 authors ▲27 ▼0 ·2 | 32 docs | camp: anchor▲19 anchor▼0
+e869 | Ultra-processed food consumption is associated with increased cardiovascular events. | 27 authors ▲24 ▼0 ·3 | 30 docs | camp: anchor▲21 anchor▼0
+e212 | Ultra-processed foods harm health through mechanisms beyond their nutritional profile, including food additives. | 17 authors ▲17 ▼0 ·0 | 16 docs | camp: anchor▲11 anchor▼0
+e1134 | Obesity is linked to consumption of ultra-processed foods. | 12 authors ▲12 ▼0 ·0 | 9 docs | camp: anchor▲7 anchor▼0
+e1287 | Research on the health impacts of ultra-processed foods is growing and deserves attention. | 11 authors ▲8 ▼0 ·3 | 10 docs | camp: anchor▲3 anchor▼0
+e215 | Tackling obesity requires addressing ultra-processed food, sedentary living and added sugar, not just GLP-1 drugs. | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲3 anchor▼0
+e489 | Each increase in ultra-processed food intake is linked to higher all-cause mortality. | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲6 anchor▼0
+e1076 | Ultra-processed food contributes to systemic inflammation. | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲7 anchor▼0
+e1047 | Ultra-processed fast foods are among the worst foods for health. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼0
+e195 | The health effects of ultra-processed food have causal mechanisms worth studying. | 6 authors ▲3 ▼1 ·2 | 6 docs | camp: anchor▲2 anchor▼0
+e284 | India's shift from home-cooked staples to ultra-processed, carbohydrate-heavy foods is unhealthy. | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲3 anchor▼0
+e267 | Preservatives used in ultra-processed foods are associated with increased diabetes risk. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e345 | Eating ultra-processed food multiple times a day is a major reason people are overweight. | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+e862 | Ultra-processed food intake is linked to higher fat infiltration in muscle, per MRI evidence. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e1292 | Ultra-processed food consumption leaves a measurable metabolic signature in the blood linked to inflammation and chronic disease. | 5 authors ▲4 ▼0 ·1 | 6 docs | camp: anchor▲3 anchor▼0
+e445 | Fibre should be treated as an essential nutrient, and it is lacking in ultra-processed food. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e475 | Eating more ultra-processed food raises heart disease risk by nearly 50%. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e831 | Ultra-processed diets leave populations missing important minerals and vitamins. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e847 | Ultra-processed food intake is linked to poorer muscle quality. | 4 authors ▲4 ▼0 ·0 | 6 docs | camp: anchor▲4 anchor▼0
+e875 | High ultra-processed food intake is associated with more thigh muscle fat in people at risk of knee osteoarthritis. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e583 | Ultra-processing strips food of its value and chemicals are added back in. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e650 | Nine daily servings of ultra-processed food massively increase the risk of dying from heart attack or stroke. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲3 anchor▼0
+e707 | The quality of calories matters: ultra-processed calories affect health differently than the same number of whole-food calories. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e849 | Higher ultra-processed food intake is associated with overweight and obesity in adolescents. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e940 | Most ultra-processed food strips nutrients and adds sugar, salt and chemicals, causing glycemic spikes; yogurt, though processed, is still good. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1972 | A high ultra-processed food diet adds about $359,836 in lifetime economic burden, mostly non-medical. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e193 | Ultra-processed food kills more people than smoking. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e196 | Chemically fortified ultra-processed 'virtual food' is harming the nation and should be cleaned up. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e217 | Eating lots of ultra-processed foods raises Type 2 diabetes risk by about 25%. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e385 | Ultra-processing makes food behave abnormally in the body, while minimally processed food is easier to digest. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e448 | Limiting ultra-processed food is associated with healthier aging outcomes. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e477 | Ultra-processed food intake is associated with higher mortality among long-term cancer survivors. | 2 authors ▲2 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e779 | Eating a popular food increases heart disease risk by 67%. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e787 | Meat and dairy are the pinnacle of ultra-processed food, with predictable harmful effects on humans. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e874 | An evidence-based Frontiers article explains ultra-processed foods, their negative effects and what makes them common. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e892 | Higher ultra-processed food intake is linked to faster biological aging. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e984 | US obesity and shorter lifespans compared with European countries are evidence that ultra-processed food is bad for health. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1146 | Living on ultra-processed food for weeks harmed the author's stomach. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1155 | Lifelong ultra-processed food eating harmed people's health. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1266 | Healthful plant-based diets reduce mortality independent of their ultra-processed food content. | 2 authors ▲2 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1285 | Ultra-processed food contributes to high blood pressure. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1300 | Ultra-processed food makes people physically weak. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1309 | Ultra-processed food is a root cause of fat storage and weight rebound, alongside insulin resistance and inflammation. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1321 | Higher ultra-processed food intake is linked to a set of blood metabolites and fatty acids, including markers of impaired fat processing. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1448 | Ultra-processed food ubiquity and obesity drive large healthcare costs. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e1449 | The older generation was healthier because it avoided obesity and ultra-processed food. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1496 | Targeting ultra-processed food could reduce obesity in Britain. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1559 | Margarine is an ultra-processed food that cannot be good for you. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1704 | In an 8-week study, minimally processed eating produced more weight loss than ultra-processed eating, suggesting processing may matter beyond nutrition. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1719 | Ultra-processed food consumption is linked to type 2 diabetes risk, and physical activity and genetic susceptibility matter alongside it. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1747 | An ultra-processed meal raises insulin more than a nutritionally identical whole-food meal. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e352 | A metabolite index of ultra-processed food intake is associated with stroke, cancer mortality and all-cause mortality. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e356 | Young adults suffer hidden metabolic damage from ultra-processed diets. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e415 | Ultra-processed food demand across the lifecycle has implications for obesity in the United States. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e461 | Teenagers eat more ultra-processed food than in the 1970s, which reduces gut microbiome diversity across generations. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e468 | Ultra-processed food consumption is linked to weight status in First Nations adults in Canada. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e524 | Ultra-processed food consumption is linked to higher mortality among British adults. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e596 | Dietary fiber feeds gut bacteria, supports transit and reduces inflammation. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e612 | Americans eating ultra-processed food while waiting for Ozempic prescriptions is a national disgrace. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e672 | Every portion of ultra-processed food increases serious cardiovascular risk, regardless of existing conditions. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e727 | India's calorie-dense food and rising sedentary behavior are leaving adolescents with chronic illness before entering the workforce. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e762 | Too much sugar and ultra-processed food have created a new form of malnutrition driving a global chronic disease explosion. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e769 | Packaged food habits are quietly building a health crisis in India. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e773 | McDonald's should be banned because it is not real food. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e789 | Ultra-processed food consumption is associated with frailty in older adults. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e792 | Each additional daily serving of ultra-high-processed food is associated with a 5.1% higher risk of a cardiovascular event. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e796 | Higher ultra-processed food intake is associated with more cardiovascular events, especially among Black Americans. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e804 | Even healthy-looking foods can be ultra-processed and increase inflammation and disease risk. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e826 | Heart health is best served by whole foods, less processed food and moderate saturated fat; more ultra-processed food is bad news. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e877 | People should count their ultra-processed food servings because a major new study links them to heart disease. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e881 | Fatty liver often comes from bad eating habits, including ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e946 | Childhood ultra-processed food intake is linked to adult obesity only in children genetically predisposed to higher BMI. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e954 | Reducing ultra-processed and animal-sourced foods in high-income countries delivers most of the food system's health and cost benefit. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1023 | Bob's Big Boy's belly reflects the influence of ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1028 | Cardiologists should screen patients for ultra-processed food intake as an emerging heart disease risk. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1032 | The gap in ultra-processed food consumption, not physical activity, is the main cause of the Italy-US obesity divide. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1039 | Removing ultra-processed food for five days improves blood sugar, insulin sensitivity, blood pressure, inflammation and brain fog. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1045 | Removing ultra-processed food reverses insulin resistance within about 48 hours. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1050 | Stopping ultra-processed food produces measurable bodily changes within days. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1053 | Ultra-processed food is a public health crisis, not a wellness fad. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1070 | Public debates overlook ultra-processed food overconsumption, the factor most strongly linked to poor health outcomes. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1082 | Emulsifiers in plant milk alternatives are a major health risk, as with other ultra-processed foods. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1144 | Ultra-processed food consumption is linked to hypertension among women in Brazilian favelas. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1198 | Cardiologists now treat ultra-processed food as a cardiovascular risk factor. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1234 | Krispy Kreme is one of the most deadly foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1253 | Ultra-processed food is one of several systemic lifestyle changes behind a worrying health pattern. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1272 | 'Poison in America's food' covers ultra-processed food chronic disease, additive regulatory loopholes and bacterial contamination. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1275 | Reducing ultra-processed sodium is one lever for cardiovascular health. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1326 | Ultra-processed food triggers fat storage regardless of portion control, and food quality matters more than calorie counting. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1357 | Ultra-processed foods may drive about a quarter of heart disease cases and deaths. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1358 | Reducing ultra-processed food intake reduces liver fat in MASLD, regardless of diet type. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1397 | Drinking Coca-Cola more than once or twice a year is as harmful as smoking. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1407 | Ultra-processed and junk food drive much worse health in younger and middle-aged people, though these groups do not usually need social care. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1408 | Access to gut microbiota-accessible foods matters more than food industry engineering for preventing chronic disease. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1410 | Fructose from added sugars and ultra-processed food is a major driver of high uric acid. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1411 | Rising uric acid, even within the normal range, is an early signal to cut added sugars and ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1412 | Regulatory gaps in ultra-processed food classification put the gut microbiome at risk. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1433 | Ultra-processed food is linked to harm in every major organ system of the body. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1524 | Cutting ultra-processed food while eating more whole grains, fish and vegetables shifts what people eat, with modest effects. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1529 | Protein preloads may reduce acute intake of ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1537 | Seed oils are fine as part of a healthy diet; the harm lies in ultra-processed foods, not the oil. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1565 | Ultra-processed food is only one of many interconnected causes of obesity. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1582 | An Impossible burger is higher in calories, fat, sodium and sugar than meat and costs twice as much. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1583 | Vegan options are on average healthier than meat products. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1592 | Humans have not evolved to process ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1604 | Halving ultra-processed food consumption in Canada could prevent thousands of cardiovascular deaths each year. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1628 | Behavioral weight management programs reduce ultra-processed food intake. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1631 | The degree of ultra-processing independently raises metabolic strain, regardless of energy density. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1637 | The body absorbs energy from low-fibre processed food more readily than from whole foods like an apple. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1649 | Health risks of ultra-processed food are under spotlight in Finland. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1663 | US bread is far from healthy. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1677 | Vegan donuts sold at health food stores are ultra-processed and not healthy. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1694 | Ultra-processed dry pet food causes digestive problems that resolve when it is stopped. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1720 | Lower ultra-processed food intake combined with more physical activity is associated with lower type 2 diabetes risk, even among people with high genetic risk. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1722 | Diet, including ultra-processed food, may contribute to the health problem described in the article. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1736 | Ultra-processed food intake works as a marker of environmental exposure, so prevention should target it. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1739 | Ultra-processed products strip out fiber, load in sugar and are not engineered for human metabolism, while real food protects the liver, gut and brain. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1752 | Cutting ultra-processed foods slows biological aging in older adults. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1766 | Reducing ultra-processed food consumption in Argentina has health and environmental co-benefits. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1799 | Higher ultra-processed food intake is linked to more body fat and visceral fat. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1809 | Cutting ultra-processed food lowers calorie intake and reduces body weight in older adults. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e1853 | Ultra-processed food intake is linked to poorer dietary quality. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1860 | Ultra-processed food floods the liver and harms the brain. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1891 | Red Dye 40 is commonly found in ultra-processed foods, and its potential health effects are being questioned. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1922 | A registered dietitian's article on the health effects of processed foods is worth sharing. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1987 | A combination of microplastics and ultra-processed food may be to blame for health problems. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e2000 | Eating ultra-processed food leaves one without energy and can cause pain and sickness. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+## theme Definition and NOVA classification disputes: 141 assertions, 437 docs (7.2%)
+e23 | 'Ultra-processed' lacks a functional consensus definition. | 121 authors ▲102 ▼5 ·14 | 114 docs | camp: anchor▲12 anchor▼5
+e100 | Ultra-processed foods are industrial products, not real food, identifiable by ingredients never found in home kitchens. | 30 authors ▲28 ▼0 ·2 | 26 docs | camp: anchor▲11 anchor▼0
+e14 | 'Ultra-processed' refers to specific, meaningful food categories used by nutritionists, distinct from 'processed'. | 20 authors ▲18 ▼0 ·2 | 22 docs | camp: anchor▲2 anchor▼0
+e1121 | The US government has no official definition of ultra-processed food but wants one. | 15 authors ▲9 ▼0 ·6 | 14 docs | camp: anchor▲2 anchor▼1
+e11 | Cheese is not an ultra-processed food. | 8 authors ▲4 ▼3 ·1 | 9 docs
+e685 | Ultra-processing describes how far a food has been processed from its raw form. | 8 authors ▲5 ▼0 ·3 | 8 docs
+e765 | The meaning of the 'ultra' in 'ultra-processed food' is unclear. | 8 authors ▲6 ▼0 ·2 | 8 docs
+e364 | Public health experts agree that a clear definition of ultra-processed foods is needed for policy. | 7 authors ▲6 ▼0 ·1 | 6 docs | camp: anchor▲3 anchor▼0
+e473 | A simple test can show whether a carbohydrate food is ultra-processed. | 6 authors ▲4 ▼0 ·2 | 6 docs | camp: anchor▲2 anchor▼0
+e655 | HHS promised a definition of ultra-processed foods, and Brazil's definition may provide an answer. | 6 authors ▲3 ▼0 ·3 | 8 docs
+e957 | Specific industrial traits such as fractionated ingredients, broken-down food matrix and hyper-palatability drive poorer health more than the label 'ultra-processed'. | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼0
+e485 | The term and grouping 'ultra-processed food' dates to 2009. | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲1 anchor▼0
+e611 | Veganism is wrongly associated with ultra-processed mock meats, and much vegan food is whole food. | 5 authors ▲5 ▼0 ·0 | 5 docs
+e647 | Ultra-processed is defined by industrial processing rather than ingredients, per Johns Hopkins. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e735 | Ultra-processed products count as food under the ordinary definition of food. | 5 authors ▲4 ▼1 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e915 | Basic potato chips and French fries are not ultra-processed foods. | 5 authors ▲5 ▼0 ·0 | 5 docs
+e1000 | Most researchers rely on the NOVA classification system to define ultra-processed foods. | 5 authors ▲4 ▼0 ·1 | 4 docs
+e1716 | Many people cannot recognize which common foods are ultra-processed. | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼0
+e79 | Some ultra-processed products are so heavily processed they no longer count as food. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e269 | Policymakers should define ultra-processed foods by what they are not. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e617 | A protein bar is ultra-processed food. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e648 | Frozen meals, soft drinks, hot dogs, deli meat, plant-based milks and jarred sauces can qualify as ultra-processed. | 4 authors ▲3 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼0
+e739 | Cereals labeled healthy can still be ultra-processed, so health labels do not reflect how processed a food is. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e793 | Some foods that seem healthy are ultra-processed, and healthier versions can be made. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1128 | Ultra-processed is a coherent food categorization, even though people disagree about its edge cases. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e140 | Ultra-processed foods are industrial formulations with added sugar, fat, salt, flavors and emulsifiers, made for long shelf life and to make customers buy more. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e517 | Soy milk is ultra-processed food. | 3 authors ▲2 ▼1 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e912 | The NOVA classification is the system used to define ultra-processed foods in the relevant study. | 3 authors ▲2 ▼0 ·1 | 3 docs
+e981 | Traditionally fermented soy sauce is not an ultra-processed food. | 3 authors ▲2 ▼1 ·0 | 4 docs
+e1666 | Ultra-processed food is not one homogeneous thing; specific additive types show different health associations. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1882 | Most studies criticizing the NOVA classification of ultra-processed foods are funded by food companies. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e350 | The science of ultra-processed food involves nuances between processing and formulation, with trade-offs for manufacturers reformulating products. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e375 | Fast food is food eaten immediately, distinct from ultra-processed food, which is designed with a longer-than-natural shelf life. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e487 | Not all snack foods are ultra-processed; nuts, fruit, yogurt and popcorn have a place depending on context. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e539 | Oat milk is a more processed product, which is a concern when moving away from ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e660 | Regulating ultra-processed food without fixing its definition is problematic, since research on the category stops applying when the definition changes. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e784 | If you can read all the ingredients on a label, the food is likely not ultra-processed. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e917 | Bread is processed but not ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e930 | Discussion has shifted from specific nutrient categories like high fat, sugar or salt to the broad 'ultra-processed' category. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e934 | The FAO defines ultra-processed foods as food substances of no or rare culinary use. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e944 | Loose leaf tea is not an ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 3 docs
+e958 | Counting processing steps or ingredient numbers is a poor basis for judging whether a food is ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e969 | Learning about the NOVA classification of ultra-processed food is enlightening. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e974 | Potato chips made with just salt and oil are not ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e983 | The NOVA definition disclaims any nutritional content, yet it is used for nutrient profiling. | 2 authors ▲1 ▼1 ·0 | 2 docs
+e987 | Ultra-processing means processing that cannot typically be done at home, and yogurt and foods with certain preservatives qualify as ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1173 | Additives are now a defining characteristic of what makes a food ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1193 | Soy beans and tofu are not ultra-processed, but packaged foods made with isolated soy protein powder or soy lecithin are. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1391 | Ultra-processed food is not uniformly bad; some is harmful and some is not, so it must be distinguished from junk food and HFSS food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1709 | Many people do not understand the difference between processed and ultra-processed food. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1866 | WHO's draft food profiling model includes a definition of ultra-processed foods. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+90 more in this theme: 92 docs; largest folded has 1 authors)
+## theme Other: 196 assertions, 371 docs (6.1%)
+e93 | The book Ultra-Processed People is worth reading. | 20 authors ▲17 ▼0 ·3 | 20 docs | camp: anchor▲7 anchor▼0
+e50 | Generative AI output is like ultra-processed food: low quality. | 17 authors ▲17 ▼0 ·0 | 15 docs | camp: anchor▲2 anchor▼0
+e4 | AI is poisonous ultra-processed junk food. | 11 authors ▲11 ▼0 ·0 | 15 docs | camp: anchor▲3 anchor▼0
+e296 | US food is the worst of any modern country, with many ingredients banned in Europe. | 11 authors ▲11 ▼0 ·0 | 10 docs | camp: anchor▲6 anchor▼0
+e702 | A public conversation on ultra-processed foods and healthy food systems is worth attending. | 11 authors ▲11 ▼0 ·0 | 14 docs | camp: anchor▲3 anchor▼0
+e87 | The Lancet series on ultra-processed food deserves expert commentary. | 9 authors ▲7 ▼0 ·2 | 8 docs | camp: anchor▲4 anchor▼0
+e396 | The author avoids the ultra-processed products described in the article. | 9 authors ▲8 ▼0 ·1 | 7 docs | camp: anchor▲5 anchor▼0
+e662 | A free guide to identifying ultra-processed foods and their health effects is useful. | 8 authors ▲7 ▼0 ·1 | 8 docs | camp: anchor▲4 anchor▼0
+e520 | Modern life is ultra-processed in food, entertainment and connection, and human brains and bodies were not built for it. | 7 authors ▲6 ▼0 ·1 | 8 docs | camp: anchor▲1 anchor▼0
+e1951 | Manosphere content should be treated as a public health problem like tobacco. | 6 authors ▲2 ▼0 ·4 | 6 docs | camp: anchor▲1 anchor▼0
+e313 | GLP-1 medication use leads households to spend less on ultra-processed and snack foods. | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲1 anchor▼0
+e343 | Replacing animal products with plant-based foods, even when processed, improves health. | 5 authors ▲5 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e1304 | Ultra-processed food needs more public attention. | 5 authors ▲5 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e1414 | Ultra-processed food may be unsuitable for some pet breeds. | 5 authors ▲5 ▼0 ·0 | 8 docs | camp: anchor▲5 anchor▼0
+e363 | Ultra-processed foods cause environmental damage. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e498 | Metabolomic markers can objectively measure ultra-processed food intake better than questionnaires. | 4 authors ▲2 ▼0 ·2 | 4 docs | camp: anchor▲1 anchor▼0
+e751 | Ultra-processed foods are integral to the global plastics pollution crisis. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e998 | A news article's ultra-processed food image undermines its credibility. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e104 | The linked video on ultra-processed food is a must-read. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e127 | Some literature is like ultra-processed food: low quality and empty. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e155 | AI is the ultra-processed food of the soul. | 3 authors ▲3 ▼0 ·0 | 2 docs
+e289 | Industrial livestock farming and meat should be pushed out of the market. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e300 | Misinformation media is like ultra-processed food: addictive and harmful. | 3 authors ▲3 ▼0 ·0 | 2 docs
+e315 | The podcast episode on ultra-processed food science and overeating is worth listening to. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e322 | Dr Chris van Tulleken's RCP Christmas Lecture on ultra-processed food is worth watching. | 3 authors ▲2 ▼1 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e871 | Food tasted much better before it became ultra-processed. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e994 | Fake meat products are the most ultra-processed foods, reducing ingredients to chemical parts and reconstituting them. | 3 authors ▲3 ▼0 ·0 | 4 docs
+e1521 | The term 'slop' originates from antisemitic 'goy slop' claims that Jewish people controlled ultra-processed food. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e82 | Baby Boomer kitchens often used ultra-processed ingredients. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e84 | Zoe Health's app includes a four-tier processed-food risk scale. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e85 | A timely book on ultra-processed food is important and worth reading. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e123 | Ultra-processed foods such as Kraft singles, Cheez Whiz and Campbell's soup are disgusting. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e144 | The interview with Herdy Shepherd on farming and the food system is interesting and worth listening to. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e211 | A Washington Post editorial nearly defending ultra-processed foods is a bad take. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e220 | Marion Nestle's discussion of ultra-processed foods and food system reform is worth listening to. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e223 | The sugars in fruits and vegetables differ from the sugars in ultra-processed food and come in much lower doses. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e272 | Food Tank's bipartisan summit on public health and food policy is worth tuning in to. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e397 | Rising seed oil consumption in the US is mainly driven by ultra-processed foods. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e429 | The #whatnottoeat show's couple with an unhealthy diet is ridiculous; it should have shown how a normal diet could cut ultra-processed foods. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e482 | A BBC Future article on ultra-processed food is a must-read. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e704 | Most sustainable diet indices and tools ignore ultra-processed foods and industrial food processing. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e732 | Chipotle serves real food rather than ultra-processed junk. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e752 | Plastics are integral to ultra-processed foods as a globalized product, a link rarely made in food systems literature. | 2 authors ▲2 ▼0 ·0 | 3 docs
+e1022 | Small farms produce diverse nutrient-dense foods, while large commodity farms dominate crops that become animal feed, sugar, oils and ultra-processed ingredients. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1181 | Ultra-processed foods undermine food culture, including the stories and meaning behind food. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1319 | Media articles that repeatedly use the phrase 'ultra processed' are tiresome. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1520 | Corporate food is garbage. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1792 | Jason Fung's 2026 book The Hunger Code addresses resetting the body's fat thermostat in the age of ultra-processed food. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e1895 | An AJPH article on ultra-processed food is worth reading. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+   (+147 more in this theme: 152 docs; largest folded has 1 authors)
+## theme Corporate power, profit and industry tactics (tobacco parallels): 119 assertions, 364 docs (6.0%)
+e77 | Food companies imported Big Tobacco's research and tactics to market harmful products. | 72 authors ▲69 ▼0 ·3 | 66 docs | camp: anchor▲28 anchor▼1
+e2 | The ultra-processed food problem is driven by commercial interests, not individual weakness. | 46 authors ▲43 ▼2 ·1 | 32 docs | camp: anchor▲20 anchor▼0
+e88 | Ultra-processed food is a corporate-engineered public health crisis. | 14 authors ▲14 ▼0 ·0 | 11 docs | camp: anchor▲8 anchor▼0
+e117 | The ultra-processed food industry is controlled by transnational corporations that put profit ahead of public health. | 14 authors ▲14 ▼0 ·0 | 9 docs | camp: anchor▲9 anchor▼0
+e17 | Food companies knew ultra-processed products were harmful and marketed them anyway. | 13 authors ▲8 ▼0 ·5 | 10 docs | camp: anchor▲7 anchor▼0
+e120 | Individuals are unfairly blamed for ultra-processed food consumption; they are scapegoats for food corporations. | 13 authors ▲13 ▼0 ·0 | 12 docs | camp: anchor▲1 anchor▼0
+e94 | Ultra-processed food is a systemic, profit-driven environment problem, not a personal willpower failure. | 11 authors ▲10 ▼0 ·1 | 10 docs | camp: anchor▲6 anchor▼0
+e1217 | Doubt about ultra-processed food harms mirrors fossil fuel and tobacco tactics of manufacturing doubt. | 11 authors ▲11 ▼0 ·0 | 8 docs | camp: anchor▲7 anchor▼0
+e1437 | Food industry greed is insatiable and drives harm to consumers. | 9 authors ▲8 ▼0 ·1 | 8 docs | camp: anchor▲2 anchor▼0
+e67 | Food companies use deceptive marketing tactics to sell ultra-processed products. | 8 authors ▲8 ▼0 ·0 | 9 docs | camp: anchor▲7 anchor▼0
+e70 | Companies profit from ultra-processed foods while communities bear the disease costs. | 8 authors ▲8 ▼0 ·0 | 9 docs | camp: anchor▲4 anchor▼0
+e227 | The food industry profits from ultra-processed foods that cause obesity. | 8 authors ▲8 ▼0 ·0 | 7 docs | camp: anchor▲3 anchor▼0
+e282 | Ultra-processed foods may be the new smoking. | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲6 anchor▼0
+e438 | Government policies favor the ultra-processed food and sugary-drink industries through subsidies and promotion. | 8 authors ▲7 ▼0 ·1 | 8 docs | camp: anchor▲1 anchor▼0
+e1037 | The ultra-processed food industry drives consumption through product design and marketing. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼0
+e164 | Big junk food companies are driving a diet crisis | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼0
+e72 | Food corporations intentionally harm the American people. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1495 | Corporations prioritize profit over customer well-being, and profit wins when it conflicts with food supply health. | 5 authors ▲5 ▼0 ·0 | 5 docs
+e1577 | The documentary Big Chicken exposes dark truths about the industrialised fried chicken industry. | 5 authors ▲4 ▼0 ·1 | 5 docs | camp: anchor▲1 anchor▼0
+e214 | Food corporations homogenize the food supply, push ultra-processed options, and squeeze farmers' prices and wages. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e614 | American corporations exported ultra-processed food worldwide as part of harmful influence abroad. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1478 | Ultra-processed food companies put profit over safety, like tobacco, asbestos and oil firms. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e439 | The food industry helped break metabolism and now sells GLP-1-friendly ultra-processed fixes; whole food is the real health answer. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e443 | Big Food is getting smaller, as the Kraft Heinz and Kellogg breakups show. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e476 | Palm oil in ultra-processed food damages rainforests and wildlife and should be boycotted. | 3 authors ▲3 ▼0 ·0 | 6 docs | camp: anchor▲3 anchor▼0
+e609 | American capitalism has degraded food into ultra-processed products and made healthcare inaccessible. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1042 | Ultra-processed food advertising targets children, similar to tobacco and alcohol marketing. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1398 | Ultra-processed food companies will be viewed like tobacco and fossil fuel companies are today. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1522 | Added shareholder value is in inverse proportion to the human nutritional value of ultra-processed food. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1531 | Food manufacturers cannot make ultra-processed food genuinely healthier given the economic structure of the agrifood system. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e83 | Grocery store variety gives the illusion of consumer choice, while Americans are forced to choose between chemical configurations that make them sick. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e110 | Vegetable consumption falling while ultra-processed food sales soar shows the food system pushing people toward unhealthy diets. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e115 | Ultra-processed food companies shift blame onto individuals by claiming the problem is lack of exercise. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e286 | Big agribusiness bankrupts small family farms and is tied to harmful ultra-processed foods high in high fructose corn syrup and trans fats. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e291 | Both the right and the left have ignored ultra-processed food for years due to convenience and profitability. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e303 | The public is uneasy that the ultra-processed food industry controls their weight and general health. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e446 | Big Food is breaking itself up after over-merging, shrinkflation and ultra-processed overload; getting bigger was not the win it seemed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e492 | Some ultra-processed food companies are owned by tobacco companies. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e510 | Government should put people's health before shareholder profit regarding ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e560 | Manufacturers use GRAS-status additives without testing them, which keeps ultra-processed food R&D costs down. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e628 | Corporate greed and regulatory failure are making Americans sick through toxins in food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e636 | Ingredients added to ultra-processed food serve no nutritional or taste purpose. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e861 | The meat industry promoted 'ultra-processed food' as a label to serve its own interests. | 2 authors ▲2 ▼0 ·0 | 4 docs
+e947 | Reformulated 'better-for-you' versions of ultra-processed foods are a questionable industry response to GLP-1 use and anti-UPF pushback. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1051 | Health progress requires confronting major problems like tobacco and ultra-processed food head-on. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1353 | Consumers should boycott ultra-processed food companies. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1481 | Executives of ultra-processed food companies should be jailed, and corporate law should be rewritten to make that possible. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1514 | Ultra-processed food companies should be destroyed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1674 | Food industry influence on nutrition science is central to the metabolic health debate. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e24 | Food companies should be held accountable for labor and environmental practices before ultra-processed food harms. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e118 | Tesco should be boycotted for selling ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e129 | Ultra-processed food is designed by the food industry for profit, creates class divides, and should not be allowed. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e191 | Food companies use artificial ingredients at a scale people cannot imagine. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e224 | If Americans skip one ultra-processed snack or meal a day, food company profits would fall about 7%. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e262 | Campbell's former executive Martin Bally was fired for calling its soup bioengineered ultra-processed food for poor people. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e292 | Consumers should boycott Kellogg's and General Mills over ultra-processed junk pricing and lobbying. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e325 | Ultra-processed food is an overpriced product sold to enrich corporations that would rather not employ humans. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e335 | The Academy of Nutrition and Dietetics has conflicts of interest through its ownership ties to ultra-processed food companies. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e371 | Big Food companies are divesting brands under consumer demand and regulatory pressure targeting ultra-processed foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e426 | Alcohol and tobacco industry money will cushion the blowback facing ultra-processed food manufacturers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e442 | Global companies are ignoring their commitments to stop deforestation linked to palm oil. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e464 | Industrial food production stripped nutrients from vegetables and brought shelf-stable ultra-processed food to the masses. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e469 | Flavor company Givaudan exerts substantial hidden influence over ultra-processed food despite not being named as a white-label manufacturer. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e521 | US food variety is mostly the same ultra-processed food sold under many brands. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e528 | Intimidation of advocates and researchers in the ultra-processed food space is real and silences evidence. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e606 | Nestlé's marketing of ultra-processed food to remote Amazon communities drove obesity. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e657 | Non-communicable diseases are driven by ultra-processed food, pollution, tobacco and sedentary design, and yoga cannot regulate these industries. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e659 | The FDA has failed to protect consumers from ultra-processed food harms because of industry revolving-door influence. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e703 | Ultra-processed food and alcohol brands use social media to expand reach for harmful products, and AI monitoring can reveal this. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e723 | Trader Joe's and Whole Foods add untested, potentially toxic ingredients to their house brands. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e736 | Food conglomerates that own ultra-processed brands also own pharmaceutical companies, profiting from both disease and its treatment. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e753 | Reliance on ultra-processed foods and favoring big agri-food corporations are failures of current centralised food models. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e835 | Manufacturers have reduced cocoa use in ultra-processed products by substituting vegetable oils. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e876 | Americans have been hooked on ultra-processed, manufactured food by those in power. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e883 | A former Frito-Lay food scientist avoided the ultra-processed foods he helped perfect, showing they are harmful. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e891 | Prepacked supermarket food is full of ultra-processed ingredients to make it last, and this boosts profit. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e923 | Food lobbyists introduced the 'ultra-processed' label to avoid blame for unhealthy processed foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e956 | Ultra-processed food has normalized recipe changes to classic products like Bovril without anyone noticing. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1030 | Harmful additives have been pushed into ultra-processed food since the 1970s. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1033 | Scientists who dismiss food and health harms are industry shills funded by oil, tobacco and ultra-processed food producers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1060 | The American Dish podcast episode on Big Food and the ultra-processed food debate is worth listening to. | 1 authors ▲1 ▼0 ·0 | 2 docs
+e1074 | Globalist corporations are poisoning humanity with ultra-processed food for profit and depopulation. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1080 | Supermarkets make massive profits and CEOs receive huge pay while much of the food sold is ultra-processed. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1122 | Food additives like MSG are not an immediate concern in light moderation, though the comparison to tobacco is apt. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1124 | Global ultra-processed food sales reached $1.9 trillion in 2023, with eight companies controlling about 42% of the market. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1130 | The wellness industry deploys the same political strategies as tobacco, alcohol and ultra-processed food companies. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1182 | Deregulated industries have brought GMOs and large quantities of ultra-processed food to Europe. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1184 | UPF sausages are the second-biggest ultra-processed food category consumed by European adults, and the meat industry is a hidden driver. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1220 | Food industry talking points on ultra-processed food need a considered response from public health advocates. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1271 | Fast food chains dropping food safety certification requirements shows they care little about food safety. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1286 | Big Food may push ultra-processed products in the Global South as GLP-1 drugs change diets in rich countries. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1335 | Food companies sell their own 'health food' to people made ill by their ultra-processed products. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1347 | Cola companies exploit water supplies, add sugar and plastic packaging, and harm consumers' health; plain water is better. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1350 | Experts who argued ultra-processed food was unfairly demonised had ties to the largest ultra-processed food manufacturers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1417 | US profit-over-ethics business models drive the obesity gap with France and Italy, and the greed culture is disgusting. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1458 | Companies named in the Guardian lawsuit list lack ethics and should be avoided. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1475 | Corporate capitalism, as with Nestlé and PepsiCo, has harmed mothers, babies and communities and should not have been allowed to grow this far. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1476 | Major food companies like Coca-Cola, PepsiCo, Kellogg's and Danone sacrifice children's health for profit. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1500 | Ultra-processed food is an economic category: foods made from industrialized crops and byproducts to maximize profit margins. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1510 | Industry interference that sows doubt and obstructs regulation is the pattern when harm and profit come from the same product, including in food companies, tech and AI. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1515 | Big Food is concealing information about the harms of ultra-processed snacks from consumers. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1588 | Food manufacturers hide total sugar content behind different ingredient names in ultra-processed foods. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1603 | The food industry's engineered ultra-processed 'health' products outpace research on their metabolic safety. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1609 | Big Food is winning the war over America's diet. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e1639 | Industrial scaling increases ultra-processed food consumption and sugar reliance. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1678 | Most nutrition research is sponsored by mega-corporations that sell ultra-processed junk food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+   (+13 more in this theme: 13 docs; largest folded has 1 authors)
+## theme Policy, regulation, labels, taxes and marketing restrictions: 135 assertions, 363 docs (6.0%)
+e132 | Ultra-processed food should be taxed, carry hazard warnings, and be barred from promotion like tobacco. | 77 authors ▲44 ▼4 ·29 | 59 docs | camp: anchor▲42 anchor▼0
+e434 | Advertising of ultra-processed foods should be banned or restricted, as junk food advertising already is. | 18 authors ▲14 ▼1 ·3 | 18 docs | camp: anchor▲8 anchor▼0
+e114 | Regulatory measures are needed to reshape the food environment around ultra-processed foods, though the concept itself is debated. | 13 authors ▲13 ▼0 ·0 | 10 docs | camp: anchor▲6 anchor▼0
+e311 | Food safety rules fail to catch up with risks from food additives and packaging chemicals. | 11 authors ▲7 ▼0 ·4 | 10 docs | camp: anchor▲5 anchor▼0
+e722 | A new federal definition of ultra-processed food and traffic-light front-of-package labels are coming and are a major change. | 11 authors ▲8 ▼0 ·3 | 10 docs | camp: anchor▲4 anchor▼0
+e128 | Ultra-processed food should be banned and its additives are largely unnecessary. | 10 authors ▲8 ▼2 ·0 | 6 docs | camp: anchor▲6 anchor▼0
+e174 | A tax on ultra-processed foods should be introduced like the UK sugar tax | 10 authors ▲8 ▼2 ·0 | 7 docs | camp: anchor▲5 anchor▼0
+e281 | The government should stop subsidizing ultra-processed foods and incentivize the local food supply instead. | 10 authors ▲9 ▼1 ·0 | 8 docs | camp: anchor▲5 anchor▼0
+e301 | Children should be protected from ultra-processed food marketing through legal restrictions. | 10 authors ▲10 ▼0 ·0 | 8 docs | camp: anchor▲4 anchor▼0
+e101 | Corporations making ultra-processed food should pay for the health harm they cause. | 9 authors ▲8 ▼0 ·1 | 6 docs | camp: anchor▲3 anchor▼0
+e230 | Governments and corporations have a crucial role in improving access to healthy food. | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲5 anchor▼0
+e387 | Ultra-processed foods are becoming the new focus of nutrition policy. | 7 authors ▲1 ▼0 ·6 | 7 docs | camp: anchor▲2 anchor▼0
+e496 | Consumers should know the ingredients hidden in ultra-processed products on supermarket shelves. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲3 anchor▼0
+e837 | A California bill would create a voluntary non-ultra-processed food label for manufacturers. | 7 authors ▲1 ▼0 ·6 | 6 docs | camp: anchor▲3 anchor▼0
+e550 | The 'Generally Recognized as Safe' classification for food additives should be changed. | 6 authors ▲3 ▼0 ·3 | 6 docs | camp: anchor▲2 anchor▼0
+e745 | California AB 2244, a certification program for not-ultra-processed foods, could revolutionize American diets. | 6 authors ▲4 ▼0 ·2 | 6 docs | camp: anchor▲2 anchor▼0
+e1684 | Tesco is starting a crackdown on ultra-processed foods by banning additives from its own-label range. | 6 authors ▲3 ▼0 ·3 | 7 docs
+e71 | California has legally defined harmful ultra-processed food. | 5 authors ▲1 ▼0 ·4 | 5 docs | camp: anchor▲2 anchor▼0
+e416 | Federal policy lags on ultra-processed foods; the FDA should require disclosures about them. | 5 authors ▲4 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼0
+e457 | The Non-UPF Verified certification identifies products made without ultra-processed ingredients. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲2 anchor▼0
+e503 | Customers should be given tools to make informed choices about ultra-processed food. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e1044 | A clear definition of ultra-processed food is achievable and not too complicated for policy. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e1188 | A survey shows broad bipartisan public support for ultra-processed food policies such as warning labels and additive safety testing. | 4 authors ▲3 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼0
+e1365 | Australia's food labelling system is broken. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e1939 | More than 70 public health experts urge the White House to release the federal ultra-processed food definition, which has been held up since August. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e288 | Ultra-processed food labeling claims cannot be trusted; check the small print. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e478 | A bill to bar SNAP purchases of ultra-processed food may stall after Republican opposition. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲1 anchor▼0
+e511 | The Citizen Advisory Council's insights will help shape the UK's new Food Strategy on ultra-processed food. | 3 authors ▲2 ▼0 ·1 | 3 docs | camp: anchor▲1 anchor▼0
+e512 | Food companies should prepare for ultra-processed food regulations. | 3 authors ▲2 ▼0 ·1 | 3 docs | camp: anchor▲1 anchor▼0
+e574 | A Utah bill would bar using food stamps to buy ultra-processed food. | 3 authors ▲0 ▼0 ·3 | 3 docs
+e742 | A state certification for 'not ultra-processed' foods is a bad idea; regulation should target specific nutrition rather than broad food categories. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e821 | Ultra-processed products should not count as food, and a legal definition of food should be passed to remove them. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e840 | Manufacturers can game the system to present ultra-processed foods as healthy, but the system is not entirely flawed. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1212 | Researchers across political divides call for sweeping policy reform on ultra-processed food. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1364 | Food marketing makes ultra-processed foods appear healthier than they are, and shoppers are fooled. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1543 | HHS is moving to tighten federal oversight of food ingredients. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1685 | Front-of-pack labelling is needed to address obesity and children's exposure to ultra-processed and junk foods. | 3 authors ▲1 ▼0 ·2 | 3 docs | camp: anchor▲2 anchor▼0
+e1798 | The Earth Day 2027 theme puts plant-based diets and ultra-processed food labels on the agenda. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲0 anchor▼2
+e5 | Food sovereignty should take priority over corporate diet plans set by Big Food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e64 | California's state-level ultra-processed food regulation is better than federal regulation. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e312 | UPF scores can show which products are more ultra-processed than others, aiding food transparency. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e323 | Regulators should penalize food companies for producing ultra-processed products and improve access to healthier options. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e441 | India's Economic Survey flags a surge in ultra-processed food consumption and recommends higher GST on it. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e479 | Utah will not restrict ultra-processed food purchases with food stamps for now. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e673 | Government oversight should keep ultra-processed junk off store shelves. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e708 | Dietary guidelines across countries differ, and some warn about ultra-processed food while others barely mention protein. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e878 | SNAP rule changes restrict some items but still pay for ultra-processed snacks, making the rules confusing. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e1089 | Brazil's healthier food environments in public institutions show what ambitious food policy can achieve. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1127 | Food labels have far-reaching effects on people's health choices and health outcomes. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1151 | UK regulation of ultra-processed food is not strong enough, and some marketing implies these foods are healthy. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1160 | Americans want government to regulate ultra-processed food, while the food industry spends millions to fight restrictions. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e1166 | People across both political parties support stricter regulation of ultra-processed foods. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1561 | The FDA's new food ingredient safety rule skirts common harmful additives and avoids defining ultra-processed foods. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1633 | Debates over ultra-processed food policy rely on false dichotomies. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1857 | Food and consumer product industries must be regulated to reduce exposure to toxic chemicals and unsafe ingredients. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+80 more in this theme: 78 docs; largest folded has 1 authors)
+## theme Skepticism: fearmongering, flawed research and food anxiety: 120 assertions, 315 docs (5.2%)
+e6 | The mainstream panic over ultra-processed foods is excessive and fuels food anxiety and disordered eating. | 61 authors ▲57 ▼2 ·2 | 48 docs | camp: anchor▲4 anchor▼13
+e646 | Ultra-processed foods are harmful because of their fat, sugar, salt and calories, not because they are processed. | 20 authors ▲18 ▼1 ·1 | 17 docs | camp: anchor▲4 anchor▼1
+e9 | Opposing ultra-processed food is a trendy fad, and the category is hard to define. | 16 authors ▲16 ▼0 ·0 | 13 docs | camp: anchor▲0 anchor▼2
+e37 | Fear of ultra-processed foods is overblown and comfort food should be defended. | 14 authors ▲14 ▼0 ·0 | 12 docs | camp: anchor▲0 anchor▼2
+e666 | How worried people should be about ultra-processed food is a question worth examining. | 13 authors ▲1 ▼0 ·12 | 22 docs | camp: anchor▲3 anchor▼0
+e644 | Research on ultra-processed foods is seriously flawed garbage. | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼1
+e767 | 'Ultra-processed' has become a buzzword; the real concerns are fast food, sodas and polyols. | 8 authors ▲8 ▼0 ·0 | 7 docs | camp: anchor▲2 anchor▼0
+e389 | Animal products, not ultra-processed food, are the bigger health risk. | 7 authors ▲6 ▼1 ·0 | 7 docs | camp: anchor▲3 anchor▼1
+e642 | Public concern about the health impact of ultra-processed foods is not irrational and is based on abundant science. | 7 authors ▲7 ▼0 ·0 | 5 docs | camp: anchor▲4 anchor▼0
+e645 | Observational ultra-processed food studies cannot show that the food causes health problems, and headlines overstate them. | 7 authors ▲7 ▼0 ·0 | 9 docs | camp: anchor▲2 anchor▼0
+e48 | Added chemicals and pesticides, not the degree of food processing, are the real health harm. | 6 authors ▲4 ▼1 ·1 | 6 docs | camp: anchor▲1 anchor▼0
+e599 | Diet studies that estimate ultra-processed food intake from food frequency questionnaires are unreliable. | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲3 anchor▼0
+e353 | Protein-focused diet trends are fad products that scam people with ultra-processed foods. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e527 | Industrial ultra-processed food is fine. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼3
+e651 | The term 'ultra-processed' is problematic; heart harm mainly reflects sugar and salt, not processing. | 5 authors ▲5 ▼0 ·0 | 4 docs
+e845 | Anti-ultra-processed-food campaigns are a psyop aimed at making people hate plant-based meat alternatives. | 5 authors ▲4 ▼1 ·0 | 4 docs | camp: anchor▲0 anchor▼2
+e854 | Concerns about ultra-processed foods do not matter; the author will keep eating them. | 5 authors ▲5 ▼0 ·0 | 5 docs
+e334 | Junk information makes ultra-processed food debates harder to conduct on an evidence-based basis. | 4 authors ▲3 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼0
+e993 | People warning against ultra-processed food often sell alternative 'not-ultra-processed' food solutions. | 4 authors ▲3 ▼0 ·1 | 4 docs | camp: anchor▲0 anchor▼1
+e130 | Warnings about ultra-processed food are fear mongering used to justify restricting SNAP purchases of foods like bread. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e339 | Wellness influencers who criticize ultra-processed food are hypocrites because they sell protein powder. | 3 authors ▲3 ▼0 ·0 | 2 docs
+e369 | Bread, the most common ultra-processed food, is not comparable to cigarettes. | 3 authors ▲3 ▼0 ·0 | 2 docs
+e400 | Blaming ultra-processed food in the abstract hides the real drivers of diet-related disease, which are familiar foods on the plate. | 3 authors ▲3 ▼0 ·0 | 6 docs
+e683 | Food shaming of ultra-processed foods can harm people with food aversions and restricted diets. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e688 | Declaring that ultra-processed food is not food is absurd. | 3 authors ▲2 ▼1 ·0 | 3 docs
+e918 | Cutting out ultra-processed food as a bogeyman leads predictably down a path toward vaccine distrust. | 3 authors ▲2 ▼0 ·1 | 3 docs
+e1126 | Saying ultra-processed food is bad is not novel; dietitians and doctors have said it for years. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e1486 | Blaming phones, ultra-processed food and the education system for shaping children's behaviour is an overreach. | 3 authors ▲1 ▼1 ·1 | 3 docs
+e1593 | Additives in ultra-processed packaged foods are unfamiliar, hard-to-pronounce chemicals. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e92 | Headlines calling ultra-processed food a global health threat are vague and uninformative. | 2 authors ▲1 ▼1 ·0 | 2 docs
+e142 | The WHO expert committee developing ultra-processed food guidelines is biased. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e279 | Labeling all non-organic food as 'ultra processed' or 'poison' is an extreme view. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e299 | Type 2 diabetes is largely genetic, not just a product of bad diet. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e340 | Claims that ultra-processed junk food causes low testosterone are dubious. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e373 | Adverse health effects attributed to ultra-processed foods may come from displacing whole foods rich in fibre and micronutrients rather than from the products themselves. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e682 | Ultra-processed formulas are medically necessary for some people, such as tube-fed patients, and shaming them is unfair. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e730 | The ultra-processed food concept is a repackaged 18th-century junk food worry, though it is now enshrined in new dietary guidelines. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e880 | Raw milk is not healthier for people because it is natural; milk is processed for good reasons. | 2 authors ▲1 ▼1 ·0 | 2 docs
+e929 | Ultra-processed foods are tolerated well by some people whose bodies react badly to fresh food, so banning them would be harmful. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e932 | Ultra-processed food campaigners risk drifting into the raw milk camp, which spreads disease and helps RFK Jr. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1002 | Concern about ultra-processed food is hubris and a slippery slope fallacy. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1005 | Concern about ultra-processed food and artificial flavor enhancers has existed since the 1960s. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1310 | Ingredient-based imagery used to frighten people about ultra-processed food is manipulative. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e1313 | Concern about chemicals such as MSG and aspartame in ultra-processed food is superstition. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e1687 | Ultra-processed food increases mortality in cockroaches, casting doubt on convenience foods. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1767 | Observational ultra-processed food findings show association, not causation, though UPF, sedentary life and early metabolic disease are plausible drivers. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+   (+74 more in this theme: 66 docs; largest folded has 1 authors)
+## theme Industry lawsuits, lobbying and delay of regulation: 54 assertions, 311 docs (5.2%)
+e1402 | Ultra-processed food companies' lawsuits against health regulation are weaponised delay that chills policy. | 92 authors ▲82 ▼0 ·10 | 114 docs | camp: anchor▲26 anchor▼0
+e15 | San Francisco is suing major food manufacturers over ultra-processed products. | 74 authors ▲38 ▼0 ·36 | 70 docs | camp: anchor▲24 anchor▼0
+e1342 | Industry lawsuits against health policies delay public health measures and cost governments billions. | 22 authors ▲22 ▼0 ·0 | 22 docs | camp: anchor▲4 anchor▼0
+e119 | The political power of the ultra-processed food industry is growing and harming people. | 11 authors ▲11 ▼0 ·0 | 8 docs | camp: anchor▲6 anchor▼0
+e338 | Food safety regulation is weak because the food system is designed to resist it. | 9 authors ▲4 ▼0 ·5 | 12 docs | camp: anchor▲1 anchor▼0
+e1341 | Ultra-processed food companies have filed about 235 lawsuits against governments in Mexico, Colombia, Brazil, the US and the UK since 2010. | 7 authors ▲7 ▼0 ·0 | 7 docs | camp: anchor▲1 anchor▼0
+e1508 | Eight parent corporations, including Coca-Cola and PepsiCo, account for 38% of identifiable industry lawsuits against health policies; consumers should boycott them. | 7 authors ▲5 ▼0 ·2 | 7 docs
+e126 | Major food brands' lobbying relationships shape the global food industry and diets. | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲3 anchor▼0
+e1007 | There is no real government intent to regulate ultra-processed foods, because doing so would disrupt corporate profits. | 4 authors ▲3 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼0
+e1239 | A federal judge denied a bid to revive an ultra-processed food lawsuit against major food manufacturers. | 4 authors ▲0 ▼0 ·4 | 4 docs
+e1262 | Consumers are suing major snack, breakfast and beverage companies over industrially processed food. | 4 authors ▲1 ▼0 ·3 | 5 docs
+e30 | The lawsuit's goals are unclear; requiring cane sugar or removing food dyes would not make foods healthier. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e210 | The Consumer Brands Association's campaign to discredit the concept of ultra-processing is an effort to protect industry profits. | 3 authors ▲2 ▼1 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1549 | CEOs of food companies pushed the White House to delay ultra-processed food policy. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e187 | Banning preservatives over ultra-processed food lawsuits would cause food spoilage and more illness | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e190 | Others should join San Francisco's lawsuit against food makers | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e374 | Health-washing by food companies lets regulators avoid doing real regulatory work. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e526 | Food industry conflicts of interest are used to evade regulation of ultra-processed foods. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e643 | A food manufacturers' group is fighting RFK Jr.'s focus on ultra-processed foods. | 2 authors ▲1 ▼0 ·1 | 3 docs
+e1011 | Government is uninterested in regulating ultra-processed food, and Congress should treat food policy as more important. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1356 | Big Food is entering a tobacco-style litigation era over ultra-processed food. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e1392 | Countries should refuse to be deterred by corporate lawsuits over ultra-processed food health policy. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1403 | Ultra-processed food firms lost about 75% of resolved lawsuits against health policies, while the cases caused about 600 cumulative years of delay. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+31 more in this theme: 30 docs; largest folded has 1 authors)
+## theme RFK Jr., MAHA and US federal politics and guidelines: 154 assertions, 282 docs (4.7%)
+e270 | New U.S. dietary guidelines emphasize limiting ultra-processed foods. | 32 authors ▲17 ▼1 ·14 | 29 docs | camp: anchor▲11 anchor▼0
+e1624 | RFK Jr.'s food plan is confusing and poorly understood. | 17 authors ▲15 ▼0 ·2 | 18 docs
+e619 | RFK Jr. has sometimes brilliant ideas, such as removing toxic food additives and raising awareness of ultra-processed food dangers. | 11 authors ▲11 ▼0 ·0 | 6 docs | camp: anchor▲10 anchor▼0
+e570 | RFK Jr. is not a credible source on food safety recommendations. | 10 authors ▲10 ▼0 ·0 | 8 docs | camp: anchor▲2 anchor▼1
+e1644 | RFK Jr. promised a federal ultra-processed food definition by April that has not been delivered. | 8 authors ▲7 ▼0 ·1 | 9 docs | camp: anchor▲1 anchor▼0
+e197 | RFK Jr. is causing confusion on vaccines instead of cleaning up ultra-processed food. | 7 authors ▲6 ▼1 ·0 | 6 docs | camp: anchor▲2 anchor▼0
+e910 | Donald Trump's diet is heavily reliant on fast food and other ultra-processed foods. | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e204 | Deregulation of food safety is contributing to Listeria and foodborne illness. | 5 authors ▲5 ▼0 ·0 | 4 docs
+e888 | The 2025-30 US dietary guidelines reject scientific evidence, transparency, and planetary health. | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼0
+e1009 | RFK Jr. has not done a good job highlighting ultra-processed food. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1014 | The Trump administration has not reduced ultra-processed food, and food additive profits benefit manufacturers. | 5 authors ▲4 ▼0 ·1 | 4 docs | camp: anchor▲2 anchor▼0
+e427 | The new dietary guidelines are a confusing jumble of good and bad advice that lacks clarity. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e1572 | RFK Jr. is taking on the fuzziest category in food science, ultra-processed foods. | 4 authors ▲2 ▼0 ·2 | 4 docs | camp: anchor▲2 anchor▼0
+e1702 | Project 2025 protects industry profits over public health concerns. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e10 | Left-leaning critics are mishandling the ultra-processed food debate. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e46 | The San Francisco lawsuit aligns with the MAHA agenda; RFK Jr. encouraged Republican state AGs to pursue such suits. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲2 anchor▼0
+e111 | A recent federal funding law cuts food contamination tracking and limits research on ultra-processed foods, weakening food safety rules RFK Jr. wanted. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e422 | Prioritizing red meat and saturated fat in the new food pyramid defies cardiac consensus. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e484 | RFK Jr. and David Kessler are right to take on Big Food. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e548 | HHS will respond to a citizen petition calling for an overhaul of ultra-processed food regulation. | 3 authors ▲1 ▼0 ·2 | 3 docs
+e552 | Kennedy says the FDA will act on the ultra-processed food petition but indicates no new rules will follow. | 3 authors ▲2 ▼0 ·1 | 4 docs | camp: anchor▲2 anchor▼0
+e711 | Republicans claim to champion healthy food while serving lobbyists from ultra-processed food makers, agribusiness and the chemical industry. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e790 | RFK Jr.'s only decent point is his warning about ultra-processed junk food. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1006 | RFK Jr. introduced nothing new about ultra-processed food. | 3 authors ▲2 ▼1 ·0 | 2 docs
+e1215 | Concerns about seed oils and ultra-processed foods are a scam promoted by MAHA grifters. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼2
+e147 | The MAHA definition of ultra-processed food (unpronounceable ingredients or more than five ingredients) is flawed. | 2 authors ▲1 ▼1 ·0 | 2 docs
+e202 | The political right's focus on ultra-processed food is an obsession. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e268 | The health secretary dislikes ultra-processed foods and favors saturated fat, which could shape federal food guidelines. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e293 | Southern RFK Jr. devotees eat diets that are mostly ultra-processed food and will not change them. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e304 | MAHA policies benefit ultra-processed food companies and will mean higher prices and worse nutrition. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e341 | RFK Jr.'s dietary guidance returns an inverted food pyramid that reshapes advice on protein, plants and processed foods. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e408 | Shifting the food pyramid away from grain-based diets is good, but eating more meat is not sustainable. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e419 | The newest US dietary guidelines are garbage. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e425 | Reducing the dominance of ultra-processed food is about better food systems, but it has been co-opted for the MAHA agenda. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e472 | RFK Jr. says the FDA will act on a GRAS petition concerning ultra-processed foods. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e549 | Kennedy's agenda is expanding access to ultra-processed food, which contradicts his stated health goals. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e580 | Raw milk and avoiding ultra-processed food will not prevent early death without vaccination. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e615 | RFK Jr.'s message that ultra-processed food is bad was plagiarized from Michelle Obama, whom the GOP opposed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e748 | Self-identified MAHA supporters' core principles include removing ultra-processed foods, restricting junk food via SNAP, and limiting pesticides. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e776 | RFK Jr. is pushing out nutrition researchers and is pursuing antivaccine efforts. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1057 | RFK Jr. is a bad joke who should not be praised for anything. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1067 | MAHA promotes ultra-processed, salt- and fat-laden food, which is ironic. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1086 | MAGA-linked 'biblical eating' courses are a diet-industry grift. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1137 | Terry Black's should not be visited because it welcomed RFK Jr. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1205 | New US dietary guidelines take on ultra-processed food but push animal protein in ways that worsen carbon emissions and land use. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1273 | Trump's claim that fast food is cleaner and safer because it is ultra-processed is illogical. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1584 | RFK Jr. has linked ultra-processed food to obesity and aims to reduce its prevalence in federal programs. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1729 | The White House has not acted on RFK Jr.'s push for proof that ultra-processed foods are safe. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1932 | A heated debate over defining ultra-processed food contributed to health adviser Calley Means' resignation. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1959 | RFK Jr. says Americans are poisoned by food, yet his agencies have banned no food chemical of concern. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+104 more in this theme: 98 docs; largest folded has 1 authors)
+## theme Category too broad, arbitrary or meaningless: 68 assertions, 270 docs (4.5%)
+e173 | 'Ultra-processed' is too vaguely defined to identify specific harms | 29 authors ▲28 ▼1 ·0 | 22 docs | camp: anchor▲2 anchor▼2
+e95 | Not all ultra-processed foods have a poor nutrient profile. | 26 authors ▲25 ▼0 ·1 | 24 docs | camp: anchor▲5 anchor▼0
+e138 | The ultra-processed label wrongly lumps harmless foods like cheese, tofu and salad dressing with junk food. | 25 authors ▲25 ▼0 ·0 | 22 docs | camp: anchor▲1 anchor▼3
+e22 | 'Ultra-processed' is not a meaningful descriptor of food and does not belong in legislation. | 18 authors ▲18 ▼0 ·0 | 16 docs | camp: anchor▲1 anchor▼2
+e39 | 'Ultra-processed' is a meaningless category, and 'addictive' does not apply to such foods. | 17 authors ▲17 ▼0 ·0 | 14 docs | camp: anchor▲0 anchor▼2
+e137 | The ultra-processed category is poorly defined; harm should be blamed on specific ingredients like preservatives instead. | 15 authors ▲15 ▼0 ·0 | 14 docs | camp: anchor▲2 anchor▼0
+e198 | Bundling all ultra-processed foods into one category tells science and policy little useful information. | 15 authors ▲15 ▼0 ·0 | 14 docs | camp: anchor▲1 anchor▼0
+e731 | The ultra-processed category is absurdly broad, even counting food grown with fertilizer as ultra-processed. | 14 authors ▲14 ▼0 ·0 | 13 docs
+e693 | 'Ultra-processed' is applied subjectively, labelling whatever food one dislikes while liked food is deemed good. | 12 authors ▲12 ▼0 ·0 | 11 docs
+e755 | 'Ultra-processed' is a purity-driven made-up term, since cooking, fermenting and drying all count as processing; oolong tea is ultra-processed by definition. | 10 authors ▲10 ▼0 ·0 | 10 docs
+e107 | Nearly all foods, including rice and grains, are ultra-processed. | 9 authors ▲7 ▼1 ·1 | 8 docs | camp: anchor▲0 anchor▼1
+e124 | The ultra-processed food definition is too broad, classifying wholemeal bread as ultra-processed because of an emulsifier. | 9 authors ▲9 ▼0 ·0 | 9 docs
+e991 | The ultra-processed classification is arbitrary and dumb, and foods can be ultra-processed even when made from scratch at home. | 9 authors ▲9 ▼0 ·0 | 10 docs
+e1112 | Processing and healthiness are separate metrics; ultra-processed should not be treated as a synonym for unhealthy. | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼1
+e713 | Energy density and the food environment matter more than whether food is labeled ultra-processed. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e1161 | Essentially every food is processed, since cooking and preparing food count as processing, so the 'ultra-processed' term should be 'ultra processed foods'. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼1
+e411 | Fresh fruit, vegetables and organic food are being wrongly lumped in with ultra-processed food. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e936 | 'Processed' and 'ultra-processed' are meaningless labels unless a specific harmful process is named. | 3 authors ▲3 ▼0 ·0 | 2 docs
+e1108 | The ultra-processed definition has been changed repeatedly and is just junk food under a more acceptable name. | 3 authors ▲3 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼1
+e691 | Adding fortificants makes foods count as ultra-processed, even though fortification prevents malnutrition, so the UPF label is flawed. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e695 | Critics target hyper-palatable calorie-dense food but use 'ultra-processed' as a stand-in, so the label is misdirected. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e921 | Potato chips with three ingredients are an absurd example of ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e970 | Infant formula and soda are wrongly lumped together as ultra-processed foods. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e999 | The kitchen-based test for ultra-processing is arbitrary: lacking cumin would make Indian food ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1018 | EWG classifies Town House rosemary olive oil crackers as an unhealthy ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1079 | A chocolate meal shake is ultra-processed but not an ultra-processed food because it is good for you, so the label depends on perceived healthiness. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1083 | The ultra-processed definition has no thresholds, so including a single industrial substance or cosmetic additive makes any food ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1133 | The ultra-processed definition wrongly classifies basic foods like steel-cut oats as ultra-processed when sugar or flavours are added. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1277 | Using 'ultra-processed' as a pejorative for any food is unacceptable. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1846 | The phrase 'ultra processed food' is an idiotic term that no serious paper should tolerate. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+38 more in this theme: 36 docs; largest folded has 1 authors)
+## theme Affordability, food access, class and food environment: 87 assertions, 218 docs (3.6%)
+e1 | Food deserts leave residents with only ultra-processed fast food options. | 42 authors ▲20 ▼1 ·21 | 36 docs | camp: anchor▲10 anchor▼0
+e226 | Eating whole, non-ultra-processed food is harder and more expensive than buying ultra-processed food in America. | 28 authors ▲22 ▼6 ·0 | 22 docs | camp: anchor▲8 anchor▼0
+e97 | Low wages and food inequality push people toward ultra-processed food. | 15 authors ▲15 ▼0 ·0 | 12 docs | camp: anchor▲4 anchor▼0
+e181 | Ultra-processed food is very cheap | 15 authors ▲12 ▼3 ·0 | 11 docs | camp: anchor▲2 anchor▼0
+e145 | The cheap food most Americans can afford is ultra-processed junk. | 12 authors ▲12 ▼0 ·0 | 10 docs | camp: anchor▲4 anchor▼0
+e699 | Loud ultra-processed food discourse is mostly classism in disguise. | 11 authors ▲11 ▼0 ·0 | 8 docs | camp: anchor▲0 anchor▼2
+e136 | Real food should be made cheaper so people are not forced into ultra-processed food. | 10 authors ▲10 ▼0 ·0 | 8 docs | camp: anchor▲2 anchor▼1
+e698 | The 'ultra-processed' label is applied to cheap food the poor eat, while food favoured by elites is not labelled that way. | 10 authors ▲10 ▼0 ·0 | 7 docs | camp: anchor▲0 anchor▼2
+e1383 | Food has become so degraded that only canned and ultra-processed food is safely eatable. | 8 authors ▲8 ▼0 ·0 | 8 docs | camp: anchor▲1 anchor▼0
+e109 | Low spending on food drives people to eat ultra-processed foods. | 7 authors ▲7 ▼0 ·0 | 6 docs
+e125 | Processed foods are the only affordable option for people relying on community cupboards. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e229 | Food has become very expensive. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e1612 | Food has turned into a class war that has ruined the author's appetite. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲2 anchor▼0
+e25 | The UK needs to support domestic farming for food security and affordable feeding of the nation. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e287 | Britain should replace reliance on junk food and plastic-wrapped ready meals with local greengrocers and butchers. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e635 | Avoiding ultra-processed food is hard when it makes up around 70% of grocery store stock, so the food environment must change. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e586 | Food choices are limited by time, access and budget, so non-ultra-processed foods may be the practical choice. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e882 | Analysis linking ultra-processed food to food justice is interesting. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e907 | People with lower attention and higher dementia risk may eat more ultra-processed food, and where they live limits access to healthy food. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e920 | Poor people consume a disproportionate amount of ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1075 | Ultra-processed food is ridiculously priced trash fed to poor people. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1189 | Supermarket food today is garbage, with meat infused with water and products whipped full of air. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1250 | Popeyes opening in Ireland signals that Ireland is becoming a fast food nation. | 2 authors ▲2 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e1251 | American food is no longer real food but only ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1314 | Many young people and those in food deserts eat mostly ultra-processed foods without realizing it. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1960 | Labeling ultra-processed food is not how to make America healthier and raises costs for low-income families. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e105 | Cheap takeaways and ultra-processed food saturating local streets harm poor children's opportunities. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e131 | Health inequality research should avoid victim blaming. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e156 | Quorn is an expensive ultra-processed product not worth buying for protein. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e165 | Grocery store layout drives impulse purchases of ultra-processed foods | 1 authors ▲1 ▼0 ·0 | 1 docs
+e347 | Critics who condemn ultra-processed food never check grocery prices of fresh produce against it, so their condemnation is hypocritical. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e382 | Whether ultra-processed foods can be avoided on a budget is an open question. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e414 | New nutrition guidelines need an accompanying pay increase so people can afford healthier foods. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e424 | Official dietary advice is out of touch because people cannot afford the protein it recommends. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e508 | White people's food is ultra-processed while other races' food is healthy. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e529 | People are criticized whether they buy expensive food or inexpensive food, so they cannot win. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e559 | Too many European supermarket aisles are devoted to ultra-processed foods, crisps, snacks and fizzy drinks. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e716 | A food environment dominated by ultra-processed foods and sugary drinks, not doctors' nutrition training, is the real driver of chronic disease. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e754 | Taxes on sugar and ultra-processed foods alone will not fix malnutrition without access to nutritious food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e801 | Poor people having too much food on their plates causes inflation. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e833 | Removing ultra-processed chemicals from the food supply and making healthy options affordable would save Americans money. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e889 | Americans eat ultra-processed food and suffer terrible healthcare, unlike Latin America with universal healthcare and better food. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e894 | Avoiding ultra-processed foods is affordable enough to get by on a tight food budget. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e938 | Ultra-processed food is eaten by wealthy people too, such as Donald Trump. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e952 | Restricting SNAP purchases of ultra-processed foods would harm homeless people and those without kitchens. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e953 | SNAP rules leave people without cooking or refrigeration facilities with unhealthy shelf-stable ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1024 | Food justice, trust and context matter for science communicators discussing nutrition. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1046 | Ultra-processed foods are abundant, and a new definition helps people cut them from their budget. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1056 | Capitalism produces an abundance of ultra-processed foods while healthy food is scarce. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1077 | Packaged vegan ultra-processed foods are expensive, while raw grains, beans and produce are a cheaper way to eat plant-based. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1100 | Changing diet requires financial, occupational and social care support, not just leaflets. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1131 | Restricting food stamps to cheap ultra-processed foods would harm poor people. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1169 | Banning ultra-processed foods would force people to pay more for food, cutting intake or financial stability. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e1175 | Monthly cash transfers improve diet quality among low-income older adults, increasing produce and reducing ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1226 | The food system is ultra-processed and drives harmful diets, but food systems change is possible. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1243 | Food insecurity includes poor health from eating ultra-processed food, not just lacking enough to eat. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1254 | Whole organic food costs more than ultra-processed food, and Monsanto bears huge responsibility. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1270 | Loss of food stamp aid will increase obesity as low-income families turn to ultra-processed foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1298 | Americans would rather eat ultra-processed food than natural foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1406 | Ultra-processed food is among the social factors, alongside insecure work, poverty and poor housing, driving poor health and rising social care costs. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1440 | Small local farms are part of the solution to America's core food problem. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1517 | Mega food corporations exploit economically weaker groups by flooding markets with cheap, unhealthy food, driving higher obesity and diabetes among the poor. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1530 | Power in the food system determines who can choose what to eat. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1540 | Total ultra-processed food intake is linked to lower diet quality among SNAP participants, so caution is warranted for UPF-based SNAP restrictions. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1600 | Ultra-processed food is cheap per unit but expensive in long-term healthy years. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1614 | The food class-war framing demeans working-class people and middle-class people alike, and only the people profiting from it win. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1616 | What counts as posh food keeps changing, so ordinary foods like fish and chips become pretentious once they turn posh. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1620 | The food class-war framing is absurd and not worth engaging with. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1638 | GLP-1 injections are an expensive patch over a broken food environment. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1641 | The highest-income US adults consume the least ultra-processed food of any income group. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1658 | Starbucks Refreshers, marketed as light fruit drinks, are actually expensive, high-sugar ultra-processed beverages. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1675 | Food pantry volunteers cannot police clients' choices of ultra-processed desserts and snacks. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1708 | Ultra-processed food outlets are more concentrated in areas with low fresh fruit and vegetable prices and fewer healthy food ads. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1710 | Simply avoiding ultra-processed food is impractical for people with type 2 diabetes juggling work, family, medication and meals. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1711 | Aldi and Lidl entering the US will help filter out ultra-processed foods and artificial dyes. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1760 | Urban farming can help cities feed themselves and shift communities away from ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1785 | Banning ultra-processed food and petroleum-based ingredients would not raise food costs; corporate greed already did. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1789 | Food quality in discount supermarkets matters as much as price, and people should care about ultra-processed food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1855 | Policing ingredients that corporations can put in food, not SNAP purchases, is the equitable way to promote healthier diets. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1894 | Ultra-processed convenience foods are bad for health and cost people money, and society no longer sees how harmful they are. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1908 | Ultra-processed foods are the most affordable and most heavily marketed foods, raising obesity and malnutrition risk. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1969 | A proposed food scoring scheme for ultra-processed food is nonsensical and will raise grocery costs. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e2006 | People avoiding cheap ultra-processed food turn to protein shakes on gym advice, which is foolish. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e2012 | In Germany ultra-processed food is available but mostly bought by lower-class people. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e2026 | Healthy food like olive oil on sourdough is pricey and gets more expensive if trendy; ultra-processed food is rubbish | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e2029 | Voice actors in expensive cities live on cheap ultra-processed food and instant noodles and die young. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e2043 | Candy prices have spiked 7.7 percent over the past year, more than twice overall inflation. | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme Brain, mental health and child development harms: 58 assertions, 211 docs (3.5%)
+e308 | Regularly eating highly processed foods like fast food, packaged snacks and sugary drinks raises dementia risk. | 31 authors ▲25 ▼0 ·6 | 27 docs | camp: anchor▲17 anchor▼0
+e431 | Ultra-processed food consumption is associated with anxiety, depression, ADHD, autism, eating disorders and food addiction. | 13 authors ▲11 ▼0 ·2 | 10 docs | camp: anchor▲7 anchor▼0
+e351 | Ultra-processed food intake is linked to cognitive impairment across multiple domains in older U.S. adults. | 12 authors ▲12 ▼0 ·0 | 12 docs | camp: anchor▲6 anchor▼0
+e407 | Higher ultra-processed food intake is linked to a 20–50% greater risk of depressive symptoms. | 12 authors ▲10 ▼0 ·2 | 14 docs | camp: anchor▲4 anchor▼0
+e1861 | Higher ultra-processed food intake in children is linked to stronger brain reward responses to food and later body fat gain. | 11 authors ▲11 ▼0 ·0 | 12 docs | camp: anchor▲4 anchor▼0
+e192 | Chemicals from ultra-processed food impair brain function and thinking. | 9 authors ▲7 ▼0 ·2 | 6 docs | camp: anchor▲6 anchor▼0
+e677 | Ultra-processed food consumption is a driver of worsening mental health in young adults. | 9 authors ▲8 ▼0 ·1 | 8 docs | camp: anchor▲3 anchor▼0
+e895 | Higher ultra-processed food intake is linked to worse attention scores in adults aged 40 to 70. | 8 authors ▲7 ▼0 ·1 | 8 docs | camp: anchor▲4 anchor▼0
+e756 | Ultra-processed foods affect children's health. | 7 authors ▲6 ▼0 ·1 | 8 docs | camp: anchor▲6 anchor▼0
+e1750 | Cutting ultra-processed food consumption improves depression symptoms. | 7 authors ▲6 ▼0 ·1 | 8 docs | camp: anchor▲2 anchor▼0
+e1906 | Higher ultra-processed food intake is linked to tiny areas of brain damage and more visceral belly fat. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼0
+e1811 | Ultra-processed food intake is linked to silent brain damage such as subclinical vascular brain injury. | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e705 | Ultra-processed food intake at age 3 is linked to behavioral and emotional problems by age 5. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e1154 | Higher ultra-processed food intake in early childhood is linked to smaller subcortical brain volumes at age 6, though not to cognitive performance. | 5 authors ▲4 ▼0 ·1 | 6 docs | camp: anchor▲2 anchor▼0
+e1427 | Childhood ultra-processed food intake is associated with altered insulin responses. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e1790 | The highest quartile of ultra-processed food intake is associated with 40% higher odds of MRI-defined vascular brain injury. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e1820 | Ultra-processed food intake may harm brain health. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e1865 | Ultra-processed food may rewire children's brains. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e112 | Ultra-processed food shapes eating habits from first tastes into lifelong patterns. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e167 | Poor diet from cost and processed food impairs children's cognitive development | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e324 | Certain top foods may harm the brain and increase the risk of cognitive decline. | 3 authors ▲3 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e799 | Ultra-processed food consumption is associated with higher odds of pediatric multiple sclerosis. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1084 | Ultra-processed foods cause inflammation, brain fog and fatigue. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1269 | Eating real food instead of ultra-processed food helps reduce dementia risk. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1525 | AI is like ultra-processed food for developing brains. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e1558 | Generative AI could harm children's brain development by mimicking the social interactions that build the brain. | 3 authors ▲2 ▼0 ·1 | 4 docs
+e507 | Ultra-processed diets and junk-food marketing drive childhood obesity, and stronger policies are needed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1197 | Processed meats contribute most to cognitive decline, according to a Harvard study. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1247 | A minor increase in ultra-processed snacks rapidly reduces the ability to focus. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1741 | Cutting ultra-processed food by more than 85% was linked to improved depression symptoms in a UCSF pilot study. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1847 | High ultra-processed food intake is linked to a 12% higher risk of depressive symptoms in adults aged 70 and over. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+   (+27 more in this theme: 29 docs; largest folded has 1 authors)
+## theme Individual responsibility, cooking, whole food and practical advice: 109 assertions, 195 docs (3.2%)
+e3 | Foods sold as ultra-processed can be made at home without ultra-processing. | 14 authors ▲12 ▼2 ·0 | 13 docs
+e113 | People are not forced or tricked into eating ultra-processed food; it is a personal choice and a matter of personal responsibility. | 9 authors ▲4 ▼5 ·0 | 6 docs | camp: anchor▲4 anchor▼1
+e163 | Whether ultra-processed food is unhealthy depends on balance, knowledge and conscious choices | 9 authors ▲7 ▼0 ·2 | 8 docs | camp: anchor▲3 anchor▼0
+e406 | Reducing ultra-processed food is achieved through gradual easy swaps, not an all-or-nothing approach. | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲6 anchor▼0
+e320 | Cutting out ultra-processed food is achievable and becomes simple and easy after an adjustment period. | 7 authors ▲7 ▼0 ·0 | 5 docs | camp: anchor▲4 anchor▼0
+e133 | Diet balance matters more than avoiding ultra-processed foods. | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲0 anchor▼1
+e1280 | Limiting ultra-processed food is a personal health goal worth pursuing. | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲4 anchor▼0
+e171 | Asking people to cook their own meals instead of buying processed food is unrealistic | 5 authors ▲2 ▼3 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e218 | Reducing ultra-processed food consumption requires changes in time, labor and lifestyle that are rarely discussed. | 5 authors ▲3 ▼0 ·2 | 4 docs
+e348 | Fresh real food is the best and essential medicine. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e663 | Cooking basic meals from scratch is an important life skill given how much food is ultra-processed. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e785 | Cooking for yourself is cheaper and reduces how much ultra-processed food you eat. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e839 | A new app lets users scan ingredient lists to tell whether a product is ultra-processed. | 5 authors ▲2 ▼0 ·3 | 5 docs | camp: anchor▲2 anchor▼0
+e162 | Home-cooked real meals power the body better than processed food | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e454 | Whole-food diets give better nutrient intake and lower calorie intake than ultra-processed diets. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e593 | Choosing whole foods, limiting ultra-processed food, and tracking protein, sugar and sodium keeps people healthy. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e719 | Vegetarian burgers and sausages are ultra-processed and should be avoided, whether one is vegan or not. | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲2 anchor▼0
+e813 | The Yuka app makes it easier to eliminate ultra-processed foods from one's diet. | 4 authors ▲3 ▼0 ·1 | 2 docs | camp: anchor▲3 anchor▼0
+e1101 | The author admits to eating ultra-processed food and wants to get out of that habit. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e153 | Cooking from scratch requires much more effort than the ultra-processed food debate acknowledges. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e342 | Shelf-stable foods, including ultra-processed ones, are worth keeping in a home pantry for emergencies. | 3 authors ▲2 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e440 | Industrialization and fast food led to the loss of cultural food knowledge, such as knowing how to cook dinner. | 3 authors ▲3 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼0
+e724 | Cooking simply at home avoids having the food classified as ultra-processed. | 3 authors ▲2 ▼0 ·1 | 3 docs
+e860 | Lifestyle medicine advice on identifying and reducing ultra-processed food intake is useful. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e968 | Natural, colourful whole foods are healthier than beige ultra-processed food. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1026 | Occasionally indulging in American ultra-processed food is fine and need not be an issue. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e1123 | Whole food is preferable to ultra-processed versions of the same food. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1289 | Real food beats ultra-processed substitutes for health. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e222 | Going vegetarian or vegan is a way to lessen food-related damage, and modern marketing makes it easier at a cost. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e316 | Bread free of ultra-processed ingredients is a desirable product. | 2 authors ▲2 ▼0 ·0 | 3 docs
+e379 | Cooking balanced meals at home helped weight loss, and losing a working kitchen led to weight gain. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e455 | Eating ultra-processed food makes people feel worse than eating food made from scratch. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e541 | Plant-based meats may be the solution to the ultra-processed food problem if meat is the main harmful ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e544 | Food companies adding single-ingredient fibre to ultra-processed products is not equivalent to whole-food fibre from vegetables, fruit and whole grains. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e686 | Whole-food nutrition and weight loss can reverse type 2 diabetes. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e795 | Carbohydrates are demonized unfairly; less processed carbs are better than ultra-processed ones. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e824 | Minimally processed foods such as tofu and canned beans are healthy, while ultra-processed foods are the bad guys. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1093 | The boring answer is to eat more vegetables and legumes and less ultra-processed food; the source of fat matters less than the overall dietary pattern. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1176 | People say they hate ultra-processed food yet buy it anyway. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1315 | Public health experts advise eating less ultra-processed food, not avoiding it entirely, and food industry distorts this into an extreme. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+   (+69 more in this theme: 58 docs; largest folded has 1 authors)
+## theme Fertility, pregnancy, cancer and other specific health outcomes: 66 assertions, 188 docs (3.1%)
+e1812 | Total ultra-processed food intake is not linked to colorectal cancer in large US cohorts. | 22 authors ▲21 ▼0 ·1 | 24 docs | camp: anchor▲9 anchor▼0
+e480 | Ultra-processed foods disrupt and alter the microbes in the gut. | 21 authors ▲17 ▼0 ·4 | 16 docs | camp: anchor▲13 anchor▼0
+e806 | Ultra-processed food consumption harms male and female fertility and early embryo development. | 18 authors ▲17 ▼0 ·1 | 16 docs | camp: anchor▲10 anchor▼0
+e450 | Ultra-processed food has been linked to cancer and stroke. | 17 authors ▲13 ▼2 ·2 | 13 docs | camp: anchor▲9 anchor▼1
+e266 | Ultra-processed food affects arthritis and similar conditions. | 8 authors ▲6 ▼1 ·1 | 6 docs | camp: anchor▲5 anchor▼0
+e794 | Ultra-processed food is linked to prostate problems. | 8 authors ▲7 ▼0 ·1 | 8 docs | camp: anchor▲6 anchor▼0
+e601 | Higher ultra-processed food intake is linked to weaker bones and fracture risk. | 7 authors ▲7 ▼0 ·0 | 8 docs | camp: anchor▲3 anchor▼0
+e452 | Eating too many ultra-processed foods harms male reproductive health. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e460 | Doctors and epidemiologists link rising early-onset colon cancer to ultra-processed food and preservatives. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e757 | Ultra-processed foods may raise colorectal cancer risk, as shown by a 17-year study of women. | 5 authors ▲1 ▼3 ·1 | 4 docs
+e780 | Higher ultra-processed food intake is linked to roughly 60% lower odds of fertility. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e1825 | Replacing 10% of ultra-processed foods with whole foods is linked to lower bowel cancer incidence. | 5 authors ▲5 ▼0 ·0 | 5 docs | camp: anchor▲3 anchor▼0
+e306 | Avoiding ultra-processed foods helps reduce exposure to harmful plastic and packaging chemicals. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1535 | A father's junk food habit can shape his unborn baby's development. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e59 | Low ultra-processed food diets are associated with lower colorectal cancer risk. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e208 | Ultra-processed foods shape the risk of Crohn's disease. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e451 | Increased intake of certain food preservatives is linked to increased cancer risk. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e740 | Ultra-processed food consumption around conception may influence fertility and early pregnancy development. | 3 authors ▲1 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e1660 | Rising early-onset colon cancer in Americans is being studied, with ultra-processed food among possible factors, but no cause is settled. | 3 authors ▲1 ▼0 ·2 | 3 docs | camp: anchor▲1 anchor▼0
+e1815 | The ultra-processed food and colorectal cancer link varies by food type, with no overall association. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e632 | Food emulsifiers are linked to type 2 diabetes and breast and prostate cancers. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e814 | Maternal ultra-processed food consumption impairs fetal growth in the womb. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1168 | Eating ultra-processed foods and refined carbs before bed makes restful sleep harder. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1237 | Highest ultra-processed food intake is linked to higher risk of kidney cancer. | 2 authors ▲2 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼0
+e1899 | Higher ultra-processed food intake is associated with increased digestive system cancer risk, especially colorectal and colon cancer. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+   (+41 more in this theme: 39 docs; largest folded has 1 authors)
+## theme Addiction, palatability and engineered overeating: 45 assertions, 171 docs (2.8%)
+e225 | Ultra-processed foods are addictive. | 61 authors ▲52 ▼3 ·6 | 45 docs | camp: anchor▲39 anchor▼1
+e141 | In a controlled NIH trial, eating ultra-processed foods led to about 500 extra calories per day even when nutrients were matched. | 14 authors ▲11 ▼2 ·1 | 15 docs | camp: anchor▲5 anchor▼0
+e178 | Ultra-processed food makers knowingly sicken consumers with addictive products | 14 authors ▲14 ▼0 ·0 | 7 docs | camp: anchor▲9 anchor▼0
+e604 | Ultra-processed foods are delicious and hard to resist. | 14 authors ▲13 ▼0 ·1 | 11 docs | camp: anchor▲5 anchor▼0
+e329 | Ultra-processed food should be understood through addiction frameworks. | 13 authors ▲12 ▼1 ·0 | 8 docs | camp: anchor▲4 anchor▼0
+e116 | Ultra-processed foods are industrial products designed for profit rather than nutrition, overriding appetite control and displacing real food. | 9 authors ▲9 ▼0 ·0 | 5 docs | camp: anchor▲8 anchor▼0
+e567 | Ultra-processed foods are engineered to bypass the body's protective mechanisms and reward systems. | 9 authors ▲9 ▼0 ·0 | 7 docs | camp: anchor▲5 anchor▼0
+e634 | Ultra-processed food distorts people's natural hunger signals. | 8 authors ▲8 ▼0 ·0 | 9 docs | camp: anchor▲5 anchor▼0
+e675 | Eating highly processed food appears to drive higher calorie intake. | 8 authors ▲7 ▼0 ·1 | 6 docs | camp: anchor▲6 anchor▼0
+e216 | Social media is ultra-processed speech, designed to bypass people's self-control, like Doritos are designed to bypass appetite. | 6 authors ▲6 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼0
+e584 | High-fat, high-sugar ultra-processed foods trigger cravings. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e344 | Ultra-processed food fails to make people feel full or satisfied. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1174 | Tobacco-owned food firms from the 1980s to the mid-2000s saturated the market with hyper-palatable ultra-processed foods. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1041 | Ultra-processed junk food is designed and marketed to make people keep eating despite health risks. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1185 | Alcohol may increase cravings for savoury ultra-processed foods. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e573 | Makers of addictive ultra-processed foods do not have consumers' health in mind, so consumers must choose carefully. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e627 | Higher ultra-processed food intake is linked to greater binge eating risk and poorer diet quality in adults with obesity. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1038 | Easy access to ultra-processed, hyper-palatable foods is the core problem in American food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1227 | Reminders of God make people crave junk food, according to new psychology research. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+26 more in this theme: 28 docs; largest folded has 1 authors)
+## theme Schools, children, baby food and institutional meals: 66 assertions, 151 docs (2.5%)
+e135 | Regulating ultra-processed food supply in school kiosks and canteens is a good health measure. | 25 authors ▲17 ▼2 ·6 | 26 docs | camp: anchor▲7 anchor▼1
+e553 | Over 70% of tested baby foods are ultra-processed and full of additives. | 13 authors ▲11 ▼0 ·2 | 12 docs | camp: anchor▲3 anchor▼0
+e471 | Most baby food sold in U.S. stores is ultra-processed. | 8 authors ▲8 ▼0 ·0 | 10 docs | camp: anchor▲1 anchor▼0
+e797 | Hospitals should limit ultra-processed food options for patients. | 6 authors ▲5 ▼0 ·1 | 6 docs
+e955 | Implementing school feeding values-based procurement and ultra-processed food restrictions faces identifiable drivers and barriers. | 6 authors ▲3 ▼0 ·3 | 7 docs | camp: anchor▲5 anchor▼0
+e637 | Ultra-processed food still dominates school menus despite two decades of reform efforts. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e169 | California's ban on ultra-processed foods in school lunches is a test case for food standards | 4 authors ▲2 ▼0 ·2 | 4 docs | camp: anchor▲2 anchor▼0
+e378 | School meal providers need more funding to reduce reliance on ultra-processed foods and cook from scratch. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e1369 | About 4 in 5 toddler food products sold in grocery stores are ultra-processed. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e1945 | Food companies turn taxpayer-funded school meals into a market for ultra-processed foods. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e317 | Low-income children are more exposed to ultra-processed food and school healthy meals should be a priority. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e456 | Ultra-processed school meals resemble airline food and are a problem. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1260 | Misleading marketing and widespread availability of ultra-processed foods drive children's food fussiness. | 3 authors ▲2 ▼0 ·1 | 3 docs | camp: anchor▲2 anchor▼0
+e1355 | Packaged toddler foods have widespread nutrition concerns. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲3 anchor▼0
+e319 | American kids already get too much sugar and ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e534 | Many people worry that American baby food is mostly ultra-processed. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e738 | Campus stores stock more ultra-processed food than healthy options, and schools should provide healthier choices. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e908 | Predictors of higher ultra-processed food intake in Canadian preschoolers are being researched. | 2 authors ▲0 ▼0 ·2 | 3 docs
+e949 | Children do not need ultra-processed foods in their diet, though occasional comfort food is acceptable. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1571 | Hungry children need food, preferably not ultra-processed food. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1610 | The USDA's Harvests to Hallways program aims to reduce ultra-processed school lunch options while increasing farm-fresh food. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1934 | Lawmakers in at least 32 states have proposed bills to limit ultra-processed foods in school lunches, and California and Arizona have enacted them. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1942 | More than 250 hospitals have pledged to serve healthier meals with fewer ultra-processed foods, sugary drinks and added sugars. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+43 more in this theme: 43 docs; largest folded has 1 authors)
+## theme Prevalence and share of diet: 56 assertions, 109 docs (1.8%)
+e258 | Too many people eat ultra-processed food. | 13 authors ▲11 ▼0 ·2 | 11 docs | camp: anchor▲6 anchor▼0
+e199 | Americans get about 55% of their calories from ultra-processed foods. | 10 authors ▲9 ▼1 ·0 | 8 docs | camp: anchor▲3 anchor▼0
+e172 | Ultra-processed foods make up about 70% of what people eat | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼0
+e488 | A Lancet report shows ultra-processed foods make up about 50% of household food intake and cause major public health harm. | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e1013 | Consumers are moving away from ultra-processed snacks. | 5 authors ▲3 ▼0 ·2 | 5 docs | camp: anchor▲2 anchor▼0
+e161 | Most food is synthetic, prepackaged and ultra-processed | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e388 | Ultra-processed food's share of household purchases varies across Europe. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲1 anchor▼0
+e1117 | About 60% of American calories come from ultra-processed foods, which leads to prediabetes, diabetes and Alzheimer's risk. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1872 | Modern lifestyles and ultra-processed meals are eroding the Mediterranean diet. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e7 | French consumers perceive ultra-processed foods as nutritionally poor. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e372 | Ultra-processed foods make up 57% of the UK diet. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e398 | Maps of ultra-processed food's share of household purchases are a useful way to show consumption patterns. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e418 | About 90% of food on supermarket shelves is ultra-processed. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e499 | About 56% of UK daily energy intake comes from ultra-processed foods. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e598 | Ultra-processed food has taken over the average shopping basket. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1118 | Nearly 75% of the US food supply is ultra-processed, and more than half of adult calories come from ultra-processed foods. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1232 | Past generations ate less ultra-processed food and smaller portions, and sugar and salt levels in meals were lower. | 3 authors ▲2 ▼0 ·1 | 3 docs
+e1307 | Each generation further removed from the land moves diets toward ultra-processed food becoming the norm. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e331 | Food was not ultra-processed in the 1990s. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e465 | 58% of the average American diet is ultra-processed food, versus 18% in France and Italy. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1061 | Consumers are shifting from ultra-processed snacks toward fresh fruit such as dates. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+   (+35 more in this theme: 36 docs; largest folded has 1 authors)
+## theme other: 1 assertions, 1 docs (0.0%)
+e1441 | The author will eat only ultra-processed food packaged in mylar and is not hungry for other food. | 1 authors ▲1 ▼0 ·0 | 1 docs

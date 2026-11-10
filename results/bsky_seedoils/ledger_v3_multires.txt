@@ -1,0 +1,859 @@
+CORPUS: 6062 documents, 4139 distinct authors, 1237 distinct assertions in 15 themes.
+residual (unplaced): 4.4%  noise: 7.6%
+e0 is the ANCHOR: it tallies every author whose position on the anchor statement is discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position. 'camp: anchor▲x anchor▼y' on a line = how many of that line's authors agree / disagree with the anchor.
+## theme Seed oils are safe/healthy (science-backed defense): 49 assertions, 2439 docs (40.2%)
+e0 | ANCHOR: Seed oils (canola, soybean, sunflower etc.) are safe and healthy to eat. | 3000 authors ▲2299 ▼701 ·0 | 2227 docs
+e384 | Seed oils are reflexively blamed for problems they did not cause. | 116 authors ▲109 ▼2 ·5 | 63 docs | camp: anchor▲91 anchor▼16
+e110 | Some seed oils are part of a healthy diet. | 65 authors ▲64 ▼0 ·1 | 37 docs | camp: anchor▲58 anchor▼5
+e349 | Seed oils are delicious and should not be left out of recipes. | 38 authors ▲37 ▼0 ·1 | 20 docs | camp: anchor▲35 anchor▼1
+e478 | Seed oil concerns are pseudoscience, grouped with Reiki and homeopathy. | 26 authors ▲26 ▼0 ·0 | 13 docs | camp: anchor▲22 anchor▼3
+e344 | Seed oils make food taste good. | 20 authors ▲16 ▼3 ·1 | 13 docs | camp: anchor▲14 anchor▼2
+e195 | Omega-6 fatty acids from seed oils may lower diabetes and heart disease risk | 13 authors ▲13 ▼0 ·0 | 6 docs | camp: anchor▲11 anchor▼2
+e202 | Canola and corn oil do not increase inflammation | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼2
+e1105 | Seed oils do not cause sterility, as high-birth-rate, long-lived Asian countries that eat them show. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e692 | Claims that seed oils make hearts explode and soybeans feminize people are absurd. | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼0
+e358 | Seed oils are natural, since plants store their oil in seeds. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼2
+e184 | Rising obesity alongside seed oil use is not valid evidence that seed oils cause harm | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼1
+e498 | Avoiding seed oils and beef tallow will not protect against infectious disease. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e767 | Seed oils may not be as bad as online trend claims suggest. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e1032 | The seed oil panic is hurting cardiac patients. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e616 | The claim that avoiding seed oils is the key to a diet's benefits is not supported. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e805 | The American Heart Association says seed oils are beneficial. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e819 | Soy and seed oils are not health villains, since long-lived countries consume them heavily. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼3
+e314 | Life expectancy has risen since the 1950s despite modern seed oil consumption, so seed oils are not shortening lives. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e335 | Seed oils are essential for brain functioning. | 3 authors ▲2 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e404 | Blaming a child's bad behavior on seed oils in their diet is absurd. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e769 | Seed oils are simply vegetable oils, so public fear of them is puzzling. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e265 | Removing seed oils from infant diets would harm infants by depriving them of linoleic acid. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e279 | Canola, flaxseed, and sesame seed oils positively influence lipid profiles and glycemic control. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e390 | Blaming cancer on seed oils is victim-blaming. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e405 | Some Bluesky users embrace seed oils and host podcasts defending them. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲2 anchor▼0
+e428 | The claim that seed oils make people more homicidal is ridiculous | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e460 | Seed oil critics rely on a simple story that is wrong but easy to defend. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e998 | Removing seed oils from food is going in the wrong direction. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e103 | Seed oils in egg bites are not a health problem. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e340 | Cold-pressed and refined seed oils have no measurable difference in heart health effects. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e363 | Seed oils are the best frying fat for popcorn. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e392 | Blaming seed oils for weight loss caused by illness is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e408 | Claims that seed oils caused or are linked to pregnancy loss are bullshit. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e718 | The U.S. soybean sector refutes attacks on seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e732 | Fries and fish cooked in seed oils are fine to eat. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e922 | Demonizing soy and seed oils pushes plant-based foods out of the diet. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1009 | Cutting out seed oils does not grow hair. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1047 | Several seed oils are high in omega-3, so seed oils should not be lumped together as one group. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1049 | Older nutrition studies mostly used partially hydrogenated seed oils, not modern seed oils, so they do not test modern seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1077 | Fear of seed oils conflates hydrogenated seed oils with unhydrogenated ones, often through misinformation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1094 | Avoiding seed oils is unwarranted for people without a seed allergy. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1103 | Seed oils are staple culinary oils in East and Southeast Asian cuisine, and sunflower oil was a boon to Eastern Europe and Central Asia. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1199 | Cutting out seed oils will not fix problems like bad knees. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1232 | Lacking seed oils in the diet will harm you. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1251 | If seed oils are bad, vegetables and grain-based bread are bad too, which is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1254 | The rise of seed oils and margarine over the past century is exciting. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1280 | Dismissing ingredients like onion powder, cinnamon, cumin and seed oils as unwholesome because of their names or forms is unfounded; they are ordinary plant foods. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1404 | Grok AI endorses seed oils | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+## theme Mockery of anti-seed-oil culture, influencers and masculinity/gender: 142 assertions, 491 docs (8.1%)
+e12 | Anti-seed-oil campaigns and claims are absurd and deserve mockery | 211 authors ▲211 ▼0 ·0 | 128 docs | camp: anchor▲152 anchor▼33
+e128 | Concerns about seed oils being dangerous are a joke. | 165 authors ▲165 ▼0 ·0 | 94 docs | camp: anchor▲138 anchor▼18
+e204 | Health influencers who say seed oils are the devil run a dubious health racket. | 36 authors ▲36 ▼0 ·0 | 19 docs | camp: anchor▲32 anchor▼2
+e255 | The claim that seed oils turn you gay is misinformation. | 32 authors ▲29 ▼1 ·2 | 16 docs | camp: anchor▲29 anchor▼3
+e842 | Bringing up seed oils in casual conversation is annoying. | 19 authors ▲19 ▼0 ·0 | 9 docs | camp: anchor▲17 anchor▼2
+e999 | Titans' nutrition ban on seed oils under coach Saleh is a baffling move. | 19 authors ▲18 ▼0 ·1 | 12 docs | camp: anchor▲16 anchor▼1
+e94 | Avoiding food with seed oils is a weird crunchy-mom trend. | 17 authors ▲17 ▼0 ·0 | 9 docs | camp: anchor▲15 anchor▼1
+e174 | Men who avoid seed oils and promote 'real fat' cooking are ridiculous | 16 authors ▲16 ▼0 ·0 | 9 docs | camp: anchor▲12 anchor▼3
+e373 | Concern about seed oils being feminizing stems from fragile masculinity. | 16 authors ▲15 ▼0 ·1 | 9 docs | camp: anchor▲13 anchor▼3
+e348 | Complaints about seed oils are not worth paying attention to. | 15 authors ▲15 ▼0 ·0 | 8 docs | camp: anchor▲13 anchor▼1
+e27 | Influencers such as Joe Rogan spread the anti-seed-oil and beef tallow trend | 13 authors ▲10 ▼2 ·1 | 8 docs | camp: anchor▲11 anchor▼0
+e391 | Anyone who opposes seed oils is not worth listening to. | 10 authors ▲10 ▼0 ·0 | 5 docs | camp: anchor▲10 anchor▼0
+e433 | Refusing seed oils as a macho display is a symptom of toxic masculinity and manosphere posturing. | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼1
+e798 | Fear of seed oils is one of many irrational modern fears. | 9 authors ▲9 ▼0 ·0 | 5 docs | camp: anchor▲9 anchor▼0
+e1207 | Seed oils should be brought back into the Titans facility. | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲6 anchor▼0
+e126 | Influencer claims that seed oils and sunscreen are poison are absurd. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼1
+e388 | People who dislike seed oils often cannot say why. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼0
+e1014 | People who adopt no-seed-oil and MAHA lifestyles have become weird. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e89 | Removing seed oils from your diet means you won't need sunscreen. | 7 authors ▲1 ▼5 ·1 | 4 docs | camp: anchor▲5 anchor▼1
+e327 | Beef tallow became a trend where manosphere anti-seed-oil circles overlapped with goop-style skincare. | 7 authors ▲4 ▼0 ·3 | 4 docs | camp: anchor▲6 anchor▼1
+e459 | Seed-oil avoiders and steroid users form overlapping groups of gym-culture extremists. | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼2
+e93 | Seed oil critics are idiot wannabe nutritionists. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼0
+e396 | Raw milk drinkers who disparage seed oils and Red 40 are a cliche. | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e290 | The claim that seed oils cause sunburn is absurd. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼0
+e453 | Wellness crowds who refuse seed oils while consuming odd supplements are hypocritical. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e538 | Asking whether someone eats seed oils is a purity test. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e705 | Avoiding seed oils makes a person look crazy. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼0
+e24 | Avoiding seed oils is a social media fad that substitutes for healthcare | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e47 | The seed oils vs. beef tallow debate is a bro issue tied to RFK Jr. and his fans. | 4 authors ▲1 ▼0 ·3 | 3 docs | camp: anchor▲2 anchor▼1
+e66 | The wellness grifter cult promoting beef tallow fries over seed oils is ridiculous. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e96 | Extending seed oil avoidance to sunscreen is all too much. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e866 | Forcing conservatives to consume seed oils is a form of torture. | 4 authors ▲2 ▼0 ·2 | 3 docs | camp: anchor▲3 anchor▼0
+e1123 | Calling food 'clean' because it lacks seed oils deserves ridicule. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e271 | Anti-seed-oil people are credulous and falsely claim to have cornered the market on rationality. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e439 | Influencers who promote seed oil fear are unhealthy men profiting from it, and RFK Jr. came from this group. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e501 | Seed oils and gender discourse have ruined the dating pool. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼2
+e626 | Being forced to attend lectures about seed oils and wellness is a nightmare. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e644 | Meticulous food avoidance such as skipping seed oils signals mental unwellness rather than biohacking. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e722 | Making TikToks about seed oils is a cringe trope. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e874 | God hates seed oils. | 3 authors ▲1 ▼2 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e1051 | Titans coach Saleh is unhinged about seed oils. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e43 | Complaining about seed oils and artificial sweeteners is hypocritical, like vegans complaining about animal products. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e263 | White people prefer eating seed oils to going to therapy. | 2 authors ▲2 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼1
+e297 | The tradwife ideal of purity through avoiding vaccines and seed oils is mockable. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e329 | Avoiding seed oils while vaping is hypocritical. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e379 | People who use seed oils lack a grindset and are less admirable. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼1
+e385 | A shirtless medical influencer spreading seed oil and folic acid misinformation is dangerous. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e457 | Opposing seed oils while loving white bread is an inconsistent position. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e529 | White people who refuse seed oils while accepting other odd demands look absurd. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e542 | 'Seed Oils: Myth Vs. Fact' is a satirical news piece. | 2 authors ▲0 ▼0 ·2 | 1 docs | camp: anchor▲2 anchor▼0
+e569 | Disordered fears of seed oils, fats and carbs are developing in fitspo culture. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e592 | Believing one can control health by avoiding seed oils and Tylenol reflects poor self-regulation. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e664 | People with opinions on seed oils also tend to dislike soy milk | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e712 | People who avoid seed oils are afraid of eating them. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e814 | People who warn about seed oils and corn syrup are insane. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e853 | Seed oil avoidance is a secular religion of moralizing wellness rules | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e1005 | Detoxing seed oils from the body with fart therapy is absurd. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1016 | Podcasting about seed oils is a caricature of masculinity. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1056 | Health influencers push seed oils on their followers | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1068 | 'Seed oils' is used as a coded term meaning high estrogen and low testosterone (high-E/low-T). | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e1120 | Men with strong opinions about seed oils are a mocked caricature. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e1233 | Aaron Rodgers is known for podcasts where he yells about seed oils. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e53 | Swapping seed oils for beef fat as healthy and patriotic is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e98 | Worrying about canola oil in restaurant egg bites is stupid. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e169 | Complaining about seed oils is as annoying as vegans complaining about animal products. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e245 | Superman probably drinks seed oils, and that is a joke about him being gay. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e367 | Recommending skink oil oil-pulling while telling patients to avoid seed oils is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e398 | Health-motivated vegans have switched to fad diets such as carnivore or cutting out seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e452 | A psychiatrist raising seed oil harms when asked about medication dosage is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e482 | People who talk a lot about seed oils are worse for health than the seed oils themselves. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e499 | Being militant about seed oils is a sign of privilege and boredom. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e503 | Warning others against seed oils while living in a place full of them is ironic. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e505 | Keto and paleo gym-goers complain that seed oils and grains interfere with their gains. | 1 authors ▲0 ▼0 ·1 | 0 docs | camp: anchor▲1 anchor▼0
+e508 | Seed oil podcasters are mouthpieces who echo a leader's views. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e524 | Treating a headache by consuming seed oils is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e525 | Replacing seed oils and Red 40 with paracetamol would be a net good for American culture. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e526 | The MAHA movement's food restrictions leave women allowed to eat only beef tallow. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e535 | Avoiding seed oils while accepting 100% silicone face products is an inconsistent position. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e539 | Blaming seed oils for freckles is a conspiracy-minded fear typical of almond moms. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e649 | Eating rotting bear and whale meat is absurd even if it avoids seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e697 | Taking seed oil concerns seriously from a smart person is a mistake. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e723 | Calls to ban Ensure over its seed oils and stabilizers are absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e777 | Concern over seed oils and dyes reflects a lack of long-term thinking. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e790 | Hippies who blame McDonald's unhealthiness on seed-oil frying overlap with bone-broth hippies but are not identical groups. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e810 | Seed oil discourse has become a moralizing campaign like 1980s anti-drug ads. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e823 | Mike Tyson's commercial telling Americans to eat fewer seed oils is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e825 | Seed-oil avoiders put far more thought into their diet than the diet warrants. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e829 | Refusing to eat at restaurants over their seed oils is absurd, and less justifiable than refusing them over politics. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e843 | Seed oils are discussed online about as often as protein, which is excessive. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e862 | Fixating on seed oils is a way for people to feel they can control something. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e880 | Feeding pigs seed oils is a crime against humanity. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e881 | Kraft Singles contain no seed oils and are a legitimate health food. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e887 | People who avoid seed oils do so to feel superior to others. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e906 | Avoiding seed oils because they are used to make candles is silly internet-driven nonsense. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e928 | Worrying about fluoride and seed oils is too much. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e932 | Elon Musk's catering protocol demanding no seed oils is absurd. | 1 authors ▲1 ▼0 ·0 | 2 docs
+e951 | Scanning pantries for seed oils with a YouTuber's app is unhinged. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e991 | Seed oils are immune to screwworm. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1021 | Workplace wellness coordinators push for banning seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1029 | Requests for potluck or meal food free of gluten and seed oils are absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1064 | Chris Williamson looked clueless when a guest had to explain seed oils to him. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1075 | Mikhaila Peterson has violent, intrusive thoughts. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1078 | Bringing your own oil to a restaurant so the chef avoids seed oils is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1107 | Vegan recipe content that avoids refined sugar or seed oils is fear-driven and extreme. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1113 | People who avoid seed oils while neglecting basic hygiene like flossing have misplaced priorities. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1129 | Anti-seed-oil diet promoters push expensive steaks over cheaper cuts of meat. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1130 | Seed oil rants flooded Facebook comment sections for a while. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1154 | A relative who calls seed oils the devil while calling Zyn healthy is an unrepresentative example of seed-oil believers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1160 | Wellness grifters currently dislike seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1176 | Seed oil critics are now attacking oatmeal, which is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1187 | Avoiding seed oils is a scam that makes menus unfriendly to vegetarians. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1191 | People who skip seed oils are not people trusted to make food taste good. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1197 | Seed oil concerns come from people who want to eat deep-fried food every day guilt-free. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1201 | Enthusiasm for seed oil concerns is mostly found among men. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1216 | Seed oils do not make you transgender. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1220 | The Roman Empire fell because of too many seed oils. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1226 | A Pokémon character that has opinions about seed oils has terrible vibes. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1256 | Shows that repeatedly disparage seed oils are tiresome. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1259 | Recommending seed oil-free diets for an elderly dog's health issues is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1263 | Seed oils are a habit-forming substance people feel they need to get through the workday. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1277 | Influencers decrying seed oils is as overblown as decrying hot soup. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1279 | People with strong negative opinions about seed oils tend to be obsessed with protein. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1283 | Incels eating more seed oils would reinforce financial exploitation like collateralized loan obligations (a joke). | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e1285 | Men who focus on avoiding seed oils are too distracted to work. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+   (+18 more in this theme: 12 docs; largest folded has 1 authors)
+## theme Seed oils harmful/toxic (health claims against): 50 assertions, 371 docs (6.1%)
+e251 | Seed oils are toxic. | 276 authors ▲159 ▼89 ·28 | 192 docs | camp: anchor▲107 anchor▼149
+e170 | Seed oils should be avoided for health | 101 authors ▲86 ▼12 ·3 | 71 docs | camp: anchor▲19 anchor▼76
+e1 | Seed oils should be removed from the food supply and diet. | 43 authors ▲23 ▼15 ·5 | 22 docs | camp: anchor▲20 anchor▼20
+e277 | Industrial seed oils contribute to declining male testosterone levels. | 13 authors ▲7 ▼5 ·1 | 8 docs | camp: anchor▲5 anchor▼8
+e497 | There are too many seed oils in the diet. | 13 authors ▲13 ▼0 ·0 | 6 docs | camp: anchor▲2 anchor▼11
+e144 | Refined, bleached, and deodorized seed oils are causative agents in cancer and metabolic disease. | 10 authors ▲7 ▼0 ·3 | 4 docs | camp: anchor▲2 anchor▼8
+e549 | Seed oils cause autism | 10 authors ▲0 ▼8 ·2 | 6 docs | camp: anchor▲8 anchor▼1
+e261 | Seed oils are linked to skin cancer and sun damage. | 8 authors ▲3 ▼4 ·1 | 4 docs | camp: anchor▲4 anchor▼4
+e771 | Seed oils impair brain function and focus. | 8 authors ▲6 ▼2 ·0 | 4 docs | camp: anchor▲3 anchor▼5
+e113 | Seed oils should be cracked down on along with food dyes. | 7 authors ▲6 ▼1 ·0 | 4 docs | camp: anchor▲1 anchor▼5
+e602 | Seed oils are linked to early-onset cancer and metabolic variability. | 5 authors ▲2 ▼0 ·3 | 4 docs | camp: anchor▲0 anchor▼3
+e775 | Industrially processed seed oils are additives that make food less healthy. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼5
+e231 | Eating only organic food and avoiding seed oils is the way to eat healthily. | 4 authors ▲3 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼3
+e550 | Seed oils contribute to insulin resistance | 4 authors ▲3 ▼0 ·1 | 6 docs | camp: anchor▲0 anchor▼4
+e565 | Industrial seed oils are new to the human diet and humans did not evolve eating them. | 4 authors ▲1 ▼3 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e717 | Eliminating industrial seed oils, added sugars and refined grains boosts fat burning. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼4
+e224 | Most seed oils are cheaply processed and drenched in pesticides. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼2
+e22 | Linoleic acid from seed oils promotes triple-negative breast cancer growth | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲0 anchor▼2
+e514 | Dementia, Parkinson's and kidney stones rose in step with meat being demonised and seed oils being introduced in the 1950s. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e582 | Avoiding all seed oils is a pillar of a neuroprotective diet. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e665 | Linoleic acid from seed oils amplifies hunger. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e930 | Seed oil consumption weakens the body's ability to fight infection. | 2 authors ▲0 ▼2 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e933 | Hellmann's mayonnaise is mostly chemicals and industrial seed oils, not real food. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e1060 | Seed oils are disgusting. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e1071 | Seed oils raise aromatase activity and lower natural testosterone. | 2 authors ▲1 ▼1 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e95 | Minimizing seed oils and eating whole seeds instead is a healthy lifestyle choice. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e114 | Seed oils are an unhealthy ingredient in meal delivery food. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e118 | WISEcode flags seed oils as an ingredient to avoid. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e284 | Eliminating seed oils from the food supply is physically feasible. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e400 | Vaccines and seed oils cloud thinking and dull the senses. | 1 authors ▲0 ▼0 ·1 | 0 docs | camp: anchor▲1 anchor▼0
+e426 | Blue Zone long-lived populations show minimal reliance on industrial seed oils | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e511 | Real meals were traditionally cooked before seed oils entered the diet. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e552 | Cutting out seed oils may help Crohn's disease and IBD | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e618 | French fries are as harmful as cigarettes because of the seed oils they are fried in. | 1 authors ▲1 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼1
+e630 | Seed oil crops should not be grown. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e648 | Seed oils, along with meat, sugar and trans fats, make people look old and ugly. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e759 | Large-scale canola production is a reason to be concerned about seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e763 | Feeding babies food containing seed oils is a bad choice. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e860 | Seed oils are among the four main killers in the American diet. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e950 | Ditching seed oils improves skin health more than cosmetic injections do. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e958 | Gossypol naturally occurring in cottonseed oil can cause irreversible male sterility. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1039 | Seed oils are reshaping nutrition in hidden, costly ways. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e1084 | Snacks made without seed oils are a healthier choice for kids' lunchboxes. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1178 | Stomach trouble from salad reflects a diet of processed carbs and seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1235 | Seed oils damage cellular energy production by stealing the light from cells. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1246 | A teenager who avoids seed oils and blue light lived better than the average American today. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1284 | Seed oils plus inactivity make an animal fat (a joke implying seed oils cause weight gain). | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1286 | Eating processed seed oils contributes to fatty liver, hepatitis and cirrhosis risk. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1324 | Cooking before seed oils took over was the ideal way to cook. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1399 | Seed oils are disapproved of | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme RFK Jr. and MAHA politics: 183 assertions, 320 docs (5.3%)
+e175 | RFK Jr. blames seed oils for problems without basis | 44 authors ▲43 ▼0 ·1 | 22 docs | camp: anchor▲38 anchor▼5
+e324 | Fear of seed oils is associated with cranks like RFK Jr. and anti-vaccine views. | 33 authors ▲32 ▼0 ·1 | 17 docs | camp: anchor▲28 anchor▼4
+e104 | RFK Jr's claims that seed oils are linked to chronic disease are nonsense. | 26 authors ▲26 ▼0 ·0 | 13 docs | camp: anchor▲24 anchor▼2
+e127 | RFK Jr is an unhinged speaker on seed oils. | 18 authors ▲18 ▼0 ·0 | 9 docs | camp: anchor▲14 anchor▼4
+e182 | RFK Jr.'s claim that seed oils poison Americans is made without evidence | 17 authors ▲17 ▼0 ·0 | 8 docs | camp: anchor▲13 anchor▼4
+e364 | RFK Jr.'s war on seed oils is one of many absurd crusades. | 17 authors ▲17 ▼0 ·0 | 9 docs | camp: anchor▲14 anchor▼2
+e283 | RFK Jr. said beef tallow is healthier than seed oils, and McDonald's should bring back tallow fries. | 16 authors ▲8 ▼0 ·8 | 12 docs | camp: anchor▲8 anchor▼3
+e600 | The MAHA position is that drinking raw milk, avoiding seed oils and skipping vaccines prevents illness, which is absurd. | 15 authors ▲15 ▼0 ·0 | 8 docs | camp: anchor▲15 anchor▼0
+e291 | The administration's public talk about seed oils is questionable. | 14 authors ▲13 ▼0 ·1 | 8 docs | camp: anchor▲8 anchor▼4
+e299 | MAHA's claimed wins, including seed oil actions, are bluster. | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲6 anchor▼0
+e302 | MAHA ignores environmental rollbacks while attacking food dyes and seed oils. | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼1
+e1007 | RFK Jr. emphatically believes seed oils are harmful, and this is a huge part of his MAHA beliefs. | 8 authors ▲4 ▼0 ·4 | 6 docs | camp: anchor▲2 anchor▼2
+e208 | RFK Jr. has said vegetable oils like canola and soybean are poisoning Americans. | 7 authors ▲1 ▼0 ·6 | 5 docs | camp: anchor▲2 anchor▼1
+e264 | FDA Commissioner's concerns about seed oils in baby formula are unsubstantiated. | 7 authors ▲7 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼2
+e857 | Pierre Poilievre lied about seed oils on Joe Rogan's podcast. | 7 authors ▲6 ▼0 ·1 | 4 docs | camp: anchor▲6 anchor▼0
+e438 | RFK Jr. only cares about a few pet issues such as vaccines and seed oils. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼0
+e46 | Dr Oz, RFK Jr., and Brand claim to care about health while selling supplements. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲5 anchor▼0
+e78 | RFK Jr. is pushing his seed oil concerns on people in an intrusive, obsessive way. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e211 | RFK Jr. is a fucking moron. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e429 | RFK Jr. is a hypocrite who hates seed oils and dyes yet eats fast food | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e713 | 'No seed oils' food labeling signals allegiance to RFK Jr. | 4 authors ▲3 ▼0 ·1 | 2 docs | camp: anchor▲3 anchor▼0
+e735 | The new US dietary guidelines declare war on processed foods and sugar and encourage more protein and dairy. | 4 authors ▲3 ▼0 ·1 | 6 docs | camp: anchor▲1 anchor▼0
+e746 | The health authorities' promotion of seed oils is surprising given their prior anti-seed-oil stance. | 4 authors ▲1 ▼0 ·3 | 3 docs | camp: anchor▲0 anchor▼1
+e895 | The 2026 dietary guidelines emphasize animal fats over seed oils. | 4 authors ▲1 ▼0 ·3 | 3 docs | camp: anchor▲0 anchor▼2
+e3 | RFK Jr. makes anti-seed-oil claims to keep anti-vaccine supporters onside without taking real action. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e37 | RFK Jr. knows nothing about seed oils and uses them as a buzzword | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e226 | RFK Jr. is truly nuts. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲3 anchor▼0
+e239 | RFK Jr. is intolerable. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼1
+e377 | RFK Jr. is a dangerously ignorant hack who spreads health lies. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e395 | MAHA seed oil messaging is spreading into gyms. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e464 | MAHA treats health as determined only by diet, fixable by frying in animal fat instead of seed oils and removing dyes from candy | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e609 | A podcast episode discusses MAHA, seed oils, beef tallow and related food politics. | 3 authors ▲0 ▼0 ·3 | 2 docs | camp: anchor▲2 anchor▼0
+e615 | RFK Jr.'s seed oil and food dye campaign is a smokescreen for dismantling the CDC, FDA, and USDA. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e647 | Health officials keep measles vaccines out of the agenda while pushing removal of seed oils. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e725 | RFK Jr. has redrawn government positions on seed oils, fluoride and Tylenol. | 3 authors ▲2 ▼0 ·1 | 14 docs | camp: anchor▲1 anchor▼0
+e959 | Steak 'n Shake appointed Michael Boes as its first MAHA chief to oversee nutritional integrity. | 3 authors ▲0 ▼0 ·3 | 2 docs | camp: anchor▲1 anchor▼0
+e1316 | A paid influencer campaign targeted seed oils, pesticides, high-fructose corn syrup, raw milk and big ag as key topics. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e84 | Officials at HHS and USDA talk about avoiding seed oils even though they don't believe it. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e185 | RFK Jr.'s anti-seed-oil stance is financially motivated | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e268 | The current governing party is driven by an aversion to seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e322 | RFK Jr.'s MAHA health campaign relies on junk science, so people should consult varied legitimate sources. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e407 | The next full-time CDC director will be an influencer warning about seed oils. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e440 | Grifters like RFK Jr. and Joe Rogan promoting seed oil fears will be visible as a lifespan dip in future data. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e449 | RFK Jr.'s simple approach of just removing red dye and seed oils is a naive, insulting fix. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e472 | RFK Jr.'s seed oil campaign convinced a third of US consumers seed oils are poison and hurt US soybean sales | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e495 | RFK Jr. promotes junk foods such as Coca-Cola and beef-tallow fries. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e516 | RFK Jr. opposes the production of seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e518 | RFK Jr. opposes promoting seed oils. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e530 | RFK Jr. tried to ban seed oils from school cafeterias. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e558 | MAHA claims seed oils are engine lubricants and tells people to eat tallow. | 2 authors ▲0 ▼1 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e599 | Avoiding seed oils and vaccines does not help solve US health problems. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e719 | US health policy has been dramatically reshaped under RFK Jr. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e724 | RFK Jr. is inconsistent about seed oils and vaccines. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e728 | Avoiding seed oils and Tylenol would have prevented illness, which is an absurd claim. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e729 | RFK Jr. made war on seed oils, fluoride and Tylenol while measles cases soared. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e745 | Official guidelines calling seed and nut oils healthy fats is a 180-degree reversal of anti-seed-oil messaging. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲0 anchor▼1
+e747 | RFK Jr. has undermined seed oils and valorized saturated fat, and the new dietary guidelines reflect those shifts rather than coincidence. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e974 | Pierre Poilievre's beef promotion on Joe Rogan's podcast was a great piece of misleading spin that deserves criticism. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e975 | Kellogg's government-backed cereal with no seed oils is a joke that mocks RFK Jr. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1031 | Until RFK Jr. became HHS Secretary, most people were unfamiliar with the term seed oils. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1173 | Anti-seed-oil beliefs spread across political lines, including among left-leaning voters. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e64 | RFK Jr.'s campaign against seed oils and artificial dyes feeds distrust of institutions. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e106 | The Agriculture Secretary was previously a lobbyist for the seed oil industry and has no farm or management experience. | 1 authors ▲1 ▼0 ·0 | 2 docs
+e140 | Removing red dye and seed oils from food while ignoring hot dog ingredients is hypocritical. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e197 | RFK Jr. wrongly claimed there are no studies on seed oils' health effects | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e219 | RFK Jr. should return to private life before he kills more Americans. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e256 | RFK Jr. cherry-picks studies on seed oils to get the results he wants. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e259 | RFK Jr.'s 'real food' means food without dyes or seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e262 | Defending a harmful government order because it removes seed oils and dyes is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e328 | The US HHS argues that french fries are not unhealthy. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e362 | With the MAHA figure in charge at HHS, foods made with seed oils would be labeled junk food. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e410 | MAHA moms expected RFK Jr. to eliminate seed oils and food dyes, and he has been quiet on public health harms from cancer research cuts. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e422 | RFK Jr. makes absurd claims such as that chemtrails are polluting the sky | 1 authors ▲1 ▼0 ·0 | 1 docs
+e434 | RFK Jr. is an anti-doctor, anti-scientist running the nation's health agencies. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e437 | Parents who opposed vaccine mandates will likely blame seed oils and other fads for their children's sickness. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e442 | Kennedy's focus on dyes and seed oils will not address US childhood health issues. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e443 | RFK Jr. refuses to answer whether 1 million Americans died from COVID. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e444 | Avoiding seed oils and red dyes while taking ivermectin will not protect against Ebola; the claim is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e445 | Avoiding red dyes and seed oils makes people resemble RFK Jr., which is unappealing. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e447 | MAHA talks about seed oils and healthy food, but its enacted policy makes healthy food harder to access. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e463 | Supporters of RFK Jr. have odd, eccentric habits and eating patterns | 1 authors ▲1 ▼0 ·0 | 1 docs
+e465 | Politicians accept claims about seed oils and artificial dyes without questioning them | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e469 | RFK Jr. should have pursued seed oils and processed food policy at the FDA instead of medicine and vaccines | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e479 | A MAHA family distrusts food that might contain seed oils, to the point of disrupting a reunion potluck. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e481 | The new MAHA commission report backed off seed oil targets after industry input. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e504 | Trump does not genuinely care about seed oils, vaccines, or health care. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e512 | MAHA events are expected to use beef tallow instead of seed oils, and using seed oils there would be a faux pas. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e515 | The Trump administration is upping domestic production of seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e517 | The HHS Secretary, who has criticized seed oils, is pivoting to promote fried soy foods instead. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e520 | RFK Jr.'s crusade against seed oils is inconsistent with the US relying on imported cooking oil made from soybeans. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e536 | RFK Jr. cancelled a bed product because it used seed oils, despite the product working as advertised. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e581 | The administration's plan is to remove healthcare, vaccines, science-based medicine, and seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e584 | Stephen Miller's wife campaigned for United Airlines to join RFK Jr.'s war on seed oils. | 1 authors ▲0 ▼0 ·1 | 0 docs | camp: anchor▲1 anchor▼0
+e594 | HHS's social media post depicting seed oils in a box is wrong in multiple ways. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e598 | MAHA is hypocritical: it demands breastfeeding while claiming a mother's seed oil intake poisons breast milk. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e601 | RFK Jr. will likely target airport and flight food next for seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e620 | People who say seed oils are poison take RFK Jr. as their health advisor. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e645 | RFK Jr. promotes beef tallow and seed oil fears while undermining vaccines, so his followers risk children's lives. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e655 | The new American dietary guidelines are criticized by different groups, with homesteaders saying they do not go far enough against seed oils | 1 authors ▲0 ▼0 ·1 | 1 docs
+e674 | Seed oils should have been addressed in the new dietary guidelines but were omitted. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e675 | RFK Jr.'s dietary guidelines should have explicitly attacked seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e676 | The new dietary guidelines are an ideologically motivated mess. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e702 | MAHA's anti-seed-oil push comes alongside measles resurgence and vaccine rollback. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e710 | RFK Jr.'s food-pyramid changes repackage changes that were already made. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e720 | RFK Jr. has overseen a dramatic reshaping of HHS agencies, eliminating jobs and freezing billions in funding. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e721 | The administration is crushing the domestic soybean market, hurting farmers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e733 | RFK Jr.'s health policy will cause another pandemic. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e736 | The new dietary guidelines discard 421 pages of scientific recommendations. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e737 | The dietary guidelines push too much red meat and set protein recommendations too high. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e738 | The long-awaited new US dietary guidelines were released under RFK Jr. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e748 | The new dietary guidelines' undermining of seed oils was predictable and science was a smokescreen. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e750 | The guidelines' rejection of polyunsaturated fats in seed oils contradicts the standard definition of healthy fats. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e753 | Soybean growers were alarmed by dietary guideline statements questioning whether seed oils harm Americans' health. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e755 | Soybean growers who gave votes and money to the current administration deserve mockery. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e784 | The administration is unlikely to act on calls to remove seed oils from infant formula. | 1 authors ▲0 ▼0 ·1 | 3 docs
+e799 | A character named Carol has started posting about seed oils in a MAHA style. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e807 | The longevity movement is MAHA-coded. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e809 | The new nutrition guidelines get fat advice wrong. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e811 | RFK Jr. is an internet wellness grifter who is now in charge of public health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e813 | RFK Jr. avoids naming glyphosate and talks about corn syrup and seed oils instead. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e815 | RFK Jr.'s seed oil guidance on buffalo wings is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e816 | RFK Jr. talking about seed oils on TV is inappropriate for someone overseeing a huge government budget. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e817 | Public pushback toned down the new food pyramid's 'no seed oils' language. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e820 | RFK Jr. says corn syrup, seed oils and artificial coloring in buffalo sauce are probably bad. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e821 | RFK Jr. defines healthy fats as saturated and monounsaturated fats, calling polyunsaturated seed oils dreaded. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e822 | RFK Jr. says replacing seed oils in human cells with ferments is a plan worth mocking. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e830 | The new dietary guidelines' emphasis on red meat and full-fat dairy conflicts with their 10% saturated fat limit. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e831 | Trump's farm bailouts are ridiculous and cost taxpayers more money. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e834 | RFK Jr. challenges US diet guidelines by citing corporate influence over science. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e841 | Health infrastructure is being eviscerated even though the data point toward needing more support for public health. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e861 | Poilievre's negative comment about seed oils on Rogan's podcast may have hurt Canadian canola interests. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e883 | RFK Jr. will target seed oils in Nutella, and the FDA cannot withstand the resulting blowback. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e889 | Many MAGA-aligned people have cut out seed oils following the administration's health advice. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e890 | MAHA's diet advice is inconsistent: it recommends eating liver while discouraging seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e903 | RFK Jr. is trying to make American food healthier. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e953 | MAHA promotional gift bags containing raw milk and seed oils are a joke. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e954 | Seed oils being used in drug manufacturing is a ridiculous reason to block FDA approval of drugs. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e963 | MAHA healthy snack nutrition claims are being scrutinized by nutrition experts. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e979 | Politicians' health plans have nothing beyond banning seed oils and birth control. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e982 | MAHA prioritizes seed oils and raw milk over fruit access for pregnant women. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1006 | New Mexico State University's embrace of MAHA is mockable. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1043 | Anti-seed-oil advice predates RFK Jr.; Nassim Taleb urged avoiding all seed oils over a decade ago. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1083 | MAHA's war on seed oils benefits Asian palm and coconut oil producers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1095 | MAHA's push to ban seed oils would dismiss most world cuisines. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1097 | RFK Jr. is badly wrong on health science, including infectious disease. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1128 | Most Americans do not agree with MAHA on seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1141 | The rise of Kerrygold butter in the US carries a hint of MAHA anti-seed-oil sentiment. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1146 | Andrew Gruel said he was addicted to seed oils and salad dressing, revealing the kind of people the administration platforms. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1161 | The administration's food pyramid changes eliminate toxic food, but its claim that glyphosate is healthy is hypocritical. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e1163 | RFK Jr.'s push for beef tallow instead of nut and seed oils puts people with alpha-gal allergy at risk. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1168 | Anti-seed-oil campaigners can be manipulated into serving big agriculture interests. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1169 | Voters who fear seed oils but lack firm commitment to other MAHA positions are winnable. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1170 | Seed oils and GMOs are not what most riles up MAHA supporters. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1172 | A public figure did not call for banning seed oils, so she is not giving the movement anything. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1175 | MAHA's chemical concerns focus on seed oils and the HPV vaccine rather than forever chemicals. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1192 | A government website hosting a game about knocking seed oils off a conveyor belt is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1193 | Voters worried about seed oils and food toxins can be won over to a candidate focused on food safety rather than a fascist. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1195 | Seed oil concerns can be redirected toward cracking down on supplement sellers and big agriculture. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1196 | The FDA can call seed oils bad, but childhood vaccinations should not be made optional. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1200 | MAHA communities validate people leaning toward avoiding seed oils and shun those who choose infant formula. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1227 | Seed oils are a MAGA no-no. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1239 | MAGA businesses made a big stupid deal of switching from seed oils to beef tallow. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1257 | Seed-oil-free recipes are marketed with MAHA hashtags. | 1 authors ▲1 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e1265 | Medicaid referring patients to a weight-loss clinic that cuts seed oils and carbs is a questionable use of public funds. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1278 | Big Food pays influencers to fight MAHA. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1288 | RFK Jr.'s dietary recommendations, such as eating Liberty Biberties, are a joke. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1290 | Conservatives praising no-seed-oil buns while rejecting vegan burgers is hypocritical. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1291 | RFK Jr. forcing Steak n Shake to remove seed oils from buns instead of addressing healthcare is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1293 | GaHA's internal documents target seed oils, pesticides, high-fructose corn syrup, organic farming and raw milk. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1294 | Steak 'n Shake changed a burger ingredient as part of its MAHA push. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1296 | JD Vance has ranted about seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1317 | The paid influencer campaign on seed oils and raw milk was a political maneuver tied to RFK Jr. and Trump. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1333 | Government spending on propaganda about seed oils is a waste of tax dollars. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1337 | Enforcing seed oil restrictions with the National Guard is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1353 | MAHA is more than a push to use fewer seed oils and more beef tallow. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1358 | RFK Jr. did not respond to NPR's interview request for its seed oil story. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1370 | 'Seed oil' is used as a derogatory MAHA term for people who use seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1375 | Author will enjoy RFK Jr.'s pain when store shelves contain only HFCS, seed oils and red dye | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1383 | An article explains the facts about seed oils and why RFK Jr. hates them. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1384 | An article explains the facts about seed oils and why RFK Jr. hates them. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1385 | Outlawing infant formula because it contains seed oils and corn syrup is a mocked prospect. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1388 | Grocery chains adopting MAHA positions like removing seed oils is BS | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1391 | Seed oils are anti-MAHA. | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme Restaurant, food-industry and marketing 'no seed oils' trend: 128 assertions, 230 docs (3.8%)
+e139 | Advertising a restaurant as seed-oil-free is a turnoff that makes customers avoid it. | 39 authors ▲38 ▼0 ·1 | 21 docs | camp: anchor▲36 anchor▼2
+e32 | Restaurants advertise no seed oils and beef tallow as selling points | 33 authors ▲1 ▼0 ·32 | 24 docs | camp: anchor▲16 anchor▼13
+e42 | Bragging that a recipe has no seed oils is pointless | 23 authors ▲21 ▼1 ·1 | 12 docs | camp: anchor▲19 anchor▼3
+e124 | There is a national movement to fry in beef tallow rather than seed oils. | 13 authors ▲3 ▼0 ·10 | 8 docs | camp: anchor▲7 anchor▼3
+e663 | A product advertises being free of seed or skincare oils as a selling point | 11 authors ▲1 ▼0 ·10 | 11 docs | camp: anchor▲2 anchor▼8
+e160 | Steak-n-Shake's switch from seed oils to beef tallow is stupid and deserves a boycott. | 9 authors ▲7 ▼1 ·1 | 5 docs | camp: anchor▲6 anchor▼2
+e285 | Companies are beginning to remove seed oils and artificial dyes from their products, as they already have in other countries. | 7 authors ▲3 ▼0 ·4 | 5 docs | camp: anchor▲2 anchor▼4
+e590 | Steak-n-Shake switched from seed oils to beef tallow partly because of the low-T and seed oil discourse. | 7 authors ▲1 ▼0 ·6 | 4 docs | camp: anchor▲3 anchor▼3
+e984 | 'No seed oils' on restaurant menus is usually a marketing signal rather than a health claim backed by outcome data. | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e67 | Demand for seed-oil-free cooking is growing. | 6 authors ▲3 ▼0 ·3 | 6 docs | camp: anchor▲4 anchor▼2
+e86 | Restaurants cooking meat in seed oils is a negative, even if hygiene is fine. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼3
+e560 | Food marketed as 'no nightshades, no seed oils' is dubious. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼1
+e556 | Linear Bar advertises having no seed oils as a selling point. | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲2 anchor▼3
+e80 | The White House was fooled by an April Fools' tweet from an In-N-Out fan account claiming the chain would cook with beef tallow instead of seed oils. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e137 | Activist demands that restaurants remove seed oils from their food are misguided. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e419 | Eliminating seed oils would hurt many American farmers and require government bailouts. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼1
+e704 | McDonald's replaced beef tallow with a seed oil blend in its french fries in the 1990s. | 4 authors ▲2 ▼0 ·2 | 4 docs | camp: anchor▲3 anchor▼1
+e1115 | Ultra Fit Mealz's chef-prepared, high-protein meals contain no seed oils. | 4 authors ▲1 ▼0 ·3 | 4 docs | camp: anchor▲0 anchor▼3
+e272 | PepsiCo is replacing canola and soybean oil with avocado and olive oil. | 3 authors ▲1 ▼0 ·2 | 2 docs | camp: anchor▲2 anchor▼1
+e318 | Restaurants claiming to avoid seed oils by frying in beef tallow are scamming, because they pre-fry in vegetable oil. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e365 | Asking restaurant staff whether food is cooked in seed oils draws judgmental sneers from other diners. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼1
+e418 | Claiming a restaurant's burgers and fries are healthy because they avoid seed oils is absurd. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼1
+e679 | The trend toward whole foods, no seed oils, and protein-heavy eating has overtaken earlier health trends. | 3 authors ▲0 ▼0 ·3 | 2 docs | camp: anchor▲1 anchor▼0
+e778 | Products advertising no seed oils cost more than comparable products. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e795 | A restaurant brought back beef tallow as a signal to MAGA/MAHA voters. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e904 | Food companies switching to beef tallow or removing dyes is a marketing tactic that makes people buy and eat more. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1124 | Marketing that plays on 'we all hate seed oils' is a manipulative ad pitch. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e105 | Starbucks is exploring how to remove seed oils from its food after its CEO met RFK Jr. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e387 | Seed oil concerns have led to absurd restrictions on restaurant menus. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e455 | Demanding beef tallow fries and no seed oils is a caricature of wellness customers. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e466 | Consumers will not pay a premium for seed-oil-free or beef-tallow meals when cheaper options are available | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e547 | A restaurant's move away from seed oils harms customers' health | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e604 | Fear of seed oils is pushing restaurants to swap oils without proper allergen disclosure, making dining out hard for people with allergies. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e640 | A business pivoting to remove seed oils to pander to MAHA is a bad business move. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e658 | The meal company Factor is MAHA-coded through 'no seed oils' marketing | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e776 | Repeated 'no seed oils' marketing persuades viewers that seed oils are bad. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e869 | Wavers, a snack brand, advertises no seed oils as a selling point. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲0 anchor▼2
+e1072 | Seed oils are used in food because they are flavor neutral. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1096 | Goop Kitchen is opening a Berkeley ghost kitchen offering meals free of seed oils. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e1127 | Restaurants advertising 'no seed oils' sparked a tiresome online frenzy. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1165 | Advertising that a product contains no seed oils is a joke, even for unrelated products like Chinese minicars. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1210 | Baked goods made without seed oils or refined flour are admirable. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e1244 | Seed-oil-free chips taste bad. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+   (+85 more in this theme: 66 docs; largest folded has 1 authors)
+## theme Nuanced/balanced debate and fear vs moderation: 39 assertions, 213 docs (3.5%)
+e123 | Claims that seed oils are harmful have been stretched too far. | 175 authors ▲170 ▼0 ·5 | 96 docs | camp: anchor▲157 anchor▼10
+e171 | Concern about seed oils is overblown; they are not in most foods and ordinary people rarely think about them | 32 authors ▲32 ▼0 ·0 | 19 docs | camp: anchor▲24 anchor▼3
+e179 | Seed oil concerns are the same unfounded panic as earlier soy scares | 19 authors ▲18 ▼0 ·1 | 10 docs | camp: anchor▲15 anchor▼3
+e827 | The seed oil debate is ongoing and it is worth examining what seed oils are and whether they are bad for you. | 18 authors ▲4 ▼0 ·14 | 19 docs | camp: anchor▲5 anchor▼1
+e200 | Seed oils have both benefits and potential downsides | 13 authors ▲10 ▼0 ·3 | 9 docs | camp: anchor▲8 anchor▼3
+e375 | Frying food is unhealthy regardless of which oil or fat is used. | 9 authors ▲9 ▼0 ·0 | 5 docs | camp: anchor▲7 anchor▼0
+e193 | Reasonable people can disagree about seed oils' health effects | 7 authors ▲5 ▼0 ·2 | 5 docs | camp: anchor▲2 anchor▼3
+e374 | The seed oil debate deserves nuanced discussion rather than extreme positions on either side. | 7 authors ▲6 ▼0 ·1 | 6 docs | camp: anchor▲4 anchor▼0
+e309 | The seed oil debate is driven by hype, and consumers need clear unbiased information instead | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼1
+e634 | Seed oils deserve healthy respect rather than fear. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e781 | Seed oils are either a toxic villain or a nutritional scapegoat, and the debate about them is highly polarized. | 5 authors ▲1 ▼0 ·4 | 6 docs | camp: anchor▲1 anchor▼3
+e1100 | Nutrition fads such as 'no seed oils' are followed like a cure-all instead of making personal dietary decisions. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e198 | Judging seed oils' health impact requires considering overall diet and lifestyle | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e694 | Banning seed oils would be Prohibition-style stupidity. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e50 | People who label foods as 100% good or bad or as toxic are not to be trusted. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1037 | Seed oils are no worse for you than other oils, and all oily foods are bad in excess. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e41 | Banning seed oils without advocating alternatives is misguided | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e243 | Making flavor-only claims about seed oils, rather than unfounded health claims, is the respectable approach. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e454 | Seed oils are at most marginally worse than natural oils, with no evidence of significant harm, yet avoiding them has become a personality. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e489 | The type of cooking oil used matters for health. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e502 | Seed oil discourse and gender discourse are tiresome distractions. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e751 | Health advice can be too restrictive sometimes. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1150 | People who fear seed oils while ignoring bigger risks like wildfire smoke are inconsistent. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1167 | People worried about seed oils for health reasons should be met with respect and offered sensible actions rather than extreme ones. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+   (+15 more in this theme: 11 docs; largest folded has 1 authors)
+## theme Saturated fats and beef tallow vs seed oils: 84 assertions, 212 docs (3.5%)
+e141 | Beef tallow is not healthier than seed oils; MAHA tallow claims make no meaningful difference. | 82 authors ▲79 ▼0 ·3 | 46 docs | camp: anchor▲68 anchor▼6
+e188 | Seed oils are healthier than saturated fats like butter, lard, and tallow | 59 authors ▲58 ▼1 ·0 | 31 docs | camp: anchor▲51 anchor▼7
+e241 | Tallow and butter are healthier than seed oils. | 18 authors ▲15 ▼3 ·0 | 10 docs | camp: anchor▲7 anchor▼11
+e59 | Replacing seed oils with saturated fats is a mistake given saturated fats' poor track record. | 15 authors ▲13 ▼2 ·0 | 7 docs | camp: anchor▲13 anchor▼2
+e4 | Saturated fat from tallow promotes atherosclerosis more than unsaturated fats found in seed oils. | 13 authors ▲9 ▼3 ·1 | 7 docs | camp: anchor▲11 anchor▼2
+e82 | Foods cooked in animal fat taste better than foods cooked in seed oils. | 11 authors ▲7 ▼4 ·0 | 7 docs | camp: anchor▲8 anchor▼0
+e45 | RFK Jr. promoting beef tallow as healthier than seed oils is unscientific. | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼1
+e146 | Touting beef tallow as a MAHA success is about beef industry profits, not health. | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲9 anchor▼0
+e11 | Beef tallow is linked to increased risk of heart disease. | 8 authors ▲7 ▼0 ·1 | 3 docs | camp: anchor▲6 anchor▼1
+e234 | Meat companies profit from selling byproducts, and the claim that seed oils are bad is made up at public health's expense. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼0
+e568 | The seed oils versus saturated fat debate deserves scientific examination. | 8 authors ▲4 ▼0 ·4 | 8 docs | camp: anchor▲2 anchor▼1
+e744 | The push for beef tallow is part of MAHA's war on seed oils and right-wing food propaganda. | 8 authors ▲7 ▼0 ·1 | 5 docs | camp: anchor▲7 anchor▼0
+e173 | Beef lard is a healthier cooking fat than seed oils | 7 authors ▲4 ▼3 ·0 | 3 docs | camp: anchor▲1 anchor▼6
+e54 | Fries fried in beef tallow are no healthier than fries fried in seed oils. | 6 authors ▲5 ▼1 ·0 | 3 docs | camp: anchor▲4 anchor▼1
+e962 | The slogan 'seed oils bad, beef tallow good' is an absurd way to think about health. | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e278 | People obsessively avoid seed oils and prefer butter and lard, while olive oil gets a pass. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e986 | Beef tallow is repulsive. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e176 | Promoting tallow over seed oils is a culture-war stance; tallow is rendered slaughterhouse waste | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲3 anchor▼0
+e296 | Beef tallow is also processed, so processing does not make seed oils uniquely inflammatory. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e779 | People who drop seed oils in favor of saturated fats risk heart disease and skin cancer. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e985 | Cardiologists have advice about whether beef tallow is healthy. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲1 anchor▼0
+e467 | A diet with too many seed oils and too little lard causes unhealthy cravings | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e652 | Beef tallow is probably better than most seed oils but is significantly more expensive | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e774 | Traditional fats such as ghee are nutrient-dense cooking fats. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e872 | Populations eating animal fat have far less heart disease than populations eating seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e915 | A 'Fat Wars' article explains the seed oils versus beef tallow debate. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e961 | Seed oil and beef tallow advocates are absurd, and their logic would bring back whaling. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1224 | Beef tallow is a good cooking fat with a high smoke point and low oxidation risk, compared with seed oils. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼2
+e72 | Whether a fat is healthy depends only on its melting point; fats that melt above body temperature (98°F) solidify and build up in the blood. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e74 | All fats, including beef tallow, are mildly inflammatory. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e79 | The idea that animal fats are uniquely bad compared with other fats is a product of 1990s diet culture. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e201 | Cooking only with lard because RFK Jr. said so is misguided | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e227 | Seed oils are preferable to cooking in bacon fat. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e352 | Beef tallow is sold cheaply in bulk tubs online. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e450 | Seed oils were adopted as a replacement for saturated fats during fat-phobic diet fashions and will cycle back. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e458 | A mix of olive oil, butter and lard is a good way to cook. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e562 | Beef tallow smells like a glue factory. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e593 | Frying chicken in a blend including seed oil and animal fats is worth the effort. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e639 | Beef tallow potato chips are expensive because they are made by hand, possibly by exploited workers. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e651 | Animal fat lobbies and seed oil lobbies compete for influence over dietary guidance pyramids | 1 authors ▲1 ▼0 ·0 | 1 docs
+e656 | Federal nutrition advice still favors cooking with seed oils over butter, steak, and tallow | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e659 | Hostess cakes were far better when made with beef tallow instead of today's seed oils and high fructose corn syrup | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e668 | Seed oils will be replaced with fresh moist lard. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e673 | The 10%-of-calories cap on saturated fat should be dropped. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e691 | The shift from beef to seed oils reflects bad epistemics, not seed oils being healthier or tastier. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e743 | Half-century-old saturated fat versus seed oil trials are mostly flawed and do not show that saturated fat lacks harm. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e749 | Butter from pastured cows not given medication is acceptable in small amounts. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e756 | A Japanese study found beef tallow caused cancer in rats. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e796 | MAHA people have hijacked food discourse, and frying in beef tallow is about hedonism rather than seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e808 | The Mediterranean diet myth promoted by Ancel Keys is wrong about fats. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e818 | The anti-seed-oil campaign is a substitute target for the well-established red meat and cancer link. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e863 | Beef tallow is a better skincare ingredient than seed oils. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e898 | Seed oils stay liquid in warm climates, unlike animal fats that are too thick. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e923 | Cooking with grass-fed tallow and skipping seed oils gives better skin. | 1 authors ▲1 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼1
+e927 | It would be ridiculous for Harold's book to include advice to eat tallow because seed oils are evil. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e931 | Anti-seed-oil carnivore advocates' 'biblical diet' claims are wrong because biblical diets included lots of grains. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e940 | Beef tallow and raw milk fads romanticize pioneer lifestyles as healthy, which is a passing trend. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e943 | McDonald's should return to beef tallow fries; the switch to seed oils was driven by cost, not health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e945 | Beef tallow spoils and turns rancid faster than seed oils, which need changing less often in frying. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e947 | People who avoid seed oils while eating beef tallow and raw dairy are willfully ignorant and harming themselves. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e987 | Seed oils are overused because they have no flavor, while a small amount of butter adds far more flavor. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e996 | Beef tallow prices are skyrocketing, so people will not be able to afford tallow for cooking. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1018 | A weekly nutrition roundup includes a segment comparing tallow and seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1046 | Nutrition experts have assessed what happens when cooking with beef tallow instead of butter, seed oils or olive oil. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1050 | The NYT seed oil versus beef tallow debate misses that the fried products are refined starches. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1052 | The claim that corporate interests drive the push to replace seed oils with tallow does not make sense. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1054 | McDonald's existing seed-oil fries are great the way they are, better than tallow fries. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e1055 | Belief that tallow is healthier than seed oils is wishful thinking driven by tallow tasting better. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1093 | Tallow-based mayonnaise is available as an alternative to seed-oil mayonnaise. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1132 | The beef tallow trend is weird and could spread to foods like hummus. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1142 | The butter trend may be a reaction against seed oils, tied to broader cultural sentiment. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1158 | Beef tallow is becoming a widespread trend, with its global market expected to grow to about $26B by 2035. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1183 | Ranting about seed oils while cooking in beef tallow is hypocritical. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1205 | Frying donuts or onion rings in Crisco would work well. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1237 | People buying beef tallow chips for taste are different from people buying them out of fear of seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1264 | Beef cooked on a grill needs no seed oils or butter because it sears in its own juices. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e1302 | Cooking with lard and butter instead of seed oils produces good food. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1334 | Recipes cooked in butter without seed oils are worth promoting. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1339 | Rendering your own beef tallow at home is cheaper and better than buying seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1344 | Fast food fries should be cooked in beef tallow instead of seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1351 | A butcher selling beef and pork fat who opposes seed oils has a conflict of interest. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1352 | Food influencers who shill '100% beef tallow with no seed oils' products are annoying. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1355 | A seed-oil-free air fryer cookbook with recipes cooked in tallow, ghee and butter is worth promoting. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1393 | Cooking with duck fat instead of seed oils is a mark of eating like common people (joking song parody) | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+## theme Media, experts, research quality and credibility: 112 assertions, 196 docs (3.2%)
+e371 | Maintenance Phase's seed oils episode is a delight. | 29 authors ▲25 ▼0 ·4 | 20 docs | camp: anchor▲17 anchor▼2
+e350 | The Maintenance Phase podcast has an upcoming episode on seed oils. | 14 authors ▲2 ▼0 ·12 | 13 docs | camp: anchor▲5 anchor▼0
+e172 | Mentioning seed oils is a red flag for a content creator's credibility | 13 authors ▲12 ▼0 ·1 | 7 docs | camp: anchor▲10 anchor▼2
+e91 | NPR's July 2025 article by Maria Godoy examines the science behind the seed oil controversy. | 11 authors ▲0 ▼0 ·11 | 11 docs | camp: anchor▲3 anchor▼0
+e33 | Seed oil research relies on flawed trials and meta-analyses | 8 authors ▲8 ▼0 ·0 | 11 docs | camp: anchor▲6 anchor▼2
+e150 | Seed oil critics cite quacks or bloggers who lack relevant expertise. | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲7 anchor▼0
+e97 | People who avoid seed oils have abandoned health experts for pseudoscience quacks and conspiracy theorists. | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e222 | A doctor bringing up seed oils in a short appointment is a bad sign. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼1
+e414 | Conservative health experts keep switching their food villains, from soy to seed oils to beef tallow. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲3 anchor▼1
+e537 | Podcasts warning about seed oil dangers sell supplements that are not classified as medicine. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e25 | The NYT article on seed oils is unreliable | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲2 anchor▼1
+e192 | Trust nutritionists over influencers and RFK Jr. on seed oils | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e355 | Ordinary people now care about seed oils because of TikTok and Instagram. | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲3 anchor▼0
+e685 | Scientific American published an episode on seed oils on January 14, 2026. | 4 authors ▲0 ▼0 ·4 | 4 docs
+e731 | The BBC asks whether seed oils are really bad for you. | 4 authors ▲0 ▼0 ·4 | 4 docs
+e225 | NPR's headline perpetuates RFK Jr.'s lies and is misinformation. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e242 | Johns Hopkins Bloomberg School of Public Health published an evidence review on seed oils' health effects. | 3 authors ▲1 ▼0 ·2 | 2 docs | camp: anchor▲2 anchor▼0
+e257 | A Harvard School of Public Health article addresses beef tallow and its health effects. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲2 anchor▼0
+e372 | The Maintenance Phase seed oils episode should be a dunk on seed oil concerns. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e553 | MedPage Today published expert commentary on whether anti-seed-oil claims have any truth. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e1073 | Mikhaila Peterson attaches herself to fringe medical theories and monetizes them, so she is a grifter. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e57 | A doctor warning patients about seed oils and statins based on Google AI summaries is bad medicine. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e75 | Searching for restaurant seed oil information mostly returns the 'seed oil conspiracy theory' Wikipedia article. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼1
+e109 | Seed oil horror documentaries are nonsense. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e115 | NPR's seed oil article is a very good article. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e187 | NPR's framing 'Are seed oils bad for your health?' adds bias | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e223 | There is no real debate about seed oil safety, and journalists should not hide their work behind revenue-producing links. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e236 | Scientists who say seed oils are safe are bought and paid for by agribusiness. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e252 | Medical News Today published an article on seed oils. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲2 anchor▼0
+e306 | Emily Oster is an economist, not a scientific or medical authority, so her seed oil opinions should be discounted | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e312 | Mixed messages from Harvard nutrition experts and HHS about seed oils and frying confuse people | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e378 | Expert-produced content about seed oils is well done and should keep being posted. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e382 | An old podcast episode on the science of seed oils is an excellent listen. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e435 | Health searches about seed oils return anecdote-driven forum posts rather than meta-analyses of research. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e451 | A registered dietitian's facts about seed oils, with sources, are worth consulting. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e488 | The Academy of Nutrition and Dietetics' Nutrition Fact Check campaign provides evidence-based information on seed oils. | 2 authors ▲2 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e541 | Men's Health published an article asking whether seed oils are bad for the heart. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e619 | Critics' anti-soy and anti-seed-oil hypotheses have shifted over time from one explanation to another. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e677 | The Center for Science in the Public Interest published an article on seed oils. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e730 | Seed oil 'shocking truth' posts are sensational clickbait. | 2 authors ▲2 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼1
+e800 | Short TikTok videos spread 'seed oils bad' claims while in-depth expert discussion reaches few people. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e891 | Studies on food and health that ignore seed oils and other highly processed foods are incomplete. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e905 | Credible voices need to reach the people who worry about seed oils instead of focusing on real issues. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e973 | The Children's Hospital of Philadelphia has a handy article on seed oils. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1112 | Dr Selina Wang's conversation on edible oils is informative. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e1156 | Anyone promoting or selling supplements should be considered an unreliable participant in health discourse. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+   (+66 more in this theme: 48 docs; largest folded has 1 authors)
+## theme Alternative oils and labeling (olive, avocado, mislabeling, what counts as seed oil): 82 assertions, 186 docs (3.1%)
+e411 | Pumpkin seed and other plant oils are great for skincare and body care routines. | 17 authors ▲15 ▼0 ·2 | 52 docs ⚠ top-5 accounts wrote 77% of docs | camp: anchor▲1 anchor▼0
+e19 | Canola and other seed oils are the cheapest cooking fats | 14 authors ▲12 ▼2 ·0 | 9 docs | camp: anchor▲8 anchor▼3
+e1066 | Popular avocado oil products may be mixed with cheaper seed oils, according to a new study. | 13 authors ▲10 ▼0 ·3 | 12 docs | camp: anchor▲4 anchor▼2
+e356 | The definition of 'seed oils' is applied inconsistently, excluding olive oil and pumpkin seed oil, which is convenient and bogus. | 10 authors ▲7 ▼0 ·3 | 7 docs | camp: anchor▲7 anchor▼1
+e559 | The seed oil avoidance fad confuses seed-derived fats like sesame with seed oils, which is silly. | 9 authors ▲9 ▼0 ·0 | 6 docs | camp: anchor▲8 anchor▼0
+e237 | Coconut oil, olive oil, and ghee are much healthier than seed oils. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼7
+e824 | 'No seed oils' claims on food labels are silly since corn is a seed. | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲8 anchor▼0
+e60 | Switching away from seed oils to olive or avocado oil is expensive. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲3 anchor▼0
+e194 | Avocado oil is healthier than seed oils | 5 authors ▲4 ▼0 ·1 | 3 docs | camp: anchor▲3 anchor▼1
+e910 | Olive oil is not a seed oil because it is pressed from the fleshy fruit rather than from seeds or pits. | 5 authors ▲4 ▼1 ·0 | 3 docs | camp: anchor▲3 anchor▼1
+e258 | Most olive oil on the market is adulterated with seed oils. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e337 | Avocado oil is not a seed oil because avocado is a fruit. | 4 authors ▲3 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼1
+e828 | U.S. food brands are rethinking seed oils in favor of olive oil. | 4 authors ▲1 ▼0 ·3 | 3 docs | camp: anchor▲2 anchor▼1
+e566 | Most seed oils are not the most nutritious oils to eat. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e699 | Beef is not cooked in seed oils, so 'no seed oils' claims about meat are silly. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼1
+e307 | Canola, corn, soybean, sunflower, grape and avocado oils are all seed oils, and fats are necessary for nervous system, skin and hair health | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e331 | Seed oils are as natural as beef tallow. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e671 | Avoiding plant and seed oils while using olive oil for high-heat cooking is odd. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e791 | Canola is healthier than olive oil. | 2 authors ▲1 ▼1 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e949 | Vegetable oil labels are vague, and people who fear seed oils are ironically trusting that the bottle isn't one. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1024 | Choosing peanut oil over canola because peanuts are nuts is a naive health distinction. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1157 | Research on avocado oil's health benefits lags behind studies of olive and seed oils, and avocado oil products are often not pure. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1261 | Siete's 'Made With Avocado Oil' chips contain undisclosed seed oils. | 2 authors ▲2 ▼0 ·0 | 6 docs | camp: anchor▲0 anchor▼1
+e1289 | A class action alleges Chosen Foods mislabeled its avocado oil mayonnaise and dressings as pure avocado oil when they contain cheaper seed oils. | 2 authors ▲0 ▼0 ·2 | 9 docs
+e1312 | Fera fruit oil is just a type of palm oil. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+   (+57 more in this theme: 43 docs; largest folded has 1 authors)
+## theme Conspiracy, extremism, eugenics and political-identity attacks: 93 assertions, 182 docs (3.0%)
+e130 | Opposition to seed oils is a conspiracy-driven or wellness-fad belief promoted by MAHA/RFK figures. | 86 authors ▲86 ▼0 ·0 | 44 docs | camp: anchor▲78 anchor▼6
+e301 | People drawn into extremism start with anti-science stances like seed oil concerns. | 17 authors ▲17 ▼0 ·0 | 9 docs | camp: anchor▲12 anchor▼4
+e289 | Seed oils are a key concern among crunchy right-wingers. | 15 authors ▲13 ▼0 ·2 | 9 docs | camp: anchor▲11 anchor▼1
+e330 | The anti-seed-oil diet trend is a weird fascist-linked fad alongside carnivore dieting. | 12 authors ▲12 ▼0 ·0 | 7 docs | camp: anchor▲9 anchor▼2
+e120 | Restaurants advertising 'no seed oils' are run by chuds. | 10 authors ▲10 ▼0 ·0 | 5 docs | camp: anchor▲9 anchor▼1
+e232 | Right-wing anti-seed-oil people are irrational freaks. | 10 authors ▲10 ▼0 ·0 | 5 docs | camp: anchor▲8 anchor▼2
+e13 | Seed oil concerns are trivial compared with serious issues like concentration camps | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲4 anchor▼2
+e323 | Extremely online conservatives have become obsessed with seed oils. | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼1
+e332 | The anti-seed-oil and beef tallow push resembles 1930s Nazi food ideology. | 7 authors ▲7 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼1
+e73 | The anti-seed-oil belief is a conspiracy theory that arose because the government banned trans fats and pushed people toward seed oils. | 6 authors ▲4 ▼0 ·2 | 3 docs | camp: anchor▲6 anchor▼0
+e591 | The anti-seed-oil concern is an influence operation. | 6 authors ▲5 ▼0 ·1 | 4 docs | camp: anchor▲5 anchor▼0
+e847 | RFK Jr.'s public health beliefs amount to soft eugenics | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼0
+e899 | MAGA supporters reject evidence while embracing absurd health claims such as seed oil fears, which makes them easy marks for snake oil sellers. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼1
+e461 | Opposing seed oils is racist and non-scientific. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e587 | Seed oil talk has eugenics undertones. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼0
+e683 | The seed oil panic is classist. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e287 | Seed-oil avoiders behave like a religious cult. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e476 | Far-right and far-left health nuts are obsessed with seed oils. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e596 | Anti-seed-oil arguments are driven by misogyny, conspiracy and patriarchal anxieties. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e1058 | Seed oils are being demonized by interests seeking profit | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e56 | US agencies like FDA and USDA are corrupt for approving harmful additives and foods. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e135 | Followers of the MAHA movement behave like a cult. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e164 | The alt-right is co-opting seed oil concerns the way it co-opted celiac disease concerns. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e310 | The MAGA push against seed oils is really about trade conflict with Canada, which supplies the seed oils | 3 authors ▲3 ▼0 ·0 | 3 docs
+e353 | Disliking seed oils is antisemitism. | 3 authors ▲1 ▼0 ·2 | 2 docs | camp: anchor▲2 anchor▼1
+e856 | Restricting seed oils is a step toward authoritarian persecution. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e249 | Concern about vaccines and seed oils reflects obsessive, rule-bound thinking like my grandfather's. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e274 | Catholics who consume more seed oils reinforce homophobia. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼1
+e281 | Billionaire eugenicists use seed oils as a scapegoat alongside migrants and trans people. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e420 | More seed oils and fewer vaccines would be a good health goal. | 2 authors ▲1 ▼1 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e571 | Persecuting people who warn about seed oil dangers is wrong. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e638 | The narrative that government or corporations secretly want everyone fat recurs across diet fads, including seed oil avoidance. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e687 | People fear seed oils and pasteurized milk more than they fear fascism. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e804 | Seed oil petition activists harass supermarket customers. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1109 | The term 'goyslop' is an antisemitic seed oil conspiracy term. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+   (+58 more in this theme: 37 docs; largest folded has 1 authors)
+## theme Non-food uses, history, trivia and unrelated items: 100 assertions, 158 docs (2.6%)
+e288 | Seed oils have been eaten for thousands of years. | 16 authors ▲16 ▼0 ·0 | 8 docs | camp: anchor▲15 anchor▼0
+e315 | Claims that people did not eat seed oils before the 1950s are mistaken. | 9 authors ▲8 ▼0 ·1 | 5 docs | camp: anchor▲6 anchor▼3
+e623 | Seed oils and used cooking oil can be refined into biofuels. | 9 authors ▲7 ▼0 ·2 | 9 docs | camp: anchor▲2 anchor▼0
+e70 | In the 1970s and 1980s companies marketed seed oils such as corn and soybean oil as heart-healthy options. | 6 authors ▲3 ▼0 ·3 | 3 docs | camp: anchor▲2 anchor▼4
+e563 | Seed oils were originally created as lubricants for heavy machinery. | 6 authors ▲6 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼6
+e417 | MAGA opposition to seed oils is ironic because canola oil was originally named rapeseed oil. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e68 | Americans consumed almost no industrial seed oils in 1900, but now seed oils make up over 20% of daily caloric intake, mostly from processed foods and restaurant cooking. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼2
+e707 | Seed oils are important to the U.S. food supply chain. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e63 | Gamma linolenic acid is found in seed oils such as evening primrose oil. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e107 | Soaking hair in rosemary and camellia seed oils smells amazing. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e206 | A popular cooking oil has been recalled in one state. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲2 anchor▼0
+e313 | Cottonseed oil was produced for human consumption from the 1800s, and Crisco (1911) eventually overtook lard as a cooking fat. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲0 anchor▼1
+e441 | Aaron Rodgers's injury doubtfulness is a joke about seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e636 | Dichapetalum toxicarium seed oils contain fluorinated fatty acids that make them toxic to livestock. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1020 | Lucerna lamps historically burned low-quality olive oil, tallow, nut and seed oils, or rarely mineral oils. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1041 | Anti-seed-oil claims date back to the 1980s health-food movement. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e1061 | Seed oils such as alma or sesame seed oil work well as hair pre-poo treatments. | 2 authors ▲1 ▼0 ·1 | 2 docs
+   (+83 more in this theme: 106 docs; largest folded has 1 authors)
+## theme Ultra-processed food, HFCS and bigger real health causes: 57 assertions, 114 docs (1.9%)
+e180 | Health problems linked to seed oils mainly reflect ultra-processed foods, not the oils themselves | 37 authors ▲37 ▼0 ·0 | 20 docs | camp: anchor▲32 anchor▼5
+e317 | Blaming seed oils, vaccines, and fluoride for chronic ailments ignores industrial pollution as the real cause. | 19 authors ▲18 ▼0 ·1 | 10 docs | camp: anchor▲14 anchor▼4
+e48 | Blaming seed oils is an excuse people use to dodge the real causes of poor diet. | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼3
+e431 | The focus on seed oils distracts from real food-quality problems such as food deserts. | 9 authors ▲9 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼1
+e667 | Food should be made without seed oils, added sugar, or preservatives. | 9 authors ▲9 ▼0 ·0 | 9 docs | camp: anchor▲1 anchor▼7
+e902 | Processed foods, including seed oils, contribute greatly to the chronic disease epidemic. | 8 authors ▲8 ▼0 ·0 | 5 docs | camp: anchor▲1 anchor▼7
+e240 | High fructose corn syrup, microplastics, and climate change are bigger threats than seed oils. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲5 anchor▼0
+e111 | Seed oils are processed culinary ingredients, not ultra-processed foods. | 5 authors ▲3 ▼0 ·2 | 3 docs | camp: anchor▲5 anchor▼0
+e462 | Seed oils are not uniquely bad compared with sugary foods, and people know sugary foods are unhealthy. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼1
+e49 | Avoiding seed oils while eating junk food is a hollow health gesture. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e286 | Processed seed oils are cheap and added to more foods to lower costs, making foods higher in fat with less nutrition. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼3
+e321 | Calling seed oils one of the driving problems of obesity is wrong. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e474 | Lecturing people about eating seed oils is hypocritical when worse health practices are ignored. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e714 | Ultra-processed foods are not good for us and should be avoided. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼3
+e2 | High-fructose corn syrup, not seed oils, is driving obesity and diabetes in the US. | 3 authors ▲2 ▼1 ·0 | 2 docs | camp: anchor▲0 anchor▼2
+e44 | Farm subsidies for corn drive overproduction of HFCS and seed oils, which is bad policy. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼2
+e430 | Universal healthcare, days off and paid parental leave matter more for health than avoiding seed oils. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e507 | High-fructose corn syrup is almost chemically identical to cane sugar. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼1
+e540 | Seed oils are among the industrial food ingredients that hijack dopamine and drive addiction. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e546 | A chocolate-covered Oreo is essentially trans fats and seed oils, but occasional indulgence is fine | 3 authors ▲2 ▼0 ·1 | 2 docs
+e967 | Seed oils and ultra-processed foods introduced over the last 50 years damage brain health and are linked to rising neurodegenerative disease. | 3 authors ▲1 ▼0 ·2 | 3 docs | camp: anchor▲0 anchor▼2
+e148 | Seed oil concerns really come from eating ultra-processed fried food, and frying in beef tallow is not healthy. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e494 | Seed oils and soy will be in nearly every food product. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e564 | Meat substitutes are ultra-processed and high in seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e605 | Extreme wealth is more damaging to health than seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e690 | Margarine was once made from healthy natural fats but is now made from ultra-processed seed oils like canola and safflower. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e892 | Ultra-processed foods high in seed oils may fuel colon cancer risk. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e935 | Seed oils are ultra-processed ingredients. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e55 | The cancer risk of HFCS is not proven to be 100% established. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e319 | Chronic illness in the US is wrongly blamed on seed oils rather than on lack of sleep or overwork. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e580 | Flavor enhancers, shelf stabilizers and artificial colors in processed foods keep people sick and inflamed. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e595 | Blogs promote the seed oil conspiracy as an explanation for ultra-processed food harms. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e622 | The new Non-UPF verified standard does not ban seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e657 | Country Crock spread is about 40% unhealthy seed oils despite its farm-fresh marketing | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e669 | Trans fats will replace seed oils in processed food, which is a bad trend. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e688 | Gluten-free 'free-from' products are full of seed oils and highly processed ingredients. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e754 | The focus on highly processed foods unfairly casts nutritious foods like milk, yogurt and cheese in a bad light. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e762 | High cost of living pushes people toward cheaper ultra-processed foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e802 | People may be looking at the wrong problem when it comes to oils and health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e826 | Whole milk is more processed than skim milk because it must be homogenized. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e833 | Evidence on common food dyes and additives is mixed. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e901 | Ultra-processed food definitions that focus on additives miss foods that are unhealthy because of their sugar and fat content. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e921 | Wingstop's boneless chicken is only 58% meat, with the rest being breading, seed oils and toxic chemical coating. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e966 | Seed oils should not be put into Mountain Dew. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e983 | Salt, not food dyes or seed oils, is the real danger in US food. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e992 | Low-fat labeled foods replace the removed fat with added sugar and seed oils, so the low-fat label is an industry lie. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e993 | Seed oils and sodium are the main downsides of Trader Joe's snacks, and they are less serious than food coloring. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e994 | Most store-bought sausage is made with fillers and seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1017 | Mainstream snack foods containing seed oils and additives are made by corporations that prioritize profit over health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1119 | Seed oils are toxic in excess, like the additives and sugar the US food industry invented. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1143 | Ultra-processed foods contain seed oils, sugar and trans fats that the industry tries to offset with other nutrients. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1145 | Americans' avoidance of seed oils and similar food fads is driven by poor US food-quality regulation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1204 | Beef-fat potato chips with no seed oils are not ultra-processed, though they are not health food. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1218 | People who reject seed oils and corn syrup but not cane sugar are inconsistent. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1228 | Fat-free Cool Whip is chemical sludge made of seed oils and corn syrup. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1326 | Hershey's and Reese's candies contain palm or seed oils and additives, and are highly processed and should not be eaten. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1381 | Profit-driven food industry feeds us garbage | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme Other: 34 assertions, 88 docs (1.4%)
+e85 | Seed oils have become a triggering topic. | 28 authors ▲20 ▼0 ·8 | 18 docs | camp: anchor▲17 anchor▼2
+e1027 | Titans coach Robert Saleh removed all seed oils from the team facility. | 27 authors ▲16 ▼0 ·11 | 19 docs | camp: anchor▲19 anchor▼4
+e177 | Critics have a campaign against seed oils like soybean and canola | 18 authors ▲7 ▼0 ·11 | 14 docs | camp: anchor▲7 anchor▼2
+e18 | Seed oils are hidden in everything, as anti-seed-oil believers claim | 12 authors ▲11 ▼0 ·1 | 7 docs | camp: anchor▲5 anchor▼6
+e1000 | Titans coach Saleh's seed oil ban will fix the team. | 4 authors ▲1 ▼3 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e51 | There is no reliable research linking GMOs to any ill health effects. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲3 anchor▼0
+e797 | Seed oil talk has faded from attention. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e1002 | Cam Ward's first comments after the season included discussion of seed oils. | 3 authors ▲0 ▼0 ·3 | 2 docs | camp: anchor▲1 anchor▼0
+e292 | An AI chatbot's advice included avoiding seed oils alongside extreme suggestions. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼1
+e320 | Some shelf-stable foods contain added seed oils that can affect their shelf life. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲0 anchor▼1
+e351 | Market forces favor seed oils. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e886 | The State of the Union address's failure to mention seed oils is disappointing. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+   (+22 more in this theme: 17 docs; largest folded has 1 authors)
+## theme Personal anecdotes, allergies and individual choices: 54 assertions, 73 docs (1.2%)
+e266 | Personally, the author does not care about avoiding seed oils. | 15 authors ▲14 ▼1 ·0 | 10 docs | camp: anchor▲11 anchor▼2
+e700 | The author personally does not eat seed oils. | 12 authors ▲12 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼10
+e485 | The author is considering starting to use seed oils. | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲3 anchor▼0
+e693 | The author is now using seed oils. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲4 anchor▼0
+e65 | Someone raised eliminating seed oils from their diet in person. | 5 authors ▲1 ▼0 ·4 | 4 docs | camp: anchor▲3 anchor▼0
+e235 | Avoiding processed foods and possibly seed oils may have improved my health, though this is anecdotal. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼4
+e506 | Eliminating seed oils and fructose, and replacing unsaturated fats with saturated ones, improved my health. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼4
+e642 | Family discussions of seed oils and alternative medicine are tiresome. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼1
+e1122 | Mayonnaise made without seed oils is preferable. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼3
+e77 | The author has a real allergy to canola oil. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e218 | Cutting out seed oils improved my joint pain and seasonal allergies. | 3 authors ▲2 ▼1 ·0 | 1 docs | camp: anchor▲2 anchor▼1
+e765 | People who falsely claim an allergy to seed oils make people with real allergies look bad. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e768 | Eating seed oils is a personal vice comparable to other poor habits. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e7 | Substituting olive or avocado oil for other oils reduced arthritis pain. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e248 | Seed oils cause migraines in my son. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e334 | Vilifying patients who research seed oil claims on their own is unjustified, since they often lack proper medical care. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e342 | A personal doctor is the right authority to consult about seed oils, rather than general 'experts'. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e381 | Personal avoidance of seed oils makes food regulation unnecessary. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e394 | Loved ones blamed seed oils for chronic illness that actually stemmed from Long Covid. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e475 | A celebrity (Vain) is allergic to seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e586 | The author's therapist thinks about seed oils a lot. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e624 | Some firefighters bring their own cast iron to avoid the seed oils used to season station cookware. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e772 | Seed oils triggered acute pancreatitis attacks in the author. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e806 | Living with people who avoid seed oils makes talking about food exhausting. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e840 | People with IBS should not consume more seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e888 | Claims that vets hide seed oil dangers from pet owners for profit are nonsense. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e894 | Eliminating seed oils and other processed foods from my diet stopped my hiccups. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e896 | A keto diet with no seed oils caused me severe constipation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e900 | Avoiding seed oils when hosting guests reflects food-pickiness trends in my community, and a guest's no-sugar rule that allows honey and maple syrup is hypocritical. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e926 | People can simply choose not to eat seed oils, as with other things they dislike, and that is personal responsibility. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e955 | Restricting seed oils and refined carbs helped a 65-year-old's blood pressure. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e968 | Avoiding seed oils and ultra-processed foods slows progression of MSA. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e969 | The author is severely allergic to multiple seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e970 | Dropping seed oils and sugar drinks for keto or carnivore diets improves strength and mental clarity. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e981 | Telling people with depression to quit seed oils instead of treating them is dangerous. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1010 | Replacing seed oils with peanut oil for frying would endanger people with peanut allergies. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1023 | The author does not eat beef tallow. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1026 | Industrial food products including seed oils give people with severe food allergies a much broader range of foods to eat. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1069 | Parents who ban dyes and seed oils for their kids but let them ride helmetless are hypocritical. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1104 | Avoiding seed oils is restrictive and sharply limits food options for people with individual health needs. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1117 | Miranda Kerr's diet excludes seed oils and eggs. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1133 | Conventional poultry feed containing seed oils is undesirable, so pasture-raised poultry avoids them. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1134 | A type 1 diabetes diagnosis led the author to research food, including seed oils. | 1 authors ▲0 ▼0 ·1 | 0 docs | camp: anchor▲0 anchor▼1
+e1166 | A person refused food after learning it contained seed oils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1211 | A nutrition-trained relative has adopted the view that seed oils are evil. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1240 | Cold-pressed, unrefined mustard oil retains mustard protein and is a real allergen exposure. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1338 | Sunflower seed butter is often the default nut-free swap, so sunflower allergens hide in allergy-friendly foods. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1354 | A nutrition app flags products containing seed oils for users who want to avoid them. | 1 authors ▲0 ▼0 ·1 | 0 docs | camp: anchor▲0 anchor▼1
+e1359 | The author jokingly admits being unable to give up seed oils. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1361 | Butter is needed for eggs and toast even when substituting olive and sesame oils | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1363 | The author enjoys the taste of oils like olive, sesame and pumpkin seed oil | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1366 | The author has fibromyalgia and uses seed oils without problem | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1371 | Shea butter is not a common allergen. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1405 | The author is choosing a meal to avoid seed oils | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+## theme Processing, heating, oxidation and omega-6 concerns: 30 assertions, 64 docs (1.1%)
+e6 | Seed oils contribute to excessive omega-6 intake and a dietary imbalance. | 30 authors ▲19 ▼3 ·8 | 16 docs | camp: anchor▲11 anchor▼16
+e233 | Toxic chemical residue left by heat and chemical extraction is the real danger in seed oils. | 9 authors ▲7 ▼1 ·1 | 4 docs | camp: anchor▲2 anchor▼7
+e9 | Seed oils heated at high temperatures for long periods are toxic and cause inflammation. | 8 authors ▲8 ▼0 ·0 | 3 docs | camp: anchor▲0 anchor▼8
+e229 | Chemically extracted seed oils are ultra-processed and bad, while expeller-pressed ones are fine. | 8 authors ▲7 ▼0 ·1 | 5 docs | camp: anchor▲2 anchor▼5
+e917 | Lionheart Clinic published a blog post on seed oils and omega-6 fats. | 8 authors ▲0 ▼0 ·8 | 8 docs | camp: anchor▲0 anchor▼1
+e215 | Seed oils are harmful mainly when repeatedly reheated, as in fast-food fryers. | 6 authors ▲5 ▼0 ·1 | 2 docs | camp: anchor▲3 anchor▼3
+e230 | Seed oils are not good for high-heat cooking. | 6 authors ▲5 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼5
+e522 | Trace hexane residue in seed oils is extremely low, far below levels from air pollution exposure. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e660 | Partially hydrogenated seed oils (trans fats) were genuinely bad for health | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼2
+e214 | High-temperature processing and chemical treatment of commercial seed oils produce trans fats that can raise LDL cholesterol. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e908 | Seed oils oxidize easily under heat, adding stress to the metabolic, cardiovascular and nervous systems. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e1241 | Choose cooking oil by saturated fat content and minimal processing, avoiding refined seed oils. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e112 | Oxidation of oils in food and in the body drives aging and cross-links structural proteins. | 2 authors ▲1 ▼1 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e325 | Polyunsaturated fats in seed oils are less oxidatively stable than saturated fats like those in tallow and coconut oil. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼2
+e425 | Seed oils are a modern industrial product unlike traditional fats; processing removes protective compounds and concentrates unstable fatty acids | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e572 | Linoleic acid from seed oils is converted to arachidonic acid and then to prostaglandins that drive fever and inflammation. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e757 | Seed oils' omega-6 is needed but must be balanced with omega-3 intake. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e835 | Seed oils must be pressed or processed out of seeds, unlike the visible fat in a steak. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼1
+e21 | Vegetable oils, including pumpkin seed oil, contain mineral oil contamination | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e90 | Seed oils should be kept refrigerated to prevent them from going rancid. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e216 | The article does not assess what happens when animal fats are repeatedly reheated. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e326 | Ultra-processed seed oils such as canola and soybean oil contain high levels of polyunsaturated fatty acids. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e561 | The seed oil concern originated from worries about hexane contamination in seed oil processing. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e573 | The prostaglandin-based argument against seed oils is inconsistent, since prostaglandins also cause beneficial fevers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e686 | Only seed oils with a high smoke point are acceptable to eat. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e739 | Seed oils are not soluble fat, while cold-pressed oils like coconut and avocado are. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e786 | Problems from linoleic acid oxidation arise at industrial processing temperatures, so banning spray-dried formulations addresses the mechanism. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e960 | Seed oils must be refined to be edible, since unrefined canola oil is poisonous. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e978 | Pre-cut french fries are commonly processed and cooked in high omega-6 seed oils, which harms health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1292 | Olive oil and common vegetable oils have very different fatty-acid profiles, and the linoleic acid and oleic acid balance matters. | 1 authors ▲1 ▼0 ·0 | 1 docs
