@@ -1,0 +1,130 @@
+{
+ "families": 88,
+ "entries_in_families": 741,
+ "entries": 1102,
+ "family_pass_usd": 0.4858907999999999,
+ "rows": [
+  {
+   "claim": "A four-day week kept productivity stable while improving worker mental health",
+   "gold_cheap_census": 131,
+   "gold_strong": 215,
+   "ledger_with_families": 60,
+   "ledger (theme view)": 55,
+   "map-reduce summary": 190,
+   "retrieval top-k, same budget": 35
+  },
+  {
+   "claim": "The four-day workweek's pros, cons and feasibility for the economy merit public discussion.",
+   "gold_cheap_census": 546,
+   "gold_strong": 963,
+   "ledger_with_families": 28,
+   "ledger (theme view)": 28,
+   "map-reduce summary": 30,
+   "retrieval top-k, same budget": 40
+  },
+  {
+   "claim": "Australian four-day work week study data shows boosted productivity.",
+   "gold_cheap_census": 33,
+   "gold_strong": 62,
+   "ledger_with_families": 21,
+   "ledger (theme view)": 25,
+   "map-reduce summary": 40,
+   "retrieval top-k, same budget": 5
+  },
+  {
+   "claim": "The four-day work week will never happen",
+   "gold_cheap_census": 16,
+   "gold_strong": 32,
+   "ledger_with_families": 15,
+   "ledger (theme view)": 16,
+   "map-reduce summary": 40,
+   "retrieval top-k, same budget": 20
+  },
+  {
+   "claim": "A four-day work week improves workers' wellbeing by reducing stress and burnout and giving more rest, family time and work-life balance.",
+   "gold_cheap_census": 488,
+   "gold_strong": 489,
+   "ledger_with_families": 130,
+   "ledger (theme view)": 170,
+   "map-reduce summary": 410,
+   "retrieval top-k, same budget": 180
+  },
+  {
+   "claim": "Trials such as Iceland's 2019-2021 pilots and the UK pilot showed productivity held steady or rose with no pay cut, so the shorter week works.",
+   "gold_cheap_census": 203,
+   "gold_strong": 203,
+   "ledger_with_families": 100,
+   "ledger (theme view)": 80,
+   "map-reduce summary": 280,
+   "retrieval top-k, same budget": 90
+  },
+  {
+   "claim": "Compressed four-day schedules, such as four 10-hour days or five days of work squeezed into four, are not a real reduction in hours and leave people exhausted.",
+   "gold_cheap_census": 22,
+   "gold_strong": 21,
+   "ledger_with_families": 30,
+   "ledger (theme view)": 40,
+   "map-reduce summary": 95,
+   "retrieval top-k, same budget": 22
+  },
+  {
+   "claim": "The Starbucks CEO works remotely from California while requiring staff to be in the office four days a week, which critics call a double standard.",
+   "gold_cheap_census": 4,
+   "gold_strong": 5,
+   "ledger_with_families": 3,
+   "ledger (theme view)": 4,
+   "map-reduce summary": 6,
+   "retrieval top-k, same budget": 1
+  }
+ ],
+ "summary": {
+  "gold_cheap_census | ledger_with_families": {
+   "median_rel_error": 0.43551276309897,
+   "within_50pct": 0.5
+  },
+  "gold_cheap_census | ledger (theme view)": {
+   "median_rel_error": 0.5930320009024932,
+   "within_50pct": 0.375
+  },
+  "gold_cheap_census | map-reduce summary": {
+   "median_rel_error": 0.4751908396946565,
+   "within_50pct": 0.625
+  },
+  "gold_cheap_census | retrieval top-k, same budget": {
+   "median_rel_error": 0.6819859842322613,
+   "within_50pct": 0.25
+  },
+  "gold_strong | ledger_with_families": {
+   "median_rel_error": 0.5962701612903225,
+   "within_50pct": 0.25
+  },
+  "gold_strong | ledger (theme view)": {
+   "median_rel_error": 0.629131534145285,
+   "within_50pct": 0.25
+  },
+  "gold_strong | map-reduce summary": {
+   "median_rel_error": 0.3024193548387097,
+   "within_50pct": 0.75
+  },
+  "gold_strong | retrieval top-k, same budget": {
+   "median_rel_error": 0.7159509202453989,
+   "within_50pct": 0.25
+  }
+ },
+ "coverage": {
+  "plain view": {
+   "n": 112,
+   "yes": 0.45535714285714285,
+   "partly": 0.4107142857142857,
+   "no": 0.13392857142857142,
+   "score": 0.6607142857142857
+  },
+  "view with families": {
+   "n": 112,
+   "yes": 0.4732142857142857,
+   "partly": 0.4017857142857143,
+   "no": 0.125,
+   "score": 0.6741071428571429
+  }
+ }
+}

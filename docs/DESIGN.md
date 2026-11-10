@@ -437,6 +437,11 @@ On "is the point in there somewhere", a good summary **ties or beats** the ledge
 
 - **The definition itself is soft.** For broad semantic claims, the two exhaustive checkers disagreed by 1.5–2× (cheap-scan recall against the strong scan: 0.34–0.64). Prevalence of a broad, "in substance" claim depends on who judges what counts. No method makes it exact; census makes it explicit and repeatable.
 
+**Tried and failed: claim families.** One stronger-model pass over the index grouped entries into 88–94 broad claims, each reporting the exact union of distinct authors across its member entries ($0.49–0.55 per topic).
+- **Prevalence:** barely changed. Seed oils: median error 74% vs 73% without families. Four-day week: 60% vs 63% against the strong gold.
+- **Coverage:** +1–2 points, within noise.
+- **Why:** a post that mentions a broad idea in passing is filed under its main assertion. Diffuse prevalence ("how many people express X at all") is not a sum of filed assertions. Only an exhaustive scan, census, measures it, which is why `ask` routes such questions to census.
+
 **What this means.** The comparison with retrieval is decisive. The comparison with summarising everything is not.
 
 | a summary is as good or better for | CEL is better for |
@@ -477,7 +482,7 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 - **Absorber quality is the critical parameter.** Real strict error is 2–5%, but 22–31% of filings are imprecise. Ledger tallies are good for shape and ranking; for numbers that matter, run a census.
 - **The anchor must be a literal statement** chosen at setup. A dedicated pass is needed for good recall, and it over-calls positions on 5–34% of posts that have none. The subject-level share it yields is reproducible to about ±3 points between runs, so don't report it more precisely; use a census or a stronger model for the anchor pass if it matters.
 - **The reader must be told the semantics.** Without the legend, Opus misread the anchor line.
-- **Lexical questions need census.** The ledger stores meaning, not words.
+- **Lexical questions and diffuse-prevalence questions need census.** The ledger stores each post's main assertions, not every word or passing idea. Grouping entries into families did not fix this (§7.5).
 - **No saturation on real topics** at the scale tested. Ledgers grow roughly like N^0.8. Expect to fold, raise the budget, or shard.
 - **Sharding costs fragmentation** (13–41% more fragments per claim in simulation).
 - **Evaluation pitfalls found along the way:**
@@ -529,4 +534,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 7 | Third topic (four-day work week, non-health); found and fixed a topic hard-coded in the judge prompts; re-ran every UPF evaluation | Generalises to a different domain (anchor bias 1 pt); coverage advantage held in all 9 runs; UPF numbers corrected |
 | 8 | Command-line tool (ingest / ask with reader-triggered census / update / census / view); incremental vs batch replay; anchor-pass variance | Incremental ≈ batch on coverage; subject share reproducible to ±3 pts; de-duplication bug in `update` found and fixed |
 | 9 | Coverage re-scored with a second judge (Opus) | Fewer complete misses and the lead over retrieval hold under both judges; the lead over an equal-budget random sample does not (tie on 2 of 3 topics); headline claims narrowed accordingly |
-| 10 | Strongest alternative as a baseline: map-reduce summary of everything at the same budget; claim-prevalence test; independent strong checker | A summary ties or beats CEL on coverage and broad-claim counts at less than half the build cost; ledger tallies are lower bounds for broad claims; census ≈ summary (30% median error) against a strong checker; broad-claim prevalence is itself checker-dependent (1.5–2×). CEL's claim narrowed to structure, exact narrow counts, provenance, updates and census |
+| 10 | Strongest alternative as a baseline: map-reduce summary of everything at the same budget; claim-prevalence test; independent strong checker; claim families (negative) | A summary ties or beats CEL on coverage and broad-claim counts at less than half the build cost; ledger tallies are lower bounds for broad claims; census ≈ summary (30% median error) against a strong checker; broad-claim prevalence is itself checker-dependent (1.5–2×). CEL's claim narrowed to structure, exact narrow counts, provenance, updates and census |

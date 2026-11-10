@@ -1,0 +1,114 @@
+{
+ "families": 94,
+ "entries_in_families": 967,
+ "entries": 1237,
+ "family_pass_usd": 0.5466810000000001,
+ "rows": [
+  {
+   "claim": "Anti-seed-oil campaigns and claims are absurd and deserve mockery",
+   "gold_cheap_census": 2415,
+   "gold_strong": null,
+   "ledger_with_families": 250,
+   "ledger (theme view)": 215,
+   "map-reduce summary": 1350,
+   "retrieval top-k, same budget": 1300
+  },
+  {
+   "claim": "Seed oils are reflexively blamed for problems they did not cause.",
+   "gold_cheap_census": 1614,
+   "gold_strong": null,
+   "ledger_with_families": 110,
+   "ledger (theme view)": 118,
+   "map-reduce summary": 220,
+   "retrieval top-k, same budget": 120
+  },
+  {
+   "claim": "Seed oils are healthier than saturated fats like butter, lard, and tallow",
+   "gold_cheap_census": 180,
+   "gold_strong": null,
+   "ledger_with_families": 60,
+   "ledger (theme view)": 75,
+   "map-reduce summary": 170,
+   "retrieval top-k, same budget": 140
+  },
+  {
+   "claim": "The claim that seed oils turn you gay is misinformation.",
+   "gold_cheap_census": 30,
+   "gold_strong": null,
+   "ledger_with_families": 30,
+   "ledger (theme view)": 31,
+   "map-reduce summary": 6,
+   "retrieval top-k, same budget": 14
+  },
+  {
+   "claim": "Seed-oil avoidance is a MAHA/RFK Jr./right-wing culture-war identity marker and pseudoscience, and not a real nutrition concern.",
+   "gold_cheap_census": 1835,
+   "gold_strong": null,
+   "ledger_with_families": 175,
+   "ledger (theme view)": 230,
+   "map-reduce summary": 780,
+   "retrieval top-k, same budget": 900
+  },
+  {
+   "claim": "Beef tallow, butter and other saturated animal fats are not healthier than seed oils, and swapping seed oils for them raises heart-disease risk.",
+   "gold_cheap_census": 192,
+   "gold_strong": null,
+   "ledger_with_families": 165,
+   "ledger (theme view)": 160,
+   "map-reduce summary": 200,
+   "retrieval top-k, same budget": 150
+  },
+  {
+   "claim": "\"No seed oils\" labels on restaurants and food products are a marketing gimmick that exploits fear to sell products.",
+   "gold_cheap_census": 331,
+   "gold_strong": null,
+   "ledger_with_families": 60,
+   "ledger (theme view)": 40,
+   "map-reduce summary": 110,
+   "retrieval top-k, same budget": 12
+  },
+  {
+   "claim": "Seed oils are a convenient scapegoat that distracts from bigger problems such as ultra-processed food, sugar, pollution and weakened regulation.",
+   "gold_cheap_census": 185,
+   "gold_strong": null,
+   "ledger_with_families": 110,
+   "ledger (theme view)": 110,
+   "map-reduce summary": 330,
+   "retrieval top-k, same budget": 150
+  }
+ ],
+ "summary": {
+  "gold_cheap_census | ledger_with_families": {
+   "median_rel_error": 0.74269889224572,
+   "within_50pct": 0.375
+  },
+  "gold_cheap_census | ledger (theme view)": {
+   "median_rel_error": 0.7289963669391463,
+   "within_50pct": 0.375
+  },
+  "gold_cheap_census | map-reduce summary": {
+   "median_rel_error": 0.6213027980605382,
+   "within_50pct": 0.375
+  },
+  "gold_cheap_census | retrieval top-k, same budget": {
+   "median_rel_error": 0.4856172536542161,
+   "within_50pct": 0.5
+  }
+ },
+ "coverage": {
+  "plain view": {
+   "n": 129,
+   "yes": 0.3333333333333333,
+   "partly": 0.5503875968992248,
+   "no": 0.11627906976744186,
+   "score": 0.6085271317829457
+  },
+  "view with families": {
+   "n": 129,
+   "yes": 0.3643410852713178,
+   "partly": 0.5348837209302325,
+   "no": 0.10077519379844961,
+   "score": 0.6317829457364341
+  }
+ }
+}

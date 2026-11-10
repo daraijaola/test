@@ -139,3 +139,15 @@ def test_refine_creates_child_and_family_rollup_survives_merge():
     assert L.family_authors(0) == 3 and L.children() == {0: [1]}
     assert "e1 ↳e0" in L.render(4000)[0]
     L.check_conservation()
+
+
+def test_family_union_counts_distinct_authors_once():
+    L = Ledger()
+    L.absorb(doc(0, "a"), [Op("new", stance="support", text="X is bad for health")])
+    L.absorb(doc(1, "a"), [Op("new", stance="support", text="X causes inflammation")])
+    L.absorb(doc(2, "b"), [Op("assign", 1, "support")])
+    L.absorb(doc(3, "c"), [Op("assign", 0, "dispute")])
+    for e in L.entries.values():
+        e.family = 7
+    line = L.family_lines({7: "X is harmful"})[0]
+    assert "3 distinct authors across 2 entries" in line and "▲2 ▼1" in line and "camp" not in line

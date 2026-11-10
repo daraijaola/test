@@ -59,6 +59,7 @@ class Entry:
     author_t: dict = field(default_factory=dict)       # author -> time of the stance kept
     theme: object = None                               # section for sharding / multi-resolution view
     parent: int | None = None                          # set by "refine": a more specific child of parent
+    family: int | None = None                          # broad-claim family (grouping pass over the index)
     reach: float = 0.0
     time_bins: list = field(default_factory=lambda: [0.0] * N_TIME_BINS)
     exemplar: dict = field(default_factory=dict)       # stance -> doc_id
@@ -270,7 +271,7 @@ class Ledger:
     def recompute(self, eid: int) -> None:
         old = self.entries[eid]
         e = Entry(eid=eid, text=old.text, epoch_created=old.epoch_created, label=old.label, theme=old.theme,
-                  parent=old.parent)
+                  parent=old.parent, family=old.family)
         for d in sorted(self.postings(eid), key=lambda d: self.docs[d].t):
             for e2, s, w in self.log[d]:
                 if e2 == eid:
@@ -435,6 +436,35 @@ class Ledger:
                 lines.append(f"   (+{len(rest)} more in this theme: {sum(e.total for e in rest):.0f} docs; "
                              f"largest folded has {len(rest[0].author_stance)} authors)")
         return "\n".join(lines), shown
+
+    def family_lines(self, families: dict[int, str]) -> list[str]:
+        """One line per broad-claim family: EXACT union of distinct authors across its member
+        entries (from provenance), split by stance and by anchor camp."""
+        has_anchor = 0 in self.entries and self.entries[0].text.startswith("ANCHOR")
+        an = self.entries[0].author_stance if has_anchor else {}
+        rows = []
+        for fid, text in families.items():
+            members = [e for e in self.entries.values() if e.family == fid]
+            if not members:
+                continue
+            sup, dis, allx = set(), set(), set()
+            for e in members:
+                for a, st in e.author_stance.items():
+                    allx.add(a)
+                    (sup if st == SUPPORT else dis if st == DISPUTE else allx).add(a)
+            pro = sum(1 for a in allx if an.get(a) == SUPPORT)
+            con = sum(1 for a in allx if an.get(a) == DISPUTE)
+            camp = f" | camp: anchor▲{pro} anchor▼{con}" if has_anchor else ""
+            rows.append((len(allx), f"F{fid} | {text} | {len(allx)} distinct authors across {len(members)} entries "
+                                    f"(▲{len(sup)} ▼{len(dis)}){camp}"))
+        return [r for _, r in sorted(rows, key=lambda x: -x[0])]
+
+    def render_with_families(self, families: dict[int, str], budget_tokens: int = 32000) -> tuple[str, list[int]]:
+        head = ["BROAD-CLAIM FAMILIES (each groups related entries below; counts are exact unions of distinct "
+                "authors, so use these for 'how many people say roughly X'):"] + self.family_lines(families)
+        used = self.est_tokens("\n".join(head)) + 50
+        body, shown = self.render_multires(max(2000, budget_tokens - used))
+        return "\n".join(head) + "\n\nDETAILED LEDGER:\n" + body, shown
 
     # ------------------------------------------------------------------ census
     def census(self, predicate: Callable[[int], bool], scope: Iterable[int] | None = None) -> dict:
