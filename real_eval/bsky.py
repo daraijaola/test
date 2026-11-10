@@ -59,6 +59,42 @@ def assign_themes(L: Ledger, topic: str, log: list) -> list[str]:
     return themes
 
 
+def absorb_stream(L: Ledger, topic: str, ids: list, texts: dict, metas: dict, log: list, stats: dict,
+                  growth: list, batch: int = 50, epoch_batches: int = 8, lanes: int = 8, start: float | None = None):
+    """Absorb `ids` (chronological) epoch by epoch; lanes run concurrently within an epoch."""
+    start = start or time.time()
+    lock = threading.Lock()
+    frozen = "\n".join(L.index_lines())
+    batches = [ids[s:s + batch] for s in range(0, len(ids), batch)]
+    n = len(L.docs) + len(ids)
+    for ep in range(0, len(batches), epoch_batches):
+        group = batches[ep:ep + epoch_batches]
+
+        def run(chunk, frozen=frozen):
+            return semeval.absorb_batch(L, topic, frozen, [(i, texts[i]) for i in chunk], log, n, metas, lock)
+        with ThreadPoolExecutor(max(1, lanes)) as ex:
+            for r in ex.map(run, group):
+                for k in stats:
+                    stats[k] += r[k]
+        growth.append((len(L.docs), len(L.entries)))
+        semeval.consolidate(L, topic, semeval.ABSORBER, True, log)
+        frozen = "\n".join(L.index_lines())
+        print(f"{len(L.docs)} docs, {len(L.entries)} entries, ${sum(u for _, u in log):.2f}, "
+              f"{time.time() - start:.0f}s", flush=True)
+
+
+def finish(L: Ledger, topic: str, texts: dict, log: list, residual_ids: list | None = None) -> tuple[dict, list]:
+    """Global merge, residual escalation, polarity labels, themes."""
+    semeval.consolidate(L, topic, semeval.ABSORBER, True, log)
+    semeval.consolidate(L, topic, semeval.CONSOLIDATOR, False, log)
+    semeval.reabsorb_residual(L, topic, texts, log)
+    pol = semeval.label_polarity(L, topic, log)
+    pol[0] = "favor"
+    themes = assign_themes(L, topic, log)
+    L.check_conservation()
+    return pol, themes
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("posts", type=Path)
@@ -87,34 +123,11 @@ def main():
     L = Ledger()
     L.new_entry(semeval.ANCHOR_STATEMENT_TEXT.format(statement=a.anchor))
     L.epoch += 1
-    frozen = "\n".join(L.index_lines())
     ids = [p["id"] for p in posts]                       # chronological
-    lock = threading.Lock()
-    batches = [ids[s:s + a.batch] for s in range(0, n, a.batch)]
-    for ep in range(0, len(batches), a.epoch_batches):
-        group = batches[ep:ep + a.epoch_batches]
-
-        def run(chunk, frozen=frozen):
-            return semeval.absorb_batch(L, a.topic, frozen, [(i, texts[i]) for i in chunk], log, n, metas, lock)
-        with ThreadPoolExecutor(max(1, a.lanes)) as ex:
-            for r in ex.map(run, group):
-                for k in stats:
-                    stats[k] += r[k]
-        done = min((ep + len(group)) * a.batch, n)
-        growth.append((done, len(L.entries)))
-        semeval.consolidate(L, a.topic, semeval.ABSORBER, True, log)
-        frozen = "\n".join(L.index_lines())
-        print(f"{done}/{n} docs, {len(L.entries)} entries, ${sum(u for _, u in log):.2f}, "
-              f"{time.time() - start:.0f}s", flush=True)
-    semeval.consolidate(L, a.topic, semeval.ABSORBER, True, log)
+    absorb_stream(L, a.topic, ids, texts, metas, log, stats, growth, a.batch, a.epoch_batches, a.lanes, start)
     pre_global = len(L.entries)
-    semeval.consolidate(L, a.topic, semeval.CONSOLIDATOR, False, log)
     res_before = L.residual_mass
-    semeval.reabsorb_residual(L, a.topic, texts, log)
-    pol = semeval.label_polarity(L, a.topic, log)
-    pol[0] = "favor"
-    themes = assign_themes(L, a.topic, log)
-    L.check_conservation()
+    pol, themes = finish(L, a.topic, texts, log)
     flat, _ = L.render(32000)
     multi, _ = L.render_multires(32000)
     (a.out / "ledger_flat.txt").write_text(flat)

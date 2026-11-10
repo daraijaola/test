@@ -21,12 +21,10 @@ from real_eval.anchor_audit import SCHEMA
 MODEL = "claude-haiku-5-5"
 
 
-def main(d: Path):
-    st = pickle.loads((d / "ledger.pkl").read_bytes())
-    L, texts = st["ledger"], st["texts"]
+def run_anchor(L, texts: dict, ids: list) -> float:
+    """Dedicated anchor pass over `ids`; replaces each post's anchor op (mass-conserving).
+    Returns the model spend."""
     statement = L.entries[0].text.replace("ANCHOR: ", "")
-    ids = sorted(texts)
-    before = L.entries[0].authors_by_stance()
 
     def one(chunk):
         user = (f"STATEMENT: {statement}\nFor each post: does its author AGREE or DISAGREE with the statement? "
@@ -38,7 +36,6 @@ def main(d: Path):
     with ThreadPoolExecutor(8) as ex:
         res = list(ex.map(one, [ids[i:i + 50] for i in range(0, len(ids), 50)]))
     pos = {r["post_id"]: r["position"] for rows, _ in res for r in rows}
-    usd = sum(u for _, u in res)
     touched = set()
     for i in ids:
         rows = [(e if e is None else L.resolve(e), s) for e, s, _ in L.log[i]]
@@ -55,11 +52,19 @@ def main(d: Path):
         if e in L.entries:
             L.recompute(e)
     L.check_conservation()
+    return sum(u for _, u in res)
+
+
+def main(d: Path):
+    st = pickle.loads((d / "ledger.pkl").read_bytes())
+    L, texts = st["ledger"], st["texts"]
+    before = L.entries[0].authors_by_stance()
+    usd = run_anchor(L, texts, sorted(texts))
     after = L.entries[0].authors_by_stance()
     st["ledger"] = L
     (d / "ledger_v3.pkl").write_bytes(pickle.dumps(st))
     (d / "ledger_v3_multires.txt").write_text(L.render_multires(32000)[0])
-    info = {"anchor_before": before, "anchor_after": after, "usd": usd, "posts_relabelled": len(touched)}
+    info = {"anchor_before": before, "anchor_after": after, "usd": usd}
     (d / "anchor_pass.json").write_text(json.dumps(info, indent=1))
     print(json.dumps(info, indent=1))
 
