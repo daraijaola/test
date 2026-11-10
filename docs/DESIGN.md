@@ -4,7 +4,7 @@
 
 > **One sentence:** RAG makes the model combine a small sample of documents every time a question is asked. CEL combines **every** document **once**, when it is ingested, into a ledger of distinct assertions. Each assertion carries exact stance tallies by person and over time. The total weight in the ledger always equals the number of documents ingested. At question time the model reads the **entire** ledger, not a sample. When it needs more detail, it re-reads an exact posting list (an exhaustive *census*), not similarity-search results.
 
-This document is the result of a 24-hour iteration (rounds listed in §11):
+This document is the result of a 24-hour iteration (rounds listed in §12):
 1. A first-principles analysis.
 2. A design.
 3. A simulation with known ground truth.
@@ -38,7 +38,7 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 Token note: the token budgets in this document are bytes/4 estimates applied identically to the ledger and to raw text. This model's real tokenisation is about 2× those figures (the "31k" view is 61–65k real tokens), so equal-budget comparisons are fair but absolute token figures are about 2× low.
 
 **Where CEL is *not* better:**
-- When a narrow question can be answered by a handful of posts, RAG is cheaper and often as good.
+- When a narrow question can be answered by a handful of posts, RAG is often as good and needs no ingest. Per question, a cached ledger read costs about the same.
 - Ledger counts carry the absorber's error unless verified by census.
 - Real topics did **not** saturate: distinct assertions grew roughly like N^0.8 or faster. Savings come from compression and a fixed reading budget, not from the ledger staying small.
 
@@ -378,7 +378,18 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 
 ---
 
-## 10. How to use it on your own topic (e.g. everything about a subject on X)
+## 10. When to use which
+
+| Your situation | Use |
+|---|---|
+| Questions about the whole body of opinion (what do people think, how many, which camp, what's rising, who amplifies) | **CEL** |
+| You'll ask many questions about the same topic | **CEL**: ingest is paid once, and each cached read costs the same as top-20 RAG |
+| You need exact numbers (counts, shares) | **CEL + census** |
+| One narrow factual lookup ("what did account X say about Y") | RAG, or census with a narrow predicate |
+| The corpus has little repetition and no opinion structure (code, manuals) | Not CEL. Its unit is the contested assertion. |
+| The corpus fits easily in context and you'll ask once or twice | Just read it all |
+
+## 11. How to use it on your own topic (e.g. everything about a subject on X)
 1. Collect every post on the topic (search API, paging back in time).
 2. Write one literal **anchor statement** for the subject's central question.
 3. Ingest with `real_eval/bsky.py` (lanes 8), then `real_eval/anchor_pass.py`.
@@ -387,7 +398,7 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 
 ---
 
-## 11. The 24 hours: rounds and what each changed
+## 12. The 24 hours: rounds and what each changed
 | Round | What was done | What it changed |
 |---|---|---|
 | 0 | First-principles analysis, design, simulation | The initial claims, several later revised |

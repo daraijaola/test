@@ -1,0 +1,43 @@
+{
+ "points": 129,
+ "bsky_seedoils | theme view": {
+  "n": 129,
+  "yes": 0.3178294573643411,
+  "partly": 0.49612403100775193,
+  "no": 0.18604651162790697,
+  "score": 0.5658914728682171,
+  "context_tokens_est": 31481,
+  "entries": 1237,
+  "refinements": 0
+ },
+ "bsky_seedoils | full ledger": {
+  "n": 127,
+  "yes": 0.3700787401574803,
+  "partly": 0.4645669291338583,
+  "no": 0.16535433070866143,
+  "score": 0.6023622047244095,
+  "context_tokens_est": 54380,
+  "entries": 1237,
+  "refinements": 0
+ },
+ "bsky_seedoils_v4 | theme view": {
+  "n": 129,
+  "yes": 0.29457364341085274,
+  "partly": 0.46511627906976744,
+  "no": 0.24031007751937986,
+  "score": 0.5271317829457365,
+  "context_tokens_est": 31419,
+  "entries": 1365,
+  "refinements": 36
+ },
+ "bsky_seedoils_v4 | full ledger": {
+  "n": 129,
+  "yes": 0.34108527131782945,
+  "partly": 0.4728682170542636,
+  "no": 0.18604651162790697,
+  "score": 0.5775193798449613,
+  "context_tokens_est": 59776,
+  "entries": 1365,
+  "refinements": 36
+ }
+}

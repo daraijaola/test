@@ -1,0 +1,113 @@
+{
+ "n": 6062,
+ "authors": 4139,
+ "entries": 1365,
+ "entries_before_global_merge": 1320,
+ "themes": [
+  "Seed oils safe and healthy",
+  "Seed oils harmful or toxic",
+  "Oxidation, processing and solvents",
+  "Tallow, butter and alternative fats",
+  "Ultra-processed foods, sugar and confounders",
+  "RFK Jr., MAHA and politics",
+  "Anti-seed-oil as fad, culture war and extremism",
+  "Mockery of critics and influencers",
+  "Restaurants, brands and labeling",
+  "Industry, farming and economics",
+  "Conspiracy, absurd and joke claims",
+  "Personal avoidance, experience and allergies",
+  "Debate, media and discourse",
+  "Omega-6, inflammation and nutrition science",
+  "Other"
+ ],
+ "residual_pct_before": 15.14351699109205,
+ "residual_pct": 4.957109864731112,
+ "noise_pct": 8.775981524249422,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "anchor": {
+  "support": 1198,
+  "dispute": 335,
+  "mention": 29
+ },
+ "growth": [
+  [
+   400,
+   223
+  ],
+  [
+   800,
+   281
+  ],
+  [
+   1200,
+   394
+  ],
+  [
+   1600,
+   484
+  ],
+  [
+   2000,
+   549
+  ],
+  [
+   2400,
+   625
+  ],
+  [
+   2800,
+   749
+  ],
+  [
+   3200,
+   801
+  ],
+  [
+   3600,
+   889
+  ],
+  [
+   4000,
+   968
+  ],
+  [
+   4400,
+   1031
+  ],
+  [
+   4800,
+   1090
+  ],
+  [
+   5200,
+   1192
+  ],
+  [
+   5600,
+   1250
+  ],
+  [
+   6000,
+   1306
+  ],
+  [
+   6062,
+   1322
+  ]
+ ],
+ "usd": 3.744312,
+ "usd_by_stage": {
+  "consolidate": 0.32792646000000003,
+  "absorb": 1.2818678399999999,
+  "residual": 1.0542752,
+  "themes": 0.6498915,
+  "polarity": 0.430351
+ },
+ "render_tokens": {
+  "flat": 31683,
+  "multires": 31383
+ },
+ "corpus_tokens_est": 246564,
+ "seconds": 1661.925903558731
+}

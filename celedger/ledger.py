@@ -41,10 +41,10 @@ class DocMeta:
 @dataclass(frozen=True)
 class Op:
     """One absorber decision about one document."""
-    kind: str                 # "assign" | "new" | "residual" | "noise"
+    kind: str                 # "assign" | "new" | "refine" | "residual" | "noise"
     entry_id: int | None = None
     stance: str = MENTION
-    text: str | None = None   # for "new": canonical wording of the assertion
+    text: str | None = None   # for "new"/"refine": canonical wording of the assertion
     label: object = None      # simulation only: hidden ground-truth tag, never read by logic
 
 
@@ -58,6 +58,7 @@ class Entry:
     author_docs: dict = field(default_factory=dict)    # author -> doc mass (concentration signal)
     author_t: dict = field(default_factory=dict)       # author -> time of the stance kept
     theme: object = None                               # section for sharding / multi-resolution view
+    parent: int | None = None                          # set by "refine": a more specific child of parent
     reach: float = 0.0
     time_bins: list = field(default_factory=lambda: [0.0] * N_TIME_BINS)
     exemplar: dict = field(default_factory=dict)       # stance -> doc_id
@@ -104,8 +105,8 @@ class Ledger:
             eid = self.alias[eid]
         return eid
 
-    def new_entry(self, text: str, label=None, theme=None) -> Entry:
-        e = Entry(eid=self._next, text=text, epoch_created=self.epoch, label=label, theme=theme)
+    def new_entry(self, text: str, label=None, theme=None, parent: int | None = None) -> Entry:
+        e = Entry(eid=self._next, text=text, epoch_created=self.epoch, label=label, theme=theme, parent=parent)
         self.entries[e.eid] = e
         self._next += 1
         return e
@@ -128,8 +129,11 @@ class Ledger:
                 self.residual.add(doc.doc_id)
                 rows.append((None, "residual", w))
             else:
-                if op.kind == "new":
-                    e = self.new_entry(op.text or "(unnamed)", op.label)
+                if op.kind in ("new", "refine"):
+                    par = None
+                    if op.kind == "refine" and op.entry_id is not None and self.resolve(op.entry_id) in self.entries:
+                        par = self.resolve(op.entry_id)
+                    e = self.new_entry(op.text or "(unnamed)", op.label, parent=par)
                     created.append(e.eid)
                 else:
                     e = self.entries[self.resolve(op.entry_id)]
@@ -186,8 +190,12 @@ class Ledger:
                 self.residual.add(doc_id)
                 keep.append((None, "residual", w))
             else:
-                e = self.new_entry(op.text or "(unnamed)", op.label) if op.kind == "new" \
-                    else self.entries[self.resolve(op.entry_id)]
+                if op.kind in ("new", "refine"):
+                    par = self.resolve(op.entry_id) if op.kind == "refine" and op.entry_id is not None else None
+                    e = self.new_entry(op.text or "(unnamed)", op.label,
+                                       parent=par if par in self.entries else None)
+                else:
+                    e = self.entries[self.resolve(op.entry_id)]
                 self._credit(e, doc, op.stance, w)
                 keep.append((e.eid, op.stance, w))
         self._set_rows(doc_id, keep)
@@ -199,6 +207,11 @@ class Ledger:
         if keep == gone:
             return
         k, g = self.entries[keep], self.entries[gone]
+        for c in self.entries.values():
+            if c.parent == gone:
+                c.parent = keep if c.eid != keep else None
+        if k.parent == gone:
+            k.parent = g.parent if g.parent != keep else None
         self.alias[gone] = keep
         del self.entries[gone]
         for d in list(self.post.get(gone, ())):
@@ -256,7 +269,8 @@ class Ledger:
 
     def recompute(self, eid: int) -> None:
         old = self.entries[eid]
-        e = Entry(eid=eid, text=old.text, epoch_created=old.epoch_created, label=old.label, theme=old.theme)
+        e = Entry(eid=eid, text=old.text, epoch_created=old.epoch_created, label=old.label, theme=old.theme,
+                  parent=old.parent)
         for d in sorted(self.postings(eid), key=lambda d: self.docs[d].t):
             for e2, s, w in self.log[d]:
                 if e2 == eid:
@@ -300,7 +314,27 @@ class Ledger:
         con = sum(1 for a in e.author_stance if an.get(a) == DISPUTE)
         return pro, con
 
-    def _entry_line(self, e: Entry, spark: bool = True) -> str:
+    def children(self) -> dict[int, list[int]]:
+        ch: dict[int, list[int]] = {}
+        for e in self.entries.values():
+            if e.parent is not None and self.resolve(e.parent) in self.entries and self.resolve(e.parent) != e.eid:
+                ch.setdefault(self.resolve(e.parent), []).append(e.eid)
+        return ch
+
+    def family_authors(self, eid: int, ch: dict | None = None) -> int:
+        """Distinct authors across an entry and all its refinements (descendants)."""
+        ch = self.children() if ch is None else ch
+        seen, stack, authors = set(), [eid], set()
+        while stack:
+            x = stack.pop()
+            if x in seen or x not in self.entries:
+                continue
+            seen.add(x)
+            authors |= self.entries[x].author_stance.keys()
+            stack += ch.get(x, [])
+        return len(authors)
+
+    def _entry_line(self, e: Entry, spark: bool = True, ch: dict | None = None) -> str:
         a = e.authors_by_stance()
         c = self.camp(e)
         camp = f" | camp: anchor▲{c[0]} anchor▼{c[1]}" if c and (c[0] or c[1]) else ""
@@ -310,8 +344,13 @@ class Ledger:
         if spark:
             peak = max(e.time_bins) or 1
             tail = " | " + "".join(SPARK[round(8 * b / peak)] for b in e.time_bins) + f" | t={e.first_t:.2f}"
-        return (f"e{e.eid} | {e.text} | {len(e.author_stance)} authors ▲{a[SUPPORT]} ▼{a[DISPUTE]} "
-                f"·{a[MENTION]} | {e.total:.0f} docs{flag}{camp}{tail}")
+        par = self.resolve(e.parent) if e.parent is not None else None
+        ref = f" ↳e{par}" if par is not None and par in self.entries else ""
+        fam = ""
+        if ch is not None and ch.get(e.eid):
+            fam = f" | family incl. {len(ch[e.eid])} refinements: {self.family_authors(e.eid, ch)} authors"
+        return (f"e{e.eid}{ref} | {e.text} | {len(e.author_stance)} authors ▲{a[SUPPORT]} ▼{a[DISPUTE]} "
+                f"·{a[MENTION]} | {e.total:.0f} docs{fam}{flag}{camp}{tail}")
 
     ANCHOR_NOTE = ("e0 is the ANCHOR: it tallies every author whose position on the anchor statement is "
                    "discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position. "
@@ -329,14 +368,16 @@ class Ledger:
             f"Placed in entries: {100 * sum(e.total for e in es) / max(n, 1):.1f}%  "
             f"residual (unplaced): {100 * self.residual_mass / max(n, 1):.1f}%  "
             f"noise/off-topic: {100 * self.noise_mass / max(n, 1):.1f}%",
-            "Each line: id | assertion | authors ▲support ▼dispute ·mention | docs | trend (old→new) | first seen",
+            "Each line: id | assertion | authors ▲support ▼dispute ·mention | docs | trend (old→new) | first seen. "
+            "'e12 ↳e4' = e12 is a more specific refinement of e4.",
         ]
         if 0 in self.entries and self.entries[0].text.startswith("ANCHOR"):
             header.append(self.ANCHOR_NOTE)
         used = self.est_tokens("\n".join(header)) + 40       # reserve room for the fold line
         shown, lines = [], []
+        ch = self.children()
         for e in es:
-            ln = self._entry_line(e)
+            ln = self._entry_line(e, ch=ch)
             t = self.est_tokens(ln) + 1
             if used + t > budget_tokens:
                 break
@@ -368,8 +409,9 @@ class Ledger:
         cand = [e for th in order for e in groups[th][:2]]
         cand += sorted((e for es in groups.values() for e in es[2:]), key=lambda e: -len(e.author_stance))
         chosen, lines_of = set(), {}
+        ch = self.children()
         for e in cand:
-            ln = self._entry_line(e, spark=False)
+            ln = self._entry_line(e, spark=False, ch=ch)
             t = self.est_tokens(ln) + 1
             if used + t > budget_tokens:
                 break

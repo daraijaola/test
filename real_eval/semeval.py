@@ -79,8 +79,19 @@ ABSORB_SYS_V2 = ABSORB_SYS.replace(
     "Rules: every document gets at least one op, at most four.")
 
 
+# v4 (after round-5 coverage audit: ledger lines too general, half of coverage judged only 'partly')
+ABSORB_SYS_V4 = ABSORB_SYS_V2.replace(
+    "- noise: ONLY spam",
+    "- refine: the document matches an existing entry but adds a MORE SPECIFIC claim (a particular harm,\n"
+    "  mechanism, product, person, number, study or event). Give entry_id = the general entry, the specific\n"
+    "  statement as text, and the stance. If an entry already states that specific claim, use assign to it.\n"
+    "  Do not flatten specific points into general entries.\n"
+    "- noise: ONLY spam")
+
+
 def absorb_prompt(topic, index):
-    return (ABSORB_SYS_V2 if CFG["version"] == "v2" else ABSORB_SYS).format(topic=topic, index=index)
+    sys_ = {"v2": ABSORB_SYS_V2, "v4": ABSORB_SYS_V4}.get(CFG["version"], ABSORB_SYS)
+    return sys_.format(topic=topic, index=index)
 
 
 OPS_SCHEMA = {
@@ -91,7 +102,7 @@ OPS_SCHEMA = {
             "type": "object", "additionalProperties": False,
             "required": ["kind", "entry_id", "stance", "text"],
             "properties": {
-                "kind": {"type": "string", "enum": ["assign", "new", "noise", "residual"]},
+                "kind": {"type": "string", "enum": ["assign", "new", "refine", "noise", "residual"]},
                 "entry_id": {"type": ["integer", "null"]},
                 "stance": {"type": "string", "enum": ["support", "dispute", "mention"]},
                 "text": {"type": ["string", "null"]}}}}}}}},
@@ -164,8 +175,12 @@ def absorb_batch(L: Ledger, topic: str, frozen: str, batch: list[tuple[int, str]
                         stats["hallucinated_ids"] += 1
                         ops.append(Op("residual")); continue
                     ops.append(Op("assign", L.resolve(eid), o["stance"]))
-                elif k == "new":
-                    ops.append(Op("new", None, o["stance"], (o["text"] or "").strip() or "(unnamed)"))
+                elif k in ("new", "refine"):
+                    par = o["entry_id"] if k == "refine" else None
+                    par = L.resolve(par) if par is not None and L.resolve(par) in L.entries else None
+                    par = None if par == 0 else par          # the anchor is a position, never refined
+                    ops.append(Op("refine" if par is not None else "new", par, o["stance"],
+                                  (o["text"] or "").strip() or "(unnamed)"))
                 else:
                     ops.append(Op(k))
             L.absorb(metas[i] if metas else DocMeta(i, f"a{i}", i / (n + 1), 1.0), ops)
@@ -188,7 +203,7 @@ def consolidate(L: Ledger, topic: str, model: str, scope_new_only: bool, log: li
     n = 0
     for m in out["merges"]:
         k, g = L.resolve(m["keep"]), L.resolve(m["gone"])
-        if CFG["version"] == "v2" and 0 in (k, g):     # the anchor is never merged
+        if CFG["version"] in ("v2", "v4") and 0 in (k, g):     # the anchor is never merged
             continue
         if k in L.entries and g in L.entries and k != g:
             L.merge(k, g); n += 1
@@ -204,7 +219,7 @@ def reabsorb_residual(L: Ledger, topic: str, texts: dict, log: list, batch: int 
     for s in range(0, len(res), batch):
         chunk = res[s:s + batch]
         user = "DOCUMENTS:\n" + "\n".join(f"<doc id={i}>{texts[i]}</doc>" for i in chunk)
-        model = CONSOLIDATOR if CFG["version"] == "v2" else ABSORBER   # v2: escalate residual to a stronger model
+        model = CONSOLIDATOR if CFG["version"] in ("v2", "v4") else ABSORBER   # v2: escalate residual to a stronger model
         out, usd = llm.complete(model, absorb_prompt(topic, frozen), user, OPS_SCHEMA)
         log.append(("residual", usd))
         got = {d["doc_id"]: d["ops"] for d in out["docs"]}
@@ -213,8 +228,12 @@ def reabsorb_residual(L: Ledger, topic: str, texts: dict, log: list, batch: int 
             for o in got.get(i, [])[:4]:
                 if o["kind"] == "assign" and o["entry_id"] is not None and L.resolve(o["entry_id"]) in L.entries:
                     ops.append(Op("assign", L.resolve(o["entry_id"]), o["stance"]))
-                elif o["kind"] == "new":
-                    ops.append(Op("new", None, o["stance"], (o["text"] or "(unnamed)").strip()))
+                elif o["kind"] in ("new", "refine"):
+                    par = o["entry_id"] if o["kind"] == "refine" else None
+                    par = L.resolve(par) if par is not None and L.resolve(par) in L.entries else None
+                    par = None if par == 0 else par          # the anchor is a position, never refined
+                    ops.append(Op("refine" if par is not None else "new", par, o["stance"],
+                                  (o["text"] or "(unnamed)").strip()))
                 elif o["kind"] == "noise":
                     ops.append(Op("noise"))
                 else:
@@ -242,7 +261,7 @@ FLIP = {"favor": "against", "against": "favor", "neutral": "none"}
 
 
 def predicted_stance(L: Ledger, pol: dict, d: int) -> str:
-    anchor = [b for eid, b, w in L.log[d] if eid == 0 and CFG["version"] == "v2"]
+    anchor = [b for eid, b, w in L.log[d] if eid == 0 and CFG["version"] in ("v2", "v4")]
     if anchor and anchor[0] in ("support", "dispute"):
         return "favor" if anchor[0] == "support" else "against"
     votes = []
@@ -315,7 +334,7 @@ def run_target(t: str, data_dir: Path, batch: int, epoch_batches: int, outdir: P
     t0 = time.time()
     L = Ledger()
     frozen = ""
-    if CFG["version"] == "v2":
+    if CFG["version"] in ("v2", "v4"):
         L.new_entry(ANCHOR_TEXT.format(topic=topic))
         frozen = "\n".join(L.index_lines())
         L.epoch += 1
@@ -334,7 +353,7 @@ def run_target(t: str, data_dir: Path, batch: int, epoch_batches: int, outdir: P
     reabsorb_residual(L, topic, texts, log)
     L.check_conservation()
     pol = label_polarity(L, topic, log)
-    if CFG["version"] == "v2" and 0 in L.entries:
+    if CFG["version"] in ("v2", "v4") and 0 in L.entries:
         pol[0] = "favor"
     pred = [predicted_stance(L, pol, i) for i in range(n)]
     ingest_usd = sum(u for k, u in log)

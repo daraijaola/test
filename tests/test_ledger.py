@@ -126,3 +126,16 @@ def test_replace_ops_conserves_mass_and_rebuilds_tallies():
     assert L.noise_mass == pytest.approx(0)
     assert L.entries[0].authors_by_stance()["support"] == 1 and L.entries[0].authors_by_stance()["dispute"] == 1
     assert L.entries[1].total == pytest.approx(1.5)
+
+
+def test_refine_creates_child_and_family_rollup_survives_merge():
+    L = Ledger()
+    L.absorb(doc(0, "a"), [Op("new", text="seed oils harm health")])
+    L.absorb(doc(1, "b"), [Op("refine", 0, "support", text="seed oils cause acne")])
+    L.absorb(doc(2, "c"), [Op("refine", 0, "support", text="seed oils give you acne")])
+    assert L.entries[1].parent == 0 and L.entries[2].parent == 0
+    assert L.family_authors(0) == 3
+    L.merge(1, 2)
+    assert L.family_authors(0) == 3 and L.children() == {0: [1]}
+    assert "e1 ↳e0" in L.render(4000)[0]
+    L.check_conservation()
