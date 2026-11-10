@@ -1,2 +1,4 @@
 __pycache__/
 .pytest_cache/
+*.pkl
+results/bsky_seedoils/ledger.pkl
