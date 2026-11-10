@@ -117,15 +117,15 @@ Ideal unbiased random sample of k posts (better than any query-driven top-k for 
 
 | eps | entries | rendered tokens | residual % | merges | conservation (mass == docs) |
 |---|---|---|---|---|---|
-| 0.0 | 300 | 7,879 | 0.00 | 0 | 21500.0000 == 21500 |
-| 0.05 | 341 | 8,808 | 0.06 | 1015 | 21500.0000 == 21500 |
-| 0.1 | 435 | 10,866 | 0.23 | 1832 | 21500.0000 == 21500 |
-| 0.2 | 763 | 18,079 | 0.97 | 3010 | 21500.0000 == 21500 |
-| 0.3 | 1118 | 25,945 | 2.09 | 3519 | 21500.0000 == 21500 |
+| 0.0 | 300 | 7,893 | 0.00 | 0 | 21500.0000 == 21500 |
+| 0.05 | 341 | 8,822 | 0.06 | 1015 | 21500.0000 == 21500 |
+| 0.1 | 435 | 10,880 | 0.23 | 1832 | 21500.0000 == 21500 |
+| 0.2 | 763 | 18,093 | 0.97 | 3010 | 21500.0000 == 21500 |
+| 0.3 | 1118 | 25,959 | 2.09 | 3519 | 21500.0000 == 21500 |
 
 ## 7. Cost (USD, list prices; see sim/cost.py for assumptions)
 
-Ledger ingest at eps=0.1 (Haiku 5.5 absorber + consolidation, every post read once): **$0.46** standard, **$0.23** via Message Batches (one-time; 3.1M tokens processed). Rendered ledger: 10,646 tokens.
+Ledger ingest at eps=0.1 (Haiku 5.5 absorber + consolidation, every post read once): **$0.46** standard, **$0.23** via Message Batches (one-time; 3.1M tokens processed). Rendered ledger: 10,660 tokens.
 
 | queries | Ledger (ingest + Opus 5.5 reads full ledger, cached) | RAG k=20 (Opus 5.5) | RAG k=100 | Long-context: whole corpus in window (cached) |
 |---|---|---|---|---|
@@ -133,7 +133,7 @@ Ledger ingest at eps=0.1 (Haiku 5.5 absorber + consolidation, every post read on
 | 10 | $0.65 | $0.19 | $0.34 | $6.70 (968k tok) |
 | 100 | $1.97 | $1.75 | $3.19 | $25.24 (968k tok) |
 | 1,000 | $15.12 | $17.30 | $31.70 | $210.62 (968k tok) |
-| 10,000 | $146.60 | $172.82 | $316.82 | $2,064.44 (968k tok) |
+| 10,000 | $146.63 | $172.82 | $316.82 | $2,064.44 (968k tok) |
 
 Per-query marginal: ledger $0.0146, RAG k=20 $0.0173, RAG k=100 $0.0317.
 

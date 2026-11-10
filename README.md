@@ -6,7 +6,8 @@ A retrieval-free way to have a language model absorb **everything** a corpus say
 - **What the reading model actually sees** (a real ledger of 6,062 Bluesky posts): [`results/bsky_seedoils/ledger_multires.txt`](results/bsky_seedoils/ledger_multires.txt)
 - **Real-data results:**
   - SemEval-2016 tweets: [`results/real`](results/real), [`results/real_remix_v1`](results/real_remix_v1), [`results/real_remix_v2`](results/real_remix_v2)
-  - Bluesky: [`results/bsky_seedoils/eval.md`](results/bsky_seedoils/eval.md), [`results/bsky_upf/eval.md`](results/bsky_upf/eval.md)
+  - Bluesky, every post on three topics: [`seed oils`](results/bsky_seedoils/eval.md), [`ultra-processed food`](results/bsky_upf/eval.md), [`four-day work week`](results/bsky_4dw/eval.md). Each folder also has audits (`anchor_audit_*.json`), repeated coverage runs (`coverage_repeat.json`, `coverage_judge_*.json`), side-by-side answers (`ask.md`), and baselines (`summary_baseline*.json`, `prevalence_test.json`, `census_vs_strong.json`, `families.json`, `compact_test.json`)
+  - Incremental vs batch: [`results/incremental_seedoils/compare_incremental.json`](results/incremental_seedoils/compare_incremental.json); absorber strength: [`results/absorber_sonnet/compare_absorbers.json`](results/absorber_sonnet/compare_absorbers.json)
 - **Simulation results:** [`results/results.md`](results/results.md), [`results/scale.md`](results/scale.md), [`results/ablation.md`](results/ablation.md), [`results/lanes.md`](results/lanes.md)
 
 ## Layout

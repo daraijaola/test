@@ -1,6 +1,6 @@
 CORPUS: 21500 documents, 3258 distinct authors.
 Placed in entries: 89.3%  residual (unplaced): 0.2%  noise/off-topic: 10.5%
-Each line: id | assertion | authors ▲support ▼dispute ·mention | docs | trend (old→new) | first seen
+Each line: id | assertion | authors ▲support ▼dispute ·mention | docs | trend (old→new) | first seen. 'e12 ↳e4' = e12 is a more specific refinement of e4.
 e7 | claim 0 wording 1 | 1288 authors ▲682 ▼478 ·128 | 3210 docs | ██▇▇▇▇▇▇▇▇▇█ | t=0.00
 e20 | claim 1 wording 0 | 820 authors ▲134 ▼606 ·80 | 1612 docs | █▇▇▇▇▇█▆▇█▇▇ | t=0.00
 e4 | claim 2 wording 0 | 592 authors ▲394 ▼128 ·70 | 1064 docs | ▇▆██▇▇▆▅▆▆▆▇ | t=0.00
@@ -67,8 +67,7 @@ e91 | claim 45 wording 0 | 35 authors ▲25 ▼7 ·3 | 39 docs | ▄▅▅▆▂
 e195 | claim 41 wording 0 | 35 authors ▲4 ▼26 ·5 | 54 docs | ▃▃▄▂▃█▂▃▁▃▃▅ | t=0.03
 e713 | claim 255 wording 0 | 35 authors ▲7 ▼22 ·6 | 34 docs |   ▂▃▁▃█▂▆▃▆▄ | t=0.25
 e219 | claim 66 wording 0 | 34 authors ▲13 ▼16 ·5 | 36 docs | ▁▅▇█▄▆▅▂▄▃▂▅ | t=0.04
-e244 | claim 50 wording 0 | 34 authors ▲2 ▼26 ·6 | 32 docs | ▅▇▂▆█▃▁▂▆▆▂▄ | t=0.05
-e291 | claim 198 wording 0 | 34 authors ▲1
+e244 | claim 50 wording 0 | 34 authors ▲2 ▼26 ·6 | 32 docs | ▅▇▂▆█▃▁▂▆▆
 ...
 | claim 71 wording 1 | 1 authors ▲1 ▼0 ·0 | 1 docs |      █       | t=0.44
 e2258 | claim 0 wording 2 | 1 authors ▲1 ▼0 ·0 | 1 docs |  █           | t=0.12
