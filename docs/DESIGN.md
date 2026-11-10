@@ -117,6 +117,23 @@ Two invariants make it trustworthy:
    `Σ entry mass + residual mass + noise mass = documents absorbed`, which is checked after every operation. Merges and splits move mass but never create or destroy it. A document the absorber can't place goes to the **residual**, never into silence.
 2. **Exact provenance.** Every op is logged (doc → entries). Every tally can therefore be recomputed exactly, every entry has a complete posting list, and splits and census queries are exact.
 
+```mermaid
+flowchart LR
+    P["Every post on the topic<br/>(chronological)"] --> A["Absorb: cheap model reads each batch<br/>against the current ledger index<br/>(lanes in parallel; index capped at scale)"]
+    A -->|"typed ops: assign / new / noise / residual"| L[("LEDGER<br/>assertions with stance tallies per person,<br/>time bins, camps, provenance<br/>Σ mass = posts")]
+    L --> C["Consolidate each epoch:<br/>merge paraphrases"]
+    C --> L
+    L --> R["Residual escalation:<br/>stronger model re-reads unplaced posts"]
+    R --> L
+    L --> AN["Anchor pass: every post's position<br/>on one literal subject statement"]
+    AN --> L
+    L --> V["Fixed-budget view:<br/>themes, compact lines, exact fold counts,<br/>residual % (cached prompt)"]
+    V --> Q{"Reader answers"}
+    Q -->|"needs an exact number"| CS["Census: cheap model checks<br/>every post in scope"]
+    CS --> Q
+    NEW["New posts"] -->|"update (incremental)"| A
+```
+
 The model then reads the whole ledger, and the conservation invariant means the whole ledger is the whole corpus. A third element, added after real-data error analysis (§4.4), is the **anchor**: one literal statement of the subject's central question, with a dedicated pass recording every author's position on it. That makes subject-level stance and camp cross-tabs exact counts rather than inferences.
 
 ---
@@ -192,7 +209,8 @@ The user states the subject as one unambiguous statement, e.g. *"Seed oils are s
 - **Cost:** ~$0.12 per 1,000 posts scanned.
 - **Reuse:** results can be written back to the ledger as a new dimension.
 
-### 4.8 Sharding (very large ledgers)
+### 4.8 Sharding and cost control (very large ledgers)
+- **Built and tested at 27.5k posts:** a capped absorber index (the top-N entries by authors plus recent entries) and per-epoch cache warming. They cut ingest from $99 to $35, with coverage no worse, but misfilings rose from 4% to 10% (§7.5). The CLI flags are `--index-cap` and `--warm`; use them above ~10k posts.
 - Above a cap, the absorber sees a table of themes plus the routed theme's entries.
 - Simulation, 500k posts, cap 2k entries: 5–15% misrouting costs **13–41% more fragments** per claim and 65–85% more entries. It costs almost nothing in ranking or visibility, because repeated consolidation eventually merges cross-shard duplicates.
 - So fragmentation is the price of sharding. Keep the absorber prefix unsharded as long as the context allows; ~150k tokens is about 8k entries.

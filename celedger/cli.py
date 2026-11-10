@@ -92,10 +92,16 @@ def _metas(posts: list[dict], abs_t: dict) -> dict:
 
 
 # ------------------------------------------------------------------ commands
+def _cost_controls(a):
+    from real_eval import semeval
+    semeval.INDEX_CAP["entries"] = a.index_cap or None
+
+
 def cmd_ingest(a):
     from real_eval import bsky, semeval
     from real_eval.anchor_pass import run_anchor
     semeval.CFG["version"] = "v2"
+    _cost_controls(a)
     posts = read_posts(a.posts)
     abs_t: dict = {}
     tnorm = _metas(posts, abs_t)
@@ -106,7 +112,8 @@ def cmd_ingest(a):
     L.new_entry(semeval.ANCHOR_STATEMENT_TEXT.format(statement=a.anchor))
     L.epoch += 1
     log, stats, growth = [], {"hallucinated_ids": 0, "missing_docs": 0}, []
-    bsky.absorb_stream(L, a.topic, [p["id"] for p in posts], texts, metas, log, stats, growth, lanes=a.lanes)
+    bsky.absorb_stream(L, a.topic, [p["id"] for p in posts], texts, metas, log, stats, growth, lanes=a.lanes,
+                       warm=a.warm)
     pol, themes = bsky.finish(L, a.topic, texts, log)
     usd = sum(u for _, u in log) + run_anchor(L, texts, sorted(texts))
     save(a.out, {"ledger": L, "polarity": pol, "texts": texts, "topic": a.topic, "themes": themes,
@@ -121,6 +128,7 @@ def cmd_update(a):
     from real_eval import bsky, semeval
     from real_eval.anchor_pass import run_anchor
     semeval.CFG["version"] = "v2"
+    _cost_controls(a)
     st = load(a.dir)
     L, texts = st["ledger"], st["texts"]
     # skip only true re-submissions (same author, same text); identical text from different
@@ -143,7 +151,8 @@ def cmd_update(a):
     before = len(L.entries)
     L.epoch += 1
     log, stats, growth = [], {"hallucinated_ids": 0, "missing_docs": 0}, []
-    bsky.absorb_stream(L, st["topic"], [p["id"] for p in new], texts, metas, log, stats, growth, lanes=a.lanes)
+    bsky.absorb_stream(L, st["topic"], [p["id"] for p in new], texts, metas, log, stats, growth, lanes=a.lanes,
+                       warm=a.warm)
     semeval.consolidate(L, st["topic"], semeval.ABSORBER, True, log)
     semeval.reabsorb_residual(L, st["topic"], texts, log)
     usd = sum(u for _, u in log) + run_anchor(L, texts, [p["id"] for p in new])
@@ -227,9 +236,17 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("ingest"); p.add_argument("posts", type=Path); p.add_argument("--topic", required=True)
     p.add_argument("--anchor", required=True); p.add_argument("--out", type=Path, required=True)
-    p.add_argument("--lanes", type=int, default=8); p.set_defaults(fn=cmd_ingest)
+    p.add_argument("--lanes", type=int, default=8)
+    p.add_argument("--index-cap", type=int, default=0,
+                   help="above ~10k posts: cap the absorber's index (e.g. 2000) to stay under the long-context price "
+                        "tier; ~3x cheaper at 27k posts, but more misfilings (4%% -> 10%% measured)")
+    p.add_argument("--warm", action="store_true", help="warm the prompt cache once per epoch before fanning out lanes")
+    p.set_defaults(fn=cmd_ingest)
     p = sub.add_parser("update"); p.add_argument("dir", type=Path); p.add_argument("posts", type=Path)
-    p.add_argument("--lanes", type=int, default=8); p.set_defaults(fn=cmd_update)
+    p.add_argument("--lanes", type=int, default=8)
+    p.add_argument("--index-cap", type=int, default=0, help="see ingest --index-cap")
+    p.add_argument("--warm", action="store_true", help="see ingest --warm")
+    p.set_defaults(fn=cmd_update)
     p = sub.add_parser("ask"); p.add_argument("dir", type=Path); p.add_argument("question")
     p.add_argument("--budget", type=int, default=32000); p.set_defaults(fn=cmd_ask)
     p = sub.add_parser("census"); p.add_argument("dir", type=Path); p.add_argument("predicate")
