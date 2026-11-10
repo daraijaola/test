@@ -14,6 +14,7 @@ A retrieval-free way to have a language model absorb **everything** a corpus say
 |---|---|
 | `celedger/ledger.py` | the ledger: entries, ops, conservation invariant, merge/split/replace, anchor and camp cross-tab, flat and theme views, census |
 | `celedger/llm.py` | model-call backend (the `claude` CLI with structured outputs; spend tracking) |
+| `celedger/cli.py` | the tool: `ingest`, `ask` (with reader-triggered census), `update`, `census`, `view` |
 | `celedger/absorber.py` | SDK-form absorber (v1 prompt) |
 | `real_eval/semeval.py`, `remix.py`, `errors.py`, `reread.py`, `qa.py` | SemEval-2016 experiments: fidelity, contamination-free remix, error analysis, census Q&A |
 | `real_eval/bsky_fetch.py`, `bsky.py`, `anchor_pass.py`, `bsky_eval.py`, `anchor_audit.py`, `coverage_full.py` | Bluesky pipeline: fetch (authors pseudonymised), ingest with lanes, v3 anchor pass, audits, coverage, counting Q&A |
@@ -22,7 +23,15 @@ A retrieval-free way to have a language model absorb **everything** a corpus say
 
 Raw post text is never committed: ledger pickles are git-ignored.
 
-## Run
+## Use it on your own topic
+```bash
+python -m celedger.cli ingest posts.jsonl --topic "seed oils" --anchor "Seed oils are safe and healthy to eat." --out ledgers/seedoils
+python -m celedger.cli ask ledgers/seedoils "What do skeptics argue, and how many people make each argument?"
+python -m celedger.cli update ledgers/seedoils new_posts.jsonl
+```
+`posts.jsonl`: one JSON object per line with `text`, and optionally `author`, `created`, `likes` and `reposts`.
+
+## Reproduce the experiments
 ```bash
 pip install numpy pydantic pytest
 python -m pytest -q tests

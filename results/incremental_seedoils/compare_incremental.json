@@ -1,0 +1,46 @@
+{
+ "batch": {
+  "posts": 6062,
+  "entries": 1237,
+  "residual_pct": 4.354998350379413,
+  "anchor_agree": 2299,
+  "anchor_disagree": 701,
+  "anchor_agree_share": 0.7663333333333333
+ },
+ "incremental": {
+  "posts": 6053,
+  "entries": 1192,
+  "residual_pct": 2.428547827523542,
+  "anchor_agree": 2098,
+  "anchor_disagree": 893,
+  "anchor_agree_share": 0.7014376462721498
+ },
+ "all posts | batch": {
+  "n": 135,
+  "yes": 0.2518518518518518,
+  "partly": 0.6222222222222222,
+  "no": 0.1259259259259259,
+  "score": 0.562962962962963
+ },
+ "all posts | incremental": {
+  "n": 135,
+  "yes": 0.31851851851851853,
+  "partly": 0.5333333333333333,
+  "no": 0.14814814814814814,
+  "score": 0.5851851851851851
+ },
+ "new posts only | batch": {
+  "n": 114,
+  "yes": 0.24561403508771928,
+  "partly": 0.6052631578947368,
+  "no": 0.14912280701754385,
+  "score": 0.5482456140350878
+ },
+ "new posts only | incremental": {
+  "n": 114,
+  "yes": 0.23684210526315788,
+  "partly": 0.6140350877192983,
+  "no": 0.14912280701754385,
+  "score": 0.543859649122807
+ }
+}

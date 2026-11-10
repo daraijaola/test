@@ -123,8 +123,11 @@ def cmd_update(a):
     semeval.CFG["version"] = "v2"
     st = load(a.dir)
     L, texts = st["ledger"], st["texts"]
-    seen = {" ".join(t.split()) for t in texts.values()}
-    new = [p for p in read_posts(a.posts, start_id=max(texts) + 1) if " ".join(p["text"].split()) not in seen]
+    # skip only true re-submissions (same author, same text); identical text from different
+    # people (shared links, headlines) is evidence and must be counted
+    seen = {(L.docs[i].author, " ".join(t.split())) for i, t in texts.items() if i in L.docs}
+    new = [p for p in read_posts(a.posts, start_id=max(texts) + 1)
+           if (p["author"], " ".join(p["text"].split())) not in seen]
     for k, p in enumerate(new):
         p["id"] = max(texts) + 1 + k
     if not new:

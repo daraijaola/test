@@ -318,6 +318,21 @@ Sonnet files slightly more cleanly, but the coverage gain is within judge noise 
 
 **Breadth vs specificity at a fixed budget.** I added one verbatim quote per entry, located by provenance, which halves the entries that fit (892 → 452). Coverage got *worse* in all 4 runs: seed oils 49.6 → 43.5 and 49.2 → 45.0; UPF (corrected) 61.1 → 52.2 and 61.7 → 55.2. More distinct assertions beat verbatim evidence for fewer. When verbatim wording matters, fetch it by provenance or census on demand rather than putting it in the standing view.
 
+**Incremental updates (R7), tested by replaying history.**
+- **Setup:** ingest every seed-oils post up to 30 Sep 2026 (5,699 posts, 30 min, $3.66), then `update` with October–November (352 posts, 4 min, $0.72). Compare with the ledger built from everything at once.
+- **Results:**
+
+| | batch | incremental |
+|---|---|---|
+| coverage, all posts | 56.3% | 58.5% |
+| coverage, new posts only | 54.8% | 54.4% |
+| entries | 1,237 | 1,192 |
+| residual | 4.4% | 2.4% |
+| anchor agree-share | 77% | 70% |
+
+- **On the anchor share:** re-running the identical anchor pass on the batch ledger gave 76.6%, 76.3% and 73.0%. So the subject-level share is reproducible to about ±3 points, and the incremental figure sits a few points outside that.
+- **A bug found here:** `update` first de-duplicated incoming posts by text alone, which dropped different people sharing the same link or headline. It now keys on (author, text).
+
 **Open questions, side by side** ([`ask.md`](../results/bsky_seedoils/ask.md), [UPF](../results/bsky_upf/ask.md)):
 - Asked "what are the main arguments of people who think seed oils are harmful, and how many make each?", the ledger answered with people counts and camps: "of 3,000 authors with a position, 701 (~23%) disagree that seed oils are safe; 'seed oils are toxic' 159 agree / 89 dispute…".
 - RAG top-20 answered: "None of the 20 posts comes from someone who says seed oils are harmful. Every one is written by a critic who mocks or describes the anti-seed-oil side." That is the selection bias of §1 L6, seen on real data.
@@ -391,7 +406,7 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 
 ## 9. Limitations and failure modes (updated from real data)
 - **Absorber quality is the critical parameter.** Real strict error is 2–5%, but 22–31% of filings are imprecise. Ledger tallies are good for shape and ranking; for numbers that matter, run a census.
-- **The anchor must be a literal statement** chosen at setup. A dedicated pass is needed for good recall, and it over-calls positions on 14–34% of posts that have none.
+- **The anchor must be a literal statement** chosen at setup. A dedicated pass is needed for good recall, and it over-calls positions on 5–34% of posts that have none. The subject-level share it yields is reproducible to about ±3 points between runs, so don't report it more precisely; use a census or a stronger model for the anchor pass if it matters.
 - **The reader must be told the semantics.** Without the legend, Opus misread the anchor line.
 - **Lexical questions need census.** The ledger stores meaning, not words.
 - **No saturation on real topics** at the scale tested. Ledgers grow roughly like N^0.8. Expect to fold, raise the budget, or shard.
@@ -417,13 +432,19 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | The corpus fits easily in context and you'll ask once or twice | Just read it all |
 
 ## 11. How to use it on your own topic (e.g. everything about a subject on X)
-1. Collect every post on the topic (search API, paging back in time).
+1. Export or collect every post on the topic as JSONL. Each line has `text`, and optionally `author`, `created`, `likes` and `reposts`. An X/Twitter export maps onto this directly; `real_eval/bsky_fetch.py` does it for Bluesky.
 2. Write one literal **anchor statement** for the subject's central question.
-3. Ingest with `real_eval/bsky.py` (lanes 8), then `real_eval/anchor_pass.py`.
-4. Give the reading model the theme view (or the full ledger if it fits) as a cached prefix, and let it issue **census** requests for anything it needs exactly.
-5. Re-run steps 3–4 incrementally as new posts arrive. Absorption is append-only, and consolidation runs per epoch.
-
----
+3. Build the ledger:
+   ```
+   python -m celedger.cli ingest posts.jsonl --topic "seed oils" --anchor "Seed oils are safe and healthy to eat." --out ledgers/seedoils
+   ```
+4. Ask questions:
+   ```
+   python -m celedger.cli ask ledgers/seedoils "What do skeptics argue, and how many people make each argument?"
+   ```
+   The reader sees the whole ledger and requests a **census** by itself when it needs an exact number.
+5. Keep it current: `python -m celedger.cli update ledgers/seedoils new_posts.jsonl`
+6. Inspect it: `python -m celedger.cli view ledgers/seedoils`, or `census` for a direct exhaustive count.
 
 ## 12. The 24 hours: rounds and what each changed
 | Round | What was done | What it changed |
@@ -436,3 +457,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 5 | Every Bluesky post on two niche topics; filing, coverage and anchor audits; lanes; v3 anchor pass | Real ε; coverage at equal budget; anchor recall bug found and fixed; real growth exponent (no saturation); real costs ~30× the first estimate |
 | 6 | Cached-read cost measured; side-by-side open questions; v4 refine op; repeated coverage runs; Haiku vs Sonnet absorber; quotes in view | Cached ledger read $0.05 per question (same as top-20 RAG); token estimator ~2× low (corrected); refine op and quotes didn't help (negative); a stronger absorber isn't worth 4×; coverage advantage held in all 6 repeated runs |
 | 7 | Third topic (four-day work week, non-health); found and fixed a topic hard-coded in the judge prompts; re-ran every UPF evaluation | Generalises to a different domain (anchor bias 1 pt); coverage advantage held in all 9 runs; UPF numbers corrected |
+| 8 | Command-line tool (ingest / ask with reader-triggered census / update / census / view); incremental vs batch replay; anchor-pass variance | Incremental ≈ batch on coverage; subject share reproducible to ±3 pts; de-duplication bug in `update` found and fixed |
