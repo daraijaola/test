@@ -21,6 +21,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("dir", type=Path)
     ap.add_argument("--repeats", type=int, default=2)
+    ap.add_argument("--judge", default=None, help="judge model (default: the Sonnet judge)")
+    ap.add_argument("--seed", type=int, default=1000)
     a = ap.parse_args()
     st = pickle.loads((a.dir / "ledger.pkl").read_bytes())
     L, texts = st["ledger"], st["texts"]
@@ -40,16 +42,17 @@ def main():
         return "\n".join(f"- {texts[i]}" for i in sel)
     runs = []
     for r in range(a.repeats):
-        rng = np.random.default_rng(1000 + r)
+        rng = np.random.default_rng(a.seed + r)
         pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()), st["topic"])
         ctx = {"ledger (theme view)": view, "RAG top-k, same tokens": fill(bm.top(q, len(ids))),
                "random sample, same tokens": fill(rng.permutation(ids).tolist())}
         run = {"points": len(pts)}
         for name, c in ctx.items():
-            run[name] = coverage(name, c, pts)
+            run[name] = coverage(name, c, pts, a.judge)
             print(r, name, {k: round(v, 3) for k, v in run[name].items()}, flush=True)
         runs.append(run)
-    (a.dir / "coverage_repeat.json").write_text(json.dumps(runs, indent=1))
+    out = a.dir / ("coverage_repeat.json" if not a.judge else f"coverage_judge_{a.judge}.json")
+    out.write_text(json.dumps(runs, indent=1))
 
 
 if __name__ == "__main__":

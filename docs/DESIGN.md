@@ -22,7 +22,8 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 | Question | RAG | CEL | Source |
 |---|---|---|---|
-| Is a random post's point present in what the reader receives? Equal ~31k-token budget, Bluesky, judge-scored, 3 runs per topic × 3 topics | top-k at the same budget: 39–46%; random sample at the same budget: 47–48%; top-20: 9–12% | **61–63%** on every topic, ahead in all 9 runs (points entirely absent: **14–17%** vs 36–48%) | §7.3 |
+| Is a random post's point **entirely missing** from what the reader receives? Equal ~31k-token budget, Bluesky, 3 topics, two different judges | top-k at the same budget: 39–48%; random sample at the same budget: 30–43%; top-20: ~80% | **12–20%**, about 2–3× fewer complete misses; holds under both judges in every run | §7.3 |
+| Combined coverage score (yes + ½ partly), same setup | top-k at the same budget: 37–46%; random sample at the same budget: 42–53% | Sonnet judge: **61–63%**, ahead of both in all 9 runs. Opus judge (stricter about generalised wording): ahead of retrieval on all 3 topics; tied with the random sample on 2 of 3 | §7.3 |
 | Same, with the whole ledger (every entry: 51k / 72k tokens, for 247k / 282k-token corpora; single run) | top-k at the same budget: 54% / 62%; random sample at the same budget: 55% / 66% | **63% / 70%** (points entirely absent: **5–11%** vs 18–34%) | §7.3 |
 | How many posts mention X, and by how many people? (16 questions, two Bluesky topics) | top-100: 37–58% median error; top-20: 80–91% | **ledger + census: 0% median error**, 88–100% of answers within 20% | §7.3 |
 | What share of a corpus favours or opposes the target? (SemEval, re-mixed so memorised statistics fail) | top-20: 16–18 pt error | **4.5–4.9 pt** (classifying every tweet for this question: 6.2) | §7.2 |
@@ -218,7 +219,7 @@ Where it is not cheaper:
 5. **Time is a dimension,** so emergence is readable.
 6. **Exactness on demand** via census.
 
-On real data this shows up most clearly as **2.5–3× fewer complete misses** than raw text at the same budget (14–17% vs 36–48%, 3 runs per topic, 3 topics; §7.3).
+On real data this shows up most clearly as **about 2–3× fewer complete misses** than raw text at the same budget. That holds on 3 topics and under two different judges (12–20% absent vs 30–48%; §7.3). Exact wording of individual points is better served by a sample of raw posts or by census.
 
 ---
 
@@ -291,6 +292,18 @@ Typical wrong filings: misread sarcasm, and posts that don't mention the topic a
 | **CEL theme view** | **61 ± 4% / 14 ± 7%** | **62 ± 3% / 14 ± 4%** | **63 ± 7% / 17 ± 4%** |
 
 In **all 9 runs** (3 topics × 3), the ledger beat retrieval at the same budget (by 7–27 points) and a random sample at the same budget (by 5–22 points).
+
+**Judge-dependence check.** I re-scored one run per topic with **Opus** as the judge instead of Sonnet:
+
+| Opus judge | seed oils score / absent | UPF score / absent | four-day week score / absent |
+|---|---|---|---|
+| RAG top-k, same budget | 45% / 39% | 40% / 40% | 37% / 47% |
+| random sample, same budget | 52% / 30% | 53% / 30% | 43% / 43% |
+| **CEL theme view** | 52% / **19%** | 52% / **20%** | **62% / 12%** |
+
+- **Robust across judges:** the ledger leaves far fewer points entirely absent (12–20% vs 30–47%), and it beats retrieval at the same budget.
+- **Not robust:** the combined score against a *random sample*. Opus credits generalised ledger lines as "partly" where a raw post earns "yes", so on two topics the two tie.
+- **So the honest claim is:** at an equal reading budget, the ledger is the input least likely to leave the model blind to a point that exists in the corpus. It is not reliably the input that reproduces a given point most exactly.
 
 **Full ledger** (every entry, no folding; single run):
 
@@ -458,3 +471,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 6 | Cached-read cost measured; side-by-side open questions; v4 refine op; repeated coverage runs; Haiku vs Sonnet absorber; quotes in view | Cached ledger read $0.05 per question (same as top-20 RAG); token estimator ~2× low (corrected); refine op and quotes didn't help (negative); a stronger absorber isn't worth 4×; coverage advantage held in all 6 repeated runs |
 | 7 | Third topic (four-day work week, non-health); found and fixed a topic hard-coded in the judge prompts; re-ran every UPF evaluation | Generalises to a different domain (anchor bias 1 pt); coverage advantage held in all 9 runs; UPF numbers corrected |
 | 8 | Command-line tool (ingest / ask with reader-triggered census / update / census / view); incremental vs batch replay; anchor-pass variance | Incremental ≈ batch on coverage; subject share reproducible to ±3 pts; de-duplication bug in `update` found and fixed |
+| 9 | Coverage re-scored with a second judge (Opus) | Fewer complete misses and the lead over retrieval hold under both judges; the lead over an equal-budget random sample does not (tie on 2 of 3 topics); headline claims narrowed accordingly |

@@ -109,7 +109,7 @@ def points(texts, sample, topic):
     return {r["post_id"]: r["point"] for r in rows if r["point"]}
 
 
-def coverage(context_name, context, pts):
+def coverage(context_name, context, pts, judge=None):
     ids = sorted(pts)
 
     def one(chunk):
@@ -117,7 +117,8 @@ def coverage(context_name, context, pts):
                 "For each POINT below: does the MATERIAL above contain this point (the same claim or opinion, from "
                 "any author, in any wording)? yes = clearly present, partly = a broader or related version is present, "
                 "no = absent.\n\n" + "\n".join(f"<point id={d}>{pts[d]}</point>" for d in chunk))
-        out, _ = llm.complete(JUDGE, "You check whether information is present. Output JSON only.", user, COVER_SCHEMA)
+        out, _ = llm.complete(judge or JUDGE, "You check whether information is present. Output JSON only.", user,
+                              COVER_SCHEMA)
         return out["posts"]
     rows = [r for rs in pmap(one, [ids[i:i + 25] for i in range(0, len(ids), 25)], workers=4) for r in rs]
     c = Counter(r["covered"] for r in rows)
