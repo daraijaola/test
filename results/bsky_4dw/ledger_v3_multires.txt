@@ -1,0 +1,858 @@
+CORPUS: 4189 documents, 3194 distinct authors, 1102 distinct assertions in 15 themes.
+residual (unplaced): 5.0%  noise: 22.8%
+e0 is the ANCHOR: it tallies every author whose position on the anchor statement is discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position. 'camp: anchor▲x anchor▼y' on a line = how many of that line's authors agree / disagree with the anchor.
+## theme Other: 62 assertions, 1107 docs (26.4%)
+e0 | ANCHOR: A four-day work week is a good idea. | 1437 authors ▲1271 ▼166 ·0 | 1020 docs
+e62 | The four-day work week is gaining momentum as a workplace trend | 16 authors ▲10 ▼0 ·6 | 17 docs | camp: anchor▲8 anchor▼0
+e194 | The four-day work week is an inevitability. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼0
+e292 | A promised four-day work week was never delivered. | 5 authors ▲4 ▼0 ·1 | 2 docs | camp: anchor▲5 anchor▼0
+e345 | Working less is more. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e205 | Four-day work weeks may help solve Japan's fertility crisis. | 3 authors ▲1 ▼0 ·2 | 4 docs | camp: anchor▲2 anchor▼0
+e356 | The four-day work week has been discussed for more than 50 years and is still expected to arrive. | 3 authors ▲2 ▼0 ·1 | 4 docs | camp: anchor▲1 anchor▼0
+e415 | Juliet Schor's work is worth learning from and teaching. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e110 | Writing is hard daily work that requires regular set hours, not a magic gift | 2 authors ▲2 ▼0 ·0 | 3 docs
+e265 | The seven-day week reveals a perfect balance of work and rest. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e1079 | A blog post titled The Four-Day Work Week was published on irreal.org. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e1086 | People should debate which days off a four-day work week should have. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1157 | Wednesday is the preferred day off in a four-day work week. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1 | Scheduling a meeting on a colleague's marked vacation day is petty behaviour at work. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e140 | Hannah Fry is keen to try a four-day work week. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e197 | Hustle culture has replaced the old promise of working four days a week and retiring early. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e238 | Long-standing assumptions about how and when we work should be re-examined in light of the four-day working week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e264 | A 1967 prediction said people would work no more than four days a week by the year 2000. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e274 | Colleagues are increasingly trying to work less, such as by moving to a four-day week. | 1 authors ▲1 ▼0 ·0 | 2 docs
+e367 | One work day a week is enough to confer the psychological rewards of work. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e398 | Epstein's 2007 non-prosecution agreement protected co-conspirators, and he served only 13 months in a private jail wing with work release. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e414 | Leadership could implement a four-day work week in more industries than people think. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e575 | Workers should work seven days a week with only a half day on Saturday. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e587 | Attractive polyamorous lesbians need a four-day work week more than anyone else. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e593 | Walking around Washington DC is safe, and claims of muggings there are a blatant lie. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e618 | A study identifies which generation of Americans most wants a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e671 | Recalls and lawsuits over food and candy are a distraction from things like a four-day work week we could have had. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e723 | A C1 English lesson uses the four-day work week experiment as its topic. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e740 | Old Moore's Almanac predicts a four-day work week among its 2026 predictions. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e771 | A four-day work week is not a vacation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e794 | The 996 work schedule is replacing the four-day work week as the workplace trend. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e854 | In 1986 Morton Thiokol moved 1,400 workers to a four-day work week during the Challenger probe. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e890 | Having a four-day work week is considered good. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e901 | Having 52 bank holidays a year amounts to a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e938 | A 2026 veterinary care report cites the four-day work week as a notable industry trend. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e969 | If Trump stays in office, there may not be enough work left for a four-day work week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e977 | A president who treats women and young people as human beings will encourage them to have children. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e996 | The construction industry is exploitative. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1088 | Highly paid TV presenters working very few hours for six-figure pay is exploitative. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1101 | A four-day work week gives people more time for personal relationships such as polycules. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1122 | Corporate team-building exercises and long briefings make the work week tedious. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1198 | Shorter workdays would make daylight saving time unnecessary. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1200 | Forcing everyone to work twenty-four hours a day, seven days a week is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1205 | A Forbes piece by Adia Harvey Wingfield on the four-day week is great. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1251 | Mike Johnson's Congress is not one of the most successful in history. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1287 | Ford adopted a five-day, 40-hour week for its factory workers a century ago. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1301 | Nigel Farage works fewer than four days a week, so his own hours undercut his views on work. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1304 | Some day jobs are reinvented slavery in which workers become drones while billionaires take the money. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1324 | Nigel Farage barely works eight hours over a week. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e1333 | Lance Armstrong never apologised to those he fooled and deserves contempt. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1334 | Six-month driving bans are no deterrent for bad drivers; lifetime driving bans are needed. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1345 | Russian titanium producer VSMPO-Avisma workers have had little or no work since October, a sign Russia is not winning. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1353 | COP30 will struggle to reach consensus between fossil fuel producers and small island states. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1361 | Joking that the author's lunch petitioned for a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1362 | People on four-day work weeks can prosecute human rights violators more effectively than those on five-day weeks. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1366 | Unimaginative and resentful whingers blocking decisions hinder societal progress. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1383 | Police behave like bastards all the time, not just when caught on video | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1384 | AEW holds too many pay-per-views now | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1385 | US aid cuts have had a devastating impact on Afghan women | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1386 | Fathi in Gaza needs donations and is suffering heat exhaustion | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1396 | A music video features a vampire convincing a boss to pay extra and give a four-day work week | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1404 | Business owners have substantial control over their work and schedules, but other self-employed workers have far less autonomy. | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme Personal experience: author's own schedule: 61 assertions, 247 docs (5.9%)
+e151 | The author works a four-day work week. | 157 authors ▲139 ▼0 ·18 | 123 docs | camp: anchor▲78 anchor▼1
+e335 | The author is enjoying a four-day weekend after finishing work for the week. | 20 authors ▲16 ▼0 ·4 | 21 docs | camp: anchor▲1 anchor▼0
+e748 | Working a four-day week made the author's life easier, less stressful and happier. | 11 authors ▲11 ▼0 ·0 | 5 docs | camp: anchor▲11 anchor▼0
+e813 | The author works four ten-hour days a week. | 11 authors ▲8 ▼0 ·3 | 8 docs | camp: anchor▲3 anchor▼1
+e812 | The author has a four-day weekend next week. | 8 authors ▲7 ▼0 ·1 | 8 docs | camp: anchor▲3 anchor▼0
+e55 | The author has a four-day work week next week followed by a holiday | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼0
+e149 | A four-day work week is exhausting, but it is good for the person who has it. | 6 authors ▲6 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼0
+e630 | The author is working four days in a row this week. | 6 authors ▲2 ▼0 ·4 | 6 docs
+e344 | The author is manifesting a four-day work week for themselves. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e130 | The author feels confident they can handle a four-day work week. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e156 | The author wants their four-day work week back. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e642 | The author enjoyed a three-day work week followed by four days off. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e704 | The author would be very happy if a four-day work week arrives in their lifetime. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e974 | The author is scheduled for several more four-day weeks and is trying to cut hours. | 3 authors ▲0 ▼0 ·3 | 3 docs
+e52 | A streamer is aiming to manage a four-day work week this week | 2 authors ▲0 ▼0 ·2 | 2 docs
+e362 | A four-day work week with a three-day weekend improved the author's home life and work capacity. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e390 | A four-day week freed up mental space for creative work and new music. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e592 | The author does not have a four-day work week. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e853 | The author actively promotes the idea of a four-day work week. | 2 authors ▲2 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1054 | The author has a three-day weekend, then a four-day work week, then a work conference. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1182 | The author works from home four days a week. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e1190 | After a four-day week and a three-day weekend, the author does not want to work the following week. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1221 | This week is a four-day work week for the author. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+38 more in this theme: 30 docs; largest folded has 1 authors)
+## theme Advocacy, unions and political demands: 175 assertions, 218 docs (5.2%)
+e278 | The four-day work week deserves serious research and public discussion. | 21 authors ▲15 ▼0 ·6 | 18 docs | camp: anchor▲10 anchor▼0
+e145 | The five-day work week is illogical and should be shortened to four days. | 13 authors ▲13 ▼0 ·0 | 6 docs | camp: anchor▲13 anchor▼0
+e23 | Workers should organize and unionize to take a four-day week rather than wait for corporations to grant it. | 12 authors ▲12 ▼0 ·0 | 7 docs | camp: anchor▲11 anchor▼0
+e517 | Australia's peak union body (ACTU) calls for a move to a four-day work week with pay and conditions protected. | 12 authors ▲12 ▼0 ·0 | 14 docs | camp: anchor▲6 anchor▼0
+e665 | The Green Party supports a four-day working week. | 11 authors ▲8 ▼0 ·3 | 9 docs | camp: anchor▲6 anchor▼0
+e6 | Workers should get one more day off a week, as a four-day work week. | 9 authors ▲9 ▼0 ·0 | 5 docs | camp: anchor▲8 anchor▼0
+e40 | A four-day workweek, living wage guarantee and right to rest should be core political demands | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e19 | A four-day work week is common sense and workers deserve rest and dignity. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e689 | UBI and a four-day work week should become standard. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e993 | University of Melbourne professional staff want 20% fewer days for 20% more pay. | 5 authors ▲0 ▼0 ·5 | 5 docs | camp: anchor▲3 anchor▼0
+e165 | Workers should work 32-hour weeks instead of longer hours, with more pay. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e217 | The four-day work week is a topic worth discussing in public panels. | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲3 anchor▼0
+e444 | The 9-9-6 work schedule is unacceptable and should be opposed. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲3 anchor▼0
+e545 | Kickstarter United should get a minimum livable wage and a codified four-day work week. | 4 authors ▲2 ▼0 ·2 | 3 docs | camp: anchor▲2 anchor▼0
+e571 | The Kickstarter union should keep the four-day work week it agreed three years ago. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e697 | A four-day standard work week should be considered where possible. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e778 | Human rights such as healthcare for all and a four-day work week should be granted. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e919 | After-hours work emails should entitle Australians to a four-day work week. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e976 | A campaign for a four-day work week is needed. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e1010 | The four-day work week should be made permanent. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e95 | Republicans are blocking a four-day, 32-hour week that would make people happier and more productive. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e107 | Trump's push to make workers work harder is wrong compared with countries that offer a four-day work week | 3 authors ▲2 ▼1 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e134 | The government should mandate and enforce a four-day work week. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e135 | Demands like a four-day work week are reasonable, not out of touch. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e219 | The four-day work week should prompt rethinking what full-time work entails and be seriously pursued. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e289 | Every week should be a four-day work week. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e372 | Given past productivity gains, people should not still work the same hours as previous generations. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e515 | Australians should choose to bank productivity gains as shorter working weeks or longer holidays. | 3 authors ▲1 ▼0 ·2 | 3 docs | camp: anchor▲1 anchor▼0
+e559 | The Australian Council of Trade Unions urged a national move toward a four-day workweek. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲2 anchor▼0
+e687 | A four-day work week with no reduction in pay or benefits is desirable, with a raise for part-timers. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e714 | People should work to live, not live to work. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e18 | If the president can spend a quarter of his days golfing, corporations can give workers a four-day week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e20 | Corporations can be forced to give workers a four-day work week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e162 | US five- and six-day work weeks are nothing to brag about. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e180 | A four-day work week is viable and overdue in the US. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e184 | A 36-hour work week is desirable alongside progressive policies like universal healthcare and nationalized banks. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e291 | A political platform that mandates a four-day 32-hour work week deserves electoral support. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e302 | Control over working time has long been an important workplace issue. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e373 | A government that does not enshrine the right to work from home and the four-day week is owned by big business. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e476 | 40 hours is an arbitrary relic of the working week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e478 | Respect for workers beats employer control, including over four-day weeks. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e537 | A four-day work week should become a reality for all Australians. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e581 | Workers should have a four-day week of eight-hour days plus at least a month of paid vacation. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e589 | US workers should join a general strike to win their demands. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e720 | Workers need a four-day week with decent pay rather than longer hours for less. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e726 | Bosses will never grant a four-day week without workers fighting for it. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e728 | Making a four-day, 30-hour work week happen would change everything. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e735 | Independents should back Democrats so they can deliver a four-day work week and other reforms. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e840 | Parents with kids should be moved to a standard four-day work week. | 2 authors ▲1 ▼1 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e911 | Workers should join a union that will improve their conditions at work. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1103 | The five-day, eight-hour week was won by labour and a four-day week should now be the norm. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e15 | Four-day weeks and bi-monthly recesses should be mandatory for all US employees. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e35 | Artists and creatives should advocate for a four-day work week, higher wages, unionization and a basic minimum income | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e102 | Dismissing a four-day week for working-class people as undeserved reflects class contempt | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e125 | Workers should simply take a four-day work week and let corporations deal with the consequences. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e141 | A four-day work week is not enough; workers should have four days on and four days off every week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e146 | Everyone should work about four 8-hour days a week in a state-provided job. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e147 | Wanting a four-day, 20-hour work week is reasonable for disabled people and should not be seen as evil. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e159 | The US should adopt a 4-day, 36-hour work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e173 | Care work should be a well-paid, highly regarded career with a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e185 | The climate movement should campaign for a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e239 | Union leaders are debating the four-day working week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e240 | Kevin Murphy advocates a four-day work week paired with wage increases to make it possible. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e306 | Civil service unions should campaign for a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e310 | Progressives who reject partial wins for lack of a national four-day work week are unreasonable. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e312 | The four-day work week is a worthy model for reducing working time. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e346 | The powers that be refuse to acknowledge or implement a four-day week, UBI and working from home, which would improve working lives. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e363 | Working time reduction distributes available work and reduces unemployment, so a four-day week should be fought for. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e389 | New York should hold a parade celebrating the four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e391 | Everyone should be legally limited to a four-day week with higher wages. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e440 | Workers can successfully win a four-day week at their own workplace by making the case for it. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e463 | A majority of Australians support a four-day work week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e481 | Workers should not put up with being overworked and having retirement pushed later. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e494 | Workers should switch to a four-day week so they can live their lives while young. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e512 | Australia used to lead the world on shorter working hours and could do so again. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e518 | Australia should adopt a four-day working week without any loss of pay. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e525 | A push for a four-day work week is underway ahead of a key economic summit. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e530 | Unions and business are clashing over the four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e546 | Most Australian voters want laws legislating work-from-home rights and a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e586 | A four-day work week would still be too much; a one-month-on, one-month-off schedule is needed. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e588 | The employer does not own workers' lives, so the four-day working week should become the norm. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e594 | Andrew Cuomo's posting of a pro-worker platform is a reactionary tactic. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e595 | Andrew Cuomo is evil for sharing the four-day, 32-hour week platform. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e616 | Australians already work some of the longest hours in the OECD, so productivity gains should go to a four-day week, not longer hours. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e628 | Businesses should offer four-day, four-hour shift minimums and pay the CEO the same as contract workers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e635 | Business lobbyists pushing a six-day work week in Finland is alarming and a step in the wrong direction. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e639 | Kickstarter United's strike for better worker rights deserves support. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e640 | Kickstarter employees who are striking are well organised and their action is admirable. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e643 | A politician's four-day work week policy is a point in his favour. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e650 | Winning a four-day work week in a union collective agreement is a success worth celebrating. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e667 | The UK should introduce a four-day week for full-time employees at 100% pay for a 28-hour week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e668 | A four-day week for everyone would let journalists, musicians and artists work part-time in their own fields. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e670 | A candidate's platform promising a four-day work week alongside healthcare and basic income is a lie. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e675 | A four-day work week, UBI or crafting are options worth considering as alternatives to the status quo. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e686 | Electing Democrats would have brought universal healthcare and a four-day work week by now. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e691 | A four-day week would be good for working people and reduce car use and pollution. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e693 | A union contract should make a four-day, 32-hour week the norm, with a minimum salary for the lowest paid. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e695 | Young workers deserve higher minimum wage, free post-secondary education and a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e698 | Video game publishers should push for a national four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e707 | The nation should collectively manifest a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e716 | A prominent figure should start a four-day work week to lead by example. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e730 | Four-day weeks paid the same as five-day weeks should be expanded alongside a living wage and vacation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e739 | Fighting for workers' rights includes promoting the four-day work week and joining a general strike against the right's attacks. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e741 | The Green Party's four-day week policy was ridiculed by other parties at the time but is now seen as a sensible thing to explore. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e742 | Society's riches are appropriated by the elite instead of being shared equitably, which blocks a well-paid four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e746 | Government should serve the people rather than oligarchs, and a four-day week at the same pay should come eventually. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e755 | Organisers are preparing two major four-day week trials this year for schools and councils. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e765 | A four-day work week is part of the leftist solution to the birth rate crisis. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e767 | If elections were not rigged, the US would already have universal healthcare, livable wages and a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e769 | Profitable businesses should hire more people and give workers a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e773 | Indian bank unions are right to demand a five-day banking work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e777 | US billionaires want cheap labour from American workers rather than shorter weeks and earlier retirement. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e787 | If US voters matched NYC's views, the country would get a four-day work week, universal healthcare and a $25 minimum wage. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e818 | Charity executives are resisting a four-day week despite evidence it gives better value and outcomes. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e820 | The government does not stick up for workers and wants them to work more for no gain. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e830 | Labour movements' struggles gave workers the four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e838 | Endless growth in working hours is neither desirable nor sustainable; a four-day week challenges that logic. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e839 | Parents are among the biggest supporters of the four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e850 | Those in charge are trying to stop the four-day week because workers may gain better work-life balance and resist poor treatment. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e886 | Online demands for a four-day week would show how little influence individuals have. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e893 | Workers were pushed toward a four-day work week in the late 1960s and early 1970s. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e931 | A four-day work week is preferable to universal basic income. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e936 | Given inflation and productivity gains, the working week should be far shorter than four days. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e943 | The American dream should include a four-day work week, so Rollins's claim that it does not is wrong. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e954 | Neoliberal market radicalism destroyed Western common sense, but a four-day week may be normalised outside the Western world. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e972 | Trump's presidency may be worth it if it brings about a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e980 | Australian annual leave should increase, public holidays should be added, and employers should be limited in setting when staff take leave. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1020 | Universal healthcare and a four-day work week are more plausible under communism. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1034 | A four-day work week is the real populist approach to cutting people's costs. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1038 | An Australian tradie is fighting bosses for a four-day week in a landmark case. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1040 | Work should be cut to 14 hours a week over four short days with no loss of pay. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1060 | Workers should get a four-hour, four-day work week plus one month of paid vacation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1087 | Transit workers deserve fair wages, benefits and working conditions that reflect their essential work. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1096 | Working people need a living wage, child care, health care, time off and a four-day work week like Europe has. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1102 | The Second American Republic should adopt a four-day work week with a three-day weekend. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1119 | Escalating general strikes is needed to hit employers and elites financially in order to win demands such as the four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1134 | A politician recently talked about universal healthcare and a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1137 | UCU strikes are continuing at Aberdeen University. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1138 | Scottish independence would bring a four-day work week and better working conditions. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1141 | US wars abroad are why Americans cannot have a four-day work week and free healthcare. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1143 | A government or workers' movement should be the first to normalise the four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1151 | The author's chair signed a petition for a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1152 | Outside workers such as delivery drivers are less protected and should be considered for a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1154 | Democrats should campaign on and deliver a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1156 | Lula could give Brazilian workers a four-day work week, which is why Bolsonaro's party whipped members to back a 40-hour week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1164 | Workers should demand a higher minimum wage and a four-day work week forcefully rather than politely. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1181 | Democrats or the DSA, rather than Republicans, would likely deliver a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1184 | A four-day work week should be introduced in honour of a labour figure. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1195 | Business-led four-day week trials alone will not deliver a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1196 | Workers should demand political change to win a 32-hour week rather than wait for bosses to grant it. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1230 | The rich should be taxed much more heavily because they dismiss the need for people to work to survive. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1231 | A four-day week should be achieved through a wealth tax and regulation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1241 | A 23-hour work week is the goal, reached through a four-day week, flexible scheduling and minimum wage indexed to inflation. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1248 | Congress should amend the Fair Labor Standards Act to institute a 32-hour, four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1257 | Political effort should prioritise a living wage for 40-hour work over a four-day workweek mandate. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1260 | Lisa Nandy's 'one day month' concept goes further than the four-day week and is worth backing. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1265 | Medicare for all, UBI and a four-day work week require removing politicians who oppose them. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1274 | Start a four-day week now and cut a day every five years, reaching a two-day week by 2040. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1284 | An Australian Manufacturing Workers Union campaign gave many workers a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1288 | US unions were at their peak of power in 1979, and today oligarchs wield destructive power. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1294 | Disaffected Republican voters should be offered a four-day work week alongside universal healthcare and living wages. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1300 | A four-day work week should be passed before the election. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1314 | A four-day work week is not enough; the work week should be cut to two days. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1318 | A four-day week and a 10% pay rise are bargaining chips in a labour dispute with a strike vote. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1343 | Demands on workers should wait until a four-day work week is passed | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1344 | A four-day shutdown of the entire US economy is needed to defeat the billionaires. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1347 | A week-long work boycott (#MassBlackout) that includes a four-day weekend is poorly timed and less effective against employers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1348 | Bernie falls short; the oligarchy should be overthrown and assets confiscated for a socialist state with a $30/hr minimum living wage. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1349 | Shelter staff are considering strike action over pay and working conditions. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1352 | Starbucks baristas plan to strike on Red Cup Day if union demands aren't met. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1357 | Work weeks should be drastically shorter, such as one work day with a four-hour lunch. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1368 | A better world is possible if people free their minds, join hands and work for change against oligarchs. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1374 | Reform is not on the side of working people: it voted against Employment Rights Act improvements and plans to scrap the Equality Act and lower the minimum wage. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1375 | Millionaire Farage is repulsive for targeting the lowest paid by threatening to lower the minimum wage and scrap workers' rights. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1399 | A four-day work week is something future generations might benefit from, after paying off debt left by the president | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+## theme Short-week and long-weekend feelings: 73 assertions, 204 docs (4.9%)
+e4 | Getting a four-day weekend after a short work week is something to look forward to. | 40 authors ▲40 ▼0 ·0 | 35 docs | camp: anchor▲17 anchor▼1
+e129 | This week is a four-day work week and is expected to be slow. | 35 authors ▲14 ▼0 ·21 | 32 docs | camp: anchor▲10 anchor▼0
+e118 | Being on a four-day work week is a welcome silver lining. | 22 authors ▲22 ▼0 ·0 | 14 docs | camp: anchor▲16 anchor▼0
+e11 | A four-day work week feels longer than a regular work week. | 21 authors ▲21 ▼0 ·0 | 15 docs | camp: anchor▲2 anchor▼10
+e139 | Being on a four-day work week is something to be thankful for. | 18 authors ▲18 ▼0 ·0 | 11 docs | camp: anchor▲13 anchor▼0
+e1056 | This four-day work week has felt like an eternity. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲1 anchor▼1
+e211 | A four-day weekend means four consecutive days off, often from a holiday or a compressed work week. | 6 authors ▲1 ▼0 ·5 | 6 docs | camp: anchor▲1 anchor▼0
+e75 | Getting several four-day weeks before a vacation is exciting. | 5 authors ▲5 ▼0 ·0 | 4 docs
+e793 | Having a planned day off consumed by work is frustrating. | 4 authors ▲4 ▼0 ·0 | 4 docs
+e801 | Returning to a full work week after a four-day holiday weekend is mean. | 4 authors ▲3 ▼0 ·1 | 4 docs
+e92 | A four-day work week is a welcome break that is needed. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e144 | The week after a short week feels like torture once you have tasted a four-day work week. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e200 | A four-day work week makes the midweek hump day feel strange. | 3 authors ▲1 ▼0 ·2 | 3 docs | camp: anchor▲1 anchor▼0
+e210 | This week does not feel like a four-day work week. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲0 anchor▼1
+e437 | More vacation time is preferable to a four-day work week, even if it means more working days overall. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e460 | Three-day weekends should last forever. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e629 | A three-day weekend improves mental health and the ability to get things done. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e637 | This week is a four-day work week before a four-day weekend, which is a good thing. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e851 | Moving to a four-day work week will let people run errands and text friends. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼1
+e1007 | A four-day weekend is worth a hard week at work. | 3 authors ▲3 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼0
+e1042 | This week is a four-day work week because of a public holiday. | 3 authors ▲1 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e72 | Taking Friday off to create two four-day weeks is a good trade. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e119 | Repeating the idea of a four-day work week helps people get through the workweek. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e132 | Having a three-day work week turned into a four-day week is an annoying change. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e201 | With a four-day work week, the midweek hump is barely noticed. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e243 | Filling the days off in a four-day work week is the worst part of it. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e262 | A midweek day off for errands is better than doing errands on weekends. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e263 | A long weekend is best seen as the lead-in to a four-day work week. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e271 | A holiday week plus a bridge day giving four days off is worth enjoying. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e413 | Having Monday off would be the best day off in a four-day work week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e712 | A three-day holiday weekend feels like a welcome four-day work week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1085 | Wanting a three-day weekend is preferable even to a four-day work week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e1279 | An upcoming four-day work week will be crazy busy because of extra commitments. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e506 | Occasional four-day weekends are preferable to taking a full week or more off. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e631 | Thursday already feels like the start of the weekend, so a four-day work week is wanted. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e645 | Switching to a four-day work week could unlock people's inner chaos. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e646 | Many people are taking a four-day weekend for Canadian Thanksgiving. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e703 | Moving every US holiday to a Friday would give workers a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e827 | Working Christmas Eve to have four days off in a row is preferable. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e831 | Thursday is the best Christmas day off because it creates a four-day weekend. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e861 | A four-day work week was the only good thing about a bad week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e863 | A four-day weekend is a welcome mini spring break. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e896 | Not having a four-day weekend this week is disappointing. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1036 | This week was a four-day week because of a UK bank holiday. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1041 | Back-to-back four-day work weeks are a welcome prospect. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1053 | A four-day work week followed by a four-day weekend is enjoyable. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1116 | A four-day weekend is not as long as a four-day work week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1145 | Returning to a fast work pace after four weeks of leisure is hard to adjust to. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1161 | A Four-Day Work Week party would be a welcome celebration. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1162 | This week is a confusing four-day work week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1173 | Scotland's World Cup bank holiday shows the benefits of a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1176 | A four-day work week with Friday and Saturday off is a benefit. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1186 | Closing offices on Fridays is lovely, and a four-day week at least once a month is wanted. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1187 | Vacations should end on a Monday, since a four-day week with a Friday eases the return to work. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1203 | Americans want a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1224 | A four-day work week after a bank holiday weekend will drag and cause work dread. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1235 | A three-day weekend is becoming a reality by stealth through four-day week and hybrid arrangements. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1254 | A Monday holiday is better than a Friday off because it eases you back into a four-day week ending on Friday. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1256 | The last day of a long four-day work week is worth celebrating. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1273 | A US four-day week should run Monday through Thursday so holidays create more four-day weekends. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1308 | Four-day work weeks and five-week vacations are desirable. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1309 | Hearing from people who work four days a week shows what a three-day weekend every week looks like. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1326 | Most people would love a four-day work week, which would boost workplace morale. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1329 | Returning to a five-day work week after short weeks feels drastic. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1342 | A reader can finish Spotify's reading goal within a single four-day work week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1355 | Having to work an extra day during a holiday week while others get a four-day weekend is annoying. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1356 | Returning to work after a four-day weekend is unwelcome. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1359 | A four-day work week running Tuesday to Friday would be a fun improvement, perhaps shifting Garfield's hatred of Mondays to Tuesdays. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1371 | If you could work a four-day week, a three-day weekend is preferable to Wednesdays off. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1372 | A four-day weekend (two four-day work weeks) is preferable to two three-day weekends. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1378 | A coworker repeatedly taking Mondays off to make a four-day work week is admirable dedication. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1393 | A holiday-shortened four-day work week should be called a 'Zacharia' | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1394 | A holiday-shortened four-day work week should be called a 'Zacharia' | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+## theme Pay, economy and business impact: 73 assertions, 170 docs (4.1%)
+e216 | The four-day workweek's pros, cons and feasibility for the economy merit public discussion. | 28 authors ▲12 ▼0 ·16 | 28 docs | camp: anchor▲12 anchor▼0
+e8 | A four-day week should be 32 hours paid the same as 40 hours. | 14 authors ▲11 ▼0 ·3 | 8 docs | camp: anchor▲13 anchor▼0
+e562 | More than 200,000 UK workers have switched to a four-day week since 2019. | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲4 anchor▼0
+e277 | Offering a four-day work week solves companies' difficulty finding employees. | 8 authors ▲8 ▼0 ·0 | 6 docs | camp: anchor▲6 anchor▼0
+e314 | Flexible work benefits help attract new talent and improve employee retention. | 7 authors ▲7 ▼0 ·0 | 6 docs | camp: anchor▲5 anchor▼0
+e451 | A four-day work week benefits both workers and employers. | 5 authors ▲5 ▼0 ·0 | 3 docs | camp: anchor▲4 anchor▼0
+e680 | A four-day work week combined with hybrid working is a selling point for a job vacancy. | 5 authors ▲3 ▼0 ·2 | 4 docs | camp: anchor▲2 anchor▼0
+e67 | A four-day week would financially hurt hourly workers who lose pay for days off. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼3
+e282 | Corporations will justify reduced pay once a four-day work week is adopted. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼2
+e323 | Switching to a four-day work week can be good for a company's bottom line. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e785 | A business is reported as adopting or discussing a four-day work week. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲3 anchor▼0
+e24 | A four-day work week gives people more time to spend money, which helps the economy | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e137 | A four-day work week that is not paid for the extra days off is frustrating. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e204 | Technology, automation and tax changes have benefited the extremely wealthy while leaving the working class behind. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e218 | Adopting a four-day work week in Australian labour law could boost labour productivity. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e313 | Productivity gains have made a four-day work week overdue. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e508 | Kickstarter runs a four-day work week for its staff. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e511 | Predictions that shorter working hours would ruin the economy were wrong, as the eight-hour day shows, so the four-day week should not be dismissed on economic grounds. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e558 | A four-day work week would benefit workers, employers and the rest of the country. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e652 | Accepting a 20% pay cut for a four-day week to avert layoffs was worthwhile. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e732 | 600 Australian workers are getting a historic four-day week. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e745 | Four-day weeks improve worker wellbeing and productivity, but businesses lobby against them because they reduce employer control. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e21 | Rejecting a four-day week led companies to downsize, overloading remaining workers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e34 | Organisational factors determine whether a four-day week takes hold across workplaces | 1 authors ▲0 ▼0 ·1 | 44 docs
+e199 | Boomers could afford housing, cars and holidays while working four days a week with a three-day weekend, and this shows people lack reward for working. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e203 | A four-day work week would deliver a tangible benefit to the working class and reframe income inequality debates. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e319 | Family Entertainment Television has embraced a four-day work week for better work-life balance. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e357 | Universal basic income would let employers weather a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e375 | A company is moving to a four-day schedule from September after cutting its second shift, with salary losses. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e443 | Improving human capital through shorter working weeks yields gains for both businesses and workers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e457 | Leaders who adopt a four-day work week will reap benefits for bottom lines and team morale. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e461 | Employers will be hard to convince not to cut pay for a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e493 | A company should run a four-day week with pay for five days to respect its people. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e507 | Bolt's four-day work week is effectively a 25% pay rise for workers, since they work four days for the pay of five-day jobs. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e570 | More than 100,000 UK workers have switched to a full-time four-day week since the pandemic. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e585 | A four-day week with a balance of hard work and quality personal life is an attractive job offer. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e641 | Bastible restaurant in Dublin is offering a sous chef job with a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e654 | A part-time receptionist job is offered on a four-day work week schedule. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e666 | RainTech has initiated a four-day work week for its clients and staff. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e696 | A game studio's four-day work week and avoidance of crunch are positive. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e700 | A primary care GP position in Christchurch, NZ offers a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e706 | Companies imposing a four-day week or unpaid leave during downturns signal a systemic economic crisis. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e724 | Over 50 organisations employing more than 1,400 workers permanently adopted a four-day week without pay reduction in 2025. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e725 | Vodafone Ireland's four-day week, paid for five days, is a great initiative. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e762 | The four-day work week has become a serious strategic lever for UK workplaces in 2026. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e766 | NZ employers must change attitudes toward four-day work weeks and hybrid work. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e912 | Societe Generale Bank Cyprus has agreed a four-day work week for staff. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e966 | A four-day week with no benefits is an unattractive offer. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1051 | The Ombuds Group is a Gold Standard accredited four-day week employer that supports work/life balance. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1095 | The four-day work week seems great for everyone except business owners. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1136 | A Chelyabinsk repair plant plans a four-day work week and potential layoffs due to decreasing orders. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲0 anchor▼1
+e1140 | A nationwide four-day week could save the UK £1 billion. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1158 | A shorter work week would save energy, childcare and transport costs and give communities time to connect. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1160 | A Trafford legal firm offers staff a strict four-day working week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1166 | Mid-sized companies can run a 32-hour four-day week like Kickstarter and Buffer. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1189 | A four-day work week would mean less profit and more wages for workers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1193 | Research examines what a four-day work week would cost Finnish exports and export price competitiveness. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1209 | Workers and businesses should do the financial sums before dropping a day for a four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1210 | People should look for jobs offering a four-day work week, healthcare benefits and a suitable salary. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1225 | A four-day work week equals 0.8 of full-time hours, so pay and hours for a 0.75 hire must be set fairly relative to it. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1255 | A four-day work week at the same salary is a choice to weigh against a $25,000 pay rise. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1259 | Running a four-day work week does not make a boss good if staff still face redundancies. | 1 authors ▲0 ▼1 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1271 | Employers could give a four-day week now at a living wage but choose to hoard the wealth instead. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1275 | A fifth workday can push workers into a higher tax bracket, so a four-day week can make financial sense. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1286 | The math for a four-day week has always been there; someone hid it. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1332 | Ontario Premier Doug Ford and the federal government are failing doctors and patients by refusing to pay doctors properly. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1336 | Safety nets tied to work combined with a low-wage labor market that doesn't provide a living wage is a failure. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1341 | Contractors on rotation schedules of 12-hour days get no benefits, so claims about their pay are overstated. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1360 | Minimum wage earnings cannot cover a family's food budget plus rent and utilities. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1363 | Minimum wage earnings cannot cover a family's food budget plus rent and utilities. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1365 | More American women hold multiple jobs due to high costs of living. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1387 | Transit fares eat nearly a day of minimum-wage pay just to get to work | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1388 | Companies offer part-time hours at low hourly pay that amounts to less than minimum wage | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme Worker health, wellbeing and burnout: 85 assertions, 155 docs (3.7%)
+e60 | Squeezing a full week's work into four days is stressful | 19 authors ▲19 ▼0 ·0 | 14 docs | camp: anchor▲3 anchor▼6
+e224 | Workers need a three-day work week with a four-day weekend to recover mentally from the week. | 15 authors ▲15 ▼0 ·0 | 7 docs | camp: anchor▲12 anchor▼3
+e1024 | Long working hours are linked to higher obesity, so cutting working time could help keep weight off. | 15 authors ▲15 ▼0 ·0 | 12 docs | camp: anchor▲7 anchor▼1
+e416 | A four-day week without pay cut improves workers' health, reduces burnout and boosts job satisfaction. | 14 authors ▲14 ▼0 ·0 | 10 docs | camp: anchor▲12 anchor▼0
+e26 | A four-day week could make workers more efficient, connected and happy | 12 authors ▲12 ▼0 ·0 | 7 docs | camp: anchor▲9 anchor▼1
+e223 | Frequent three- and four-day weeks leave workers feeling behind and wiped out. | 10 authors ▲10 ▼0 ·0 | 9 docs | camp: anchor▲0 anchor▼2
+e436 | A four-day work week improves physical and mental health and reduces burnout. | 9 authors ▲9 ▼0 ·0 | 5 docs | camp: anchor▲9 anchor▼0
+e7 | A four-day work week should leave time for household chores and being social. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲8 anchor▼0
+e124 | Organisations should be supported to adopt a four-day work week, which brings benefits like better work-life balance. | 7 authors ▲7 ▼0 ·0 | 5 docs | camp: anchor▲7 anchor▼0
+e408 | Disabled workers and working carers face real constraints on paid work, such as health limits and cutting hours. | 5 authors ▲5 ▼0 ·0 | 5 docs
+e526 | There is no good reason to work six days in a row. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e245 | Four-day working weeks reduce staff sick days. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e343 | Working over 60 hours in a week, with Saturday work added, is exhausting and a reason to want to relax. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e453 | A four-day work week has health benefits for employees. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e1027 | Long working hours are linked to higher obesity across OECD countries. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲3 anchor▼0
+e9 | A four-day week with flexible working can help close the gender gap in unpaid work. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e168 | A four-day week is viable and prioritising individual well-being creates a more humane working model. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e438 | A four-day week reduces stress and improves sleep. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲3 anchor▼0
+e454 | Four-day work weeks are good for employees' mental and overall health. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e458 | A four-day week without pay loss leaves employees happier, healthier and higher-performing. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e832 | Four-day weekends help people recover from work. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e233 | The four-day work week is meant to keep workers fresh, with enough time to recharge for deep thinking. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e450 | A four-day workweek is linked to better sleep, less fatigue and higher job satisfaction. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e516 | A mental health charity adopted a permanent four-day week after a successful pilot. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e836 | Greece's law allowing 13-hour workdays is harmful, since workers on six-day weeks are constantly exhausted. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1080 | Two-day weekends are not enough to recover from the week; a four-day work week is needed. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e53 | Reduced four-day schedules may empower nurse leaders and improve their work-life balance | 1 authors ▲1 ▼0 ·0 | 1 docs
+e90 | A six-hour day over four days a week helps prevent burnout. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e241 | A four-day week opens up conversation about human thriving when people are not in a constant cycle of stress. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e259 | Working 6-7 days a week for 12-14 hours a day is a marathon. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e279 | A major city dropping the five-day work week increased employee happiness. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e334 | A four-day working week boosts wellbeing and efficiency only if it is implemented properly. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e337 | A popular science article on the four-day week can help start-ups, union members and workers improve work/life balance. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e338 | Taking care of the people you work with benefits the whole world and is smart, as with a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e353 | New studies strengthen the public health case for a four-day work week. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e383 | Overworking to tears is a reason to switch to a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e439 | Four-day week trial participants slept better and felt their ability to work improved. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e441 | Better sleep and more time to exercise explain higher effectiveness on fewer work hours. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e456 | Reduced hours from a four-day week are linked to well-being gains through better sleep and less fatigue. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e590 | Mental health support for young people and whanau in Aotearoa New Zealand is severely inadequate. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e621 | A four-day week lets workers get as much done without starting or ending the week exhausted. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e653 | A four-day week with fewer hours would give people more time to exercise and cook, improving health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e655 | Grind culture reflects mediocre management that cannot accept that employee burnout is real. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e679 | Working four days rather than five is necessary for NHS staff to cope with pressure and moral injury. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e694 | Employees are leaving jobs in pursuit of better work-life balance. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e699 | Clatsop Behavioral Health's 36-hour four-day week shows that investing in the workforce pays off. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e736 | A four-day work week gives time for medical appointments and reduces sick calls. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e738 | Cutting the work week from 40 to 36 hours with no mandatory Friday hours creates space for rest and fights burnout. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e751 | Fewer working hours and more autonomy matter more than cutting days for women with children, so hours reduction is crucial for work-life balance. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e758 | Davina McCall has started a four-day work week after health scares. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e763 | A slightly lower salary with a four-day work week beats a higher salary with a burnout-heavy five-day grind. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e764 | Burnout and high levels of mental stress are entrenched in New Zealand's workforce. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e784 | A four-day working week resets the work/life balance from 5:2 to 4:3. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e885 | The four-day work week could serve as a workplace control for psychosocial hazards. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e918 | Staff working a four-day week make the work better and the workplace culture warmer. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e957 | Working four six-day weeks in a row is exhausting. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e961 | Taking at least one full day off from work each week helps health. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1045 | Six companies are trialling a four-day work week to reduce employee burnout. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1046 | Removing a four-day week to address workload is like cutting staff to fix burnout; the logic does not follow. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1052 | Work time compression and work time reduction have divergent implications for wellbeing and domestic labour. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1097 | What happens outside work is the most important insight into work, more than productivity. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1098 | Sanna Marin's 6/4 work model, where life comes before work, is a sound idea. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1099 | A four-day work week is a potential tool to improve wellbeing, support families and rethink how work is distributed. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1169 | Reduced hours without loss of pay may improve disability inclusion and retention. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1171 | A four-day work week reduces Sunday scaries. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1172 | Four days off in a week gave enough time to recover from six-day weeks. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1177 | Having a single day of rest makes the other non-working day frenetic for workers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1218 | For workers with disabilities, flexibility matters more than simply having Fridays off in a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1226 | Working seven 12-hour shifts and one 13-hour shift in ten days is exhausting. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1234 | Working four to six hours a day across seven days, staggered with rest, is healthier than working intensely and then taking full days off. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1245 | Demand for fewer working hours is the trend, and free time is key to quality of life. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1253 | Five-day work weeks are too much; they are tiring and a waste of time. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1276 | Bulkhead's four-day workweek came with crunch and overtime abuse, as shown in Glassdoor reviews. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1298 | Freelance workers feel intense pressure to be busy both at work and at leisure, so freelancing is not a clear escape like the four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1312 | When someone is burnt out, even a four-day work week seems like too much. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1316 | Whether a workplace adopts a four-day week or reins in long hours, it is about respecting people's time. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1331 | Employers forcing workers to work without breaks is illegal exploitation. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1354 | Work arrangements should be reassessed so people can spend more time doing what they want. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1367 | Understaffing leaves one person with too much work, making it pointless to come in. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1370 | Carrier deployment is exhausting because sailors work 24/7 for months with no time off. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1376 | A four-day work week improves sleep; lack of personal time is a structural problem, not a discipline problem. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1377 | Saying 'at least we work a four-day week' is a hollow response to being overworked and exhausted. | 1 authors ▲1 ▼0 ·0 | 0 docs
+e1379 | Sitting in a chair doing one mentally taxing task 40 hours a week causes restlessness and anxiety | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1380 | People are killing themselves just to stay alive under the current economic system | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1402 | Being on day four of a six-day work week is tiring. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+## theme Government, council and public-sector adoption: 100 assertions, 151 docs (3.6%)
+e715 | Local government secretary Steve Reed's criticism of a council's four-day week is embarrassing. | 21 authors ▲14 ▼1 ·6 | 13 docs | camp: anchor▲18 anchor▼0
+e47 | A leader who works only a few days a week while golfing on taxpayer money is not doing the job | 11 authors ▲10 ▼0 ·1 | 9 docs | camp: anchor▲2 anchor▼1
+e470 | A Scottish government trial of the four-day week improved productivity and staff wellbeing. | 9 authors ▲9 ▼0 ·0 | 8 docs | camp: anchor▲5 anchor▼0
+e713 | Steve Reed's opposition to four-day weeks is wrong and the Labour government's stance is a mistake. | 7 authors ▲6 ▼1 ·0 | 3 docs | camp: anchor▲7 anchor▼0
+e288 | Congress members work a four-day week with weeks off and hold no town halls, which is a sign of laziness. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲0 anchor▼1
+e69 | The MAGA-controlled House cut its four-day work week to three days by cancelling Friday votes. | 4 authors ▲4 ▼0 ·0 | 5 docs
+e347 | Campaigners are targeting dozens of UK councils to push for a four-day week. | 4 authors ▲1 ▼0 ·3 | 4 docs | camp: anchor▲4 anchor▼0
+e403 | South Cambridgeshire District Council has made a four-day working week permanent for staff. | 4 authors ▲2 ▼0 ·2 | 6 docs | camp: anchor▲1 anchor▼0
+e527 | Australia's Treasurer says there are no plans for a standardised four-day work week. | 3 authors ▲3 ▼0 ·0 | 5 docs | camp: anchor▲2 anchor▼0
+e10 | The Scottish Government is piloting a four-day week at two quangos with full pay. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e138 | The Scottish Greens' four-day work week for staff has positive results, and others should copy it. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e206 | Officials who take lots of paid time off and work only three to four days a week are hypocritical about fiscal responsibility. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e299 | The president is opposed to the four-day work week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e325 | The new federal government will not rule out four-day office attendance for public servants. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e406 | Conservative councillors who opposed the four-day week are against workers getting rest. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e409 | The first UK council to trial a four-day work week did so with no loss of pay. | 2 authors ▲0 ▼0 ·2 | 3 docs
+e475 | The Scottish four-day week trial reduced work-related stress and sick days while improving productivity and wellbeing. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e482 | A Scottish government four-day work week pilot was a success. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e484 | Another four-day week experiment is being run in the public sector. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲0 anchor▼1
+e501 | New York State should pilot a four-day workweek for private-sector employers. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e622 | Angry Scottish civil servants are threatening a showdown with the government over the right to a four-day work week. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e719 | Councils successfully shifting to a four-day work week should be celebrated, not criticised. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e829 | The government is ignoring four-day week trials that have proven to work. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e849 | Councils should have freedom to find workplace solutions, not face prescriptive central diktats. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1091 | Launceston council's four-day work week proposal had no standalone business case. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e1121 | Congress often operates on a three-to-four-day work week and takes the entire month of August off. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1178 | An Australian council is the first in the country to trial a four-day work week. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e1216 | New Brunswick municipalities report success with four-day work week policies. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e14 | Southbury will try a four-day work week for Town Hall employees. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e105 | DOGE's firing and rehiring of IRS employees was incoherent | 1 authors ▲1 ▼0 ·0 | 1 docs
+e215 | A four-day work week could transform city services in Ellsworth, Maine, or leave residents in the lurch. | 1 authors ▲0 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e308 | A Gwent council will set up a working group to study a four-day working week for staff. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e321 | Klamath County is considering a four-day work week to address its budget deficit. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e327 | A four-day work week pilot program should be implemented in Massachusetts. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e328 | A Massachusetts bill offers businesses tax incentives to join a two-year four-day work week pilot. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e400 | Massachusetts State Rep. Shirley Arriaga is pushing a four-day work week pilot program. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e411 | South Cambridgeshire staff have delivered 100% of their work in 80% of their hours since January 2023. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e488 | Canadian employers should learn from the Scottish four-day week trial. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e490 | Scottish ministers will not make the four-day week pilot permanent 'at this time', despite its success. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e497 | Tokyo's four-day work week policy may be what Philadelphia needs. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e572 | MPs' four-day weeks and long recesses are a privilege that ordinary workers on five-day weeks do not get. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e609 | UK progress on working from home and four-day weeks has stalled, while EU countries show it can be done. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e611 | The Scottish Government will not move to a 32-hour week and will use pilot examples to drive reform instead. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e633 | A four-day work week is a lot longer than Speaker Mike Johnson's work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e681 | Kingston extended its four-day work week for Town Hall staff beyond the trial period. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e683 | The San Diego County grand jury will work four days a week from July 2026 to June 2027. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e701 | Seattle should make the four-day work week official. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e709 | Ministers were dismissive of Cambridge University's four-day week research. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e710 | Cambridge City Council was happy with its four-day week trial. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e717 | A Lib Dem-run council's four-day week with full pay is under government scrutiny. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲0 anchor▼1
+e718 | Some MPs work less than even a four-day week, which is a problem. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e727 | Launceston City Council staff are set to vote on a four-day, full-pay work week. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e734 | The Labour government warned councils in writing against adopting an official four-day week. | 1 authors ▲0 ▼0 ·1 | 0 docs
+e737 | Some town offices are continuing a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e775 | Washington state lawmakers are considering a four-day work week idea this session. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e780 | Other workers should get the four-day week the German jobcenter already has, not only its staff. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e814 | A four-day work week will continue through the end of the fiscal year. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e815 | The UK government's failure to innovate on productivity is linked to its clocking-in performance metrics and its stance against four-day weeks. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e816 | Government ministers criticise councils' four-day weeks from headlines without examining how they are made to work. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e817 | The Labour government's opposition to council four-day weeks is direct interference at the behest of corporate UK. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e819 | Council four-day shift patterns mainly concern office staff versus bin staff, not a blanket four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e821 | Small business owners who oppose council four-day weeks are inhuman. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e822 | The Labour government fails at every test. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e823 | The central government's response to councils' four-day weeks is disappointing. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e824 | Labour pandering to Reform-style positions instead of progressive policies like the four-day week is a mistake. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e825 | The council four-day week story is a recycled 2023 story. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e826 | A four-day week can work if different staff take different days so council availability stays the same. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e842 | Government resistance to working time reduction reflects deep political obstacles to reform. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e843 | A four-day week with flexibility would be a sensible standard for council workers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e844 | A US state has a successful four-day work week for state employees, so it is not impossible. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e846 | Westminster ministers should not tell councils how to organise their work. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e847 | Council funding cut under the Tories should be restored, before councils are lectured about four-day weeks. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e855 | Lebanon's public administration employees association demands a four-day work week along with back pay and salary committee inclusion. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e856 | Dropping Launceston's four-day week proposal after business pressure is a setback for workers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e857 | Launceston's four-day week proposal is a 20 per cent pay rise for council staff with no clear return for the community. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e859 | An Australian council backing down on its four-day work week is a culture war distraction from class war. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e899 | Australia's federal public sector union is considering asking for a four-day work week trial. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e955 | Saint-Josse scrapped its four-day week for employees nearing retirement. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e998 | A major international city introduced a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1093 | Launceston council's campaign to sell the four-day work week failed. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1117 | The government decided against a four-day work week for public sector employees, keeping the five-day week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1124 | Westminster critics are wrong to dismiss independent evaluations, such as the Bennett Institute's, of council four-day week trials. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1125 | Conservatives say the council four-day week has left residents paying more council tax for less public service. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1130 | The USPS suspending employer pension contributions for its 640,000 workers is a financial crisis that harms the people who deliver the mail. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1147 | Victorian MLAs should work a full work week rather than sitting only a few months a year. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1175 | Bin collection crews currently work a four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1188 | Maryland shelved a four-day work week bill because switching employers would have required a $10,000 incentive each. | 1 authors ▲1 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e1191 | Federal public servants will work four days a week starting July 2026. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1202 | Portland police officers are paid 100% of salary to work about 90% of the time. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1236 | Miles has pumped the brakes on talk of a four-day public sector work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1239 | Government-backed trials would help make a four-day week happen. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1247 | The House of Representatives worked a four-day week before taking another week off. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1262 | Congress members effectively work a four-day week, with only two days of actual work each week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1283 | Congress is blocking Bernie Sanders' four-day work week bill. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1295 | Federal workers deserve 10% raises after nearly two years of hardship. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1296 | Mocking a worker's request for a four-day week is hypocritical, since governments call the same idea flexibility. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1297 | Greenburgh's council consultancy at four days a week, at £1,350 a day, is too expensive for taxpayers. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1306 | Cebu City Hall returned to a five-day work week after the mayor cancelled the four-day arrangement. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1310 | Government representatives' habits of multiple naps and long vacations show they do not work hard. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1339 | Edinburgh council employees refused a four-day week because it would mean working an extra day (joke). | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+## theme Productivity and trial evidence: 58 assertions, 149 docs (3.6%)
+e48 | A four-day week kept productivity stable while improving worker mental health | 49 authors ▲49 ▼0 ·0 | 29 docs | camp: anchor▲39 anchor▼0
+e1061 | Australian four-day work week study data shows boosted productivity. | 21 authors ▲7 ▼0 ·14 | 20 docs | camp: anchor▲4 anchor▼0
+e127 | The four-day work week works, can be done, and remains popular. | 17 authors ▲16 ▼0 ·1 | 12 docs | camp: anchor▲15 anchor▼0
+e1043 | Fifteen Australian companies that switched to a four-day week saw no loss of productivity. | 13 authors ▲10 ▼0 ·3 | 8 docs | camp: anchor▲11 anchor▼0
+e294 | Work output on a four-day week is the same as on a five-day week. | 12 authors ▲12 ▼0 ·0 | 6 docs | camp: anchor▲11 anchor▼0
+e293 | Studies show a four-day week gives higher total productivity than a five-day week. | 11 authors ▲8 ▼0 ·3 | 7 docs | camp: anchor▲11 anchor▼0
+e247 | All 17 UK companies in a six-month four-day week trial (nearly 1,000 workers) will keep reduced hours permanently. | 10 authors ▲10 ▼0 ·0 | 6 docs | camp: anchor▲8 anchor▼1
+e336 | A four-day week trial led companies to report higher productivity and growth, and workers to report less stress and burnout. | 8 authors ▲8 ▼0 ·0 | 4 docs | camp: anchor▲7 anchor▼0
+e423 | Boston College research held six-month four-day week trials across 141 organisations. | 8 authors ▲2 ▼0 ·6 | 6 docs | camp: anchor▲5 anchor▼0
+e226 | A person could still get all of their work done during a four-day work week. | 7 authors ▲5 ▼2 ·0 | 3 docs | camp: anchor▲5 anchor▼2
+e25 | A four-day week has been proven to increase productivity | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e361 | Reducing working time brings productivity gains because workers rest and return more engaged. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e449 | Companies in a four-day week trial reported productivity and revenue increases. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e584 | Working only four hours a day with intense focus is effective. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲2 anchor▼0
+e12 | A four-day week neither hurt nor helped productivity at a tech company. | 3 authors ▲0 ▼0 ·3 | 3 docs | camp: anchor▲3 anchor▼0
+e212 | Cutting meetings is the secret to getting five days of productivity from a four-day work week. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e317 | Employers can benefit from a four-day week, according to a trial. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e186 | A four-day week causes no drop in productivity and 67% of workers would sacrifice some salary for it. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e242 | Sussex businesses report benefits from a four-day working week, including doubled productivity and better work-life balance. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e281 | Juliet Schor's research shows a four-day work week works better for workers and businesses. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e452 | Over 90% of companies in the four-day week trial kept the shorter schedule. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e455 | A four-day workweek trial in high-income countries improved workers' well-being. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e513 | Being busy is not the same as being effective; work should be simplified rather than intensified. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e962 | If employees deliver five days' output in four, management must justify the fifth day. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1170 | In 61 UK companies that cut to a four-day week with no pay cut, revenue stayed roughly flat, burnout fell, and 56 kept the change. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e225 | Overworked employees tend to become less efficient, and the four-day workweek has evidence supporting its efficacy. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e235 | A trial of a shortened work week produced results so good that the company permanently adopted it. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e246 | All UK firms that trialled a four-day week have adopted it permanently. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e254 | A four-day week trial's success means it should become nationwide policy. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e295 | All countries with four-day work weeks report improved productivity. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e316 | Trial results from self-selecting participants do not show what would happen if others tried a four-day week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e351 | Productivity and profit rise when people are happy, as shown by 90% of companies keeping the four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e352 | People want to work smart and only four days a week rather than adding minutes to the working day. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e358 | Global studies confirm the sustained financial and human benefits of the four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e359 | A four-day week motivates colleagues to band together and implement process changes. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e424 | Employees paid for five days but working four say the four-day week improves their work performance. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e473 | A 32-hour week improves wellbeing and productivity. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e486 | Longer working hours lower the quality of work. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e495 | 4 Day Week Global began a worldwide pilot of the four-day week with companies that kept pay unchanged. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e519 | A four-day week paid at five-day rates would bring more focus at work and room for creative thinking. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e560 | A breakthrough study may be the tipping point for the four-day working week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e579 | Four-day work week trials saw high satisfaction and solid productivity, but scaling them is the real test. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e617 | Seven in 10 workers feel they could be just as productive in a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e731 | Working 72 hours a week is not productive. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e750 | Some workplaces already have a four-day work week, and studies show people do only about 4-6 hours of real work a day. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e753 | A four-day schedule in a newsroom increased job satisfaction, boosted productivity and reduced overtime. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e833 | 11% of UK workers are now on four-day weeks. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e858 | Any executive who does not advocate a four-day work week is not making decisions based on evidence. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1017 | Doubting four-day week data until more evidence arrives is absurd. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1050 | The 100:80:100 four-day model pays 100% of normal pay for 80% of hours while keeping 100% of output, as tested in 15 firms. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e1072 | A 15-company Australian study shows the 100:80:100 four-day week maintains or boosts productivity while reducing burnout. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1084 | In an Australian four-day week trial, none of 15 companies saw a productivity drop and six saw increases. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+   (+6 more in this theme: 4 docs; largest folded has 1 authors)
+## theme Energy crisis and international adoption: 80 assertions, 134 docs (3.2%)
+e865 | Sri Lanka has moved to a four-day work week to conserve fuel. | 17 authors ▲0 ▼0 ·17 | 15 docs | camp: anchor▲5 anchor▼1
+e871 | Pakistan has put government offices on a four-day week amid the Iran war fuel crisis. | 7 authors ▲4 ▼0 ·3 | 6 docs | camp: anchor▲1 anchor▼1
+e31 | Policies on the four-day week in Spain, Portugal and the UK are worth discussing and reducing working hours is desirable | 6 authors ▲5 ▼0 ·1 | 5 docs | camp: anchor▲2 anchor▼0
+e932 | Asian governments are adopting four-day work weeks and school closures to conserve energy amid a fuel crunch. | 6 authors ▲0 ▼0 ·6 | 10 docs | camp: anchor▲1 anchor▼0
+e341 | Russian automakers AvtoVAZ, GAZ and KAMAZ have cut their working weeks from five days to four, and KAMAZ to three. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲0 anchor▼2
+e365 | Russian auto plants have moved to four-day weeks amid falling demand. | 4 authors ▲1 ▼0 ·3 | 4 docs
+e956 | The Philippines declared a national energy emergency and moved government offices to a four-day work week. | 4 authors ▲0 ▼0 ·4 | 4 docs
+e193 | A four-day work week is better for consumption patterns and the planet. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e370 | Russian automaker Avtovaz moved to a four-day week because of weak demand and borrowing costs. | 3 authors ▲0 ▼0 ·3 | 3 docs
+e381 | Cemros, Russia's largest cement producer, is shifting to a four-day work week due to declining demand. | 3 authors ▲0 ▼0 ·3 | 4 docs | camp: anchor▲0 anchor▼2
+e788 | Cuba adopted a four-day work week as part of measures to address its energy crisis. | 3 authors ▲0 ▼0 ·3 | 3 docs
+e881 | Workers in multiple countries are switching to four-day work weeks due to oil shortages. | 3 authors ▲1 ▼0 ·2 | 3 docs
+e891 | The Iran war may bring a four-day week that could stick, according to experts. | 3 authors ▲1 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e909 | The Philippines is shifting to a four-day work week to cut fuel use as Middle East oil prices rise. | 3 authors ▲2 ▼0 ·1 | 4 docs
+e984 | Marcos has announced a temporary four-day work week for government offices. | 3 authors ▲0 ▼0 ·3 | 3 docs
+e339 | Gorky Automobile Plant is introducing a four-day work week because of a falling car market. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲0 anchor▼1
+e354 | The four-day work week is being trialled in the Russian automotive industry, alongside reduced coal production. | 2 authors ▲0 ▼0 ·2 | 1 docs | camp: anchor▲0 anchor▼2
+e388 | Australia's four-day work week could be accelerated amid a growing trend. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e396 | Australia had a 35-hour week in the 1980s to early 1990s, operated as a nine-day fortnight. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e583 | Russia may switch to a four-day workweek, according to deputies, though not for all professions. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e940 | Major governments are mandating that workers stay home to save fuel during an energy crisis tied to the Middle East war. | 2 authors ▲0 ▼0 ·2 | 2 docs
+   (+59 more in this theme: 50 docs; largest folded has 1 authors)
+## theme AI, technology and automation: 50 assertions, 100 docs (2.4%)
+e902 | OpenAI's proposals for the AI economy include a four-day work week alongside robot taxes and public wealth funds. | 20 authors ▲1 ▼0 ·19 | 20 docs | camp: anchor▲4 anchor▼0
+e287 | AI could be the key to realizing a four-day work week. | 12 authors ▲6 ▼1 ·5 | 12 docs | camp: anchor▲6 anchor▼0
+e939 | Predictions that technology would bring a four-day work week have not come true. | 11 authors ▲8 ▼0 ·3 | 9 docs | camp: anchor▲4 anchor▼1
+e283 | AI is a new booster for the case for a four-day work week. | 7 authors ▲7 ▼0 ·0 | 5 docs | camp: anchor▲3 anchor▼0
+e234 | If AI raises productivity, it should be used to push a four-day work week rather than layoffs. | 5 authors ▲5 ▼0 ·0 | 2 docs | camp: anchor▲5 anchor▼0
+e237 | AI should lead to a four-day work week, as argued by Bernie Sanders. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e1208 | AI will not usher in a four-day work week because people are competitive and want to keep working (Sam Altman's claim). | 5 authors ▲1 ▼2 ·2 | 4 docs | camp: anchor▲3 anchor▼0
+e627 | AI owners will not share productivity gains through a four-day week and will extract the last penny from workers. | 4 authors ▲4 ▼0 ·0 | 3 docs | camp: anchor▲1 anchor▼1
+e195 | Society should respond to AI-driven job losses by having everyone work less. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲3 anchor▼0
+e284 | AI doing employees' jobs for a day a week will lead to job cuts, such as fast-food kiosks replacing staff. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e379 | Tech workers were asking bosses about four-day work weeks only a few years ago, which now seems surprising. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲0 anchor▼3
+e754 | A four-day work week is possible without AI. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲2 anchor▼0
+e626 | UBI is needed rather than a four-day work week, and UBI is becoming inevitable. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e1023 | AI productivity gains are being used to demand more output rather than give workers four-day weeks. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e1112 | OpenAI proposes taxes on AI profits, public wealth funds and expanded safety nets to address job loss and inequality. | 2 authors ▲1 ▼0 ·1 | 2 docs
+e1268 | A three- to four-day work week can be achieved now through an inflation-linked minimum wage and flexible scheduling, without AI. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+   (+34 more in this theme: 28 docs; largest folded has 1 authors)
+## theme Return-to-office and in-office mandates: 60 assertions, 91 docs (2.2%)
+e50 | Intel will require employees to work a four-day in-office week as part of flattening its organization | 10 authors ▲0 ▼0 ·10 | 10 docs | camp: anchor▲2 anchor▼0
+e1039 | California state agencies were told to prepare for a four-day in-office week. | 7 authors ▲1 ▼0 ·6 | 11 docs
+e309 | Everyone should have the option to work from home when they want. | 4 authors ▲4 ▼0 ·0 | 4 docs | camp: anchor▲1 anchor▼0
+e331 | Starbucks demands corporate workers return to the office at least four days a week or be paid to leave. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲3 anchor▼0
+e109 | Working from home is more productive than working in the office | 3 authors ▲3 ▼0 ·0 | 2 docs
+e393 | Starbucks' four-day office mandate for corporate staff is hypocritical while the CEO works remotely. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e551 | Penske Media requires staff to work in the office at least four days a week or be deemed to have resigned. | 3 authors ▲0 ▼0 ·3 | 3 docs
+e329 | Starbucks mandates four in-office days a week for corporate staff. | 2 authors ▲0 ▼0 ·2 | 2 docs | camp: anchor▲1 anchor▼0
+e603 | Penske cut work-from-home jobs with an in-office mandate and forced resignations. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e729 | Being office-bound four days a week is exhausting. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e786 | Canada's federal four-day in-office mandate for public servants should be fought. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e884 | Raising commuting costs for workers who come in four days a week is unfair. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1206 | Newsom's rigid in-office mandate for California state workers undermines the state's progressive promise. | 2 authors ▲2 ▼0 ·0 | 2 docs
+   (+47 more in this theme: 42 docs; largest folded has 1 authors)
+## theme Compressed hours and alternative schedules: 63 assertions, 85 docs (2.0%)
+e128 | Working four 10-hour shifts is preferable to five days for the extra day off. | 12 authors ▲11 ▼1 ·0 | 6 docs | camp: anchor▲11 anchor▼0
+e30 | Four 6-hour days should be the standard full-time work week | 6 authors ▲6 ▼0 ·0 | 3 docs | camp: anchor▲6 anchor▼0
+e93 | A real four-day week with fewer hours is better than American compressed four-day weeks of five days squeezed into four. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼2
+e684 | Work days should be four hours long, with only four workdays in a week. | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲6 anchor▼0
+e979 | RMT tube drivers voted to strike over TfL's four-day week proposal without contractual hour changes. | 6 authors ▲0 ▼0 ·6 | 5 docs | camp: anchor▲2 anchor▼0
+e222 | Ten-hour workdays are too long, and sometimes stretch to twelve hours. | 5 authors ▲5 ▼0 ·0 | 4 docs | camp: anchor▲2 anchor▼0
+e244 | A four-day work week is just four 12-hour days, not a real reduction in hours. | 4 authors ▲3 ▼0 ·1 | 3 docs | camp: anchor▲0 anchor▼2
+e267 | A 32-hour week worked any time Monday to Sunday is worth considering. | 4 authors ▲0 ▼0 ·4 | 4 docs | camp: anchor▲0 anchor▼1
+e76 | Compressed schedules of 12-hour shifts with four days off are preferable to five 8-hour days. | 3 authors ▲3 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼1
+e669 | Four-on/four-off shift schedules make it hard to keep track of what day of the week it is. | 3 authors ▲2 ▼0 ·1 | 3 docs
+e928 | London Underground's proposed four-day condensed week is five days' work squeezed into four and should be opposed. | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼1
+e2 | Portland police officers work four 10-hour shifts per week with a set three-day weekend. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e61 | Working four 11-hour shifts gives a three-day weekend but puts the rest of life on hold | 2 authors ▲1 ▼0 ·1 | 2 docs
+e305 | Working four 8-10 hour days a week for part of the year is a workable schedule. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e402 | Chompz works four 12-hour shifts a week. | 2 authors ▲1 ▼0 ·1 | 1 docs | camp: anchor▲1 anchor▼0
+e498 | Wednesday should not be one of the four workdays in a four-day week. | 2 authors ▲1 ▼1 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e500 | The four-day week should rotate days off so everyone has workday and weekend options. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e615 | Working from home one day a week makes a schedule feel like a four-day work week. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1163 | Talks failed to resolve a dispute over TfL's four-day work week proposal. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e17 | Shorter shifts with full benefits and short commutes are desirable. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e116 | Consistent weekly scheduling matters more to workers than a four-day work week | 1 authors ▲1 ▼0 ·0 | 1 docs
+e209 | Flex schedules, job sharing and a four-day work week are things workers should advocate for. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e269 | A 32-hour week with flexible timing across Monday to Sunday could be the next step in flexible work. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e304 | Workers should plan for four working days and schedule a fifth as a buffer. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e307 | A 32-hour work week spread across seven days is a recommended arrangement. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e326 | A four-day 9-hour week totals 36 hours, which is not full time. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e366 | Working 14 hours over four days plus a weekend shift eats up a large amount of free time. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e442 | Accrued personal time let custodians effectively work three-day weeks in summer, which is a good arrangement. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e509 | A large accrued PTO bank that lets someone effectively work a four-day week is valuable. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e578 | Employees who finish their work early in the week should be allowed to take the rest of the week off. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e619 | Under a four-day week, staff can cover phones on overlapping shifts. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e656 | Remote workers cutting Friday hours could open the door to a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e658 | Wednesday, Saturday and Sunday off is the ideal four-day week schedule. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e677 | Shorter work days would be better than a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e749 | A schedule of 12-hour shifts over three days paid better than four 10-hour weekly shifts. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e768 | Reducing hours in a four-day week is safer for employers and employees than 10-hour days. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e770 | Workers should get a minimum number of daylight hours off work, so winter brings four-day weeks. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e774 | Five days of varying long hours is ridiculous; a four 8-hour day week would be better. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e783 | Five days a week of nonstop work is unsustainable; people need alternating four- and three-day weeks. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e828 | A whole extra day off each week is preferred over compressed four-day weeks. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e848 | A four-day week means the same hours worked over four days, not part-time pay for full-time work. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e889 | London Underground drivers struck against a longer working day imposed under a supposed four-day week scheme. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e894 | Shorter workdays of four to six hours are preferable to eight-hour days. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e951 | Workers who must work a Saturday should be compensated with a four-day week the following week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e978 | Four consecutive workdays are unacceptable; days off should be split across the week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1058 | Few people on a four-day work week actually work full time, since four days means 9.5-hour days. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1090 | Work should be a 20-hour week of five-hour days over four days with Mondays off. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1128 | A four-day week with Monday off is really a five-day week, so only a Friday-off schedule counts as a true four-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1149 | Full-time hours compressed into four days is the way of the future. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1150 | The elimination of 4/10 shifts affected about 85 employees. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1153 | A fully flexible work week with reduced hours is better than a fixed Monday-to-Friday 9-5 schedule. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1167 | Cutting a voluntary four-day schedule's shift lengths and forcing early departures is bad for workers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1197 | Entrust is a Gold accredited four-day week employer, and its four-day week supports work-life balance. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1199 | Chayn is a Gold Standard accredited four-day week employer, and a four-day week offers balance for its staff. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1207 | Causeway is a four-day work week studio that values its weekends. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1237 | Some Canadian conservation job postings offer a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1242 | Not being allowed to work a four-day week around a video game release is cruel. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1243 | Employees choosing their own day off within a four-day week, with shortened shifts for parents, works well. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e1252 | Employers normally want four 10-hour days for a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1272 | An eight-day week with a three-day weekend is a better alternative than a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1328 | A four-day work week starting on Sunday is not what is wanted. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1340 | A three-day work week is better than a four-day work week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1397 | Working seven straight days before moving to a three-day shift schedule makes for a long week | 1 authors ▲1 ▼0 ·0 | 1 docs
+## theme Opposition, skepticism and feasibility: 71 assertions, 83 docs (2.0%)
+e27 | The four-day work week will never happen | 15 authors ▲14 ▼1 ·0 | 10 docs | camp: anchor▲6 anchor▼4
+e191 | Workers should accept long hours and no vacations rather than demand a four-day week. | 8 authors ▲2 ▼6 ·0 | 4 docs | camp: anchor▲5 anchor▼3
+e32 | Not everyone can realistically work a four-day week | 6 authors ▲6 ▼0 ·0 | 4 docs | camp: anchor▲3 anchor▼1
+e175 | Corporations oppose four-day weeks because they don't want workers to have free time. | 4 authors ▲4 ▼0 ·0 | 2 docs | camp: anchor▲4 anchor▼0
+e553 | A four-day workweek promising full pay and productivity for 80% of the time sounds too good to be true. | 4 authors ▲2 ▼0 ·2 | 5 docs | camp: anchor▲1 anchor▼0
+e1011 | The four-day work week has remained niche despite the hype that it would fix burnout and congestion. | 4 authors ▲0 ▼0 ·4 | 4 docs
+e28 | A four-day work week is less important than fixing issues like the federal minimum wage | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e59 | A four-day work week only helps if the employer's HR strategy was already sound | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e80 | The four-day week is not standard because of a cultural fetish for working hard rather than smart. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼1
+e148 | Work still has to be completed whether the week is four days or five days. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e255 | A four-day week is hard to apply at big for-profit businesses. | 2 authors ▲0 ▼1 ·1 | 1 docs | camp: anchor▲2 anchor▼0
+e324 | Wanting a four-day work week is one of the things people label as communist. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲0 anchor▼1
+e342 | Four-day week studies repeat that it makes everyone happier and productive, while employers resist losing control over workers' lives. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e445 | The five-day work week may have problems. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e543 | The four-day week sounds feasible, since the five-day week is only about a century old. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e688 | Decades of studies on the four-day work week have had no real impact on how people live. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼1
+e1089 | The four-day work week concept is popular but failing. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+   (+54 more in this theme: 39 docs; largest folded has 1 authors)
+## theme Iceland, Netherlands and country case studies: 43 assertions, 68 docs (1.6%)
+e46 | Iceland's four-day work week trial has succeeded, with its predictions coming true | 19 authors ▲18 ▼0 ·1 | 10 docs | camp: anchor▲19 anchor▼0
+e464 | The Dutch are shifting towards a four-day work week. | 16 authors ▲10 ▼0 ·6 | 16 docs | camp: anchor▲4 anchor▼0
+e705 | Iceland's experience with the four-day work week is worth researching. | 5 authors ▲0 ▼0 ·5 | 5 docs
+e613 | Dutch workers have quietly abandoned the five-day week, averaging 32.1 hours in 2024. | 4 authors ▲3 ▼0 ·1 | 2 docs | camp: anchor▲4 anchor▼0
+e1165 | Dubai may bring back its four-day summer work week in 2026. | 4 authors ▲0 ▼0 ·4 | 4 docs
+e83 | Iceland's four-day week reduced gender disparities in housework and childcare because men spend more time at home. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e182 | Iceland kept salaries and working conditions unchanged despite a shorter work week. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e298 | Finland has actually moved to a four-day work week. | 2 authors ▲0 ▼2 ·0 | 2 docs
+e465 | The Netherlands' experience shows a four-day week is not nirvana but not a fast track to economic ruin. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e467 | The Netherlands shows both the advantages and trade-offs of reduced working hours. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e634 | The Netherlands has shorter average working hours combined with high productivity per hour. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e651 | France offers a four-day work week among benefits the US lacks. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+   (+31 more in this theme: 21 docs; largest folded has 1 authors)
+## theme School and education four-day weeks: 48 assertions, 64 docs (1.5%)
+e659 | Scottish teachers could work a flexible four-day week in class under government plans. | 11 authors ▲5 ▼0 ·6 | 13 docs | camp: anchor▲5 anchor▼0
+e57 | Shifting public schools to a four-day school week is a good idea | 8 authors ▲6 ▼1 ·1 | 5 docs | camp: anchor▲5 anchor▼1
+e54 | Four-day school weeks are possible and already happen | 3 authors ▲2 ▼0 ·1 | 2 docs | camp: anchor▲2 anchor▼0
+e797 | The four-day school week fails to provide childcare, so the whole country should move to a four-day week. | 3 authors ▲3 ▼0 ·0 | 2 docs | camp: anchor▲1 anchor▼0
+e803 | Rural school districts are adopting four-day school weeks to stretch budgets, though the evidence is mixed. | 3 authors ▲3 ▼0 ·0 | 3 docs
+e220 | Four-day school weeks have no effect on teacher, principal or paraprofessional staff turnover. | 2 authors ▲1 ▼1 ·0 | 1 docs | camp: anchor▲0 anchor▼2
+e322 | A four-day school week is not a magic bullet and only works when instructional time and family supports are maintained. | 2 authors ▲2 ▼0 ·0 | 2 docs | camp: anchor▲0 anchor▼1
+e582 | Educators deserve a better working week, such as a four-day week, for better work-life balance. | 2 authors ▲1 ▼0 ·1 | 2 docs | camp: anchor▲1 anchor▼0
+e690 | Working at a school with a four-day work week would be desirable. | 2 authors ▲2 ▼0 ·0 | 1 docs | camp: anchor▲2 anchor▼0
+e834 | A four-day school week is not feasible while the standard work week is five days, because parents need childcare. | 2 authors ▲2 ▼0 ·0 | 2 docs
+e1320 | Teachers could be allowed to work four-day weeks under government plans. | 2 authors ▲0 ▼0 ·2 | 2 docs
+e3 | The four-day school week is driven by teachers wanting shorter weeks, a labour demand, rather than by broader workplace trends. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e51 | Bay City ISD is considering a shift to a four-day school week | 1 authors ▲0 ▼0 ·1 | 1 docs
+e56 | A shortened three-day school week is glorious even though five days of work get squeezed into three | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e97 | New Zealand should gradually move away from the traditional five-day school week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e227 | A four-day school week where students work at a company once a week, as tested in Saxony-Anhalt, can be educationally beneficial. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲1 anchor▼0
+e355 | A study shows the four-day school week is bad for students. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e397 | Teachers would give up summers in exchange for a four-day school week with every Friday off. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e492 | A four-day week is the way forward to retain and recruit Scottish secondary school teachers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e502 | Sharjah has a four-day work week, so its universities also follow a four-day work week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e510 | The claim that a four-day school week 'works itself out' once parents adjust is doubtful. | 1 authors ▲0 ▼1 ·0 | 1 docs
+e657 | The four-day school week deserves further exploration and research. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e676 | A four-day academic week for health professions students in the UAE is worth studying for how students perceive it. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e711 | Shebbear College is switching its Sixth Form to a four-day school week. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e721 | Parents are wondering when they might get a four-day work week to match four-day school weeks. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e743 | Turkish vocational education students work four days a week and attend school one day. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e747 | The Scottish teachers' four-day proposal is not a true four-day week because it redistributes hours rather than reducing them. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e756 | A four-day school week is impractical without major investment in additional childcare. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e781 | A setup with a five-day work week for parents and a four-day school week for kids is a good idea that avoids childcare problems. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e795 | A four-day school week that ignores parents' work schedules is bonkers. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e796 | A teacher four-day week should come with higher teacher salaries and a fix to tier 6 pay. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e798 | Teacher advocacy groups demanding a four-day working week for teachers are ridiculous. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e799 | A teacher's four-day week with a fifth day for marking and prep is still a five-day week. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e800 | Root causes of teacher workload, such as testing, behaviour and class sizes, need addressing rather than just a shorter week. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e802 | Reducing teacher work-weeks instead of raising pay is a failed response to teachers quitting. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e804 | Schools should trial a four-day week to boost teacher recruitment and retention. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e805 | Teacher workload should be cut rather than squeezed into fewer days. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e808 | A four-day week for teachers would be a clever way to end the teacher staffing crisis. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e809 | A four-day week won't save teachers from burnout. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e810 | English teachers work 26 hours of unpaid overtime weekly, driving record teacher vacancies. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e811 | A four-day week for teachers with a flexible fifth day would move marking and prep into paid working time. | 1 authors ▲1 ▼0 ·0 | 1 docs
+e1018 | Pocatello District's shift to a four-day school week raises serious concerns about staff pay and student learning. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲0 anchor▼1
+e1183 | Corporations push for four-day school weeks so they can hire teenagers for the extra day. | 1 authors ▲1 ▼0 ·0 | 1 docs | camp: anchor▲0 anchor▼1
+e1319 | Teachers' requirement to be available for work 195 days a year could be scrapped while schools stay five-day. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1321 | Teachers' contracted hours could be compressed into fewer days while children keep a five-day week. | 1 authors ▲0 ▼0 ·1 | 1 docs | camp: anchor▲0 anchor▼1
+e1322 | Teachers in council-run schools could complete contracted hours over four days with higher pay. | 1 authors ▲0 ▼0 ·1 | 1 docs
+e1327 | A four-day week for teachers sounds lovely, but teacher workload is the obstacle. | 1 authors ▲1 ▼0 ·0 | 0 docs | camp: anchor▲1 anchor▼0
+e1395 | Godley ISD narrowly voted for a hybrid school calendar, raising concerns about education quality and teacher retention | 1 authors ▲0 ▼0 ·1 | 1 docs

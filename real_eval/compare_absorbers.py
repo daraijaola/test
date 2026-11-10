@@ -22,13 +22,13 @@ def main(a: Path, b: Path):
     ids = sorted(texts)
     rng = np.random.default_rng(5)
     aud = sorted(rng.choice(ids, size=100, replace=False).tolist())
-    pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()))
+    pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()), next(iter(sts.values()))["topic"])
     res = {"points": len(pts)}
     for name, st in sts.items():
         L = st["ledger"]
         ing = json.loads((Path(a.parent) / name / "ingest.json").read_text())
         r = {"entries": len(L.entries), "ingest_usd": ing["usd"], "residual_pct": ing["residual_pct"],
-             "audit": {k: v for k, v in audit(L, texts, aud).items() if k != "wrong_notes"}}
+             "audit": {k: v for k, v in audit(L, texts, aud, st["topic"]).items() if k != "wrong_notes"}}
         for view, (text, _) in (("theme view", L.render_multires(32000)), ("full ledger", L.render(10_000_000))):
             r[view] = {**coverage(view, text, pts), "tokens_est": L.est_tokens(text)}
         res[name] = r

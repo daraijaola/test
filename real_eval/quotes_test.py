@@ -23,7 +23,7 @@ def main(d: Path):
     res = []
     for r in range(2):
         rng = np.random.default_rng(3000 + r)
-        pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()))
+        pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()), st["topic"])
         row = {"points": len(pts)}
         for name, (text, shown) in (("plain view", L.render_multires(32000)),
                                     ("view + quotes", L.render_multires(32000, quotes=texts))):

@@ -77,12 +77,14 @@ def ops_desc(L, d):
     return "; ".join(out)
 
 
-def audit(L, texts, sample):
+def audit(L, texts, sample, topic):
+    anchor = L.entries[0].text.replace("ANCHOR: ", "") if 0 in L.entries else "(none)"
+
     def one(chunk):
-        user = ("Each post below was filed into a ledger of assertions about seed oils. Grade the filing.\n"
+        user = (f"Each post below was filed into a ledger of assertions about {topic}. Grade the filing.\n"
                 "correct = every op fits (right entry meaning, right support/dispute/mention); minor_issue = "
                 "roughly right but imprecise; wrong = misfiled, wrong stance, or a contentful post called "
-                "noise/residual. anchor_ok: is the support/dispute on the ANCHOR entry (author in favor of seed oils) "
+                f"noise/residual. anchor_ok: is the support/dispute on the ANCHOR entry (statement: '{anchor}') "
                 "right, or na if there is no anchor op and none was needed (answer 'no' if one was needed but missing).\n\n" +
                 "\n\n".join(f"<post id={d}>{texts[d]}</post>\nOPS: {ops_desc(L, d)}" for d in chunk))
         out, _ = llm.complete(JUDGE, "You audit data labelling. Output JSON only.", user, AUDIT_SCHEMA, effort="medium")
@@ -96,9 +98,9 @@ def audit(L, texts, sample):
             "wrong_notes": [r["note"] for r in rows if r["verdict"] == "wrong"][:15]}
 
 
-def points(texts, sample):
+def points(texts, sample, topic):
     def one(chunk):
-        user = ("For each post, state in one short sentence the main point it makes about seed oils (or about "
+        user = (f"For each post, state in one short sentence the main point it makes about {topic} (or about "
                 "people/policies related to them). Use null if it makes no point at all.\n\n" +
                 "\n".join(f"<post id={d}>{texts[d]}</post>" for d in chunk))
         out, _ = llm.complete(JUDGE, "You summarise posts. Output JSON only.", user, POINT_SCHEMA)
@@ -144,12 +146,12 @@ def census(L, texts, plan):
     return scope, hits
 
 
-def qa(L, texts, render, bm, n, ents):
+def qa(L, texts, render, bm, n, ents, topic):
     rows = []
     for ent in ents:
         gold_ids = [d for d in texts if mentions(texts[d], ent)]
         gold = {"count": len(gold_ids), "authors": len({L.docs[d].author for d in gold_ids})}
-        q = (f"Across all {n} posts about seed oils: how many posts mention '{ent}' (as a word, prefix or hashtag), "
+        q = (f"Across all {n} posts about {topic}: how many posts mention '{ent}' (as a word, prefix or hashtag), "
              f"and how many distinct authors wrote them?")
         ans, cost = {}, {}
         before = llm.SPEND["usd"]
@@ -170,7 +172,7 @@ def qa(L, texts, render, bm, n, ents):
                                "\n\nQUESTION: " + q, ANSWER_SCHEMA, effort="low")
         ans["ledger+census"], cost["ledger+census"] = out, u1 + c_census + u2
         for k in (20, 100):
-            top = bm.top((ent + " seed oils").lower().split(), k)
+            top = bm.top((ent + " " + topic).lower().split(), k)
             out, u = llm.complete(READER, "You answer corpus-level questions. Output JSON only.",
                                   f"RETRIEVED POSTS (top {k} of {n}):\n" + "\n".join(f"- {texts[d]}" for d in top) +
                                   "\n\nQUESTION: " + q, ANSWER_SCHEMA, effort="medium")
@@ -185,7 +187,7 @@ def qa(L, texts, render, bm, n, ents):
     return rows
 
 
-def main(d: Path):
+def main(d: Path, do_qa: bool = True):
     st = pickle.loads((d / "ledger.pkl").read_bytes())
     L, texts = st["ledger"], st["texts"]
     n = len(texts)
@@ -197,13 +199,14 @@ def main(d: Path):
     bm = BM25([texts[i].lower().split() for i in ids])
 
     sample = sorted(rng.choice(ids, size=min(100, len(ids)), replace=False).tolist())
-    res["audit"] = audit(L, texts, sample)
+    topic = st["topic"]
+    res["audit"] = audit(L, texts, sample, topic)
     print("audit", {k: v for k, v in res["audit"].items() if k != "wrong_notes"}, flush=True)
 
     cov_sample = sorted(rng.choice(ids, size=min(150, len(ids)), replace=False).tolist())
-    pts = points(texts, cov_sample)
+    pts = points(texts, cov_sample, topic)
     res["points_n"] = len(pts)
-    q = "what do people say about seed oils and health".split()
+    q = f"what do people say about {st['topic']}".split()
 
     def raw(sel):
         return "\n".join(f"- {texts[i]}" for i in sel)
@@ -227,15 +230,16 @@ def main(d: Path):
 
     df = {c: sum(mentions(t, c) for t in texts.values()) for c in CANDIDATES}
     ents = [c for c, k in sorted(df.items(), key=lambda x: -x[1]) if max(3, n // 400) <= k <= 600][:8]
-    res["qa"] = qa(L, texts, render, bm, n, ents)
+    res["qa"] = qa(L, texts, render, bm, n, ents, topic) if do_qa else []
     res["spend_usd"] = llm.SPEND["usd"]
     (d / "eval.json").write_text(json.dumps(res, indent=1))
+    res["topic"] = topic
     write_md(d, res, n, rtok)
 
 
 def write_md(d, res, n, rtok):
     a = res["audit"]
-    md = [f"# Real X-like corpus: every public Bluesky post on 'seed oils' ({n:,} posts)\n",
+    md = [f"# Real X-like corpus: every public Bluesky post on '{res.get('topic', '?')}' ({n:,} posts)\n",
           "## 1. Absorber audit (independent judge, 100 random posts)\n",
           f"Verdicts: {a['verdicts']}. Strict error rate (wrong): **{100 * a['error_rate_strict']:.0f}%**; "
           f"including minor issues: {100 * a['error_rate_incl_minor']:.0f}%. Anchor op: {a['anchor']}.\n",
@@ -271,4 +275,4 @@ def write_md(d, res, n, rtok):
 
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]))
+    main(Path(sys.argv[1]), do_qa="--no-qa" not in sys.argv)

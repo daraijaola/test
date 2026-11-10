@@ -24,7 +24,7 @@ def main(d: Path):
     rng = np.random.default_rng(42)
     rng.choice(ids, size=min(100, len(ids)), replace=False)           # same draws as bsky_eval
     sample = sorted(rng.choice(ids, size=min(150, len(ids)), replace=False).tolist())
-    pts = points(texts, sample)
+    pts = points(texts, sample, st["topic"])
     full, shown = L.render(10_000_000)
     budget = L.est_tokens(full)
     bm = BM25([texts[i].lower().split() for i in ids])
@@ -37,8 +37,7 @@ def main(d: Path):
                 break
             sel.append(i); used += t
         return "\n".join(f"- {texts[i]}" for i in sel)
-    q = "what do people say about seed oils and health".split() if "seed" in str(d) else \
-        "what do people say about ultra-processed food and health".split()
+    q = f"what do people say about {st['topic']}".split()
     ctx = {"full ledger (all entries)": full,
            "RAG top-k, same tokens": fill(bm.top(q, len(ids))),
            "random sample, same tokens": fill(np.random.default_rng(1).permutation(ids).tolist())}

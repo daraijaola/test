@@ -23,7 +23,7 @@ def main(a: Path, b: Path):
     rng = np.random.default_rng(42)
     rng.choice(ids, size=min(100, len(ids)), replace=False)
     sample = sorted(rng.choice(ids, size=min(150, len(ids)), replace=False).tolist())
-    pts = points(texts, sample)
+    pts = points(texts, sample, La["topic"])
     res = {"points": len(pts)}
     for tag, st in ((a.name, La), (b.name, Lb)):
         L = st["ledger"]

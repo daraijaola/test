@@ -1,0 +1,93 @@
+{
+ "n": 4189,
+ "authors": 3194,
+ "entries": 1102,
+ "entries_before_global_merge": 1039,
+ "themes": [
+  "Productivity and trial evidence",
+  "Worker health, wellbeing and burnout",
+  "Personal experience: author's own schedule",
+  "Short-week and long-weekend feelings",
+  "Advocacy, unions and political demands",
+  "Government, council and public-sector adoption",
+  "Energy crisis and international adoption",
+  "AI, technology and automation",
+  "Opposition, skepticism and feasibility",
+  "Return-to-office and in-office mandates",
+  "School and education four-day weeks",
+  "Compressed hours and alternative schedules",
+  "Pay, economy and business impact",
+  "Iceland, Netherlands and country case studies",
+  "Other"
+ ],
+ "residual_pct_before": 14.478395798519934,
+ "residual_pct": 3.5927428980663643,
+ "noise_pct": 22.91716400095488,
+ "hallucinated_ids": 0,
+ "missing_docs": 3,
+ "anchor": {
+  "support": 913,
+  "dispute": 53,
+  "mention": 22
+ },
+ "growth": [
+  [
+   400,
+   195
+  ],
+  [
+   800,
+   246
+  ],
+  [
+   1200,
+   377
+  ],
+  [
+   1600,
+   509
+  ],
+  [
+   2000,
+   547
+  ],
+  [
+   2400,
+   668
+  ],
+  [
+   2800,
+   830
+  ],
+  [
+   3200,
+   900
+  ],
+  [
+   3600,
+   937
+  ],
+  [
+   4000,
+   1010
+  ],
+  [
+   4189,
+   1041
+  ]
+ ],
+ "usd": 2.69119406,
+ "usd_by_stage": {
+  "consolidate": 0.25837686,
+  "absorb": 0.6537445,
+  "polarity": 0.3427932,
+  "residual": 0.9200603,
+  "themes": 0.5162192
+ },
+ "render_tokens": {
+  "flat": 31689,
+  "multires": 31342
+ },
+ "corpus_tokens_est": 189176,
+ "seconds": 1130.8095660209656
+}

@@ -1,62 +1,63 @@
 {
  "audit": {
-  "n": 99,
+  "n": 100,
   "verdicts": {
-   "minor_issue": 35,
-   "correct": 63,
-   "wrong": 1
+   "minor_issue": 31,
+   "correct": 67,
+   "wrong": 2
   },
   "anchor": {
-   "na": 54,
-   "no": 27,
-   "yes": 18
+   "na": 62,
+   "no": 21,
+   "yes": 17
   },
-  "error_rate_strict": 0.010101010101010102,
-  "error_rate_incl_minor": 0.36363636363636365,
+  "error_rate_strict": 0.02,
+  "error_rate_incl_minor": 0.33,
   "wrong_notes": [
-   "Almost certainly a sarcastic or quoted headline. Filing it as sincere support of the claim is the wrong stance, and the post is off-topic for this ledger."
+   "Not about UPF. It is a satirical or unrelated post and should be noise, not a support claim.",
+   "A sarcastic joke about McDonald's pricing with a crude insult. It makes no real claim of UPF harm, so the anchor support is unjustified."
   ]
  },
- "points_n": 68,
+ "points_n": 133,
  "coverage": {
   "ledger (theme view)": {
-   "n": 68,
-   "yes": 0.36764705882352944,
-   "partly": 0.5147058823529411,
-   "no": 0.11764705882352941,
-   "score": 0.625,
+   "n": 133,
+   "yes": 0.3533834586466165,
+   "partly": 0.5413533834586466,
+   "no": 0.10526315789473684,
+   "score": 0.6240601503759399,
    "context_tokens": 31534
   },
   "RAG top-20": {
-   "n": 68,
-   "yes": 0.014705882352941176,
-   "partly": 0.19117647058823528,
-   "no": 0.7941176470588235,
-   "score": 0.11029411764705882,
-   "context_tokens": 1081
+   "n": 133,
+   "yes": 0.022556390977443608,
+   "partly": 0.14285714285714285,
+   "no": 0.8345864661654135,
+   "score": 0.09398496240601503,
+   "context_tokens": 967
   },
   "RAG top-100": {
-   "n": 68,
-   "yes": 0.07352941176470588,
-   "partly": 0.2647058823529412,
-   "no": 0.6617647058823529,
-   "score": 0.20588235294117646,
-   "context_tokens": 5824
+   "n": 133,
+   "yes": 0.06766917293233082,
+   "partly": 0.19548872180451127,
+   "no": 0.7368421052631579,
+   "score": 0.16541353383458646,
+   "context_tokens": 5299
   },
   "RAG top-k, same tokens as ledger": {
-   "n": 68,
-   "yes": 0.20588235294117646,
-   "partly": 0.39705882352941174,
-   "no": 0.39705882352941174,
-   "score": 0.40441176470588236,
-   "context_tokens": 30985
+   "n": 133,
+   "yes": 0.3233082706766917,
+   "partly": 0.3308270676691729,
+   "no": 0.3458646616541353,
+   "score": 0.48872180451127817,
+   "context_tokens": 30997
   },
   "random sample, same tokens as ledger": {
-   "n": 68,
-   "yes": 0.3382352941176471,
-   "partly": 0.35294117647058826,
-   "no": 0.3088235294117647,
-   "score": 0.5147058823529411,
+   "n": 133,
+   "yes": 0.3082706766917293,
+   "partly": 0.3233082706766917,
+   "no": 0.3684210526315789,
+   "score": 0.4699248120300752,
    "context_tokens": 30956
   }
  },
@@ -68,37 +69,37 @@
     "authors": 141
    },
    "plan": {
-    "predicate": "Does the document's text contain the string \"cancer\" (case-insensitive) at the start of a word, either as a standalone word, as the start of a longer word (e.g., \"cancers\", \"cancerous\"), or in a hashtag beginning with it (e.g., \"#cancer\", \"#CancerResearch\")? Answer yes if so, otherwise no. The topic of the post does not matter.",
+    "predicate": "Does the post's text contain the string 'cancer' (case-insensitive) as a word, as the start of a word (e.g. 'cancers', 'cancerous'), or in a hashtag (e.g. '#cancer', '#CancerPrevention')?",
     "scope_all": true,
     "scope_entries": []
    },
    "census_scope": 6042,
-   "census_hits": 188,
-   "census_precision": 1.0,
+   "census_hits": 191,
+   "census_precision": 0.9842931937172775,
    "census_recall": 0.9947089947089947,
    "answers": {
     "ledger": {
-     "count": 0,
-     "authors": 0
+     "count": 74,
+     "authors": 75
     },
     "ledger+census": {
-     "count": 188,
-     "authors": 140
+     "count": 191,
+     "authors": 143
     },
     "rag20": {
-     "count": 8,
+     "count": 20,
      "authors": 0
     },
     "rag100": {
-     "count": 71,
+     "count": 100,
      "authors": 0
     }
    },
    "cost": {
-    "ledger": 0.5008268,
-    "ledger+census": 0.7033121099999987,
-    "rag20": 0.0379548,
-    "rag100": 0.1079228
+    "ledger": 0.505984,
+    "ledger+census": 0.7006756699999982,
+    "rag20": 0.0345188,
+    "rag100": 0.1010268
    }
   },
   {
@@ -108,47 +109,7 @@
     "authors": 143
    },
    "plan": {
-    "predicate": "Does the post contain the token 'rfk' (case-insensitive) as a standalone word, as a word prefix (e.g. 'RFKJr', 'rfk's'), or in a hashtag (e.g. '#RFK', '#RFKJr')?",
-    "scope_all": true,
-    "scope_entries": []
-   },
-   "census_scope": 6042,
-   "census_hits": 164,
-   "census_precision": 0.9939024390243902,
-   "census_recall": 0.9878787878787879,
-   "answers": {
-    "ledger": {
-     "count": 84,
-     "authors": 93
-    },
-    "ledger+census": {
-     "count": 164,
-     "authors": 142
-    },
-    "rag20": {
-     "count": 4,
-     "authors": 0
-    },
-    "rag100": {
-     "count": 71,
-     "authors": 0
-    }
-   },
-   "cost": {
-    "ledger": 0.5090588,
-    "ledger+census": 0.6936146099999962,
-    "rag20": 0.0339668,
-    "rag100": 0.1089188
-   }
-  },
-  {
-   "entity": "obesity",
-   "gold": {
-    "count": 165,
-    "authors": 144
-   },
-   "plan": {
-    "predicate": "Does the document text contain the string 'obesity' (case-insensitive) as a whole word, as the start of a longer word (e.g. 'obesityepidemic'), or in a hashtag (e.g. '#obesity', '#ObesityCrisis')? Answer yes only if the letters 'obesity' literally appear. 'Obese' or 'obesogenic' alone do not count.",
+    "predicate": "Does the post contain the string 'rfk' (case-insensitive) as a standalone word, as the start of a word (e.g. 'RFKJr', 'RFK's'), or in a hashtag (e.g. '#RFK', '#RFKJr')?",
     "scope_all": true,
     "scope_entries": []
    },
@@ -158,27 +119,67 @@
    "census_recall": 1.0,
    "answers": {
     "ledger": {
-     "count": 0,
+     "count": 150,
+     "authors": 140
+    },
+    "ledger+census": {
+     "count": 165,
+     "authors": 143
+    },
+    "rag20": {
+     "count": 20,
      "authors": 0
+    },
+    "rag100": {
+     "count": 100,
+     "authors": 0
+    }
+   },
+   "cost": {
+    "ledger": 0.49897879999999994,
+    "ledger+census": 0.6909397100000028,
+    "rag20": 0.035950800000000005,
+    "rag100": 0.1216148
+   }
+  },
+  {
+   "entity": "obesity",
+   "gold": {
+    "count": 165,
+    "authors": 144
+   },
+   "plan": {
+    "predicate": "Does the post text contain the string 'obesity' (case-insensitive), either as a word, as the start of a longer word, or in a hashtag (e.g. 'obesity', 'Obesity', '#obesity', '#ObesityCrisis', 'obesityepidemic')?",
+    "scope_all": true,
+    "scope_entries": []
+   },
+   "census_scope": 6042,
+   "census_hits": 165,
+   "census_precision": 1.0,
+   "census_recall": 1.0,
+   "answers": {
+    "ledger": {
+     "count": 46,
+     "authors": 55
     },
     "ledger+census": {
      "count": 165,
      "authors": 144
     },
     "rag20": {
-     "count": 7,
+     "count": 20,
      "authors": 0
     },
     "rag100": {
-     "count": 71,
+     "count": 98,
      "authors": 0
     }
    },
    "cost": {
-    "ledger": 0.4971788,
-    "ledger+census": 0.7013653100000027,
-    "rag20": 0.038710800000000004,
-    "rag100": 0.1175788
+    "ledger": 0.5339642,
+    "ledger+census": 0.6951956099999987,
+    "rag20": 0.0371228,
+    "rag100": 0.1285548
    }
   },
   {
@@ -188,37 +189,37 @@
     "authors": 79
    },
    "plan": {
-    "predicate": "Does the document's text contain the string 'heart' as a whole word, as the start of a longer word (e.g. 'hearts', 'heartburn', 'heartbreaking', 'heartfelt'), or in a hashtag (e.g. '#heart', '#hearthealth'), case-insensitive? Answer yes even if the use is figurative or unrelated to health. Answer no if 'heart' shows up only in the middle or at the end of another word (e.g. 'sweetheart', 'wholehearted').",
+    "predicate": "Does the post's text contain the string \"heart\" (case-insensitive) at the start of a word or hashtag, either as the whole word (\"heart\") or as the beginning of a longer word (\"hearts\", \"heartburn\", \"heartbreaking\", \"heartfelt\", \"HeartHealth\") or of a hashtag (\"#heart\", \"#HeartDisease\")? Answer yes if at least one such occurrence exists. Answer no if \"heart\" appears only in the middle of a word (e.g. \"sweetheart\", \"disheartening\"), or if the post only refers to the heart without using the string (e.g. \"cardiovascular\", \"cardiac\", a \u2764\ufe0f emoji).",
     "scope_all": true,
     "scope_entries": []
    },
    "census_scope": 6042,
-   "census_hits": 102,
-   "census_precision": 1.0,
+   "census_hits": 104,
+   "census_precision": 0.9807692307692307,
    "census_recall": 0.9902912621359223,
    "answers": {
     "ledger": {
-     "count": -1,
-     "authors": -1
+     "count": 10,
+     "authors": 13
     },
     "ledger+census": {
-     "count": 102,
+     "count": 104,
      "authors": 79
     },
     "rag20": {
-     "count": 10,
-     "authors": 6
+     "count": 20,
+     "authors": 0
     },
     "rag100": {
-     "count": 73,
+     "count": 81,
      "authors": 0
     }
    },
    "cost": {
-    "ledger": 0.4971468,
-    "ledger+census": 0.7070588100000016,
-    "rag20": 0.0391948,
-    "rag100": 0.1110948
+    "ledger": 0.5100787999999999,
+    "ledger+census": 0.7077031099999876,
+    "rag20": 0.0350668,
+    "rag100": 0.10742679999999999
    }
   },
   {
@@ -228,13 +229,13 @@
     "authors": 81
    },
    "plan": {
-    "predicate": "Does the document contain the word 'diabetes', either alone, as the start of a longer word (e.g. 'diabetes-related', 'diabetesawareness'), or as a hashtag (e.g. '#diabetes', '#Diabetes2'), case-insensitive? Answer yes if it appears anywhere in the text, and no otherwise. Related words such as 'diabetic', 'T2D' or 'blood sugar' do not count.",
+    "predicate": "Does the post's text contain the word 'diabetes' or a word starting with 'diabet' (e.g. diabetes, diabetic, diabetics), including as a hashtag (e.g. #diabetes, #type2diabetes)? Matching is case-insensitive; the term must literally appear in the text.",
     "scope_all": true,
     "scope_entries": []
    },
    "census_scope": 6042,
-   "census_hits": 94,
-   "census_precision": 1.0,
+   "census_hits": 103,
+   "census_precision": 0.912621359223301,
    "census_recall": 1.0,
    "answers": {
     "ledger": {
@@ -242,23 +243,23 @@
      "authors": 22
     },
     "ledger+census": {
-     "count": 94,
-     "authors": 81
+     "count": 103,
+     "authors": 85
     },
     "rag20": {
-     "count": 7,
-     "authors": 7
+     "count": 20,
+     "authors": 0
     },
     "rag100": {
      "count": 35,
-     "authors": 0
+     "authors": 35
     }
    },
    "cost": {
-    "ledger": 0.5024588,
-    "ledger+census": 0.6953725100000038,
-    "rag20": 0.040126800000000004,
-    "rag100": 0.1074628
+    "ledger": 0.5086308,
+    "ledger+census": 0.6923699099999979,
+    "rag20": 0.0398628,
+    "rag100": 0.0832908
    }
   },
   {
@@ -268,7 +269,7 @@
     "authors": 86
    },
    "plan": {
-    "predicate": "Does the document's text contain the token 'maha' (case-insensitive) as a standalone word, as a prefix of a word (e.g. 'MAHA-aligned', 'mahaist'), or as a hashtag (e.g. '#MAHA', '#MAHAreport')? Answer yes only if this string appears literally in the text.",
+    "predicate": "Does the post's text contain the string 'maha' (case-insensitive) as a standalone word, as a word prefix (e.g. 'MAHAers', 'MAHA-aligned'), or as a hashtag (e.g. '#MAHA', '#MAHAmoms', '#MakeAmericaHealthyAgain' counts only if it literally contains 'maha' at the start of a word or hashtag)? Answer yes only if 'maha' appears at the beginning of a word or hashtag, not merely inside a longer word like 'Mahatma' or 'Omaha'.",
     "scope_all": true,
     "scope_entries": []
    },
@@ -286,19 +287,19 @@
      "authors": 86
     },
     "rag20": {
-     "count": 8,
+     "count": 20,
      "authors": 0
     },
     "rag100": {
-     "count": 59,
+     "count": 61,
      "authors": 0
     }
    },
    "cost": {
-    "ledger": 0.5002348,
-    "ledger+census": 0.698296209999998,
-    "rag20": 0.0353628,
-    "rag100": 0.1080788
+    "ledger": 0.4977508,
+    "ledger+census": 0.7001907099999956,
+    "rag20": 0.030286800000000003,
+    "rag100": 0.0945308
    }
   },
   {
@@ -308,37 +309,37 @@
     "authors": 57
    },
    "plan": {
-    "predicate": "Does the post contain the string 'kennedy' (case-insensitive) as a whole word, as the start of a longer word (e.g., 'Kennedys', 'Kennedy's'), or in a hashtag (e.g., '#Kennedy', '#KennedyHHS')? Answer yes if it does, otherwise no.",
+    "predicate": "Does the post's text contain the string 'kennedy' (case-insensitive) as a whole word, as the start of a longer word (e.g. 'Kennedys', 'Kennedy's'), or in a hashtag (e.g. '#Kennedy', '#RFKennedy' counts only if a word/hashtag segment begins with 'kennedy')? Answer yes if so, otherwise no.",
     "scope_all": true,
     "scope_entries": []
    },
    "census_scope": 6042,
-   "census_hits": 64,
+   "census_hits": 66,
    "census_precision": 1.0,
-   "census_recall": 0.9696969696969697,
+   "census_recall": 1.0,
    "answers": {
     "ledger": {
-     "count": 6,
-     "authors": 5
+     "count": 120,
+     "authors": 100
     },
     "ledger+census": {
-     "count": 64,
-     "authors": 55
+     "count": 66,
+     "authors": 57
     },
     "rag20": {
-     "count": 8,
-     "authors": 8
+     "count": 20,
+     "authors": 0
     },
     "rag100": {
      "count": 52,
-     "authors": 45
+     "authors": 0
     }
    },
    "cost": {
-    "ledger": 0.4978668,
-    "ledger+census": 0.691068609999988,
-    "rag20": 0.0386828,
-    "rag100": 0.1123748
+    "ledger": 0.4975788,
+    "ledger+census": 0.6925544099999922,
+    "rag20": 0.0368228,
+    "rag100": 0.0906028
    }
   },
   {
@@ -348,7 +349,7 @@
     "authors": 62
    },
    "plan": {
-    "predicate": "Does the document contain the string 'trump' (case-insensitive) as a whole word, as the start of a word (e.g. 'Trump's', 'Trumpian', 'trumpism'), or in a hashtag (e.g. '#Trump', '#TrumpAdministration')?",
+    "predicate": "Does the post text contain the string 'trump' (case-insensitive) as a word, as the start of a word (e.g. 'Trump', 'Trump's', 'Trumpism', 'Trumpian'), or in a hashtag (e.g. '#Trump', '#TrumpAdministration')?",
     "scope_all": true,
     "scope_entries": []
    },
@@ -366,21 +367,21 @@
      "authors": 63
     },
     "rag20": {
-     "count": 8,
+     "count": 20,
      "authors": 0
     },
     "rag100": {
-     "count": 50,
-     "authors": 48
+     "count": 52,
+     "authors": 50
     }
    },
    "cost": {
-    "ledger": 0.5094188,
-    "ledger+census": 0.6895745100000022,
-    "rag20": 0.0368028,
-    "rag100": 0.1145428
+    "ledger": 0.4956388,
+    "ledger+census": 0.6884333100000054,
+    "rag20": 0.0364108,
+    "rag100": 0.0875388
    }
   }
  ],
- "spend_usd": 13.22454207999999
+ "spend_usd": 15.283446639999978
 }

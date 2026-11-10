@@ -28,8 +28,7 @@ def main():
     view, _ = L.render_multires(32000)
     budget = L.est_tokens(view)
     bm = BM25([texts[i].lower().split() for i in ids])
-    q = ("what do people say about seed oils and health" if "seed" in str(a.dir)
-         else "what do people say about ultra-processed food and health").split()
+    q = f"what do people say about {st['topic']}".split()
 
     def fill(order):
         sel, used = [], 0
@@ -42,7 +41,7 @@ def main():
     runs = []
     for r in range(a.repeats):
         rng = np.random.default_rng(1000 + r)
-        pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()))
+        pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()), st["topic"])
         ctx = {"ledger (theme view)": view, "RAG top-k, same tokens": fill(bm.top(q, len(ids))),
                "random sample, same tokens": fill(rng.permutation(ids).tolist())}
         run = {"points": len(pts)}

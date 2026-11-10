@@ -1,0 +1,29 @@
+{
+ "entries_shown": 1604,
+ "entries": 1604,
+ "points": 68,
+ "full ledger (all entries)": {
+  "n": 68,
+  "yes": 0.5588235294117647,
+  "partly": 0.38235294117647056,
+  "no": 0.058823529411764705,
+  "score": 0.75,
+  "context_tokens": 72089
+ },
+ "RAG top-k, same tokens": {
+  "n": 68,
+  "yes": 0.5147058823529411,
+  "partly": 0.29411764705882354,
+  "no": 0.19117647058823528,
+  "score": 0.6617647058823529,
+  "context_tokens": 70938
+ },
+ "random sample, same tokens": {
+  "n": 68,
+  "yes": 0.6176470588235294,
+  "partly": 0.22058823529411764,
+  "no": 0.16176470588235295,
+  "score": 0.7279411764705882,
+  "context_tokens": 70782
+ }
+}

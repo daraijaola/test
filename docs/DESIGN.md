@@ -10,7 +10,7 @@ This document is the result of a 24-hour iteration (rounds listed in §12):
 3. A simulation with known ground truth.
 4. Real-model experiments on two kinds of real data:
    - SemEval-2016 stance tweets, which have gold labels;
-   - every public Bluesky post on two niche topics, about 6,000 posts each, X-like and uncurated.
+   - every public Bluesky post on three niche topics (two health debates and one workplace debate; 4,000–6,000 posts each), X-like and uncurated.
 
 Real-data results replaced several of my first-pass claims; where they did, the correction is stated.
 
@@ -22,12 +22,12 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 | Question | RAG | CEL | Source |
 |---|---|---|---|
-| Is a random post's point present in what the reader receives? Equal ~31k-token budget, Bluesky, judge-scored, mean of 3 runs per topic | top-k at the same budget: 39–43%; random sample at the same budget: 47–48%; top-20: 11% | **61%** on both topics, ahead in all 6 runs (points entirely absent: **14–16%** vs 35–48%) | §7.3 |
-| Same, with the whole ledger (every entry: 51k / 72k tokens, for 247k / 282k-token corpora; single run) | top-k at the same budget: 54% / 66%; random sample at the same budget: 55% / 73% | **63% / 75%** (points entirely absent: **6–11%** vs 16–34%); the UPF margin over random is within judge noise | §7.3 |
-| How many posts mention X, and by how many people? (16 questions, two Bluesky topics) | top-100: 46–58% median error; top-20: ~91% | **ledger + census: 0–1% median error**, 88–100% of answers within 20% | §7.3 |
+| Is a random post's point present in what the reader receives? Equal ~31k-token budget, Bluesky, judge-scored, 3 runs per topic × 3 topics | top-k at the same budget: 39–46%; random sample at the same budget: 47–48%; top-20: 9–12% | **61–63%** on every topic, ahead in all 9 runs (points entirely absent: **14–17%** vs 36–48%) | §7.3 |
+| Same, with the whole ledger (every entry: 51k / 72k tokens, for 247k / 282k-token corpora; single run) | top-k at the same budget: 54% / 62%; random sample at the same budget: 55% / 66% | **63% / 70%** (points entirely absent: **5–11%** vs 18–34%) | §7.3 |
+| How many posts mention X, and by how many people? (16 questions, two Bluesky topics) | top-100: 37–58% median error; top-20: 80–91% | **ledger + census: 0% median error**, 88–100% of answers within 20% | §7.3 |
 | What share of a corpus favours or opposes the target? (SemEval, re-mixed so memorised statistics fail) | top-20: 16–18 pt error | **4.5–4.9 pt** (classifying every tweet for this question: 6.2) | §7.2 |
 | Per-tweet stance recovered *through* the ledger (SemEval F_avg) | n/a | **0.801**, vs 0.749 for Haiku classifying each tweet directly | §7.2 |
-| Absorber filing errors (independent judge, 199 random real posts) | n/a | **1–4% wrong**, 25–35% "minor issue" | §7.3 |
+| Absorber filing errors (independent judge, 300 random real posts, 3 topics) | n/a | **2–5% wrong**, 22–31% "minor issue" | §7.3 |
 
 **Cost (measured, Opus 5.5 reader at medium effort).**
 - **Ingest:** ~$0.60–0.70 per 1,000 posts, every post read once. 6,000 posts took about 30 minutes with 8 parallel lanes.
@@ -134,7 +134,7 @@ An entry is a *proposition someone could agree or disagree with*, or an observat
 - the **camp** cross-tab (§4.4)
 
 ### 4.2 Operations and the two invariants
-Each document gets typed ops: `assign(entry, support|dispute|mention)` · `new(canonical statement, stance)` · `noise` · `residual`. An id the absorber invents becomes `residual`; it is never dropped or guessed.
+Each document gets typed ops: `assign(entry, support|dispute|mention)` · `new(canonical statement, stance)` · `noise` · `residual`. A `refine(parent, more specific statement)` op exists (v4), but it did not help on real data (§7.3). An id the absorber invents becomes `residual`; it is never dropped or guessed.
 
 **Conservation.** Each document carries one unit of mass, split across its ops: `Σ entry mass + residual + noise = documents absorbed`. This is checked after every operation. Merges, splits and op replacement are all mass-conserving and tested (`tests/`).
 
@@ -148,7 +148,7 @@ Each document gets typed ops: `assign(entry, support|dispute|mention)` · `new(c
   - Simulation: P = 64 changes no quality metric (§7.4).
   - Real data: 8 lanes absorbed 6,000 posts in ~18 minutes, against an estimated ~4 hours sequentially.
 - **Noise is reserved for contentless posts.** Any post expressing an opinion gets an entry. Calling stance-bearing posts "off-topic" caused 52% of v1's stance losses (§7.2).
-- **Residual escalation.** Posts the cheap model can't place are re-read once by a stronger model, against the now-larger ledger. Residual fell from about 12% to about 4.3% on both Bluesky topics.
+- **Residual escalation.** Posts the cheap model can't place are re-read once by a stronger model, against the now-larger ledger. Residual fell from 12–14% to 3.6–4.5% on all three Bluesky topics.
 
 ### 4.4 The anchor and camps (added after real-data error analysis)
 The user states the subject as one unambiguous statement, e.g. *"Seed oils are safe and healthy to eat."* Entry e0 is that **anchor**.
@@ -173,7 +173,7 @@ The user states the subject as one unambiguous statement, e.g. *"Seed oils are s
 
 ### 4.7 Census (exhaustive, exact-scope verification)
 - **The step:** the reader writes a yes/no predicate and a scope (all posts, or specific entries' posting lists). A cheap model checks **every** post in scope, and the exact result goes back to the reader.
-- **Real accuracy:** checker precision 0.95–1.00, recall 0.99–1.00 against text-match gold.
+- **Real accuracy:** checker precision 0.95–1.00, recall 0.99–1.00 against text-match gold (it reads related words such as "inflammatory" more broadly than a text match does).
 - **Why it is needed:** the ledger stores meaning, not words. "How many posts mention tallow?" is not answerable from the ledger alone (57–88% median error), but census makes it exact.
 - **Cost:** ~$0.12 per 1,000 posts scanned.
 - **Reuse:** results can be written back to the ledger as a new dimension.
@@ -192,15 +192,15 @@ All figures are measured on real runs unless marked "projected".
 | | RAG top-20 | RAG at equal budget | Long context (whole corpus) | CEL |
 |---|---|---|---|---|
 | One-time cost | ~0 | ~0 | 0 | **$0.60–0.70 per 1k posts** (Haiku absorb + Sonnet consolidate/escalate/label) |
-| Reader tokens per question | ~1k | ~31–72k raw posts | 247–282k for 6k posts; impossible past ~4M posts' worth | ~31k (view) / 51–72k (full ledger) |
-| $ per question, measured, cached prompt | $0.033–0.057 | ≈ CEL | ≈ 4–5× CEL (~250k+ real tokens per read) | **$0.035–0.071** (+ one-time ~$0.53 cache write) |
+| Reader tokens per question (bytes/4 estimate; real ≈ 2×) | ~1k | ~31–72k raw posts | 247–282k for 6k posts; past ~10–20k posts it no longer fits a 1M-token window | ~31k (view) / 51–72k (full ledger) |
+| $ per question, measured, cached prompt | $0.033–0.057 | ≈ CEL | projected ~3× CEL (~500k real tokens per cached read) | **$0.035–0.071** (+ one-time ~$0.53 cache write) |
 | $ per question, measured, uncached | $0.03–0.05 | ≈ CEL | — | $0.50–0.53 |
 | Can answer "how many / what share / what's rising" | no | sample estimate only | in principle, if it fits | yes (tallies), exact with census |
 
 What makes it cheaper:
 1. **Integration is paid once,** by the cheapest model, and reused by every question.
 2. **The reading cost is bounded by the view's budget, not by corpus size,** and the view never hides the denominator.
-3. **5–8× fewer tokens than reading everything,** with exact counts kept.
+3. **4–8× fewer tokens than reading everything** (full ledger vs corpus; 4–5× for the full ledger, ~8× for the theme view), with exact counts kept.
 4. **Coverage per token is higher than retrieval at the same budget** (§7.3).
 
 Where it is not cheaper:
@@ -218,7 +218,7 @@ Where it is not cheaper:
 5. **Time is a dimension,** so emergence is readable.
 6. **Exactness on demand** via census.
 
-On real data this shows up most clearly as **2–3× fewer complete misses** than raw text at the same budget (§7.3).
+On real data this shows up most clearly as **2.5–3× fewer complete misses** than raw text at the same budget (14–17% vs 36–48%, 3 runs per topic, 3 topics; §7.3).
 
 ---
 
@@ -229,7 +229,7 @@ On real data this shows up most clearly as **2–3× fewer complete misses** tha
 |---|---|---|---|
 | Simulation | synthetic X-like feeds, 20k–500k posts | exact | parameterised error rate ε |
 | SemEval-2016 Task 6 | 4,163 real tweets, 5 targets; re-mixed subsets of 173–300 | human stance labels | real Haiku 5.5 |
-| Bluesky | every searchable public post on "seed oils" (6,062 posts, 4,139 authors) and "ultra-processed food" (6,042, 3,846), Jul 2025 – Nov 2026 | text-match gold for counts; an independent Sonnet judge for coverage and filing | real Haiku 5.5 (v2/v3) |
+| Bluesky | every searchable public post on "seed oils" (6,062 posts, 4,139 authors), "ultra-processed food" (6,042, 3,846) and "four-day work week" (4,189, 3,194; 2015–2026) | text-match gold for counts; an independent Sonnet judge for coverage and filing | real Haiku 5.5 (v2/v3) |
 
 ### 7.2 SemEval-2016 (real tweets, gold labels): [`results/real`](../results/real), [`results/real_remix_v1`](../results/real_remix_v1), [`results/real_remix_v2`](../results/real_remix_v2)
 - **Per-tweet fidelity.** Stance predicted *through* the ledger (entry polarity × op stance) scores F_avg 0.732 (v1) against 0.738 for Haiku classifying each tweet directly. Writing tweets into the ledger preserves stance.
@@ -254,20 +254,23 @@ On real data this shows up most clearly as **2–3× fewer complete misses** tha
 | RAG top-100 | 52% | 16.9 pts |
 | RAG top-20 | 75% | 27.2 pts |
 
-### 7.3 Bluesky (real, uncurated, X-like): [`results/bsky_seedoils`](../results/bsky_seedoils), [`results/bsky_upf`](../results/bsky_upf)
+### 7.3 Bluesky (real, uncurated, X-like): [`results/bsky_seedoils`](../results/bsky_seedoils), [`results/bsky_upf`](../results/bsky_upf), [`results/bsky_4dw`](../results/bsky_4dw)
+
+**Evaluation bug, found and fixed.** The judge prompts for point extraction and the filing audit hard-coded "seed oils". That silently biased the first ultra-processed-food evaluation: only UPF posts with something seed-oil-adjacent got points. Comparisons stayed within-run on identical points, but the sample was skewed. All UPF evaluations were re-run with the correct topic. The superseded files are kept in [`results/bsky_upf/superseded_topic_bug`](../results/bsky_upf/superseded_topic_bug), and the numbers below are the corrected ones.
 **Ingest**
 
 | | posts | authors | entries | residual (before → after escalation) | full ledger tokens / corpus tokens | ingest $ | wall time (8 lanes) |
 |---|---|---|---|---|---|---|---|
 | seed oils | 6,062 | 4,139 | 1,237 | 12.2% → 4.3% | 51k / 247k | $3.60 + $0.32 anchor pass | 29 min |
 | ultra-processed food | 6,042 | 3,846 | 1,604 | 11.9% → 4.5% | 72k / 282k | $4.24 + $0.31 | 30 min |
+| four-day work week | 4,189 | 3,194 | 1,102 | 14.5% → 3.6% | 46k / 189k | $2.69 + $0.18 | 19 min |
 
-**Filing audit.** An independent judge graded 100 random posts per topic:
-- wrong: **4% / 1%**
-- minor issue: 25% / 35%
-- correct: 71% / 63%
+**Filing audit.** An independent judge graded 100 random posts per topic (seed oils / UPF / four-day week):
+- wrong: **4% / 2% / 5%**
+- minor issue: 25% / 31% / 22%
+- correct: 71% / 67% / 73%
 
-Typical wrong filings: misread sarcasm, and posts that don't mention the topic at all. **This places the real absorber at ε ≈ 0.01–0.04 strict, or 0.25–0.35 including imprecision,** inside the range swept in simulation.
+Typical wrong filings: misread sarcasm, and posts that don't mention the topic at all. **This places the real absorber at ε ≈ 0.02–0.05 strict, or 0.27–0.33 including imprecision,** inside the range swept in simulation.
 
 **Anchor audit** (150 posts per topic, judge labels vs ledger):
 
@@ -275,30 +278,31 @@ Typical wrong filings: misread sarcasm, and posts that don't mention the topic a
 |---|---|---|---|---|---|
 | seed oils v2 → v3 | 57% → 75% | 54% → 9% | 9% → 10% | 4% → 34% | 16 → **4** pts |
 | UPF v2 → v3 | 56% → 84% | 71% → 17% | 0% → 0% | 3% → 14% | 13 → **6** pts |
+| four-day week, v3 | 89% | 18% | 1% | 5% | **1** pt |
 
 **Coverage.** For random posts that make a point, the judge decided whether that point is present in the reader's input. Score = yes + ½ partly; "absent" = the share judged entirely missing. Each run uses a fresh sample of 150 posts and a fresh judge run. Run-to-run noise is about ±4–8 points, so the main comparison was repeated 3 times per topic.
 
-| reader input (equal ~31k-token budget) | seed oils score | seed oils absent | UPF score | UPF absent |
-|---|---|---|---|---|
-| RAG top-20 (~1k tokens; 1 run) | 11% | 82% | 11% | 79% |
-| RAG top-100 (~4–6k tokens; 1 run) | 19% | 71% | 21% | 66% |
-| RAG top-k, same budget | 39 ± 8% | 48 ± 11% | 43 ± 4% | 41 ± 4% |
-| random sample, same budget | 47 ± 4% | 38 ± 5% | 48 ± 3% | 35 ± 4% |
-| **CEL theme view** | **61 ± 4%** | **14 ± 7%** | **61 ± 8%** | **16 ± 6%** |
+| reader input (equal ~31k-token budget) | seed oils score / absent | UPF score / absent | four-day week score / absent |
+|---|---|---|---|
+| RAG top-20 (~1k tokens; 1 run) | 11% / 82% | 9% / 83% | 12% / 79% |
+| RAG top-100 (~4–6k tokens; 1 run) | 19% / 71% | 17% / 74% | 20% / 67% |
+| RAG top-k, same budget | 39 ± 8% / 48 ± 11% | 44 ± 5% / 39 ± 4% | 46 ± 4% / 40 ± 4% |
+| random sample, same budget | 47 ± 4% / 38 ± 5% | 47 ± 3% / 36 ± 4% | 48 ± 6% / 38 ± 3% |
+| **CEL theme view** | **61 ± 4% / 14 ± 7%** | **62 ± 3% / 14 ± 4%** | **63 ± 7% / 17 ± 4%** |
 
-In **all 6 runs**, the ledger beat retrieval at the same budget (by 13–27 points) and a random sample at the same budget (by 8–21 points).
+In **all 9 runs** (3 topics × 3), the ledger beat retrieval at the same budget (by 7–27 points) and a random sample at the same budget (by 5–22 points).
 
 **Full ledger** (every entry, no folding; single run):
 
 | reader input | tokens | seed oils score / absent | UPF score / absent |
 |---|---|---|---|
-| RAG top-k, same budget | 50k / 71k | 54% / 34% | 66% / 19% |
-| random sample, same budget | 50k / 71k | 55% / 32% | 73% / 16% |
-| **CEL full ledger** | 51k / 72k | **63% / 11%** | **75% / 6%** |
+| RAG top-k, same budget | 50k / 71k | 54% / 34% | 62% / 24% |
+| random sample, same budget | 50k / 71k | 55% / 32% | 66% / 18% |
+| **CEL full ledger** | 51k / 72k | **63% / 11%** | **70% / 5%** |
 
 Reading this honestly:
 - The robust advantage is that the ledger **rarely misses a point entirely**.
-- At the larger full-ledger budget, its lead over a random sample shrinks (UPF: 75 vs 73, within noise). Ledger lines are generalised wordings, which the judge often grades "partly".
+- At the larger full-ledger budget, its lead over a random sample shrinks (UPF: 70 vs 66; seed oils: 63 vs 55). Ledger lines are generalised wordings, which the judge often grades "partly".
 - Retrieval at the same budget is the worst of the large-budget options, because similarity ranking concentrates on near-duplicates.
 
 **Tried and failed: v4 "refine" op.** I added child entries for more specific claims, to fix the "partly" problem. The cheap absorber used the op only 36 times in 6,062 posts, and coverage did not improve: theme view 52.7% vs 56.6% for v2, full ledger 57.8% vs 60.2%, same points and same judge run. Generality of wording is not fixed by offering an option the absorber doesn't take. A stronger absorber, or a dedicated specificity pass, is the untested next step.
@@ -312,7 +316,7 @@ Reading this honestly:
 
 Sonnet files slightly more cleanly, but the coverage gain is within judge noise at 4× the ingest price. The "partly" ceiling comes from the representation (canonical assertions), not from how carefully posts are read. Haiku remains the right absorber.
 
-**Breadth vs specificity at a fixed budget.** I added one verbatim quote per entry, located by provenance, which halves the entries that fit (892 → 452). Coverage got *worse* in all 4 runs: seed oils 49.6 → 43.5 and 49.2 → 45.0; UPF 69.3 → 57.2 and 64.6 → 53.0. More distinct assertions beat verbatim evidence for fewer. When verbatim wording matters, fetch it by provenance or census on demand rather than putting it in the standing view.
+**Breadth vs specificity at a fixed budget.** I added one verbatim quote per entry, located by provenance, which halves the entries that fit (892 → 452). Coverage got *worse* in all 4 runs: seed oils 49.6 → 43.5 and 49.2 → 45.0; UPF (corrected) 61.1 → 52.2 and 61.7 → 55.2. More distinct assertions beat verbatim evidence for fewer. When verbatim wording matters, fetch it by provenance or census on demand rather than putting it in the standing view.
 
 **Open questions, side by side** ([`ask.md`](../results/bsky_seedoils/ask.md), [UPF](../results/bsky_upf/ask.md)):
 - Asked "what are the main arguments of people who think seed oils are harmful, and how many make each?", the ledger answered with people counts and camps: "of 3,000 authors with a position, 701 (~23%) disagree that seed oils are safe; 'seed oils are toxic' 159 agree / 89 dispute…".
@@ -323,10 +327,10 @@ Sonnet files slightly more cleanly, but the coverage gain is within judge noise 
 
 | method | median count error | within 20% | median author-count error | $ / question (uncached; ledger reads ~10× less when cached) |
 |---|---|---|---|---|
-| CEL read alone | 57–88% | 0–25% | 43–86% | $0.50–0.53 |
-| **CEL + census** | **0–1%** | **88–100%** | **0–1%** | $0.70–0.72 |
-| RAG top-20 | 91–92% | 0% | 100% | $0.03–0.04 |
-| RAG top-100 | 46–58% | 0% | 100% | $0.10–0.11 |
+| CEL read alone | 57–80% | 12–25% | 43–86% | $0.51–0.53 |
+| **CEL + census** | **0%** | **88–100%** | **0–1%** | $0.70–0.72 |
+| RAG top-20 | 80–91% | 0% | 100% | $0.03–0.04 |
+| RAG top-100 | 37–58% | 0% | 100% | $0.10 |
 
 **Growth on real data** (replaces the assumed scaling exponent):
 - Entries grew like N^0.78 (seed oils) and N^0.84 (UPF).
@@ -386,7 +390,7 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 ---
 
 ## 9. Limitations and failure modes (updated from real data)
-- **Absorber quality is the critical parameter.** Real strict error is 1–4%, but 25–35% of filings are imprecise. Ledger tallies are good for shape and ranking; for numbers that matter, run a census.
+- **Absorber quality is the critical parameter.** Real strict error is 2–5%, but 22–31% of filings are imprecise. Ledger tallies are good for shape and ranking; for numbers that matter, run a census.
 - **The anchor must be a literal statement** chosen at setup. A dedicated pass is needed for good recall, and it over-calls positions on 14–34% of posts that have none.
 - **The reader must be told the semantics.** Without the legend, Opus misread the anchor line.
 - **Lexical questions need census.** The ledger stores meaning, not words.
@@ -431,3 +435,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 4 | Census Q&A with gold answers | Exact counts (0% median error) vs RAG 52–75% |
 | 5 | Every Bluesky post on two niche topics; filing, coverage and anchor audits; lanes; v3 anchor pass | Real ε; coverage at equal budget; anchor recall bug found and fixed; real growth exponent (no saturation); real costs ~30× the first estimate |
 | 6 | Cached-read cost measured; side-by-side open questions; v4 refine op; repeated coverage runs; Haiku vs Sonnet absorber; quotes in view | Cached ledger read $0.05 per question (same as top-20 RAG); token estimator ~2× low (corrected); refine op and quotes didn't help (negative); a stronger absorber isn't worth 4×; coverage advantage held in all 6 repeated runs |
+| 7 | Third topic (four-day work week, non-health); found and fixed a topic hard-coded in the judge prompts; re-ran every UPF evaluation | Generalises to a different domain (anchor bias 1 pt); coverage advantage held in all 9 runs; UPF numbers corrected |
