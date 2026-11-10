@@ -45,7 +45,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("data_dir", type=Path)
     ap.add_argument("--out", type=Path, default=Path("results/real_remix"))
+    ap.add_argument("--version", default="v1", choices=["v1", "v2"])
     a = ap.parse_args()
+    semeval.CFG["version"] = a.version
     a.out.mkdir(parents=True, exist_ok=True)
     jobs = []
     for t, shares in MIX.items():

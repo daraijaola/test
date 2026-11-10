@@ -1,0 +1,107 @@
+[
+ {
+  "tag": "ledger_abortion_remix",
+  "gold": {
+   "favor": 50.0,
+   "against": 20.0,
+   "none": 30.0
+  },
+  "anchor_only": {
+   "favor": 52.333333333333336,
+   "against": 13.666666666666666,
+   "none": 34.0
+  },
+  "read_with_legend": {
+   "favor": 53.0,
+   "against": 15.0,
+   "none": 32.0
+  },
+  "mae_anchor_only": 4.222222222222223,
+  "mae_read_with_legend": 3.3333333333333335,
+  "usd": 0.08479779999999999
+ },
+ {
+  "tag": "ledger_atheism_remix",
+  "gold": {
+   "favor": 45.09090909090909,
+   "against": 25.09090909090909,
+   "none": 29.818181818181817
+  },
+  "anchor_only": {
+   "favor": 39.63636363636363,
+   "against": 12.0,
+   "none": 48.36363636363637
+  },
+  "read_with_legend": {
+   "favor": 42.0,
+   "against": 20.0,
+   "none": 38.0
+  },
+  "mae_anchor_only": 12.363636363636367,
+  "mae_read_with_legend": 5.454545454545456,
+  "usd": 0.1464098
+ },
+ {
+  "tag": "ledger_climate_remix",
+  "gold": {
+   "favor": 30.057803468208093,
+   "against": 15.028901734104046,
+   "none": 54.91329479768786
+  },
+  "anchor_only": {
+   "favor": 28.90173410404624,
+   "against": 16.184971098265898,
+   "none": 54.91329479768786
+  },
+  "read_with_legend": {
+   "favor": 30.0,
+   "against": 16.5,
+   "none": 53.5
+  },
+  "mae_anchor_only": 0.7707129094412343,
+  "mae_read_with_legend": 0.9807321772639691,
+  "usd": 0.07559779999999999
+ },
+ {
+  "tag": "ledger_feminist_remix",
+  "gold": {
+   "favor": 50.0,
+   "against": 25.0,
+   "none": 25.0
+  },
+  "anchor_only": {
+   "favor": 37.666666666666664,
+   "against": 21.333333333333332,
+   "none": 41.0
+  },
+  "read_with_legend": {
+   "favor": 40.0,
+   "against": 27.0,
+   "none": 33.0
+  },
+  "mae_anchor_only": 10.666666666666666,
+  "mae_read_with_legend": 6.666666666666667,
+  "usd": 0.1261498
+ },
+ {
+  "tag": "ledger_hillary_remix",
+  "gold": {
+   "favor": 40.0,
+   "against": 20.0,
+   "none": 40.0
+  },
+  "anchor_only": {
+   "favor": 31.666666666666668,
+   "against": 15.0,
+   "none": 53.33333333333333
+  },
+  "read_with_legend": {
+   "favor": 31.0,
+   "against": 17.0,
+   "none": 52.0
+  },
+  "mae_anchor_only": 8.888888888888888,
+  "mae_read_with_legend": 8.0,
+  "usd": 0.1082298
+ }
+]

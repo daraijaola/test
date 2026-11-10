@@ -1,0 +1,289 @@
+[
+ {
+  "target": "ledger_atheism_remix",
+  "entity": "freethinker",
+  "gold": {
+   "count": 17,
+   "against_pct": 11.764705882352942
+  },
+  "plan": {
+   "predicate": "Does the tweet contain the word 'freethinker' (or 'freethinkers', any capitalization), either as a plain word or as a hashtag such as #freethinker?",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 275,
+  "census_hits": 19,
+  "census_precision": 0.8947368421052632,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 7,
+    "against_pct": 14
+   },
+   "ledger+census": {
+    "count": 19,
+    "against_pct": 0
+   },
+   "rag20": {
+    "count": 3,
+    "against_pct": 10
+   },
+   "rag100": {
+    "count": 10,
+    "against_pct": 0
+   }
+  },
+  "cost": {
+   "ledger": 0.100568,
+   "ledger+census": 0.19375654,
+   "rag20": 0.024207599999999996,
+   "rag100": 0.0549356
+  }
+ },
+ {
+  "target": "ledger_atheism_remix",
+  "entity": "god",
+  "gold": {
+   "count": 56,
+   "against_pct": 37.5
+  },
+  "plan": {
+   "predicate": "Does the tweet contain the word \"god\" in any letter case, either as a standalone word (e.g., \"God\", \"god\", \"GOD\", including the possessive \"God's\") or as the hashtag \"#god\"/\"#God\"? Answer no if \"god\" appears only inside a longer word such as \"godless\", \"goddess\", \"gods\", or \"#GodIsGood\".",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 275,
+  "census_hits": 56,
+  "census_precision": 1.0,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 70,
+    "against_pct": 50
+   },
+   "ledger+census": {
+    "count": 56,
+    "against_pct": 32.1
+   },
+   "rag20": {
+    "count": 85,
+    "against_pct": 65
+   },
+   "rag100": {
+    "count": 85,
+    "against_pct": 30
+   }
+  },
+  "cost": {
+   "ledger": 0.1034836,
+   "ledger+census": 0.20279175,
+   "rag20": 0.0296276,
+   "rag100": 0.06408359999999999
+  }
+ },
+ {
+  "target": "ledger_atheism_remix",
+  "entity": "lovewins",
+  "gold": {
+   "count": 12,
+   "against_pct": 0.0
+  },
+  "plan": {
+   "predicate": "Does the tweet contain the term 'lovewins' (case-insensitive), whether as a plain word or as a hashtag such as #LoveWins?",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 275,
+  "census_hits": 12,
+  "census_precision": 1.0,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 6,
+    "against_pct": 33
+   },
+   "ledger+census": {
+    "count": 12,
+    "against_pct": 0
+   },
+   "rag20": {
+    "count": 3,
+    "against_pct": 67
+   },
+   "rag100": {
+    "count": 6,
+    "against_pct": 10
+   }
+  },
+  "cost": {
+   "ledger": 0.10066760000000001,
+   "ledger+census": 0.19700695000000001,
+   "rag20": 0.033415600000000004,
+   "rag100": 0.0521436
+  }
+ },
+ {
+  "target": "ledger_feminist_remix",
+  "entity": "feminist",
+  "gold": {
+   "count": 38,
+   "against_pct": 36.8421052631579
+  },
+  "plan": {
+   "predicate": "Does the tweet text contain the string 'feminist' (case-insensitive) as a word or hashtag, including plural or hashtag forms like 'feminists', '#feminist', '#Feminists', or hashtags with 'feminist' inside such as '#FeministsAreUgly'? Answer yes only if the letters 'feminist' literally appear. Do not count 'feminism' or 'feminine' on their own.",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 300,
+  "census_hits": 58,
+  "census_precision": 0.6551724137931034,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 95,
+    "against_pct": 66
+   },
+   "ledger+census": {
+    "count": 58,
+    "against_pct": 44.8
+   },
+   "rag20": {
+    "count": 70,
+    "against_pct": 55
+   },
+   "rag100": {
+    "count": 32,
+    "against_pct": 50
+   }
+  },
+  "cost": {
+   "ledger": 0.104752,
+   "ledger+census": 0.20487845000000002,
+   "rag20": 0.031991599999999995,
+   "rag100": 0.060967600000000004
+  }
+ },
+ {
+  "target": "ledger_feminist_remix",
+  "entity": "yesallwomen",
+  "gold": {
+   "count": 13,
+   "against_pct": 15.384615384615385
+  },
+  "plan": {
+   "predicate": "Does the tweet contain the term 'yesallwomen' in any form (e.g., the hashtag #YesAllWomen, or the word 'YesAllWomen' / 'yes all women' written as one word, any capitalization)?",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 300,
+  "census_hits": 13,
+  "census_precision": 1.0,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 10,
+    "against_pct": 30
+   },
+   "ledger+census": {
+    "count": 13,
+    "against_pct": 15.4
+   },
+   "rag20": {
+    "count": 6,
+    "against_pct": 35
+   },
+   "rag100": {
+    "count": 6,
+    "against_pct": 35
+   }
+  },
+  "cost": {
+   "ledger": 0.10124760000000001,
+   "ledger+census": 0.19601865000000002,
+   "rag20": 0.0261236,
+   "rag100": 0.0534436
+  }
+ },
+ {
+  "target": "ledger_feminist_remix",
+  "entity": "gamergate",
+  "gold": {
+   "count": 12,
+   "against_pct": 58.333333333333336
+  },
+  "plan": {
+   "predicate": "Does the tweet contain the word 'gamergate' in any form, including the hashtag #gamergate or #GamerGate (case-insensitive)?",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 300,
+  "census_hits": 12,
+  "census_precision": 1.0,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 4,
+    "against_pct": 70
+   },
+   "ledger+census": {
+    "count": 12,
+    "against_pct": 70
+   },
+   "rag20": {
+    "count": 3,
+    "against_pct": 90
+   },
+   "rag100": {
+    "count": 5,
+    "against_pct": 100
+   }
+  },
+  "cost": {
+   "ledger": 0.09560760000000001,
+   "ledger+census": 0.19567964999999998,
+   "rag20": 0.0247036,
+   "rag100": 0.0507556
+  }
+ },
+ {
+  "target": "ledger_hillary_remix",
+  "entity": "hillaryclinton",
+  "gold": {
+   "count": 17,
+   "against_pct": 35.294117647058826
+  },
+  "plan": {
+   "predicate": "Does the tweet contain the token 'hillaryclinton' as a single word with no space between 'hillary' and 'clinton', ignoring case, in any form: a plain word, a hashtag (#HillaryClinton), or a mention (@HillaryClinton)? Answer no if the tweet only has 'Hillary Clinton' with a space, 'Hillary' alone, or other forms such as #Hillary2016.",
+   "scope_all": true,
+   "scope_entries": []
+  },
+  "census_scope": 300,
+  "census_hits": 17,
+  "census_precision": 1.0,
+  "census_recall": 1.0,
+  "answers": {
+   "ledger": {
+    "count": 55,
+    "against_pct": 45
+   },
+   "ledger+census": {
+    "count": 17,
+    "against_pct": 35.3
+   },
+   "rag20": {
+    "count": 8,
+    "against_pct": 60
+   },
+   "rag100": {
+    "count": 7,
+    "against_pct": 50
+   }
+  },
+  "cost": {
+   "ledger": 0.070104,
+   "ledger+census": 0.13514495,
+   "rag20": 0.0279716,
+   "rag100": 0.0553116
+  }
+ }
+]

@@ -1,0 +1,123 @@
+{
+ "target": "feminist",
+ "tag": "feminist_remix",
+ "n": 300,
+ "entries": 189,
+ "entries_before_global_merge": 168,
+ "compression_docs_per_entry": 1.5873015873015872,
+ "residual_pct_before_reabsorb": 20.0,
+ "residual_pct": 7.666666666666667,
+ "noise_pct": 6.666666666666667,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "f_avg_ledger_chain": 0.7873153336729495,
+ "f_avg_direct": 0.7713415389187449,
+ "acc_ledger_chain": 0.7566666666666667,
+ "acc_direct": 0.7466666666666667,
+ "gold_dist": {
+  "favor": 50.0,
+  "against": 25.0,
+  "none": 25.0
+ },
+ "ledger_computed_dist": {
+  "favor": 54.0,
+  "against": 25.333333333333332,
+  "none": 20.666666666666668
+ },
+ "ledger_read_dist": {
+  "favor": 50.0,
+  "against": 34.0,
+  "none": 16.0
+ },
+ "rag": {
+  "bm25_k20": {
+   "favor": 33.0,
+   "against": 49.0,
+   "none": 18.0
+  },
+  "sample_k20": {
+   "favor": 42.0,
+   "against": 47.0,
+   "none": 11.0
+  },
+  "bm25_k50": {
+   "favor": 33.0,
+   "against": 45.0,
+   "none": 22.0
+  },
+  "sample_k50": {
+   "favor": 44.0,
+   "against": 38.0,
+   "none": 18.0
+  }
+ },
+ "prior_only_dist": {
+  "favor": 28.0,
+  "against": 54.0,
+  "none": 18.0
+ },
+ "direct_all_dist": {
+  "favor": 40.333333333333336,
+  "against": 24.666666666666668,
+  "none": 35.0
+ },
+ "mae_ledger_computed": 2.888888888888888,
+ "mae_ledger_read": 6.0,
+ "mae_prior_only": 19.333333333333332,
+ "mae_direct_all": 6.666666666666665,
+ "mae_bm25_k20": 16.0,
+ "mae_sample_k20": 14.666666666666666,
+ "mae_bm25_k50": 13.333333333333334,
+ "mae_sample_k50": 8.666666666666666,
+ "render_tokens_est": 6214,
+ "ingest_usd": 0.23425177,
+ "total_usd": 0.46762843,
+ "cost_by_stage": {
+  "prior_only": 0.013151,
+  "direct": 0.00844646,
+  "smp50": 0.0272392,
+  "read_ledger": 0.1289138,
+  "residual": 0.0979245,
+  "rag20": 0.0185186,
+  "rag50": 0.017049799999999997,
+  "polarity": 0.0558238,
+  "smp20": 0.020057799999999997,
+  "consolidate": 0.03466554,
+  "absorb": 0.04583793
+ },
+ "growth": [
+  [
+   40,
+   35
+  ],
+  [
+   80,
+   55
+  ],
+  [
+   120,
+   81
+  ],
+  [
+   160,
+   102
+  ],
+  [
+   200,
+   121
+  ],
+  [
+   240,
+   140
+  ],
+  [
+   280,
+   158
+  ],
+  [
+   300,
+   168
+  ]
+ ],
+ "seconds": 465.9236087799072
+}

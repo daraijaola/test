@@ -1,0 +1,123 @@
+{
+ "target": "abortion",
+ "tag": "abortion_remix",
+ "n": 300,
+ "entries": 112,
+ "entries_before_global_merge": 112,
+ "compression_docs_per_entry": 2.6785714285714284,
+ "residual_pct_before_reabsorb": 15.0,
+ "residual_pct": 7.666666666666667,
+ "noise_pct": 12.0,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "f_avg_ledger_chain": 0.8378527464870515,
+ "f_avg_direct": 0.781159921595757,
+ "acc_ledger_chain": 0.8566666666666667,
+ "acc_direct": 0.81,
+ "gold_dist": {
+  "favor": 50.0,
+  "against": 20.0,
+  "none": 30.0
+ },
+ "ledger_computed_dist": {
+  "favor": 55.333333333333336,
+  "against": 16.333333333333332,
+  "none": 28.333333333333332
+ },
+ "ledger_read_dist": {
+  "favor": 50.0,
+  "against": 22.0,
+  "none": 28.0
+ },
+ "rag": {
+  "bm25_k20": {
+   "favor": 45.0,
+   "against": 35.0,
+   "none": 20.0
+  },
+  "sample_k20": {
+   "favor": 62.0,
+   "against": 30.0,
+   "none": 8.0
+  },
+  "bm25_k50": {
+   "favor": 30.0,
+   "against": 50.0,
+   "none": 20.0
+  },
+  "sample_k50": {
+   "favor": 54.0,
+   "against": 20.0,
+   "none": 26.0
+  }
+ },
+ "prior_only_dist": {
+  "favor": 18.0,
+  "against": 60.0,
+  "none": 22.0
+ },
+ "direct_all_dist": {
+  "favor": 48.0,
+  "against": 19.333333333333332,
+  "none": 32.666666666666664
+ },
+ "mae_ledger_computed": 3.555555555555557,
+ "mae_ledger_read": 1.3333333333333333,
+ "mae_prior_only": 26.666666666666668,
+ "mae_direct_all": 1.7777777777777775,
+ "mae_bm25_k20": 10.0,
+ "mae_sample_k20": 14.666666666666666,
+ "mae_bm25_k50": 20.0,
+ "mae_sample_k50": 2.6666666666666665,
+ "render_tokens_est": 3638,
+ "ingest_usd": 0.18605725,
+ "total_usd": 0.37670947,
+ "cost_by_stage": {
+  "prior_only": 0.014539799999999999,
+  "direct": 0.00730862,
+  "smp50": 0.0249566,
+  "read_ledger": 0.0884698,
+  "residual": 0.0859579,
+  "rag20": 0.016847599999999997,
+  "rag50": 0.017462,
+  "polarity": 0.0352738,
+  "smp20": 0.021067799999999998,
+  "consolidate": 0.02807694,
+  "absorb": 0.03674861
+ },
+ "growth": [
+  [
+   40,
+   31
+  ],
+  [
+   80,
+   46
+  ],
+  [
+   120,
+   64
+  ],
+  [
+   160,
+   73
+  ],
+  [
+   200,
+   81
+  ],
+  [
+   240,
+   92
+  ],
+  [
+   280,
+   105
+  ],
+  [
+   300,
+   112
+  ]
+ ],
+ "seconds": 415.13684916496277
+}

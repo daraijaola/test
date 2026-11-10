@@ -1,0 +1,111 @@
+{
+ "target": "climate",
+ "tag": "climate_remix",
+ "n": 173,
+ "entries": 97,
+ "entries_before_global_merge": 88,
+ "compression_docs_per_entry": 1.7835051546391754,
+ "residual_pct_before_reabsorb": 24.85549132947977,
+ "residual_pct": 9.826589595375722,
+ "noise_pct": 17.341040462427745,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "f_avg_ledger_chain": 0.7582686223756112,
+ "f_avg_direct": 0.7234748010610079,
+ "acc_ledger_chain": 0.7225433526011561,
+ "acc_direct": 0.7514450867052023,
+ "gold_dist": {
+  "favor": 30.057803468208093,
+  "against": 15.028901734104046,
+  "none": 54.91329479768786
+ },
+ "ledger_computed_dist": {
+  "favor": 40.46242774566474,
+  "against": 17.91907514450867,
+  "none": 41.61849710982659
+ },
+ "ledger_read_dist": {
+  "favor": 45.0,
+  "against": 27.0,
+  "none": 28.0
+ },
+ "rag": {
+  "bm25_k20": {
+   "favor": 55.0,
+   "against": 15.0,
+   "none": 30.0
+  },
+  "sample_k20": {
+   "favor": 57.0,
+   "against": 26.0,
+   "none": 17.0
+  },
+  "bm25_k50": {
+   "favor": 62.0,
+   "against": 12.0,
+   "none": 26.0
+  },
+  "sample_k50": {
+   "favor": 55.0,
+   "against": 17.0,
+   "none": 28.0
+  }
+ },
+ "prior_only_dist": {
+  "favor": 65.0,
+  "against": 6.0,
+  "none": 29.0
+ },
+ "direct_all_dist": {
+  "favor": 30.057803468208093,
+  "against": 18.497109826589597,
+  "none": 51.445086705202314
+ },
+ "mae_ledger_computed": 8.86319845857418,
+ "mae_ledger_read": 17.942196531791907,
+ "mae_prior_only": 23.294797687861273,
+ "mae_direct_all": 2.312138728323699,
+ "mae_bm25_k20": 16.628131021194605,
+ "mae_sample_k20": 25.27552986512524,
+ "mae_bm25_k50": 21.294797687861273,
+ "mae_sample_k50": 17.942196531791907,
+ "render_tokens_est": 3225,
+ "ingest_usd": 0.16520105,
+ "total_usd": 0.35224172,
+ "cost_by_stage": {
+  "prior_only": 0.014557,
+  "direct": 0.00527927,
+  "smp50": 0.0229874,
+  "read_ledger": 0.0793578,
+  "residual": 0.0893414,
+  "rag20": 0.0205418,
+  "rag50": 0.0194858,
+  "polarity": 0.0318618,
+  "smp20": 0.024831600000000002,
+  "consolidate": 0.023380059999999998,
+  "absorb": 0.02061779
+ },
+ "growth": [
+  [
+   40,
+   30
+  ],
+  [
+   80,
+   48
+  ],
+  [
+   120,
+   68
+  ],
+  [
+   160,
+   82
+  ],
+  [
+   173,
+   88
+  ]
+ ],
+ "seconds": 310.8395595550537
+}

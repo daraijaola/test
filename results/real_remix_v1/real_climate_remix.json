@@ -1,0 +1,111 @@
+{
+ "target": "climate",
+ "tag": "climate_remix",
+ "n": 173,
+ "entries": 66,
+ "entries_before_global_merge": 64,
+ "compression_docs_per_entry": 2.621212121212121,
+ "residual_pct_before_reabsorb": 11.560693641618498,
+ "residual_pct": 6.358381502890174,
+ "noise_pct": 40.46242774566474,
+ "hallucinated_ids": 0,
+ "missing_docs": 0,
+ "f_avg_ledger_chain": 0.7877149877149877,
+ "f_avg_direct": 0.7626781063275624,
+ "acc_ledger_chain": 0.7861271676300579,
+ "acc_direct": 0.7745664739884393,
+ "gold_dist": {
+  "favor": 30.057803468208093,
+  "against": 15.028901734104046,
+  "none": 54.91329479768786
+ },
+ "ledger_computed_dist": {
+  "favor": 34.104046242774565,
+  "against": 16.76300578034682,
+  "none": 49.13294797687861
+ },
+ "ledger_read_dist": {
+  "favor": 42.0,
+  "against": 18.0,
+  "none": 40.0
+ },
+ "rag": {
+  "bm25_k20": {
+   "favor": 60.0,
+   "against": 11.0,
+   "none": 29.0
+  },
+  "sample_k20": {
+   "favor": 55.0,
+   "against": 32.0,
+   "none": 13.0
+  },
+  "bm25_k50": {
+   "favor": 55.0,
+   "against": 13.0,
+   "none": 32.0
+  },
+  "sample_k50": {
+   "favor": 55.0,
+   "against": 17.0,
+   "none": 28.0
+  }
+ },
+ "prior_only_dist": {
+  "favor": 70.0,
+  "against": 6.0,
+  "none": 24.0
+ },
+ "direct_all_dist": {
+  "favor": 31.791907514450866,
+  "against": 20.23121387283237,
+  "none": 47.97687861271676
+ },
+ "mae_ledger_computed": 3.8535645472061653,
+ "mae_ledger_read": 9.942196531791907,
+ "mae_prior_only": 26.628131021194605,
+ "mae_direct_all": 4.624277456647399,
+ "mae_bm25_k20": 19.961464354527937,
+ "mae_sample_k20": 27.942196531791907,
+ "mae_bm25_k50": 16.628131021194605,
+ "mae_sample_k50": 17.942196531791907,
+ "render_tokens_est": 2174,
+ "ingest_usd": 0.06033667,
+ "total_usd": 0.30561772000000004,
+ "cost_by_stage": {
+  "rag50": 0.037661799999999995,
+  "consolidate": 0.017268659999999998,
+  "smp20": 0.0354218,
+  "residual": 0.00209815,
+  "direct": 0.00753425,
+  "absorb": 0.01778006,
+  "rag20": 0.0275978,
+  "smp50": 0.04637380000000001,
+  "read_ledger": 0.0710858,
+  "prior_only": 0.0196058,
+  "polarity": 0.023189800000000003
+ },
+ "growth": [
+  [
+   40,
+   17
+  ],
+  [
+   80,
+   39
+  ],
+  [
+   120,
+   53
+  ],
+  [
+   160,
+   62
+  ],
+  [
+   173,
+   64
+  ]
+ ],
+ "seconds": 254.4491958618164
+}

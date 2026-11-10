@@ -277,6 +277,9 @@ class Ledger:
         return (f"e{e.eid} | {e.text} | {len(e.author_stance)} authors ▲{a[SUPPORT]} ▼{a[DISPUTE]} "
                 f"·{a[MENTION]} | {e.total:.0f} docs{flag}{tail}")
 
+    ANCHOR_NOTE = ("e0 is the ANCHOR: it tallies every author whose position on the anchor statement is "
+                   "discernible (▲ agrees, ▼ disagrees). Authors not counted on e0 expressed no discernible position.")
+
     def render(self, budget_tokens: int = 32000) -> tuple[str, list[int]]:
         """The full corpus as the reading model sees it.  Entries are listed by number of
         distinct authors until the budget is used; the rest is folded into one line that
@@ -291,6 +294,8 @@ class Ledger:
             f"noise/off-topic: {100 * self.noise_mass / max(n, 1):.1f}%",
             "Each line: id | assertion | authors ▲support ▼dispute ·mention | docs | trend (old→new) | first seen",
         ]
+        if 0 in self.entries and self.entries[0].text.startswith("ANCHOR"):
+            header.append(self.ANCHOR_NOTE)
         used = self.est_tokens("\n".join(header)) + 40       # reserve room for the fold line
         shown, lines = [], []
         for e in es:
@@ -320,6 +325,8 @@ class Ledger:
         head = [f"CORPUS: {len(self.docs)} documents, {len({m.author for m in self.docs.values()})} distinct authors, "
                 f"{len(self.entries)} distinct assertions in {len(groups)} themes.",
                 f"residual (unplaced): {100 * self.residual_mass / n:.1f}%  noise: {100 * self.noise_mass / n:.1f}%"]
+        if 0 in self.entries and self.entries[0].text.startswith("ANCHOR"):
+            head.append(self.ANCHOR_NOTE)
         used = self.est_tokens("\n".join(head)) + 45 * len(groups)   # theme header + fold line per theme
         cand = [e for th in order for e in groups[th][:2]]
         cand += sorted((e for es in groups.values() for e in es[2:]), key=lambda e: -len(e.author_stance))

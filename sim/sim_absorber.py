@@ -24,7 +24,8 @@ FLIP = {"support": "dispute", "dispute": "support", "mention": "mention"}
 
 def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_batches: int = 20,
                  trace: list | None = None, shard_cap: int | None = None, route_err: float = 0.0,
-                 cross_merge: float = 0.5) -> tuple[Ledger, dict]:
+                 cross_merge: float = 0.5, do_consolidate: bool = True,
+                 do_reabsorb: bool = True) -> tuple[Ledger, dict]:
     """shard_cap: above this many entries the absorber sees only one routed theme's entries
     (route_err = probability the router picks the wrong theme). cross_merge: relative chance
     that consolidation notices a duplicate living in a *different* theme."""
@@ -112,17 +113,18 @@ def build_ledger(w: World, eps: float, seed: int = 1, batch: int = 100, epoch_ba
             if shard["on"]:
                 stats["sharded_batches"] += 1 / batch
         stats["fresh_entries"].append(len(L.entries) - frozen)
-        if stats["batches"] % epoch_batches == 0:
+        if stats["batches"] % epoch_batches == 0 and do_consolidate:
             stats["merges"] += consolidate_sim(L, by_label, eps, rng, cross_merge)
             stats["epochs"] += 1
             frozen = len(L.entries)
         if trace is not None:
             trace.append((i + batch, len(L.entries)))
-    stats["merges"] += consolidate_sim(L, by_label, eps, rng, cross_merge)
+    if do_consolidate:
+        stats["merges"] += consolidate_sim(L, by_label, eps, rng, cross_merge)
     shard["on"] = False
     # second-chance pass over the residual
     pmap = {p.pid: p for p in w.posts}
-    for d in sorted(L.residual):
+    for d in sorted(L.residual) if do_reabsorb else []:
         L.reabsorb_residual(d, ops_for(pmap[d]))
     L.check_conservation()
     return L, stats
