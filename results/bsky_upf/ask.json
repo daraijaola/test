@@ -1,0 +1,188 @@
+{
+ "ledger": [
+  {
+   "q": "What are the main health harms people attribute to ultra-processed foods, and how widespread is each claim?",
+   "a": "**Main health harms attributed to ultra-processed foods (UPF)**\n\nOverall, 2,396 authors took a clear position on \"UPF are harmful\": 1,751 agreed and 645 disagreed. Health harms are the largest theme, at 2,128 of 6,042 documents (35.2%). Few authors back any one specific harm, though.\n\n| Harm | Authors | Docs |\n|---|---|---|\n| Addictive or engineered overeating | 61 | 37 |\n| Several chronic diseases, not just obesity | 36 | 33 |\n| Higher dementia risk | 31 | 18 |\n| Weight loss after cutting UPF | 29 | 22 |\n| Obesity | 12 | 7 |\n| Heart and blood-vessel events | 27 | 24 |\n| Gut microbiome disruption | 21 | 13 |\n| Fertility and embryo harm | 18 | 13 |\n| Cancer and stroke | 17 | 10 |\n| Harm from additives, not just nutrients | 17 | 11 |\n| Anxiety, depression, ADHD and similar | 13 | 8 |\n| Depression | 12 | 10 |\n| Cognitive impairment | 12 | 7 |\n\nOther claims, such as early death (8 authors), inflammation (8) and diabetes (2\u20135), each have under 10 authors.\n\n**Contested:** 22 authors say total UPF intake isn't linked to colorectal cancer. Another 20 say the harm comes from fat, sugar and salt, not from processing.\n\n**What the data can't show:** whether any of these claims are true or causal, or how many people overall shared posts. It counts authors and documents only.",
+   "model": "claude-opus-5-5",
+   "usd": 0.52024,
+   "input": 2,
+   "cache_read": 0,
+   "cache_write": 61339,
+   "output": 1476
+  },
+  {
+   "q": "Who pushes back on the ultra-processed food narrative, and with what arguments?",
+   "a": "**Who:** 645 of the 2,396 authors with a discernible position (about 27%) disagree that ultra-processed foods (UPF) are harmful to health. The material doesn't say who these people are: no professions, affiliations, countries or industry ties.\n\n**Their main arguments, by number of authors (the bracket shows how many of them reject the anchor):**\n- **The term has no clear definition:** 121 authors (74). This one is shared across camps, since 16 of them agree UPF is harmful.\n- **The panic is overblown and feeds food anxiety and disordered eating:** 61 (58). A related line, that fear is overblown and comfort food should be defended, has 14 (14).\n- **The category is too vague to pin down specific harms:** 29 (23). Others say it wrongly groups cheese, tofu and dressings with junk food (25, 23) or tells science and policy nothing useful (15, 15).\n- **Not all UPF has a poor nutrient profile:** 26 (19). Others say the harm comes from fat, sugar, salt and calories, not processing (20, 13).\n- **Weak evidence:** total UPF isn't linked to colorectal cancer (22, 16), and observational studies can't show cause (7, 6).\n- **Class bias:** 11 (9) call it classism, and 10 (10) say the label targets food poor people eat.\n\nThe material doesn't show how many shares these posts got.",
+   "model": "claude-opus-5-5",
+   "usd": 0.048312600000000004,
+   "input": 2,
+   "cache_read": 60003,
+   "cache_write": 1333,
+   "output": 1282
+  },
+  {
+   "q": "Overall, what share of people with a discernible position think ultra-processed foods are harmful?",
+   "a": "**About 73% of people with a discernible position think ultra-processed foods are harmful.**\n\n- Of the corpus's 3,846 authors, 2,396 took a discernible position on the statement \"Ultra-processed foods are harmful to health.\" These authors wrote 1,885 posts.\n- **1,751 agree (73.1%)** and **645 disagree (26.9%)**.\n- The other 1,450 authors (about 38%) took no discernible position, so they aren't counted in either share.\n\n**What \"disagree\" often means:** Many who disagree seem to be questioning the label itself rather than saying the food is safe. For example:\n- \"'Ultra-processed' lacks a functional consensus definition\": 74 of these authors disagree with the harm statement.\n- \"The panic is excessive and fuels food anxiety\": 58 disagree.\n- \"The category wrongly lumps cheese and tofu with junk food\": 23 disagree.\n\n**What the material doesn't tell you:**\n- How strongly people hold their views.\n- Who the authors are, or where they're from.\n- Whether this social-media sample represents the wider public.\n- How the 9.2% noise and 5.4% unplaced posts would change the split.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0434806,
+   "input": 2,
+   "cache_read": 60003,
+   "cache_write": 1334,
+   "output": 1040
+  },
+  {
+   "q": "Which claims or themes became prominent only recently, and which faded?",
+   "a": "The material can't answer this. The ledger has no dates, posting times or time breakdowns. It only gives totals for authors, posts and agree/disagree splits, gathered across the whole corpus (6,042 posts, 3,846 authors). So I can't tell which claims rose or faded.\n\nSome claims mention dates or events in their wording, but that only shows when the topic was set, not when people posted about it:\n- e1939 (4 authors, 4 posts): experts urge release of the federal UPF definition, \"held up since August.\"\n- e1644 (8 authors, 8 posts): RFK Jr.'s promised definition \"by April\" hasn't been delivered.\n- e1792 (2 authors): Jason Fung's 2026 book.\n- e1798 (3 authors): the Earth Day 2027 theme.\n- e1402 (92 authors, 97 posts) and e15 (74 authors, 67 posts): industry lawsuits and San Francisco's lawsuit, which are probably tied to news events.\n\nNone of these show a trend. A post-by-post breakdown by date for each theme or claim would be needed to see what rose or faded.",
+   "model": "claude-opus-5-5",
+   "usd": 0.039896600000000004,
+   "input": 2,
+   "cache_read": 60003,
+   "cache_write": 1326,
+   "output": 864
+  },
+  {
+   "q": "What policy proposals come up (bans, labels, taxes, school food), and how much support does each get?",
+   "a": "**Policy proposals for ultra-processed food (UPF), by number of authors**\n\n| Proposal | Authors | Agree / disagree / neutral |\n|---|---|---|\n| Tax it, put hazard warnings on it, limit promotion like tobacco | 77 | 44 / 4 / 29 |\n| Regulate UPF in school kiosks and canteens | 25 | 17 / 2 / 6 |\n| Ban or restrict UPF advertising | 18 | 14 / 1 / 3 |\n| New federal definition plus traffic-light front-of-pack labels | 11 | 8 / 0 / 3 |\n| Tax modelled on the UK sugar tax | 10 | 8 / 2 / 0 |\n| Ban UPF outright | 10 | 8 / 2 / 0 |\n| End UPF subsidies | 10 | 9 / 1 / 0 |\n| Legally protect children from UPF marketing | 10 | 10 / 0 / 0 |\n| California \"not ultra-processed\" label (AB 2244) | 6 | 4 / 0 / 2 |\n| Limit UPF in hospital food | 6 | 5 / 0 / 1 |\n\nA separate post about California's voluntary label bill (7 authors) was almost all neutral reporting.\n\n**Smaller items:**\n- More money for school meals: 4 authors.\n- Survey showing support from both parties: 4.\n- Opposing a state \"not UPF\" certification: 3.\n\n**Opposition:** 18 authors say \"ultra-processed\" doesn't belong in legislation. Restricting what food stamps (SNAP) can buy draws mostly neutral news posts (bills in Utah and elsewhere, 3 authors each). A few critics call it fearmongering (3) or harmful to poor people (1 each).\n\n**Gaps:** The material doesn't give share counts or engagement. About 80 other policy claims are grouped together without separate counts, each from at most one author.",
+   "model": "claude-opus-5-5",
+   "usd": 0.057096600000000004,
+   "input": 2,
+   "cache_read": 60003,
+   "cache_write": 1341,
+   "output": 1718
+  },
+  {
+   "q": "How is the topic tied to politics or specific public figures?",
+   "a": "**How the topic ties to politics and public figures**\n\nUS federal politics, centred on RFK Jr. and MAHA, is one of 17 themes. It covers 154 assertions and 235 documents, about 3.9% of the 6,042 in the corpus.\n\n- **US dietary guidelines:** 32 authors say the new guidelines tell people to limit ultra-processed food. Of those, 17 agree and 14 are neutral.\n- **RFK Jr.:** Opinion is split.\n  - Critical: 17 authors find his food plan confusing, 10 say he isn't a credible source, and 7 say he spreads vaccine confusion instead.\n  - Positive: 11 authors credit him with \"sometimes brilliant ideas.\" All 11 also agree that ultra-processed food is harmful.\n  - 8 note that the federal definition he promised by April hasn't been delivered.\n- **White House:** 4 authors report that 70+ experts urged it to release the definition. 3 say food-company CEOs pushed for a delay.\n- **Trump:** 6 authors mention his fast-food diet.\n- **Sceptics:** 3 authors call ultra-processed food worries a MAHA scam, and all 3 disagree that it's harmful.\n- **Lawsuits and lobbying:** 92 authors call industry lawsuits \"weaponised delay,\" and 74 discuss San Francisco suing food makers.\n- **Other figures** (2\u20133 authors each): Chris van Tulleken, Marion Nestle, Michelle Obama and Calley Means.\n\nThe data doesn't show authors' party or country, so it can't say whether views split along party lines.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0535286,
+   "input": 2,
+   "cache_read": 60003,
+   "cache_write": 1325,
+   "output": 1546
+  }
+ ],
+ "rag20": [
+  {
+   "q": "What are the main health harms people attribute to ultra-processed foods, and how widespread is each claim?",
+   "a": "**Health harms attributed to ultra-processed foods (UPFs)**\n\nThese counts come from only the 20 retrieved posts out of 6,042. They show what appears in this sample, not how common each claim is across the full corpus. The material has no author or share data, so I can't count people or measure reach.\n\n- **General disease, disability and premature death: 6 posts.** These include Mozaffarian calling UPFs \"the main driver of disease, disability and death,\" the Lancet review by 43 experts on premature mortality, the NEJM paper, Chartres saying the evidence is \"unequivocal,\" a CME webinar, and one post that also mentions harm to the planet.\n- **Engineered for addiction or overeating, compared to nicotine: 2 posts.**\n- **Heart disease: 3 posts.** Two of these also name obesity, type 2 diabetes and cancer, but they have identical text, so it's really 1 distinct claim.\n- **Additives: 2 posts.** One raises Red Dye 40 and the other seed oils. Neither says these cause specific harm. A third post argues the harm comes from how processing changes food structure, not from additives.\n- **Poor nutrition and emotional well-being: 1 post.**\n\n**Pushback:** 3 posts question the framing. One calls it \"fear mongering,\" one says UPF intake is hard to measure, and one points to critics of the Lancet series.\n\nSeveral other retrieved posts are off-topic, such as one about foodborne illness.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0530018,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 3066,
+   "output": 1418
+  },
+  {
+   "q": "Who pushes back on the ultra-processed food narrative, and with what arguments?",
+   "a": "**Short answer: these 20 posts (out of 6,042) contain almost no direct pushback on the ultra-processed food (UPF) narrative.** Most of them support cutting UPF or simply report on it. The closest things to pushback are:\n\n- **Political hypocrisy (1 post):** One user says the right wing worries about \"chemicals in ultra processed food\" while pushing to end emissions controls. They call this proof of having \"no agenda but whatever they personally like.\" This questions who is pushing the narrative, not the science.\n- **Arguments over the definition (1\u20132 posts):** One user mocks people \"arguing with a straight face that loose leaf tea is an ultra processed food.\" Another praises a thread that explains \"what it is, exactly.\" Both suggest the label gets stretched or used loosely.\n- **Open scientific question (1 post):** A diabetes-meeting interview asks, \"Will targeting UPF end the chronic disease epidemic?\" It frames this as a debate, but we don't see the answer.\n\n**What the material doesn't show:** who the critics are by name or role, any industry or scientific counterarguments, how many people hold these views, or share and engagement numbers. The other 5,000+ posts might include stronger pushback.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0425338,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 2735,
+   "output": 1027
+  },
+  {
+   "q": "Overall, what share of people with a discernible position think ultra-processed foods are harmful?",
+   "a": "**I can't give an overall share. I only have 20 of the 6,042 posts, and they were picked for relevance, not at random, so they can't stand in for the whole corpus.**\n\nHere is what the 20 posts show, using my own rough reading of each:\n\n- **About 10 say ultra-processed foods are harmful.** Seven say it outright: the comparison to cigarettes, the Stanford piece on why they're unhealthy, the post asking whether to ban their ads, \"damaging to health,\" \"quite bad for you,\" \"garbage,\" and the South African study on unhealthy school food. Three more imply it: \"slop,\" the trend toward healthier diets, and the UK's \"extreme position\" in Europe.\n- **None clearly says they're harmless.** About five doubt the term or how people use it. That includes the posts mocking calls to regulate something nobody has defined, the one saying the problem is \"mostly too much sugar and salt,\" and the one rejecting the cigarette comparison. They question the label more than the harm.\n- **About five take no position.** These are questions or neutral comments on definitions.\n\nAmong the posts with a clear view, nearly all lean \"harmful,\" but that's 10 posts, not a measure of opinion. The material has no author names, so I can't count people, and it has no share or engagement numbers.",
+   "model": "claude-opus-5-5",
+   "usd": 0.056805800000000004,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 2869,
+   "output": 1687
+  },
+  {
+   "q": "Which claims or themes became prominent only recently, and which faded?",
+   "a": "I can't tell from this material which themes rose or faded. The 20 posts shown (out of 6,042) have no dates, share counts or engagement numbers, so I can't compare over time.\n\nWhat I can say:\n\n- **Themes in the sample:**\n  - RFK Jr. and the reversed food pyramid (about 3 posts)\n  - Comparing ultra-processed food (UPF) to tobacco and calling health claims \"health washing\" (2)\n  - Arguments that \"ultra-processed\" is a meaningless or fallacious term (about 4)\n  - Corporate blame, such as San Francisco's suit against Kraft Heinz and Mondelez (2)\n  - Poverty and cost driving UPF diets (1)\n  - Cancer-related claims (1)\n- **Partial date hints:** A few links include \"2026\" (Guardian, Washington Post opinion, an AcademyHealth blog from 2026-05). So the tobacco comparison and the food-justice framing appear in 2026 content, but there's nothing earlier to compare them with.\n- **Not in the material:** dates for most posts, how often each theme appears across all 6,042 posts, numbers of authors, and shares.\n\nTo answer this properly, I'd need post timestamps and theme counts grouped by month or quarter.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0330298,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 2732,
+   "output": 553
+  },
+  {
+   "q": "What policy proposals come up (bans, labels, taxes, school food), and how much support does each get?",
+   "a": "Only 20 of the 6,042 posts were retrieved, and none include likes, shares or author counts. So I can't measure support. All I can do is count how many retrieved posts mention each proposal and what stance they take.\n\n- **Labels (4 posts):** This is the most common topic.\n  - One asks senators to vote yes on the Childhood Diabetes Reduction Act's warning labels.\n  - One argues for front-of-pack scores like Nutri-Score.\n  - One cites Dr. Tedros saying companies obstruct front-of-pack labels.\n  - One is FDA head Makary talking about food labels.\n- **School food (3 posts):**\n  - A South Carolina Senate bill would ban the sale of ultra-processed foods at school.\n  - Makary discusses what the push could mean for school lunches.\n  - A Friends of the Earth report says ultra-processed food makers lobby to get their food into schools.\n- **Marketing limits (2 supportive, 1 critical):** Two posts back limits on junk-food ads to kids, including the Tedros post. One critic calls the proposals \"incredibly bad.\"\n- **Bans:** Only the South Carolina school bill.\n- **Taxes:** Sugar taxes come up once, in the Tedros post, as a target of industry pushback.\n\n**Pushback (3 posts):** Food makers say RFK Jr.'s proposals push up grocery costs. Another post cites a Lancet review saying the harm comes from ingredients, so policy needs rethinking. The third is the \"incredibly bad\" critic above.\n\nThese counts come from a small sample and don't show how widely any of these views are shared.",
+   "model": "claude-opus-5-5",
+   "usd": 0.052065799999999995,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 3019,
+   "output": 1390
+  },
+  {
+   "q": "How is the topic tied to politics or specific public figures?",
+   "a": "About 7\u20138 of the 20 retrieved posts (out of 6,042 in the corpus) link ultra-processed food (UPF) to politics or named figures.\n\n**Named figures and government:**\n- **RFK Jr. / MAHA:** One post says the effort fits the \"MAHA\" agenda. It claims RFK Jr. encouraged Republican state attorneys general in September to \"pursue this strategy.\"\n- **Trump administration / Kennedy:** One post says the American Journal of Public Health is \"laying down a marker\" for how the administration should define UPF.\n- **Sen. Cassidy:** One post says he \"sold himself out for politics\" and calls UPF \"a meaningless word.\"\n\n**Policy and industry politics:**\n- A talk at the American Public Health Association titled \"Dietary Guidelines and Ultra-Processed Foods: The Politics.\"\n- Big Tobacco's role in designing Lunchables.\n- A claim that the food industry \"shapes the narrative\" and targets low-income groups.\n- A warning that bans or limits on UPF must come with access to healthy food for poor and disabled people.\n- An academic post on plastics and environmental politics.\n\n**Gaps:** The material has no share or engagement numbers and no author counts. These are only the top 20 posts, so I can't say how common political framing is across the full corpus.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0355458,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 2804,
+   "output": 650
+  }
+ ],
+ "rag100": [
+  {
+   "q": "What are the main health harms people attribute to ultra-processed foods, and how widespread is each claim?",
+   "a": "# Health harms people attribute to ultra-processed foods (UPFs)\n\nThese counts come only from the 100 posts I was given, out of 6,042 in the corpus. They are approximate counts of posts that name each harm.\n\n**Harms named, most to least common**\n- **Addiction or overeating:** about 6 posts. They compare UPFs to cigarettes or nicotine, or say they are \"engineered\" to make people keep eating. One cites a University of Auckland study, another the Guardian's \"one bite and he was hooked.\"\n- **Obesity:** about 7 posts. These include a repeated line about \"almost 1 billion\" people living with obesity, and one post calling UPFs the \"main culprit.\"\n- **Heart disease:** about 7 posts.\n- **Type 2 diabetes:** about 4 posts.\n- **Cancer:** about 4 posts, including one on colon cancer.\n- **Early death:** about 4 posts. Sources include a 43-expert Lancet review and claims that UPFs \"kill more people than smoking.\"\n- **Brain or mental health:** about 4 posts.\n- **Children's health:** about 3 posts.\n- **Male reproductive health:** 2 posts with the same headline.\n- **Kidneys and Red Dye 40:** 1 post each.\n\n**Other patterns**\n- The most-shared item is the Guardian story about UPF firms suing to block health rules, which appears about 14 times. It's about regulation more than any specific harm.\n- About 8 to 10 posts are skeptical. They say \"ultra-processed\" is poorly defined or the evidence is weak.\n\n**What the material doesn't tell me:** who wrote the posts (so I can't count people), how often they were shared, or what the other 5,942 posts say.",
+   "model": "claude-opus-5-5",
+   "usd": 0.10888180000000001,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 8991,
+   "output": 1842
+  },
+  {
+   "q": "Who pushes back on the ultra-processed food narrative, and with what arguments?",
+   "a": "**Who pushes back on the ultra-processed food (UPF) narrative, and how**\n\nThe posts only tell me what was said. I can't see who posted them, their follower counts or any share or engagement numbers, so I can't say how many people this is or how far it spread. My counts below come from the 100 posts retrieved, not the full corpus of 6,042.\n\n**1. Critics who say the term is undefined (about 8 posts, the biggest group)**\n- One post saying there's \"no scientific or medical consensus\" on what UPF is appears twice.\n- Three posts share The Atlantic's \"Nobody Knows What Ultra-Processed Food Is.\"\n- One claims the category comes from an \"arbitrary\u2026 very Western\" paper from around 2009.\n- Others argue that linking UPF to disease is \"incorrect\" without a definition, cite the Maintenance Phase podcast, or call UPF an \"indefinable boogeyman\" and say regulators should target contaminants instead.\n\n**2. Critics who point to hypocrisy (about 3 posts)**\n- Influencers attack UPF while selling supplements.\n- People who promote plant-based products ignore that those are processed too.\n- One post mocks claims that loose-leaf tea counts as UPF.\n\n**3. Critics who question the science (1 post)**\n- It attacks who reviewed a BMJ umbrella review on UPF.\n\n**4. Critics who raise cost and class (about 4 posts)**\n- UPF is cheap while protein and organic food cost more.\n- One column calls the issue a \"class war\" of \"food snobs.\"\n- One notes restaurant food is often just as ultra-processed.\n\n**5. The food industry (as described by others in about 4 posts)**\n- Manufacturers resist a legal definition, sue countries, lobby Congress and oppose Colombia's taxes on these foods.\n\nTwo posts push back the other way, saying people should just call it \"junk food.\"",
+   "model": "claude-opus-5-5",
+   "usd": 0.1069058,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 9004,
+   "output": 1738
+  },
+  {
+   "q": "Overall, what share of people with a discernible position think ultra-processed foods are harmful?",
+   "a": "**Roughly 70% of the posts that take a side treat ultra-processed foods (UPFs) as harmful.** This covers only the 100 posts I was given, out of 6,042 in the corpus, so it is not a figure for the whole corpus.\n\nMy own hand-coding of those 100 posts:\n- **46 say UPFs are harmful.** They link UPFs to cancer, heart disease, depression, dementia or obesity, or call for regulation, ad bans or labels.\n- **19 are sceptical.** Most say there is no clear definition of \"ultra-processed,\" that the category is \"idiotic,\" that the research is \"garbage,\" or that the real problem is just salt and sugar. Few say outright that UPFs are harmless.\n- **35 take no clear position.** These are questions, neutral news, or posts defending the category without judging harm.\n\nThat gives 46 out of 65, or about 71%.\n\nLimits:\n- The 100 posts were picked by how well they matched the search, not at random. Many contain phrases like \"people think,\" which may over-sample debates about definitions.\n- The material doesn't show authors, so I can't count people. Some posts are duplicates or reposts of the same news story, such as the bowel-cancer study posted twice.\n- There are no share or engagement numbers, so I can't weight posts by reach.\n- Borderline posts could be coded either way, so the figure could plausibly be 65\u201375%.",
+   "model": "claude-opus-5-5",
+   "usd": 0.1246178,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 8953,
+   "output": 2644
+  },
+  {
+   "q": "Which claims or themes became prominent only recently, and which faded?",
+   "a": "**I can't answer this from the material.** The 100 retrieved posts (of 6,042) have no dates or engagement data, so I can't tell which claims rose recently and which faded. There are also no share counts or author IDs, so I can't count how many people posted.\n\n**What the sample does show (no timing):**\n- **Repeated posts:** \"The meat industry needed a new weapon\u2026 'Ultra-processed food'\u2026 Vague, meaningless, effective\" appears 5 times. The \"Big Education Ape: Junk Food Industrial Complex\" post appears 5 times. \"How Ireland got hooked on ultra-processed foods\" appears 4 times.\n- **Recurring themes:**\n  - RFK Jr./MAHA, the upside-down food pyramid and his promised definition of ultra-processed food (roughly 10 posts).\n  - The term is vague or meaningless (about 12 posts).\n  - Comparisons to tobacco and corporate harm, plus San Francisco's lawsuits against food companies (about 6 posts).\n  - Health studies linking these foods to dementia, ADHD, depression and heart disease (4 posts).\n  - Cost and access to food (about 5 posts).\n\n**Weak hints only:** Link paths include \"2026\" (one is dated 2026/09), and one post mentions the 2025\u20132030 US dietary guidelines. That suggests the RFK Jr. and lawsuit topics are from around 2026, but it doesn't show change over time.\n\nTo answer the question properly, I'd need post dates for the full corpus.",
+   "model": "claude-opus-5-5",
+   "usd": 0.0948578,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 8833,
+   "output": 1204
+  },
+  {
+   "q": "What policy proposals come up (bans, labels, taxes, school food), and how much support does each get?",
+   "a": "**Policy proposals in 100 retrieved posts on ultra-processed food (out of 6,042 total)**\n\nThese are rough counts from the retrieved posts only. Duplicate reposts are noted.\n\n- **School food (about 12 posts, the most common topic):** Includes South Carolina's bill to ban ultra-processed food sales in schools, H.R. 5753 (backed by a claim that 99% of school nutrition providers need more funding), California's Real Food, Healthy Kids Act, and examples from South Africa, Argentina and Brazil. Three identical posts link a usrtk.org piece on food companies and school meals. All of these posts support the changes. One parent calls school food \"ultra processed garbage.\"\n- **Labels (about 8 posts):** Warning labels, front-of-pack labels and Nutri-Score. One cited survey (AJPH) reports broad support from both parties for warning labels, safety testing of additives and required sugar and salt cuts. One Washington Post opinion piece argues that labelling raises costs for low-income families.\n- **Ad and marketing limits (about 4 posts):** All of these support restrictions.\n- **Taxes and subsidies (about 4 posts):** Only 2 mention sugar or fat taxes. Two criticise farm subsidies.\n\n**Pushback:** At least 6 posts say \"ultra-processed\" has no clear definition. Industry says RFK Jr.'s proposals raise grocery costs. One post calls the proposals \"incredibly bad,\" and several say healthy food needs to be affordable first.\n\n**What I can't tell you:** The posts include no share or engagement numbers and no author IDs, so I can't count people or measure reach. These 100 posts may not represent the other 5,942.",
+   "model": "claude-opus-5-5",
+   "usd": 0.1079938,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 9075,
+   "output": 1764
+  },
+  {
+   "q": "How is the topic tied to politics or specific public figures?",
+   "a": "**How the topic ties to politics and public figures (based on 100 retrieved posts out of 6,042)**\n\n- **RFK Jr. / MAHA / Trump administration (about 6 posts):** One post says RFK Jr. encouraged Republican state attorneys general to pursue ultra-processed food cases. Another calls the MAHA agenda \"failed,\" citing a report from the Center for American Progress. A third mentions a leaked RFK letter about David Kessler's petition. Others mock Trump's own diet or cover a public health journal (AJPH) pushing the administration on how to define ultra-processed food. A separate post accuses Senator Cassidy of selling out \"for politics.\"\n- **WHO Director-General Tedros (about 6 posts):** Four posts repeat his quote about industry interference: \"when harm and profit are tied to the same product.\" Two more cite related lines about lawsuits weakening public health rules.\n- **Commentators:** 7 posts link to Marion Nestle's \"Food Politics\" blog, and 2 feature Chris van Tulleken. Leana Wen and Christina Roberto appear once each.\n- **Law and policy:** San Francisco's lawsuit against manufacturers, a California law, US federal labelling, Brazil's food policy and an APHA talk on the politics of the dietary guidelines (1 post each).\n\n**What the material doesn't tell me:** how many distinct people posted, or any share or engagement counts. These posts are also only a small sample of the corpus.",
+   "model": "claude-opus-5-5",
+   "usd": 0.1072458,
+   "input": 2,
+   "cache_read": 529,
+   "cache_write": 9399,
+   "output": 1597
+  }
+ ]
+}

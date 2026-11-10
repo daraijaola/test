@@ -16,6 +16,7 @@ import time
 
 _lock = threading.Lock()
 SPEND = {"usd": 0.0, "calls": 0, "in": 0, "out": 0}
+CALLS: list[dict] = []   # per-call record: model, usd, input / cache-read / cache-write / output tokens
 
 
 def complete_cli(model: str, system: str, user: str, schema: dict, effort: str = "low",
@@ -50,6 +51,10 @@ def _run(cmd, user, retries, timeout):
                 SPEND["usd"] += usd; SPEND["calls"] += 1
                 SPEND["in"] += u.get("input_tokens", 0) + u.get("cache_read_input_tokens", 0) + u.get("cache_creation_input_tokens", 0)
                 SPEND["out"] += u.get("output_tokens", 0)
+                CALLS.append({"model": cmd[cmd.index("--model") + 1], "usd": usd, "input": u.get("input_tokens", 0),
+                              "cache_read": u.get("cache_read_input_tokens", 0),
+                              "cache_write": u.get("cache_creation_input_tokens", 0),
+                              "output": u.get("output_tokens", 0)})
             return out, usd
         except Exception as e:  # noqa: BLE001 - retried, then re-raised
             err = e

@@ -29,11 +29,13 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 | Per-tweet stance recovered *through* the ledger (SemEval F_avg) | n/a | **0.801**, vs 0.749 for Haiku classifying each tweet directly | §7.2 |
 | Absorber filing errors (independent judge, 199 random real posts) | n/a | **1–4% wrong**, 25–35% "minor issue" | §7.3 |
 
-**Cost (measured).**
+**Cost (measured, Opus 5.5 reader at medium effort).**
 - **Ingest:** ~$0.60–0.70 per 1,000 posts, every post read once. 6,000 posts took about 30 minutes with 8 parallel lanes.
-- **Per question, as run here:** reading the ledger cost ~$0.50, because every CLI call re-sent the 32k-token ledger uncached and Opus ran at medium effort. With the ledger as a cached prefix through the SDK, it would be ~$0.02–0.05.
+- **Per question:** reading the **whole ledger held as a cached prompt costs ~$0.05**: measured $0.035–0.071 over 10 questions on two topics, after a one-time ~$0.53 cache write. That's the same as RAG top-20 ($0.033–0.057) and half of RAG top-100 ($0.10–0.12). Uncached it is ~$0.50.
 - **Census:** ~$0.12 per 1,000 posts scanned.
-- **At equal reading budget,** CEL and RAG cost the same per question, and CEL delivers more coverage. Against cheap top-20 RAG, CEL costs more per question but answers questions RAG structurally can't.
+- **So after the one-time ingest,** reading everything costs what reading 20 retrieved posts costs.
+
+Token note: the token budgets in this document are bytes/4 estimates applied identically to the ledger and to raw text. This model's real tokenisation is about 2× those figures (the "31k" view is 61–65k real tokens), so equal-budget comparisons are fair but absolute token figures are about 2× low.
 
 **Where CEL is *not* better:**
 - When a narrow question can be answered by a handful of posts, RAG is cheaper and often as good.
@@ -167,7 +169,7 @@ The user states the subject as one unambiguous statement, e.g. *"Seed oils are s
 - **Flat view:** entries by number of distinct authors until the token budget is used. One fold line gives the exact count and share of everything not shown.
 - **Theme view:** 8–15 model-proposed themes. Each theme shows its exact mass and at least its top two entries; remaining slots go by global rank; each theme's remainder folds with its exact count. At 500k simulated posts and a 32k budget it shows 98% of claims held by ≥10 people, against 72% for the flat view.
 - **A legend is required.** The view's header explains the anchor and camp columns. Without it, Opus misread the anchor line: SemEval climate error was 17.9 points without the legend and 1.0 with it (§7.2).
-- **Budget is a dial.** A 32k view costs a few cents per question when cached; 128k shows everything held by ≥3 people at 500k posts (simulated) for ~$0.04 per question.
+- **Budget is a dial.** The "32k" view (61–65k real tokens) costs ~$0.05 per question when cached (measured). A budget 4× larger shows everything held by ≥3 people at 500k posts (simulated) and, by the same cache-read pricing, roughly doubles to triples that cost.
 
 ### 4.7 Census (exhaustive, exact-scope verification)
 - **The step:** the reader writes a yes/no predicate and a scope (all posts, or specific entries' posting lists). A cheap model checks **every** post in scope, and the exact result goes back to the reader.
@@ -191,8 +193,8 @@ All figures are measured on real runs unless marked "projected".
 |---|---|---|---|---|
 | One-time cost | ~0 | ~0 | 0 | **$0.60–0.70 per 1k posts** (Haiku absorb + Sonnet consolidate/escalate/label) |
 | Reader tokens per question | ~1k | ~31–72k raw posts | 247–282k for 6k posts; impossible past ~4M posts' worth | ~31k (view) / 51–72k (full ledger) |
-| $ per question, as run (uncached CLI) | $0.03–0.04 | ≈ CEL | ≈ 5–8× CEL | $0.50–0.53 |
-| $ per question, projected with prompt caching | same | same | 0.05× input | **~$0.02–0.05** |
+| $ per question, measured, cached prompt | $0.033–0.057 | ≈ CEL | ≈ 4–5× CEL (~250k+ real tokens per read) | **$0.035–0.071** (+ one-time ~$0.53 cache write) |
+| $ per question, measured, uncached | $0.03–0.05 | ≈ CEL | — | $0.50–0.53 |
 | Can answer "how many / what share / what's rising" | no | sample estimate only | in principle, if it fits | yes (tallies), exact with census |
 
 What makes it cheaper:
@@ -202,7 +204,7 @@ What makes it cheaper:
 4. **Coverage per token is higher than retrieval at the same budget** (§7.3).
 
 Where it is not cheaper:
-- If you'll ask a few narrow questions, top-20 RAG is cheaper: $0.03–0.04 per question and no ingest, against $0.50 for an uncached ledger read here (comparable once the ledger is cached).
+- If you'll ask only a few narrow questions, top-20 RAG is cheaper overall because it has no ~$4 ingest per 6k posts. Per question, a cached ledger read costs the same as top-20 RAG (measured ~$0.05 each).
 - Real conversation keeps producing new assertions (§7.3: entries grew roughly like N^0.8 or faster, and 62% are one-off), so the ledger keeps growing. Above roughly 50k posts on one topic, the theme view's folding or a larger budget matters.
 - My first-pass cost model **underestimated real ingest cost by ~30×.** It assumed Haiku-only and minimal output; the real pipeline uses Sonnet stages and wordier ops, with CLI overhead. Redoing the equal-coverage comparison in §7.4 with ~30× the ingest cost still favours CEL by roughly 20–30× at 20k–200k posts (and RAG at parity no longer fits a context window at 500k), but treat the simulated dollar figures as optimistic.
 
@@ -292,9 +294,14 @@ Reading this honestly:
 - On the combined score, its lead over a *random sample* shrinks at larger budgets (UPF: 75 vs 73). The ledger's canonical wordings generalise, so the judge often grades them "partly".
 - Retrieval at the same budget is consistently worst among the large-budget options, because similarity ranking concentrates on near-duplicates.
 
+**Open questions, side by side** ([`ask.md`](../results/bsky_seedoils/ask.md), [UPF](../results/bsky_upf/ask.md)):
+- Asked "what are the main arguments of people who think seed oils are harmful, and how many make each?", the ledger answered with people counts and camps: "of 3,000 authors with a position, 701 (~23%) disagree that seed oils are safe; 'seed oils are toxic' 159 agree / 89 dispute…".
+- RAG top-20 answered: "None of the 20 posts comes from someone who says seed oils are harmful. Every one is written by a critic who mocks or describes the anti-seed-oil side." That is the selection bias of §1 L6, seen on real data.
+- The ledger also surfaced the one real concentration case: 5 accounts wrote 77% of the posts behind a skincare-oil claim.
+
 **Counting questions** (16 questions; gold = text match over every post):
 
-| method | median count error | within 20% | median author-count error | $ / question as run |
+| method | median count error | within 20% | median author-count error | $ / question (uncached; ledger reads ~10× less when cached) |
 |---|---|---|---|---|
 | CEL read alone | 57–88% | 0–25% | 43–86% | $0.50–0.53 |
 | **CEL + census** | **0–1%** | **88–100%** | **0–1%** | $0.70–0.72 |
