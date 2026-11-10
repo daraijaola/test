@@ -571,6 +571,10 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 6. Inspect it: `python -m celedger.cli view ledgers/seedoils`, or `census` for a direct exhaustive count.
 
 ## 12. The 24 hours: rounds and what each changed
+
+**Cost of this research:**
+- **Model usage:** roughly $330–380 in total. $230 is recorded in the result files: $153 of Bluesky ingests (including $99 + $35 for the two 27.5k-post runs), $38 of evaluations, $13 of summary baselines, $10 of prevalence tests, and smaller items. The rest is judge, audit and repeat runs that did not log their spend.
+- **Models:** Claude Haiku 5.5, Sonnet 5.5 and Opus 5.5, via the `claude` CLI.
 | Round | What was done | What it changed |
 |---|---|---|
 | 0 | First-principles analysis, design, simulation | The initial claims, several later revised |
