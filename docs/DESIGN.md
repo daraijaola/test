@@ -22,8 +22,8 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 | Question | RAG | CEL | Source |
 |---|---|---|---|
-| Is a random post's point present in what the reader receives? Equal ~31k-token budget, Bluesky, judge-scored | top-k at the same budget: 40–45%; random sample at the same budget: 51–52%; top-20: 11% | **62–63%** (points entirely absent: 12–15% vs 31–40%) | §7.3 |
-| Same, with the whole ledger (every entry: 51k / 72k tokens, for 247k / 282k-token corpora) | top-k at the same budget: 54% / 66%; random sample at the same budget: 55% / 73% | **63% / 75%** (points entirely absent: **6–11%** vs 16–34%) | §7.3 |
+| Is a random post's point present in what the reader receives? Equal ~31k-token budget, Bluesky, judge-scored, mean of 3 runs per topic | top-k at the same budget: 39–43%; random sample at the same budget: 47–48%; top-20: 11% | **61%** on both topics, ahead in all 6 runs (points entirely absent: **14–16%** vs 35–48%) | §7.3 |
+| Same, with the whole ledger (every entry: 51k / 72k tokens, for 247k / 282k-token corpora; single run) | top-k at the same budget: 54% / 66%; random sample at the same budget: 55% / 73% | **63% / 75%** (points entirely absent: **6–11%** vs 16–34%); the UPF margin over random is within judge noise | §7.3 |
 | How many posts mention X, and by how many people? (16 questions, two Bluesky topics) | top-100: 46–58% median error; top-20: ~91% | **ledger + census: 0–1% median error**, 88–100% of answers within 20% | §7.3 |
 | What share of a corpus favours or opposes the target? (SemEval, re-mixed so memorised statistics fail) | top-20: 16–18 pt error | **4.5–4.9 pt** (classifying every tweet for this question: 6.2) | §7.2 |
 | Per-tweet stance recovered *through* the ledger (SemEval F_avg) | n/a | **0.801**, vs 0.749 for Haiku classifying each tweet directly | §7.2 |
@@ -276,23 +276,32 @@ Typical wrong filings: misread sarcasm, and posts that don't mention the topic a
 | seed oils v2 → v3 | 57% → 75% | 54% → 9% | 9% → 10% | 4% → 34% | 16 → **4** pts |
 | UPF v2 → v3 | 56% → 84% | 71% → 17% | 0% → 0% | 3% → 14% | 13 → **6** pts |
 
-**Coverage.** For random posts that make a point (129–131 and 68 posts), the judge decided whether that point is present in the reader's input. Score = yes + ½ partly; the "absent" column is the share judged entirely missing.
+**Coverage.** For random posts that make a point, the judge decided whether that point is present in the reader's input. Score = yes + ½ partly; "absent" = the share judged entirely missing. Each run uses a fresh sample of 150 posts and a fresh judge run. Run-to-run noise is about ±4–8 points, so the main comparison was repeated 3 times per topic.
+
+| reader input (equal ~31k-token budget) | seed oils score | seed oils absent | UPF score | UPF absent |
+|---|---|---|---|---|
+| RAG top-20 (~1k tokens; 1 run) | 11% | 82% | 11% | 79% |
+| RAG top-100 (~4–6k tokens; 1 run) | 19% | 71% | 21% | 66% |
+| RAG top-k, same budget | 39 ± 8% | 48 ± 11% | 43 ± 4% | 41 ± 4% |
+| random sample, same budget | 47 ± 4% | 38 ± 5% | 48 ± 3% | 35 ± 4% |
+| **CEL theme view** | **61 ± 4%** | **14 ± 7%** | **61 ± 8%** | **16 ± 6%** |
+
+In **all 6 runs**, the ledger beat retrieval at the same budget (by 13–27 points) and a random sample at the same budget (by 8–21 points).
+
+**Full ledger** (every entry, no folding; single run):
 
 | reader input | tokens | seed oils score / absent | UPF score / absent |
 |---|---|---|---|
-| RAG top-20 | ~1k | 11% / 82% | 11% / 79% |
-| RAG top-100 | ~4–6k | 19% / 71% | 21% / 66% |
-| RAG top-k at the theme view's budget | ~31k | 45% / 39% | 40% / 40% |
-| random sample at the theme view's budget | ~31k | 52% / 34% | 51% / 31% |
-| **CEL theme view** | ~31k | **62% / 15%** | **63% / 12%** |
-| RAG top-k at the full ledger's budget | 50k / 71k | 54% / 34% | 66% / 19% |
-| random sample at the full ledger's budget | 50k / 71k | 55% / 32% | 73% / 16% |
+| RAG top-k, same budget | 50k / 71k | 54% / 34% | 66% / 19% |
+| random sample, same budget | 50k / 71k | 55% / 32% | 73% / 16% |
 | **CEL full ledger** | 51k / 72k | **63% / 11%** | **75% / 6%** |
 
 Reading this honestly:
-- The ledger's clear, robust advantage is that it **rarely misses a point entirely**: 6–15% absent, against 16–40% for raw text at the same budget.
-- On the combined score, its lead over a *random sample* shrinks at larger budgets (UPF: 75 vs 73). The ledger's canonical wordings generalise, so the judge often grades them "partly".
-- Retrieval at the same budget is consistently worst among the large-budget options, because similarity ranking concentrates on near-duplicates.
+- The robust advantage is that the ledger **rarely misses a point entirely**.
+- At the larger full-ledger budget, its lead over a random sample shrinks (UPF: 75 vs 73, within noise). Ledger lines are generalised wordings, which the judge often grades "partly".
+- Retrieval at the same budget is the worst of the large-budget options, because similarity ranking concentrates on near-duplicates.
+
+**Tried and failed: v4 "refine" op.** I added child entries for more specific claims, to fix the "partly" problem. The cheap absorber used the op only 36 times in 6,062 posts, and coverage did not improve: theme view 52.7% vs 56.6% for v2, full ledger 57.8% vs 60.2%, same points and same judge run. Generality of wording is not fixed by offering an option the absorber doesn't take. A stronger absorber, or a dedicated specificity pass, is the untested next step.
 
 **Open questions, side by side** ([`ask.md`](../results/bsky_seedoils/ask.md), [UPF](../results/bsky_upf/ask.md)):
 - Asked "what are the main arguments of people who think seed oils are harmful, and how many make each?", the ledger answered with people counts and camps: "of 3,000 authors with a position, 701 (~23%) disagree that seed oils are safe; 'seed oils are toxic' 159 agree / 89 dispute…".
@@ -372,7 +381,10 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 - **Lexical questions need census.** The ledger stores meaning, not words.
 - **No saturation on real topics** at the scale tested. Ledgers grow roughly like N^0.8. Expect to fold, raise the budget, or shard.
 - **Sharding costs fragmentation** (13–41% more fragments per claim in simulation).
-- **Evaluation pitfalls found along the way:** benchmark memorisation (§7.2), and LLM judges for coverage, which grade generalised wording as "partly". Small *n* for the census questions (7 + 16).
+- **Evaluation pitfalls found along the way:**
+  - benchmark memorisation (§7.2);
+  - LLM judges for coverage, which grade generalised wording as "partly" and vary ±4–8 points between runs (so the main comparison was repeated);
+  - small *n* for the census questions (7 + 16).
 - **Canonical wording drifts** as a conversation evolves. Rewording is mass-neutral but needs a periodic pass.
 - **Single model family.** Every model here is Claude (Haiku / Sonnet / Opus). Judge and absorber share training lineage, so the audits are not fully independent.
 
@@ -407,3 +419,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 3 | Open-world scaling to 500k, sharding, budget sweep | Theme view fixed (it was mis-budgeted); sharding costs fragmentation |
 | 4 | Census Q&A with gold answers | Exact counts (0% median error) vs RAG 52–75% |
 | 5 | Every Bluesky post on two niche topics; filing, coverage and anchor audits; lanes; v3 anchor pass | Real ε; coverage at equal budget; anchor recall bug found and fixed; real growth exponent (no saturation); real costs ~30× the first estimate |
+| 6 | Cached-read cost measured; side-by-side open questions; v4 refine op; repeated coverage runs | Cached ledger read $0.05 per question (same as top-20 RAG); token estimator ~2× low (corrected); refine op didn't help (negative); coverage advantage held in all 6 repeated runs |
