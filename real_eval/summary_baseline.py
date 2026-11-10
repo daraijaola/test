@@ -61,7 +61,8 @@ def main(d: Path, map_words: int = 250, group: int = 15, tag: str = ""):
     pts = points(texts, sorted(rng.choice(ids, size=150, replace=False).tolist()), topic)
     res = {"summary_tokens_est": len(summary.encode()) // 4, "ledger_tokens_est": L.est_tokens(view),
            "summary_build_usd": build_usd}
-    for name, ctx in (("ledger (theme view)", view), ("map-reduce summary", summary)):
+    compact, _ = L.render_multires(32000, compact=True)
+    for name, ctx in (("ledger (theme view)", view), ("ledger (compact lines)", compact), ("map-reduce summary", summary)):
         res[name] = coverage(name, ctx, pts)
         out, _ = llm.complete("claude-opus-5-5", "You estimate corpus statistics. Output JSON only.",
                               f"MATERIAL about {len(ids)} posts on {topic}:\n{ctx}\n\nAmong authors who take a discernible "
@@ -73,7 +74,9 @@ def main(d: Path, map_words: int = 250, group: int = 15, tag: str = ""):
 
 
 if __name__ == "__main__":
-    if "--large" in sys.argv:      # fill the ledger's budget: longer map summaries, smaller reduce groups
+    if "--compact" in sys.argv:    # same as --large, plus the compact-line ledger view
+        main(Path(sys.argv[1]), map_words=500, group=6, tag="_compact")
+    elif "--large" in sys.argv:      # fill the ledger's budget: longer map summaries, smaller reduce groups
         main(Path(sys.argv[1]), map_words=500, group=6, tag="_large")
     else:
         main(Path(sys.argv[1]))

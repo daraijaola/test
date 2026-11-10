@@ -335,6 +335,15 @@ class Ledger:
             stack += ch.get(x, [])
         return len(authors)
 
+    def _compact_line(self, e: Entry) -> str:
+        """Same numbers, fewer tokens: 'e384 text |116p ▲109 ▼2 |103d |c34/6'."""
+        a = e.authors_by_stance()
+        c = self.camp(e)
+        camp = f" |c{c[0]}/{c[1]}" if c and (c[0] or c[1]) else ""
+        flag = " ⚠" if e.concentration() > 0.5 and e.total >= 50 else ""
+        return (f"e{e.eid} {e.text} |{len(e.author_stance)}p ▲{a[SUPPORT]} ▼{a[DISPUTE]} |{e.total:.0f}d"
+                f"{camp}{flag}")
+
     def _entry_line(self, e: Entry, spark: bool = True, ch: dict | None = None) -> str:
         a = e.authors_by_stance()
         c = self.camp(e)
@@ -390,7 +399,7 @@ class Ledger:
         return "\n".join(header + lines), shown
 
     def render_multires(self, budget_tokens: int = 32000, quotes: dict | None = None,
-                        quote_chars: int = 140) -> tuple[str, list[int]]:
+                        quote_chars: int = 140, compact: bool = False) -> tuple[str, list[int]]:
         """Theme-grouped view for ledgers larger than the reading budget.  Every theme is
         always shown with its exact mass.  Entry lines are chosen by global rank (distinct
         authors) after a floor of the top two entries of every theme, until the measured
@@ -412,8 +421,12 @@ class Ledger:
         cand += sorted((e for es in groups.values() for e in es[2:]), key=lambda e: -len(e.author_stance))
         chosen, lines_of = set(), {}
         ch = self.children()
+        if compact:
+            head.append("Line format: e<id> <assertion> |<N>p = distinct authors ▲support ▼dispute |<M>d = posts "
+                        "|c<x>/<y> = authors agreeing/disagreeing with the anchor | ⚠ = concentrated in few accounts")
+            used = self.est_tokens("\n".join(head)) + 45 * len(groups)
         for e in cand:
-            ln = self._entry_line(e, spark=False, ch=ch)
+            ln = self._compact_line(e) if compact else self._entry_line(e, spark=False, ch=ch)
             if quotes is not None:                 # one verbatim exemplar, found by provenance
                 d = e.exemplar.get(SUPPORT, next(iter(e.exemplar.values()), None))
                 if d is not None and d in quotes:

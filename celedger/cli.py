@@ -58,7 +58,7 @@ def load(d: Path) -> dict:
 def save(d: Path, st: dict) -> None:
     d.mkdir(parents=True, exist_ok=True)
     (d / "ledger.pkl").write_bytes(pickle.dumps(st))
-    (d / "view.txt").write_text(st["ledger"].render_multires(32000)[0])
+    (d / "view.txt").write_text(st["ledger"].render_multires(32000, compact=True)[0])
 
 
 def read_posts(path: Path, start_id: int = 0) -> list[dict]:
@@ -203,7 +203,7 @@ def cmd_census(a):
 def cmd_ask(a):
     st = load(a.dir)
     L, texts = st["ledger"], st["texts"]
-    view, _ = L.render_multires(a.budget)
+    view, _ = L.render_multires(a.budget, compact=True)
     system = READER_SYS + "\n\nTHE COMPLETE LEDGER:\n" + view
     k0 = len(llm.CALLS)
     out, _ = llm.complete(READER, system, a.question, ASK_SCHEMA, effort="medium")
@@ -219,7 +219,7 @@ def cmd_ask(a):
 
 def cmd_view(a):
     L = load(a.dir)["ledger"]
-    print((L.render(a.budget) if a.flat else L.render_multires(a.budget))[0])
+    print((L.render(a.budget) if a.flat else L.render_multires(a.budget, compact=True))[0])
 
 
 def main():

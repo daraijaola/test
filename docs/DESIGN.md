@@ -38,7 +38,7 @@ Real-data results replaced several of my first-pass claims; where they did, the 
 
 Token note: the token budgets in this document are bytes/4 estimates applied identically to the ledger and to raw text. This model's real tokenisation is about 2× those figures (the "31k" view is 61–65k real tokens), so equal-budget comparisons are fair but absolute token figures are about 2× low.
 
-**Against the strongest alternative (§7.5).** A map-reduce summary of every post, at the same budget, **ties or beats CEL on qualitative coverage and on broad-claim counts**, and costs less than half as much to build. CEL's edge over a summary is narrower:
+**Against the strongest alternative (§7.5).** A map-reduce summary of every post, at the same budget, is **comparable to CEL on qualitative coverage**: with compact lines CEL wins on one topic and loses on the other. The summary is **better on counts of broad, diffuse claims** and costs less than half as much to build. CEL's edge over a summary is narrower:
 - exact person-level counts for specific claims;
 - camp, time and amplification structure;
 - provenance for every number;
@@ -179,6 +179,7 @@ The user states the subject as one unambiguous statement, e.g. *"Seed oils are s
 ### 4.6 What the reader sees
 - **Flat view:** entries by number of distinct authors until the token budget is used. One fold line gives the exact count and share of everything not shown.
 - **Theme view:** 8–15 model-proposed themes. Each theme shows its exact mass and at least its top two entries; remaining slots go by global rank; each theme's remainder folds with its exact count. At 500k simulated posts and a 32k budget it shows 98% of claims held by ≥10 people, against 72% for the flat view.
+- **Compact lines (the default for the reader).** The same numbers in fewer tokens ("e384 <assertion> |116p ▲109 ▼2 |103d |c34/6", with a one-line legend) fit ~35% more entries in the same budget. Coverage improved in all 4 test runs (seed oils +13 and +6 points; four-day week +6 and +5), and complete misses fell from 18–24% to 10–16% (§7.5). Breadth at a fixed budget is the main lever on coverage.
 - **A legend is required.** The view's header explains the anchor and camp columns. Without it, Opus misread the anchor line: SemEval climate error was 17.9 points without the legend and 1.0 with it (§7.2).
 - **Budget is a dial.** The "32k" view (61–65k real tokens) costs ~$0.05 per question when cached (measured). A budget 4× larger shows everything held by ≥3 people at 500k posts (simulated) and, by the same cache-read pricing, roughly doubles to triples that cost.
 
@@ -437,6 +438,16 @@ On "is the point in there somewhere", a good summary **ties or beats** the ledge
 
 - **The definition itself is soft.** For broad semantic claims, the two exhaustive checkers disagreed by 1.5–2× (cheap-scan recall against the strong scan: 0.34–0.64). Prevalence of a broad, "in substance" claim depends on who judges what counts. No method makes it exact; census makes it explicit and repeatable.
 
+**Compact lines vs the summary,** same points, same budget:
+
+| | seed oils score / absent | four-day week score / absent |
+|---|---|---|
+| ledger, standard lines | 57.5% / 17.3% | 64.3% / 14.3% |
+| **ledger, compact lines** | **69.3% / 4.7%** | 65.6% / 10.7% |
+| map-reduce summary | 63.0% / 17.3% | **75.4% / 9.8%** |
+
+With compact lines the ledger beats the summary on seed oils and still loses on the four-day week, a ten-year, news-heavy corpus where narrative synthesis fits well. Overall: **comparable on qualitative coverage, and topic-dependent.**
+
 **Tried and failed: claim families.** One stronger-model pass over the index grouped entries into 88–94 broad claims, each reporting the exact union of distinct authors across its member entries ($0.49–0.55 per topic).
 - **Prevalence:** barely changed. Seed oils: median error 74% vs 73% without families. Four-day week: 60% vs 63% against the strong gold.
 - **Coverage:** +1–2 points, within noise.
@@ -534,4 +545,4 @@ GlobalQA ([arXiv 2510.26205](https://arxiv.org/html/2510.26205v1)) and AGGBench 
 | 7 | Third topic (four-day work week, non-health); found and fixed a topic hard-coded in the judge prompts; re-ran every UPF evaluation | Generalises to a different domain (anchor bias 1 pt); coverage advantage held in all 9 runs; UPF numbers corrected |
 | 8 | Command-line tool (ingest / ask with reader-triggered census / update / census / view); incremental vs batch replay; anchor-pass variance | Incremental ≈ batch on coverage; subject share reproducible to ±3 pts; de-duplication bug in `update` found and fixed |
 | 9 | Coverage re-scored with a second judge (Opus) | Fewer complete misses and the lead over retrieval hold under both judges; the lead over an equal-budget random sample does not (tie on 2 of 3 topics); headline claims narrowed accordingly |
-| 10 | Strongest alternative as a baseline: map-reduce summary of everything at the same budget; claim-prevalence test; independent strong checker; claim families (negative) | A summary ties or beats CEL on coverage and broad-claim counts at less than half the build cost; ledger tallies are lower bounds for broad claims; census ≈ summary (30% median error) against a strong checker; broad-claim prevalence is itself checker-dependent (1.5–2×). CEL's claim narrowed to structure, exact narrow counts, provenance, updates and census |
+| 10 | Strongest alternative as a baseline: map-reduce summary of everything at the same budget; claim-prevalence test; independent strong checker; claim families (negative); compact lines | A summary ties or beats CEL on coverage and broad-claim counts at less than half the build cost; ledger tallies are lower bounds for broad claims; census ≈ summary (30% median error) against a strong checker; broad-claim prevalence is itself checker-dependent (1.5–2×). CEL's claim narrowed to structure, exact narrow counts, provenance, updates and census. Compact lines: +5–13 coverage points for free, and on par with the summary (one topic each) |
