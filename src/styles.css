@@ -240,8 +240,8 @@ body {
 
 /* A footnote for conditions worth knowing about (software rendering): quiet, never interactive. */
 .cj-notice {
-  max-width: 34ch;
-  margin: 14px 0 0;
+  max-width: 46ch;
+  margin: 12px 0 0;
   font-family: var(--cj-sans);
   font-size: 12px;
   line-height: 1.45;

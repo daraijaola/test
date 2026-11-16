@@ -59,6 +59,7 @@ async function launch(opts = {}) {
     // run on. 'full' pins it at full quality (what a real GPU starts with); '' leaves the
     // page to decide; 'auto' and 'low' are the page's other ?quality= settings.
     quality = 'full',
+    initScript = null,      // function or source run in the page before any of its own scripts
   } = opts;
   const search = [query, quality ? 'quality=' + quality : ''].filter(Boolean).join('&');
   const server = await serve(root);
@@ -69,6 +70,7 @@ async function launch(opts = {}) {
   });
   const page = await context.newPage();
   if (removeGpu) await page.addInitScript(() => { Object.defineProperty(Navigator.prototype, 'gpu', { get() { return undefined; }, configurable: true }); });
+  if (initScript) await page.addInitScript(initScript);
   const logs = [];
   page.on('console', (m) => logs.push({ type: m.type(), text: m.text() }));
   page.on('pageerror', (e) => logs.push({ type: 'pageerror', text: String(e && e.stack || e) }));

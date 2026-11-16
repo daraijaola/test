@@ -417,6 +417,8 @@ function initUI(handlers) {
       left = X + Math.min(pad.l, 24);
       if (panel) right = panel.left - 12;
       if (title) top = title.bottom + (mode === 'short' ? 0 : 6);
+      const note = visible(el.notice);                    // the footnote hangs below the hint: keep the slice clear of it
+      if (note) top = Math.max(top, note.bottom + 4);
       bottom = Y + H - Math.min(pad.b, mode === 'short' ? 6 : 20);
     }
     const rect = { x: left, y: top, width: right - left, height: bottom - top, mode };
