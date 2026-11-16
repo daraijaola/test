@@ -53,6 +53,9 @@ const NUM_BUBBLES = 44;
 const NUM_SEGMENTS = 7;
 const MSAA = 4;
 const PALETTE_FADE_SECONDS = 0.5;
+const MIN_STEPS = 4;           // march steps per pixel: the range renderer.steps accepts
+const MAX_STEPS = 22;
+const QUALITY_STEPS = { low: 9, medium: 14, high: 22 };
 
 // ───────────────────────────── palettes ─────────────────────────────
 // All colours are LINEAR rgb. "abs" = absorption per world unit (Beer–Lambert),
@@ -89,7 +92,7 @@ const PALETTES = {
     fleshSca: [0.93, 0.86, 0.20], mottle: 0.2,
     fleshAbs2: [0.20, 0.55, 7.0], vesicle: 1.0,
     memAbs: [0.05, 0.08, 0.36], memDensity: 13.0,
-    memSca: [0.90, 0.86, 0.64],
+    memSca: [0.90, 0.845, 0.64],
     rindAbs: [0.10, 1.0, 9.0], rindDensity: 11.0,
     rindSca: [1.00, 0.66, 0.035],
     deep: [0.25, 0.75, 5.0],
@@ -391,7 +394,8 @@ struct Bubbles { b: array<vec4f, ${c.numBubbles}>, sec: array<vec4f, 5> };
 @group(1) @binding(7) var<uniform> BUB: Bubbles;
 @group(2) @binding(0) var backTex: texture_2d<f32>;
 
-const MAX_STEPS = 22;
+const MIN_STEPS = ${MIN_STEPS};
+const MAX_STEPS = ${MAX_STEPS};
 const NSEG = ${f(c.segments)};
 const HALF_T = ${f(c.thickness * 0.5)};
 const PITH_R = ${f(c.pithR)};
@@ -403,6 +407,8 @@ const SEG_RND = array<f32, 7>(0.270020, 0.628906, 0.507813, 0.671875, 0.078125, 
 const MEM_HALF = 0.0075;
 const SEG_ROUND = 0.050;
 const IOR = 1.36;
+const REFRACT_GAIN = 0.9;      // share of the ideal slab offset that is applied (the body is cloudy, not clear)
+const SHEEN_COL = vec3f(1.0, 0.94, 0.82);     // the key light as the waxy skin of the rind gives it back
 
 struct VsOut {
   @builtin(position) clip: vec4f,
@@ -604,19 +610,35 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   N = normalize(N + V * max(0.03 - dot(N, V), 0.0));
   let NdV = saturate(dot(N, V));
 
-  // ---- where does the ray leave the body? (back-face buffer, slightly refracted)
+  // ---- where does the ray leave the body? The back-face buffer is read where
+  // the REFRACTED ray comes out. Through a slab that is beside the straight exit
+  // by  chord * sin(deviation) * cos(incidence) / cos(refraction)  as seen from
+  // the eye: next to nothing face-on, a good part of the thickness at a glancing
+  // view. The inside therefore looks shallower than it is and slides against the
+  // pattern on the surface when the camera orbits or the surface tilts and wobbles.
   let ppu = G.camR.w / distA;                                // pixels per world unit here
   let back0 = textureLoad(backTex, pix, 0);
   let valid0 = back0.a > -100.0;
   let thick0 = select(0.0, max(back0.a + G.eye.w - distA, 0.0), valid0);
   let bend = refract(rd, N, 1.0 / IOR) - rd;
-  var offPx = vec2f(dot(bend, G.camR.xyz), -dot(bend, G.camU.xyz)) * (thick0 * ppu * 0.85);
-  let offLen = length(offPx);
-  let offMax = 0.07 * G.camR.w / G.eye.w;                    // at most 7% of a slice radius
-  offPx *= min(1.0, offMax / max(offLen, 1e-3));
-  let pix1 = clamp(pix + vec2i(round(offPx)), vec2i(0), vec2i(res) - vec2i(1));
+  let slab = NdV / sqrt(1.0 - (1.0 - NdV * NdV) / (IOR * IOR));
+  var offPx = vec2f(dot(bend, G.camR.xyz), -dot(bend, G.camU.xyz)) * (thick0 * ppu * slab * REFRACT_GAIN);
+  // The relief and the dome in N may turn the offset, but not push it beyond
+  // what the smooth surface gives (or 7% of a slice radius where that is less).
+  let cosG = saturate(dot(Ng, V));
+  let sinG = sqrt(1.0 - cosG * cosG);
+  let tanT = sinG / sqrt(IOR * IOR - sinG * sinG);           // tangent of the refracted angle
+  let offSmooth = thick0 * ppu * cosG * (sinG - cosG * tanT) * REFRACT_GAIN;
+  let offMax = max(0.07 * G.camR.w / G.eye.w, offSmooth);
+  offPx *= min(1.0, offMax / max(length(offPx), 1e-3));
+  var pix1 = clamp(pix + vec2i(round(offPx)), vec2i(0), vec2i(res) - vec2i(1));
   var back = textureLoad(backTex, pix1, 0);
   var thick = back.a + G.eye.w - distA;
+  if (!(back.a > -100.0) || thick <= 0.0) {                  // beside the body: come back half way first
+    pix1 = clamp(pix + vec2i(round(offPx * 0.5)), vec2i(0), vec2i(res) - vec2i(1));
+    back = textureLoad(backTex, pix1, 0);
+    thick = back.a + G.eye.w - distA;
+  }
   var pixE = vec2f(pix1) + vec2f(0.5);
   if (!(back.a > -100.0) || thick <= 0.0) {
     back = back0;
@@ -636,9 +658,13 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let pE = G.eye.xyz + rdE * (distA + thick);
 
   // ---- march the straight material-space segment entry -> exit
-  let jit = ign(in.clip.xy);
-  let nSteps = clamp(i32(G.shear.w), 4, MAX_STEPS);
+  let nSteps = clamp(i32(G.shear.w), MIN_STEPS, MAX_STEPS);
   let fSteps = f32(nSteps);
+  // one sample per step, dithered inside its step against banding. With fewer
+  // (longer) steps than the default 14 the dither is narrowed towards the middle
+  // of the step: the features are widened to the step anyway (soft0), and a full
+  // step of dither would show its pattern as a hatch on the dense pith and rind.
+  let jit = 0.5 + (ign(in.clip.xy) - 0.5) * clamp(0.15 * fSteps - 1.1, 0.25, 1.0);
   let ds = thick / fSteps;
   let dm = (mB - mA) / fSteps;
   var m = mA + dm * jit;
@@ -721,24 +747,44 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let memLit = G.memSca.rgb * vec3f(1.0, 0.95, 0.84) * (max(col.r, col.g) * 0.42 + 0.62);
   col = mix(col, memLit, memLine * 0.62);
 
-  // ---- tiny bubbles: analytic spheres in material space along the same segment
-  // (un-refracted exit: keeps the little spheres round)
+  // ---- tiny bubbles: analytic spheres in material space along the straight
+  // chord. Like everything else inside they are seen through a refracting
+  // surface: each one appears moved against the bend by the sideways lead the
+  // refracted ray has gained at the bubble's depth. The whole sphere is moved,
+  // by the bend of the flat big face that looks at the eye, which keeps it
+  // round (bending the ray at the real, bumpy and rounded surface would flatten
+  // and wrinkle the spheres). Towards an edge-on view the shift fades out.
   let dAB = select(mB, back0.rgb, valid0) - mA;
   let dd = max(dot(dAB, dAB), 1e-8);
   let dirM = dAB / sqrt(dd);
+  let side = select(-1.0, 1.0, dot(G.bodyZ.xyz, V) >= 0.0);
+  let nFace = G.bodyZ.xyz * side;
+  let cosF = dot(nFace, V);
+  let bendF = (refract(rd, nFace, 1.0 / IOR) - rd)
+            * (smoothstep(0.10, 0.45, cosF) / sqrt(1.0 - (1.0 - cosF * cosF) / (IOR * IOR)));
+  // sideways lead per unit of depth below that face, in the body's frame (only the
+  // part across the chord: a bubble keeps its place along it, and so its dimming)
+  let leadM = vec3f(dot(bendF, G.bodyX.xyz), dot(bendF, G.bodyY.xyz), dot(bendF, G.bodyZ.xyz));
+  let lead = leadM - dirM * dot(leadM, dirM);
   let logT = log(max(T, vec3f(1e-5)));
-  let secA = atan2(max(mA.y, 0.0), mA.x) * (16.0 / PI);
+  // the body in front of a bubble dims it as along the straight chord: the shorter
+  // refracted path must not make the glints brighter at oblique views
+  let dimK = max(thick0 / max(thick, 1e-4), 1.0);
+  // a bubble can show anywhere between the entry point and the end of the refracted ray
   let mB0 = mA + dAB;
-  let secB = atan2(max(mB0.y, 0.0), mB0.x) * (16.0 / PI);
+  let mBr = mB0 + lead * clamp(HALF_T - side * mB0.z, 0.0, 2.0 * HALF_T);
+  let secA = atan2(max(mA.y, 0.0), mA.x) * (16.0 / PI);
+  let secB = atan2(max(mBr.y, 0.0), mBr.x) * (16.0 / PI);
   let sLo = clamp(i32(floor(min(secA, secB))) - 1, 0, 16);
   let sHi = clamp(i32(floor(max(secA, secB))) + 2, 0, 16);
   let iLo = i32(BUB.sec[sLo / 4][sLo % 4]);
   let iHi = i32(BUB.sec[sHi / 4][sHi % 4]);
   for (var i = iLo; i < iHi; i++) {
     let b = BUB.b[i];
-    let t = dot(b.xyz - mA, dAB) / dd;
+    let c = b.xyz - lead * (HALF_T - side * b.z);              // where the bubble appears to be
+    let t = dot(c - mA, dAB) / dd;
     let tc = clamp(t, 0.0, 1.0);
-    let off = mA + dAB * tc - b.xyz;
+    let off = mA + dAB * tc - c;
     let q2 = dot(off, off) / (b.w * b.w);
     if (q2 < 1.0 && t > -0.02 && t < 1.02) {
       let e = sqrt(q2);
@@ -749,7 +795,7 @@ fn fs(in: VsOut) -> @location(0) vec4f {
       let glint = pow(saturate(dot(rb, KEY_DIR)), 10.0) * 1.6 + pow(saturate(dot(rb, FILL_DIR)), 6.0) * 0.9
                 + pow(saturate(rb.y), 3.0) * 0.35;
       let rim = e * e * e;
-      let Tb = exp(logT * tc);                                 // transmittance in front of the bubble
+      let Tb = exp(logT * (tc * dimK));                        // transmittance in front of the bubble
       let aa = saturate((1.0 - e) * b.w * ppu * 1.5 + 0.15);
       let shade = G.bg.rgb * (0.10 + 0.62 * rim) + KEY_COL * glint;
       col = mix(col, col * (1.0 - 0.30 * rim) + Tb * shade, aa);
@@ -762,11 +808,25 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let env = envLight(R, in.world);
   col = col * (1.0 - F) + env * F;
 
+  // ---- the skin of the rind is waxier than the cut faces: the three studio
+  // lights leave broad, low highlights on it (half-vector lobes, broken up by
+  // the pores in N). The wax lets some of the rind's own colour through, so the
+  // highlight is a lighter rind colour and not a white film. It is blended in
+  // instead of added: the sheen can pale the rind but never push a channel
+  // past the highlight's own level.
+  let skin = smoothstep(0.955, 0.99, rA) * (1.0 - faceK);
+  let gloss = pow(saturate(dot(N, normalize(KEY_DIR + V))), 18.0)
+            + pow(saturate(dot(N, normalize(TOP_DIR + V))), 18.0) * 0.5
+            + pow(saturate(dot(N, normalize(FILL_DIR + V))), 18.0) * 0.6;
+  let sheen = saturate(skin * gloss * 0.40);
+  let sheenCol = SHEEN_COL * mix(vec3f(1.0), G.rindSca.rgb, 0.5);
+  col = mix(col, sheenCol, sheen);
+
   let dbg = G.shear.z;
   if (dbg > 0.5) {
     if (dbg < 1.5) { col = L; }
     else if (dbg < 2.5) { col = T * behind; }
-    else if (dbg < 3.5) { col = env * F; }
+    else if (dbg < 3.5) { col = mix(env * F, sheenCol, sheen); }
     else if (dbg < 4.5) { col = N * 0.5 + vec3f(0.5); }
     else if (dbg < 5.5) { col = vec3f(thick); }
     else if (dbg < 6.5) { col = T; }
@@ -1032,51 +1092,61 @@ class JellyRenderer {
    * @param {object} mesh  result of buildSliceMesh()
    * @param {object} [opts] { background: [r,g,b] sRGB 0..1 (default cream #F6F0E4),
    *                          palette: 'orange'|'blood'|'lemon',
-   *                          quality: 'low'|'medium'|'high'  (9 / 14 / 22 march steps, default 'medium'),
+   *                          quality: 'low'|'medium'|'high'  (starts renderer.steps at 9 / 14 / 22, default 'medium'),
    *                          subdivisions: 1..5  (render-surface refinement per triangle edge, default 3),
-   *                          debug: bool  (check WGSL compilation + validation during create()) }
-   * Rejects with an Error whose .code is 'no-webgpu' | 'no-adapter' | 'no-device'.
+   *                          debug: bool  (also collect the WGSL compiler's messages in debugErrors) }
+   *
+   * Rejects with an Error whose message is a plain sentence for the visitor and whose .code says what went wrong:
+   *   'no-webgpu'         navigator.gpu is missing, or the canvas cannot give a WebGPU context
+   *   'insecure-context'  navigator.gpu is missing because the page is not a secure context
+   *   'no-adapter'        no adapter was offered
+   *   'no-device'         the device could not be created, or was lost while the scene was starting
+   *   'init-failed'       a shader, a pipeline or a resource failed validation (the message ends with the
+   *                       underlying error; .cause is the original error)
    */
   static async create(canvas, mesh, opts) {
     const o = opts || {};
     const gpu = typeof navigator !== 'undefined' ? navigator.gpu : undefined;
     if (!gpu) {
-      const insecure = typeof window !== 'undefined' && window.isSecureContext === false;
-      throw gpuError('no-webgpu', insecure
-        ? 'WebGPU only works on secure pages. Open this page over https://, from localhost, or as a local file.'
-        : 'WebGPU is not available in this browser.');
+      if (typeof window !== 'undefined' && window.isSecureContext === false) {
+        throw gpuError('insecure-context', 'WebGPU only works on secure pages. Open this page over https, from localhost or as a local file.');
+      }
+      throw gpuError('no-webgpu', 'This browser does not offer WebGPU.');
     }
     let adapter = null;
     // prefer the discrete GPU on dual-GPU laptops (Windows ignores the hint and only warns about it)
     const isWindows = /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '');
     if (!isWindows) { try { adapter = await gpu.requestAdapter({ powerPreference: 'high-performance' }); } catch (e) { adapter = null; } }
     if (!adapter) { try { adapter = await gpu.requestAdapter(); } catch (e) { adapter = null; } }
-    if (!adapter) throw gpuError('no-adapter', 'No suitable WebGPU adapter was found.');
+    if (!adapter) throw gpuError('no-adapter', 'No graphics adapter that supports WebGPU was found.');
     let device = null;
-    try { device = await adapter.requestDevice(); } catch (e) { throw gpuError('no-device', 'The WebGPU device could not be created.', e); }
-    if (!device) throw gpuError('no-device', 'The WebGPU device could not be created.');
+    try { device = await adapter.requestDevice(); } catch (e) { throw gpuError('no-device', 'The graphics device could not be started.', e); }
+    if (!device) throw gpuError('no-device', 'The graphics device could not be started.');
     let context = null;
     try { context = canvas.getContext('webgpu'); } catch (e) { context = null; }
-    if (!context) { device.destroy(); throw gpuError('no-webgpu', 'This canvas cannot provide a WebGPU context.'); }
+    if (!context) { device.destroy(); throw gpuError('no-webgpu', 'This page could not get a WebGPU drawing surface.'); }
+    // adapter.info is the current place for the flag; the attribute on the adapter is the older one
     const info = adapter.info || {};
     const fallbackAdapter = Boolean(info.isFallbackAdapter || adapter.isFallbackAdapter);
-    const r = new JellyRenderer(PRIVATE, canvas, mesh, Object.assign({}, o, { _fallbackAdapter: fallbackAdapter }), device, context, gpu.getPreferredCanvasFormat());
-    try {
-      await r._init();
-    } catch (e) {
+    const r = new JellyRenderer(PRIVATE, canvas, mesh, o, device, context, gpu.getPreferredCanvasFormat(), fallbackAdapter);
+    let failure = null;
+    try { await r._init(); } catch (e) { failure = e; }
+    // A lost device does not make initialisation fail by itself (its calls quietly do nothing), and
+    // requestDevice() may even hand out a device that is already lost: ask the device before anything else.
+    const lost = await Promise.race([device.lost, new Promise((resolve) => setTimeout(resolve, 0, null))]);
+    if (lost || r._lost) {
       r.destroy();
-      if (e && e.code) throw e;
-      throw gpuError('no-device', 'WebGPU initialisation failed: ' + (e && e.message ? e.message : e), e);
+      throw gpuError('no-device', 'The graphics device was lost while the scene was starting.', failure || undefined);
     }
-    if (r._lost) {                 // requestDevice() may hand out a device that is already lost
-      const why = r._lostInfo && r._lostInfo.message ? ' (' + r._lostInfo.message + ')' : '';
+    if (failure) {
       r.destroy();
-      throw gpuError('no-device', 'The WebGPU device was lost while the scene was starting' + why + '.');
+      const detail = failure && failure.message ? failure.message : String(failure);
+      throw gpuError('init-failed', 'The scene could not be set up on this graphics device: ' + detail, failure);
     }
     return r;
   }
 
-  constructor(token, canvas, mesh, opts, device, context, format) {
+  constructor(token, canvas, mesh, opts, device, context, format, fallbackAdapter) {
     if (token !== PRIVATE) throw new Error('Use JellyRenderer.create()');
     this.canvas = canvas;
     this.mesh = mesh;
@@ -1086,13 +1156,16 @@ class JellyRenderer {
     this._onDeviceLost = null;
     this._lostInfo = null;
     this._lostTold = false;
+    this._onError = null;
+    this._failure = null;        // the Error that stopped the renderer, once there is one
+    this._failureTold = false;
     this.debug = Boolean(opts.debug);
     this.debugErrors = [];
-    this.quality = opts.quality === 'low' || opts.quality === 'high' ? opts.quality : 'medium';
-    this.steps = this.quality === 'low' ? 9 : this.quality === 'high' ? 22 : 14;   // live: change any time (4..22)
+    this._steps = QUALITY_STEPS[opts.quality] || QUALITY_STEPS.medium;
     this.gpuMs = 0;              // smoothed submit -> GPU-finished latency (ms), 0 until measured
-    this.onError = null;         // called once with an Error if the first frames fail validation
-    this.isFallbackAdapter = Boolean(opts._fallbackAdapter);
+    this._probing = false;       // a latency probe is in flight
+    this._checkFrames = 0;       // frames still to be drawn inside a validation scope
+    this.isFallbackAdapter = Boolean(fallbackAdapter);   // software rasteriser: expect seconds per frame, not frames per second
     this.subdivisions = Math.max(1, Math.min(5, (opts.subdivisions | 0) || 3));
     this.showMesh = false;
     this.debugView = 0;          // look-dev aid, see the header comment
@@ -1100,6 +1173,7 @@ class JellyRenderer {
     this.pixelHeight = 0;
     this._destroyed = false;
     this._lost = false;
+    this._configured = false;
     this._targetsOk = false;
     this._lastTime = -1;
 
@@ -1136,27 +1210,51 @@ class JellyRenderer {
   }
 
   // ------------------------------------------------------------------ init
+  /** Builds everything on the device; rejects with the first validation or pipeline error. */
   async _init() {
-    const device = this.device, mesh = this.mesh;
-    const dbg = this.debug;
+    const device = this.device;
 
     device.lost.then((info) => {
       this._lost = true;
       this._lostInfo = info || null;
       this._notifyLost();
     });
+    // An error nobody asked for (outside the validation scopes below) means the frames are broken.
     this._onUncaptured = (ev) => {
       const msg = ev && ev.error && ev.error.message ? ev.error.message : String(ev);
       if (this.debugErrors.length < 50) this.debugErrors.push(msg);
-      console.error('[JellyRenderer] WebGPU error: ' + msg);
+      if (!this._failure) console.error('[JellyRenderer] WebGPU error: ' + msg);
+      this._fail(msg);
     };
     device.addEventListener('uncapturederror', this._onUncaptured);
 
+    // The scope collects what createShaderModule and the resource calls report (a rejected
+    // pipeline only says that its module is invalid; the compiler's message is in the scope).
     device.pushErrorScope('validation');
+    let failure = null;
+    try { await this._build(); } catch (e) { failure = e; }
+    let scoped = null;
+    try { scoped = await device.popErrorScope(); } catch (e) { scoped = null; }
+    if (scoped) {
+      this.debugErrors.push(scoped.message);
+      const err = new Error(scoped.message);
+      if (failure) err.cause = failure;
+      throw err;
+    }
+    if (failure) throw failure;
+
+    // size the targets from the canvas' current layout box
+    const cw = this.canvas.clientWidth || this.canvas.width || 1;
+    const ch = this.canvas.clientHeight || this.canvas.height || 1;
+    this.resize(cw, ch, (typeof window !== 'undefined' && window.devicePixelRatio) || 1);
+  }
+
+  async _build() {
+    const device = this.device, mesh = this.mesh;
+    const dbg = this.debug;
 
     const cfg = {
       phongAlpha: 0.72,
-      steps: this.quality === 'low' ? 9 : this.quality === 'high' ? 22 : 14,
       segments: NUM_SEGMENTS,
       thickness: mesh.thickness,
       pithR: mesh.pithR,
@@ -1408,26 +1506,21 @@ class JellyRenderer {
       depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 1 },
     };
 
-    {
-      const err = await device.popErrorScope();
-      if (err) { this.debugErrors.push(err.message); throw new Error(err.message); }
-    }
-
-    // size the targets from the canvas' current layout box
-    const cw = this.canvas.clientWidth || this.canvas.width || 1;
-    const ch = this.canvas.clientHeight || this.canvas.height || 1;
-    this.resize(cw, ch, (typeof window !== 'undefined' && window.devicePixelRatio) || 1);
   }
 
   // ------------------------------------------------------------------ public API
-  /** (Re)configure the canvas and the size-dependent targets. Cheap when nothing changed. */
+  /**
+   * (Re)configure the canvas and the size-dependent targets. Cheap when nothing changed.
+   * dpr is the backing-store scale: any positive number, also below 1 (fewer pixels than the layout box).
+   */
   resize(cssWidth, cssHeight, dpr) {
     if (this._destroyed || this._lost) return;
     const device = this.device;
-    const ratio = dpr > 0 ? dpr : 1;
-    const maxDim = device.limits.maxTextureDimension2D || 8192;
-    const w = Math.min(maxDim, Math.max(0, Math.round((cssWidth || 0) * ratio)));
-    const h = Math.min(maxDim, Math.max(0, Math.round((cssHeight || 0) * ratio)));
+    const ratio = dpr > 0 && dpr < Infinity ? dpr : 1;
+    const maxDim = device.limits.maxTextureDimension2D;
+    // a box that is laid out gets at least one pixel and never more than a texture may have
+    const toPixels = (css) => (css > 0 ? Math.min(maxDim, Math.max(1, Math.round(css * ratio))) : 0);
+    const w = toPixels(cssWidth), h = toPixels(cssHeight);
     if (w < 1 || h < 1) { this._targetsOk = false; return; }      // hidden / collapsed canvas: skip frames
     if (w === this.pixelWidth && h === this.pixelHeight && this._targetsOk) return;
     this.pixelWidth = w;
@@ -1454,6 +1547,13 @@ class JellyRenderer {
     this._checkFrames = 2;                                         // validate the next frames drawn into the new targets
   }
 
+  /** March steps per pixel, settable at any time: a number, rounded and clamped to 4..22 (anything else is ignored). */
+  get steps() { return this._steps; }
+  set steps(value) {
+    const n = Math.round(Number(value));
+    if (Number.isFinite(n)) this._steps = Math.min(MAX_STEPS, Math.max(MIN_STEPS, n));
+  }
+
   /** Called once with the GPUDeviceLostInfo; a loss that happened before the handler was set is delivered late. */
   get onDeviceLost() { return this._onDeviceLost; }
   set onDeviceLost(fn) { this._onDeviceLost = fn; if (this._lost) Promise.resolve().then(() => this._notifyLost()); }
@@ -1461,6 +1561,23 @@ class JellyRenderer {
     if (this._destroyed || this._lostTold || typeof this._onDeviceLost !== 'function') return;
     this._lostTold = true;
     try { this._onDeviceLost(this._lostInfo); } catch (e) { console.error(e); }
+  }
+
+  /**
+   * Called once with an Error when a frame fails validation or the device reports an error of its own.
+   * The renderer draws nothing from then on. A failure from before the handler was set is delivered late.
+   */
+  get onError() { return this._onError; }
+  set onError(fn) { this._onError = fn; if (this._failure) Promise.resolve().then(() => this._notifyError()); }
+  _notifyError() {
+    if (this._destroyed || this._failureTold || !this._failure || typeof this._onError !== 'function') return;
+    this._failureTold = true;
+    try { this._onError(this._failure); } catch (e) { console.error(e); }
+  }
+  _fail(message) {
+    if (this._failure || this._destroyed || this._lost) return;
+    this._failure = new Error(message);
+    this._notifyError();
   }
 
   /** true while something inside the renderer is still animating (palette cross-fade). */
@@ -1486,7 +1603,7 @@ class JellyRenderer {
    * @param {{positions: Float32Array, camera: object, time?: number, dt?: number, tension?: Float32Array}} frame
    */
   render(frame) {
-    if (this._destroyed || this._lost || this._failed || !this._targetsOk || !frame || !frame.positions || !frame.camera) return;
+    if (this._destroyed || this._lost || this._failure || !this._targetsOk || !frame || !frame.positions || !frame.camera) return;
     const device = this.device, cam = frame.camera;
     const time = frame.time || 0;
     // the palette cross-fade follows the clock of `time` (so it also runs while
@@ -1502,10 +1619,27 @@ class JellyRenderer {
     device.queue.writeBuffer(this._pbuf, 0, this._pData);
     device.queue.writeBuffer(this._ubuf, 0, this._u);
 
+    // The first frames into new targets are drawn inside a validation scope. The scope is popped
+    // whatever happens while encoding: one left open would swallow every later error.
     const check = this._checkFrames > 0;
-    if (check) { this._checkFrames--; device.pushErrorScope('validation'); }
+    if (check) device.pushErrorScope('validation');
+    let submitted = false;
+    try {
+      submitted = this._drawFrame();
+    } finally {
+      if (check) {
+        if (submitted) this._checkFrames--;
+        device.popErrorScope().then((err) => { if (err) this._fail(err.message); }, () => {});
+      }
+    }
+    if (submitted) this._probeLatency();
+  }
+
+  /** Encodes and submits the frame graph; false when the canvas has no texture to draw into right now. */
+  _drawFrame() {
+    const device = this.device;
     let canvasTex;
-    try { canvasTex = this.context.getCurrentTexture(); } catch (e) { if (check) device.popErrorScope().catch(() => {}); return; }
+    try { canvasTex = this.context.getCurrentTexture(); } catch (e) { return false; }
     this._mainPass.colorAttachments[0].resolveTarget = canvasTex.createView();
 
     const enc = device.createCommandEncoder();
@@ -1562,24 +1696,20 @@ class JellyRenderer {
     pass.end();
 
     device.queue.submit([enc.finish()]);
+    return true;
+  }
 
-    if (check) {
-      device.popErrorScope().then((err) => {
-        if (!err || this._failed || this._destroyed) return;
-        this._failed = true;                                       // stop drawing invalid frames
-        if (typeof this.onError === 'function') { try { this.onError(new Error(err.message)); } catch (e) { console.error(e); } }
-      }, () => {});
-    }
-    // how long the GPU takes to finish a frame (one probe in flight at a time)
-    if (!this._probing) {
-      this._probing = true;
-      const t0 = performance.now();
-      device.queue.onSubmittedWorkDone().then(() => {
-        this._probing = false;
-        const ms = performance.now() - t0;
-        this.gpuMs = this.gpuMs > 0 ? this.gpuMs + (ms - this.gpuMs) * 0.15 : ms;
-      }, () => { this._probing = false; });
-    }
+  /** Times how long the GPU needs to finish what was just submitted (gpuMs); one probe in flight at a time. */
+  _probeLatency() {
+    if (this._probing) return;
+    this._probing = true;
+    const t0 = performance.now();
+    this.device.queue.onSubmittedWorkDone().then(() => {
+      this._probing = false;
+      if (this._destroyed || this._lost) return;                   // a dead device "finishes" at once: not a measurement
+      const ms = performance.now() - t0;
+      this.gpuMs = this.gpuMs > 0 ? this.gpuMs + (ms - this.gpuMs) * 0.15 : ms;
+    }, () => { this._probing = false; });
   }
 
   destroy() {
@@ -1680,7 +1810,7 @@ class JellyRenderer {
     u[36] = up[0]; u[37] = up[1]; u[38] = up[2]; u[39] = Math.max(0.5, 0.6 * cssScale);
     // 40..51 body frame (written by _updateParticles)
     u[52] = this._shadowCx; u[53] = this._shadowCz; u[54] = 1 / SHADOW_EXTENT; u[55] = 0;
-    u[56] = SHADOW_SHEAR[0]; u[57] = SHADOW_SHEAR[1]; u[58] = this.debugView || 0; u[59] = this.steps;
+    u[56] = SHADOW_SHEAR[0]; u[57] = SHADOW_SHEAR[1]; u[58] = this.debugView || 0; u[59] = this._steps;
     u[60] = this._bg[0]; u[61] = this._bg[1]; u[62] = this._bg[2]; u[63] = 1 / 255;
     this._currentPalette(this._uPal);
   }

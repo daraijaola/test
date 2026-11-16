@@ -37,6 +37,7 @@ const SCENARIOS = {
   'shake': [['grab', 0.3, 0.7], ['drag', 0.5, 0.2, 6], ['drag', -1.0, 0, 8], ['drag', 1.0, 0, 8], ['drag', -1.0, 0.2, 8], ['release'], ['run', 90]],
   'nudge': [['run', 4], ['nudge'], ['run', 140]],
   'drop': [['reset'], ['run', 120]],
+  'regrip': [['grab', 0, 0.86], ['drag', 0, 1.5, 45], ['hold', 10], ['drag', 0.9, 0, 25], ['drag', 0, -1.5, 35], ['hold', 30], ['drag', 0, 1.1, 45], ['hold', 15], ['release'], ['run', 110]],
 };
 
 const args = process.argv.slice(2);
