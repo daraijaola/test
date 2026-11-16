@@ -12,7 +12,10 @@
  *   ui.setPreset(id)             'orange' | 'blood' | 'lemon'; also moves --accent
  *   ui.setGrabbing(b)            the slice is in hand: the hint steps aside
  *   ui.noteInteraction()         first grab happened: the hint steps back for good
- *   ui.showFallback(kind, detail)  'unsupported' | 'lost' | 'error'
+ *   ui.showFallback(kind, detail)  'unsupported' | 'insecure' | 'lost' | 'error' | 'crashed'
+ *   ui.setNotice(text | null)    a quiet footnote under the hint (null clears it)
+ *   ui.getTitleRect()            box of the heading lettering in CSS px, or null
+ *   ui.setUnderTitle(on)         the slice is behind the heading: the lettering steps back
  *   ui.getFreeRect()             { x, y, width, height } in CSS px: where to centre the slice
  *                                (plus .mode: 'wide' | 'top' | 'dock' | 'short', the current layout)
  *
@@ -35,8 +38,19 @@ const FALLBACK_COPY = {
     title: 'This scene needs WebGPU, and this browser or device does not provide it.',
     body: 'The slice is simulated and drawn live on your graphics hardware, so without WebGPU there is nothing to stretch. Two things usually fix it:',
     steps: [
-      'Open this page in a current version of Chrome, Edge or Safari.',
+      'Open this page in a current version of Chrome, Edge, Safari or Firefox.',
       'Make sure hardware acceleration is switched on in the browser’s settings.',
+    ],
+    reload: false,
+  },
+  insecure: {
+    kicker: 'Secure page needed',
+    title: 'This scene needs WebGPU, and browsers only offer it on secure pages.',
+    body: 'This page was opened over plain http from another machine, so the browser keeps WebGPU switched off here. Any of these will work:',
+    steps: [
+      'Open the page over https.',
+      'Open it from localhost on the machine that serves it.',
+      'Open the HTML file straight from disk.',
     ],
     reload: false,
   },
@@ -50,7 +64,14 @@ const FALLBACK_COPY = {
   error: {
     kicker: 'Something went wrong',
     title: 'The scene could not start.',
-    body: 'Setting up the WebGPU scene failed on this device. Reloading often helps. If it keeps happening, try a current version of Chrome, Edge or Safari, and make sure hardware acceleration is switched on.',
+    body: 'Setting up the WebGPU scene failed on this device. Reloading often helps. If it keeps happening, try a current version of Chrome, Edge, Safari or Firefox, and make sure hardware acceleration is switched on.',
+    steps: [],
+    reload: true,
+  },
+  crashed: {
+    kicker: 'Something went wrong',
+    title: 'The scene stopped unexpectedly.',
+    body: 'An error interrupted the WebGPU scene while it was running. Reloading the page brings the slice back.',
     steps: [],
     reload: true,
   },
@@ -94,6 +115,7 @@ function initUI(handlers) {
     mesh: byId('cj-mesh'),
     slowMo: byId('cj-slowmo'),
     status: byId('cj-status'),
+    notice: byId('cj-notice'),
     fallback: byId('cj-fallback'),
   };
   const radios = {};
@@ -259,6 +281,26 @@ function initUI(handlers) {
   function setGrabbing(on) { root.toggleAttribute('data-grabbing', Boolean(on)); }
   function noteInteraction() { root.setAttribute('data-touched', ''); }
 
+  function setNotice(text) {
+    if (!el.notice) return;
+    const t = text == null ? '' : String(text).trim();
+    if (el.notice.textContent !== t) el.notice.textContent = t;
+    el.notice.hidden = !t;
+  }
+
+  let underTitle = false;
+  function setUnderTitle(on) {
+    const v = Boolean(on);
+    if (v === underTitle) return;
+    underTitle = v;
+    root.toggleAttribute('data-under-title', v);
+  }
+  function getTitleRect() {
+    if (!el.title || fallbackKind) return null;
+    const r = el.title.getBoundingClientRect();
+    return r.width > 0 && r.height > 0 ? { x: r.left, y: r.top, width: r.width, height: r.height } : null;
+  }
+
   // ── fallback ───────────────────────────────────────────────────────────
   function showFallback(kind, detail) {
     const copy = FALLBACK_COPY[kind] || FALLBACK_COPY.error;
@@ -267,6 +309,8 @@ function initUI(handlers) {
 
     root.setAttribute('data-fallback', fallbackKind);
     root.removeAttribute('data-grabbing');
+    setUnderTitle(false);
+    setNotice(null);
     canvas.setAttribute('aria-hidden', 'true');
     if (el.panel) {
       el.panel.hidden = true;
@@ -376,6 +420,12 @@ function initUI(handlers) {
       bottom = Y + H - Math.min(pad.b, mode === 'short' ? 6 : 20);
     }
     const rect = { x: left, y: top, width: right - left, height: bottom - top, mode };
+    if (mode === 'dock') {
+      // The band between heading and panel, however thin: the slice must never end up behind the panel.
+      if (!(rect.width >= 80)) return full;
+      if (rect.height < 24) { rect.y = (top + bottom) * 0.5 - 12; rect.height = 24; }
+      return rect;
+    }
     if (!(rect.width >= 80) || !(rect.height >= 80)) return full;
     return rect;
   }
@@ -410,6 +460,9 @@ function initUI(handlers) {
     noteInteraction,
     showFallback,
     getFreeRect,
+    setNotice,
+    getTitleRect,
+    setUnderTitle,
     // extras (not in the original contract)
     setFirmness,
     setDamping,

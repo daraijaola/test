@@ -55,7 +55,12 @@ async function launch(opts = {}) {
     mobile = false,         // touch-capable mobile emulation
     file = 'index.html', query = '', root = ROOT,
     reducedMotion = false,
+    // The page lowers its picture quality on a software rasteriser, which is what the tests
+    // run on. 'full' pins it at full quality (what a real GPU starts with); '' leaves the
+    // page to decide; 'auto' and 'low' are the page's other ?quality= settings.
+    quality = 'full',
   } = opts;
+  const search = [query, quality ? 'quality=' + quality : ''].filter(Boolean).join('&');
   const server = await serve(root);
   const browser = await chromium.launch({ headless: true, args: webgpu ? GPU_ARGS : [] });
   const context = await browser.newContext({
@@ -67,7 +72,7 @@ async function launch(opts = {}) {
   const logs = [];
   page.on('console', (m) => logs.push({ type: m.type(), text: m.text() }));
   page.on('pageerror', (e) => logs.push({ type: 'pageerror', text: String(e && e.stack || e) }));
-  const url = `http://127.0.0.1:${server.address().port}/${file}${query ? '?' + query : ''}`;
+  const url = `http://127.0.0.1:${server.address().port}/${file}${search ? '?' + search : ''}`;
   await page.goto(url, { waitUntil: 'load' });
 
   const h = {

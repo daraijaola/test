@@ -29,7 +29,7 @@
 
   --orange: #F58A1F;
   --orange-ink: #A84C08;
-  --blood: #D8402F;
+  --blood: #C4372E;
   --blood-ink: #B3261A;
   --lemon: #F2CB2E;
   --lemon-ink: #846500;
@@ -188,7 +188,7 @@ body {
   color: var(--ink-2);
   white-space: nowrap;
 }
-.cj-eyebrow__sep { margin: 0 0.6em; color: var(--accent-ink); }
+.cj-eyebrow__sep { margin: 0 0.2em; color: var(--accent-ink); }
 
 .cj-title {
   margin: 0 0 0 -0.068em;                 /* optical: pull the italic C onto the gutter */
@@ -203,6 +203,9 @@ body {
   color: var(--ink);
   white-space: nowrap;
 }
+/* While the slice is stretched across the heading, the lettering steps back and lets it through. */
+.cj-eyebrow, .cj-title { transition: opacity 0.25s var(--cj-ease); }
+.cj[data-under-title] .cj-eyebrow, .cj[data-under-title] .cj-title { opacity: 0.2; }
 .cj-title__stop {
   color: var(--accent);
   transition: color 0.5s var(--cj-ease);
@@ -230,10 +233,23 @@ body {
   background: var(--line-strong);
 }
 /* After the first grab the hint has done its job and steps back… */
-.cj[data-touched] .cj-hint { opacity: 0.6; }
+.cj[data-touched] .cj-hint { opacity: 0.85; }
 /* …and it gets out of the way completely while the slice is in hand. */
 .cj[data-grabbing] .cj-hint { opacity: 0; transform: translateX(-6px); transition-duration: 0.18s; }
 .cj[data-paused] .cj-hint { opacity: 1; }
+
+/* A footnote for conditions worth knowing about (software rendering): quiet, never interactive. */
+.cj-notice {
+  max-width: 34ch;
+  margin: 14px 0 0;
+  font-family: var(--cj-sans);
+  font-size: 12px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+  white-space: normal;
+}
+.cj-notice[hidden] { display: none; }
 
 /* ───────────────────────────── panel ───────────────────────────── */
 .cj-panel {
@@ -634,7 +650,8 @@ body {
 /* In fallback the scene and everything that drives it step aside; the heading stays. */
 .cj[data-fallback] .cj-stage,
 .cj[data-fallback] .cj-panel,
-.cj[data-fallback] .cj-hint { display: none; }
+.cj[data-fallback] .cj-hint,
+.cj[data-fallback] .cj-notice { display: none; }
 
 /* ───────────────────────────── entrance ───────────────────────────── */
 /* Opacity only: ui.js measures these boxes for getFreeRect(), so they must not move. */
