@@ -104,7 +104,7 @@ const DEFAULT_PARAMS = {
 
   // --- sticky base / homing ---
   anchorOmega: 300,            // rad/s of a base particle on its anchor spring
-  anchorHold: 230,             // total force the stuck base can hold before it starts to give
+  anchorHold: 290,             // total force the stuck base can hold before it starts to give
   anchorDamp: 50,              // 1/s dashpot between base particle and frame
   breakD1: 0.05, breakD2: 0.22,// mean base displacement where the tether starts / finishes fading
   tauBreak: 0.05, tauRecover: 0.35,
@@ -118,7 +118,7 @@ const DEFAULT_PARAMS = {
   homeFar: 2.5,                // beyond this distance the glide speeds up in proportion
 
   // --- grabbing ---
-  grabRadius: 0.27,
+  grabRadius: 0.36,             // REVIEW: was 0.27
   grabDepth: 0.45,             // distances through the thickness count this much: the patch is an ellipsoid ~0.6 deep
   grabStiffness: 4000,
   grabMaxForce: 150,
@@ -130,10 +130,14 @@ const DEFAULT_PARAMS = {
   // --- damping (functions of the Internal damping slider d) ---
   rigidFloor: 0.85,            // 1/s, always there: nothing may wobble for ever
   rigidDamp: [0.1, 1.4, 14],   // 1/s at d = 0, 0.5, 1 (times sqrt(stiffness scale): constant damping ratio)
-  edgeDamp: [0.0008, 0.004, 0.03], // s, stiffness-proportional
+  edgeDamp: [0.0008, 0.0015, 0.03], // s, stiffness-proportional   (REVIEW: was 0.004 in the middle)
   returnSpeed: [3.2, 2.6, 2.0],// cap on the speed of the elastic return, u/s
   returnRms: 0.42,             // the cap applies to the rms speed of the returning motion (x this factor) ...
   returnLocal: 1.2,            // ... and, a little looser, to every single particle
+  returnFree: 0.5,             // REVIEW: unchanged (0.75 gave livelier hard landings but 5x more inverted tets under fuzz)
+  homingPlate: 0.4,            // REVIEW: within this distance of home the gliding frame counts as the plate for damping
+  nudgeCeiling: 0.6,           // REVIEW: no extra lift from a nudge once the slice bottom is this high
+  regrip: 0,                   // REVIEW: re-grip while held (seconds of rest needed; 0 = off). Prototype only, trigger not robust yet
   returnHeldFactor: 2.5,       // looser while a finger is holding on (direct manipulation must not lag)
   globalDrag: 0.12,            // 1/s
   maxSpeed: 18,
@@ -300,6 +304,7 @@ class JellySim {
     this.homeAxis = new Float64Array([0, 1, 0]);
     this.homeAngle = 0;
     this.homeVMax = 1; this.homeAMax = 1;
+    this.homeSpan = 0;
 
     // ---- grabs -----------------------------------------------------------------
     this.grabs = [];
@@ -308,7 +313,7 @@ class JellySim {
       this.grabs.push({
         active: false, id: -1, count: 0,
         idx: new Int32Array(maxPatch), wt: new Float64Array(maxPatch),
-        mass: 0, ta: 0, tb: 0, tc: 0, b0: 0, b1: 0, b2: 0,
+        mass: 0, ta: 0, tb: 0, tc: 0, b0: 0, b1: 0, b2: 0, hx: 0, hy: 0, hz: 0,
         raw: new Float64Array(3), tgt: new Float64Array(3), tv: new Float64Array(3),
         force: 0,
       });
@@ -423,7 +428,16 @@ class JellySim {
     let cx = 0, cy = 0, cz = 0;
     for (let i = 0; i < n; i++) { const mi = this.mass[i]; cx += mi * x[i * 3]; cy += mi * x[i * 3 + 1]; cz += mi * x[i * 3 + 2]; }
     cx /= this.totalMass; cy /= this.totalMass; cz /= this.totalMass;
-    const hop = P.nudgeHop * Math.sqrt(s);
+    let hop = P.nudgeHop * Math.sqrt(s);
+    if (P.nudgeCeiling !== 0) {
+      // nudges must not stack into a launch: a slice that is already rising, or already
+      // well off the ground, gets the twist but (progressively) no extra lift
+      let lo = Infinity, vyc = 0;
+      for (let i = 0; i < n; i++) { if (x[i * 3 + 1] < lo) lo = x[i * 3 + 1]; vyc += this.mass[i] * v[i * 3 + 1]; }
+      vyc /= this.totalMass;
+      const ceil = P.nudgeCeiling === undefined ? 0.6 : P.nudgeCeiling;
+      hop = Math.max(0, hop * (1 - smoothstep(0.25 * ceil, ceil, lo)) - Math.max(0, vyc));
+    }
     const twist = P.nudgeTwist * s * sign;
     const tilt = P.nudgeTilt * s * (sign * 0.7 + r1 * 0.6);
     const lean = 0.5 * s * r2;
@@ -520,6 +534,7 @@ class JellySim {
     for (let k = 0; k < count; k++) { g.wt[k] /= atPick; gm += this.mass[g.idx[k]] * g.wt[k] * g.wt[k]; }
     g.count = count; g.mass = gm;                 // generalised mass of the bump
     g.ta = ta; g.tb = tb; g.tc = tc; g.b0 = b0; g.b1 = b1; g.b2 = b2;
+    g.hx = hx; g.hy = hy; g.hz = hz;              // the picked point in the home pose
     g.tgt[0] = px; g.tgt[1] = py; g.tgt[2] = pz;
     g.tv[0] = g.tv[1] = g.tv[2] = 0;
     g.force = 0;
@@ -1131,8 +1146,13 @@ class JellySim {
     const before = this.tether;
     if (this.mode === MODE_FREE) {
       this.tether = 0; this.ramp = 0; this.stick = 1;
-      if (grabbed) { this.tRelease = 0; this.tContact = 0; }
-      else {
+      if (grabbed) {
+        this.tRelease = 0;
+        // re-grip: a held slice that is set down on its cut face and kept still sticks again
+        // where it stands (the frame only glides home once it is let go)
+        if (P.regrip && this._baseResting()) { this.tContact += dt; if (this.tContact > P.regrip) this._beginHoming(); }
+        else this.tContact = 0;
+      } else {
         this.tRelease += dt;
         if (this.contactCount > 0) this.tContact += dt;
         if ((this.tRelease > P.homeDelay && this.tContact > P.homeContact) || this.tRelease > P.homeTimeout) this._beginHoming();
@@ -1145,7 +1165,7 @@ class JellySim {
       this.stick += (goal - this.stick) * Math.min(1, dt / tau);
       if (this.mode === MODE_HOMING) {
         this.homingT += dt;
-        this.ramp = smoothstep(0, P.homeRamp, this.homingT);
+        this.ramp = smoothstep(0, grabbed && P.regripRamp ? P.regripRamp : P.homeRamp, this.homingT);
         this._advanceHoming(dt);
       } else this.ramp = 1;
       this.tether = this.stick * this.ramp;
@@ -1199,6 +1219,7 @@ class JellySim {
     const far = Math.max(1, dist / P.homeFar);
     this.homeVMax = Math.min(P.homeSpeed * far / Math.max(dist, 1e-3), P.homeSpin / Math.max(angle, 1e-3));
     this.homeAMax = Math.min(P.homeAccel * far / Math.max(dist, 1e-3), P.homeSpinAccel / Math.max(angle, 1e-3));
+    this.homeSpan = Math.max(dist, angle);
     this.homeU = 1; this.homeUVel = 0;
     this.homingT = 0; this.ramp = 0; this.stick = 1; this.tether = 0;
     this.mode = MODE_HOMING;
@@ -1207,8 +1228,17 @@ class JellySim {
     for (let k = 0, nb3 = this.numBase * 3; k < nb3; k++) av[k] = 0;
   }
 
+  /** Most of the cut face lies on the ground and is (almost) not moving. */
+  _baseResting() {
+    const x = this.x, v = this.v, bi = this.baseIdx, nb = this.numBase;
+    let on = 0, sp = 0;
+    for (let k = 0; k < nb; k++) { const i3 = bi[k] * 3; if (x[i3 + 1] < 0.02) on++; sp += v[i3] * v[i3] + v[i3 + 1] * v[i3 + 1] + v[i3 + 2] * v[i3 + 2]; }
+    return on >= 0.7 * nb && sp < 0.36 * nb;          // rms speed of the base below 0.6 u/s
+  }
+
   _advanceHoming(dt) {
     const P = this.params, om = P.homeOmega;
+    if (P.regrip && this.grabCount > 0) { this.homeUVel = 0; this._placeFrame(dt); return; }   // held: the plate waits
     let acc = -2 * om * this.homeUVel - om * om * this.homeU;
     if (acc > this.homeAMax) acc = this.homeAMax; else if (acc < -this.homeAMax) acc = -this.homeAMax;
     this.homeUVel += acc * dt;
@@ -1270,6 +1300,27 @@ class JellySim {
       const s2 = tv[0] * tv[0] + tv[1] * tv[1] + tv[2] * tv[2];
       if (s2 > vmax * vmax) { const k = vmax / Math.sqrt(s2); tv[0] *= k; tv[1] *= k; tv[2] *= k; }
       t[0] += tv[0] * dt; t[1] += tv[1] * dt; t[2] += tv[2] * dt;
+    }
+    // Two fingers cannot bring their two pieces of jelly closer together than the material can be
+    // compressed: keep the targets at least minStretch x their home separation apart, or the
+    // patches are folded through each other and the tets between them stay inverted while held.
+    if (this.grabCount > 1 && P.grabMinSeparation !== 0) {
+      const ks = P.grabMinSeparation === undefined ? P.minStretch : P.grabMinSeparation;
+      for (let a = 0; a < MAX_GRABS; a++) {
+        const ga = this.grabs[a]; if (!ga.active) continue;
+        for (let b = a + 1; b < MAX_GRABS; b++) {
+          const gb = this.grabs[b]; if (!gb.active) continue;
+          const need = ks * Math.hypot(ga.hx - gb.hx, ga.hy - gb.hy, ga.hz - gb.hz);
+          let dx = gb.tgt[0] - ga.tgt[0], dy = gb.tgt[1] - ga.tgt[1], dz = gb.tgt[2] - ga.tgt[2];
+          let d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          if (d >= need) continue;
+          if (d < 1e-6) { dx = gb.hx - ga.hx; dy = gb.hy - ga.hy; dz = gb.hz - ga.hz; d = Math.sqrt(dx * dx + dy * dy + dz * dz); if (d < 1e-9) continue; }
+          const push = 0.5 * (need / d - (dx * dx + dy * dy + dz * dz > 0 ? Math.sqrt((gb.tgt[0] - ga.tgt[0]) ** 2 + (gb.tgt[1] - ga.tgt[1]) ** 2 + (gb.tgt[2] - ga.tgt[2]) ** 2) / d : 0));
+          ga.tgt[0] -= dx * push; ga.tgt[1] -= dy * push; ga.tgt[2] -= dz * push;
+          gb.tgt[0] += dx * push; gb.tgt[1] += dy * push; gb.tgt[2] += dz * push;
+          if (ga.tgt[1] < 0.1) ga.tgt[1] = 0.1; if (gb.tgt[1] < 0.1) gb.tgt[1] = 0.1;
+        }
+      }
     }
   }
 
@@ -1373,8 +1424,15 @@ class JellySim {
     // home pose); for a free body it is the rigidly fitted shape moving with the
     // body. There both ends close in on each other, so each gets half the speed.
     const P = this.params;
-    const b = this.mode === MODE_STUCK ? this.stick : 0, nb = 1 - b, stuck = b > 0.5;
-    const vret = this.returnSpeed * (0.5 + 0.5 * b) * (this.grabCount > 0 ? P.returnHeldFactor : 1);
+    // While the anchor frame is arriving home the plate is (almost) at rest again: damp against it,
+    // as when stuck, or the sway the glide kicks up rings undamped until the frame has fully arrived.
+    let b = 0;
+    if (this.mode === MODE_STUCK) b = this.stick;
+    else if (this.mode === MODE_HOMING && P.homingPlate) b = this.tether * (1 - smoothstep(P.homingPlate * 0.15, P.homingPlate, this.homeU * this.homeSpan));
+    const nb = 1 - b, stuck = b > 0.5;
+    const rf = P.returnFree === undefined ? 0.5 : P.returnFree;
+    const vret = this.returnSpeed * (rf + (1 - rf) * b) * (this.grabCount > 0 ? P.returnHeldFactor : 1);
+    const gate0 = P.returnGate0 === undefined ? 0.02 : P.returnGate0, gate1 = P.returnGate1 === undefined ? 0.08 : P.returnGate1, gate02 = gate0 * gate0, gate12 = gate1 * gate1, gateInv = 1 / (gate1 - gate0);
     const dt = this.substepDt, keep = 1 - kd;
     const D = this._dev, G = this._gate;
     let ke = 0;
@@ -1394,7 +1452,7 @@ class JellySim {
       // from the rest shape; free, only motion heading back (a landing has to be
       // able to squash at the speed it arrives with)
       let g = 0;
-      if (ul2 > 4e-4 && (stuck || dx * ux + dy * uy + dz * uz < 0)) g = ul2 < 0.0064 ? (Math.sqrt(ul2) - 0.02) / 0.06 : 1;
+      if (ul2 > gate02 && (stuck || dx * ux + dy * uy + dz * uz < 0)) g = ul2 < gate12 ? (Math.sqrt(ul2) - gate0) * gateInv : 1;
       G[i] = g;
       if (g > 0) ke += g * mass[i] * (dx * dx + dy * dy + dz * dz);
     }

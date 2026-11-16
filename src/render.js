@@ -69,31 +69,31 @@ const PALETTES = {
     rindAbs: [0.25, 3.4, 12.0], rindDensity: 11.0,
     rindSca: [1.00, 0.34, 0.02],
     deep: [0.50, 3.2, 8.0],
-    shadow: [0.16, 0.62, 1.35], shadowStrength: 1.0,
+    shadow: [0.02, 0.75, 2.2], shadowStrength: 1.0,
     lineHot: [1.0, 0.16, 0.30],
   },
   blood: {
-    fleshAbs: [1.45, 10.0, 7.5], fleshDensity: 0.42,
-    fleshSca: [1.00, 0.16, 0.13], mottle: 0.85,
-    fleshAbs2: [0.62, 5.2, 8.5], vesicle: 1.0,
+    fleshAbs: [4.2, 16.0, 10.0], fleshDensity: 0.42,
+    fleshSca: [0.72, 0.015, 0.05], mottle: 0.85,
+    fleshAbs2: [1.1, 6.0, 8.5], vesicle: 1.0,
     memAbs: [0.07, 0.30, 0.48], memDensity: 13.0,
     memSca: [0.93, 0.70, 0.56],
     rindAbs: [0.28, 4.4, 11.0], rindDensity: 11.0,
-    rindSca: [1.00, 0.26, 0.03],
-    deep: [0.85, 5.0, 5.6],
-    shadow: [0.26, 1.05, 1.25], shadowStrength: 1.0,
+    rindSca: [1.00, 0.20, 0.03],
+    deep: [1.8, 7.0, 7.0],
+    shadow: [0.16, 1.45, 1.6], shadowStrength: 1.0,
     lineHot: [1.0, 0.86, 0.25],
   },
   lemon: {
-    fleshAbs: [0.18, 0.46, 5.4], fleshDensity: 0.40,
-    fleshSca: [0.96, 0.84, 0.14], mottle: 0.2,
-    fleshAbs2: [0.14, 0.30, 6.5], vesicle: 1.0,
+    fleshAbs: [0.24, 0.80, 6.5], fleshDensity: 0.40,
+    fleshSca: [0.93, 0.86, 0.20], mottle: 0.2,
+    fleshAbs2: [0.20, 0.55, 7.0], vesicle: 1.0,
     memAbs: [0.05, 0.08, 0.36], memDensity: 13.0,
     memSca: [0.90, 0.86, 0.64],
-    rindAbs: [0.10, 0.30, 6.0], rindDensity: 11.0,
-    rindSca: [0.95, 0.82, 0.15],
-    deep: [0.20, 0.42, 4.2],
-    shadow: [0.08, 0.20, 1.05], shadowStrength: 0.92,
+    rindAbs: [0.10, 1.0, 9.0], rindDensity: 11.0,
+    rindSca: [1.00, 0.66, 0.035],
+    deep: [0.25, 0.75, 5.0],
+    shadow: [0.03, 0.28, 1.8], shadowStrength: 0.92,
     lineHot: [1.0, 0.18, 0.32],
   },
 };
@@ -153,7 +153,7 @@ struct Globals {
   bodyY: vec4f,
   bodyZ: vec4f,
   shadow: vec4f,     // xy: centre of the shadow map (world xz), z: 1 / half extent
-  shear: vec4f,      // xy: ground offset per unit height along the key light, z: debug view (0 = off)
+  shear: vec4f,      // xy: ground offset per unit height along the key light, z: debug view (0 = off), w: march steps
   bg: vec4f,         // backdrop colour (linear), w = dither amplitude
   fleshAbs: vec4f,   // rgb absorption, w scattering density
   fleshSca: vec4f,   // rgb scatter colour, w mottle amount
@@ -391,12 +391,15 @@ struct Bubbles { b: array<vec4f, ${c.numBubbles}>, sec: array<vec4f, 5> };
 @group(1) @binding(7) var<uniform> BUB: Bubbles;
 @group(2) @binding(0) var backTex: texture_2d<f32>;
 
-const STEPS = ${c.steps};
+const MAX_STEPS = 22;
 const NSEG = ${f(c.segments)};
 const HALF_T = ${f(c.thickness * 0.5)};
 const PITH_R = ${f(c.pithR)};
 const RIND_R = ${f(c.rindR)};
 const CORE_R = 0.085;
+// per-segment random, tabulated (the values the sin-hash produced on the reference renderer):
+// sin() of large arguments is not portable between GPUs
+const SEG_RND = array<f32, 7>(0.270020, 0.628906, 0.507813, 0.671875, 0.078125, 0.729492, 0.286133);
 const MEM_HALF = 0.0075;
 const SEG_ROUND = 0.050;
 const IOR = 1.36;
@@ -444,7 +447,7 @@ fn softbox(r: vec3f, d: vec3f, tx: vec3f, ty: vec3f, half: vec2f, feather: f32) 
 // shadow) below the horizon and three softboxes with feathered edges.
 fn envLight(r: vec3f, p: vec3f) -> vec3f {
   var e = G.bg.rgb * mix(0.55, 0.42, smoothstep(0.0, 0.9, r.y));
-  let floorMix = smoothstep(0.06, -0.20, r.y);
+  let floorMix = 1.0 - smoothstep(-0.20, 0.06, r.y);
   if (floorMix > 0.0) {
     let rr = normalize(vec3f(r.x, min(r.y, -0.06), r.z));
     let hit = p + rr * (max(p.y, 0.0) / -rr.y);
@@ -496,7 +499,7 @@ fn segments(m: vec3f, r: f32, lo: vec4f) -> Segs {
   var o: Segs;
   o.d = SEG_ROUND - length(q);
   o.a = a;
-  o.rnd = fract(sin(seg * 91.7 + 3.1) * 43758.5453);
+  o.rnd = SEG_RND[i32(seg)];
   return o;
 }
 
@@ -585,8 +588,9 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let hgt = micro.x;
   let dpx = dpdx(in.world);
   let dpy = dpdy(in.world);
-  let dhx = dpdx(hgt);
-  let dhy = dpdy(hgt);
+  // per-pixel forward differences of the relief (screen-space derivatives of hgt are constant per 2x2 quad -> blocky)
+  let dhx = microHeight(mA + dpdx(mA), footprint, loA).x - hgt;
+  let dhy = microHeight(mA + dpdy(mA), footprint, loA).x - hgt;
   let r1 = cross(dpy, Ng);
   let r2 = cross(Ng, dpx);
   let det = dot(dpx, r1);
@@ -633,8 +637,10 @@ fn fs(in: VsOut) -> @location(0) vec4f {
 
   // ---- march the straight material-space segment entry -> exit
   let jit = ign(in.clip.xy);
-  let ds = thick / f32(STEPS);
-  let dm = (mB - mA) / f32(STEPS);
+  let nSteps = clamp(i32(G.shear.w), 4, MAX_STEPS);
+  let fSteps = f32(nSteps);
+  let ds = thick / fSteps;
+  let dm = (mB - mA) / fSteps;
   var m = mA + dm * jit;
   // feature softness: a pixel at the surface, growing with depth (cloudy jelly)
   // and never thinner than what one march step can resolve across a membrane
@@ -642,10 +648,10 @@ fn fs(in: VsOut) -> @location(0) vec4f {
 
   let kappa = G.deep.rgb;
   // ground proximity: less light arrives low down on faces that look at the floor
-  let lowAO = mix(1.0, smoothstep(-0.02, 0.34, in.world.y), saturate(0.45 - N.y * 0.75));
+  let lowAO = mix(1.0, 0.55 + 0.45 * smoothstep(-0.02, 0.22, in.world.y), saturate(0.45 - N.y * 0.75));
   let eEntry = irradiance(N) * lowAO;
   // no light enters where the exit point rests on (or hovers just above) the ground
-  let eExit = irradiance(rd) * (1.10 * smoothstep(0.0, 0.20, pE.y));
+  let eExit = irradiance(rd) * (1.10 * mix(0.55, 1.0, smoothstep(0.0, 0.20, pE.y)));
   let cosN = max(NdV, 0.25);
   let stepEntry = exp(-kappa * (ds * cosN));
   let stepExit = exp(kappa * ds);
@@ -672,20 +678,20 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let stepB = exp(-kappa * dm.z);
   let stepC = exp(-kappa * dm.y);
 
-  let lowTint = exp(-kappa * 0.20) * 0.72;
+  let lowTint = exp(-kappa * 0.30);
   let loB = loNoise(mB);
   var T = vec3f(1.0);
   var L = vec3f(0.0);
-  for (var i = 0; i < STEPS; i++) {
+  for (var i = 0; i < nSteps; i++) {
     let s = (f32(i) + jit) * ds;
-    let md = medium(m, soft0 + s * 0.035, mix(loA, loB, (f32(i) + jit) / f32(STEPS)));
+    let md = medium(m, soft0 + s * 0.035, mix(loA, loB, (f32(i) + jit) / fSteps));
     let nA = (G.bodyX.xyz * m.x + G.bodyY.xyz * m.y) / max(md.r, 1e-3);
     let eA = irradiance(nA) * (wA * exp(-kappa * max(1.0 - md.r, 0.0)));
     var lin = eEntry * aEntry + (eExit * aExit + eF * tF + eB * tB + eC * tC) * 0.5 + eA * 0.75;
     lin = mix(lin, vec3f(lin.r), md.pale * 0.45);                // pale tissue scatters the light before it reddens
     // the ground blocks the lower hemisphere: everything close to it receives less light
     // (what does arrive down there has mostly travelled through the body: it is warm)
-    let lift = smoothstep(-0.03, 0.22, mix(in.world.y, pE.y, (f32(i) + jit) / f32(STEPS)));
+    let lift = smoothstep(-0.03, 0.22, mix(in.world.y, pE.y, (f32(i) + jit) / fSteps));
     lin *= mix(lowTint, vec3f(1.0), max(lift, md.pale * 0.42));
     let ext = md.sa + vec3f(md.ss);
     let stepT = exp(-ext * ds);
@@ -700,7 +706,9 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   }
 
   // ---- what is behind: the studio, bent by the jelly and dimmed by its transmittance
-  let dirOut = normalize(rd + bend * (0.55 * smoothstep(0.0, 0.12, thick)));
+  var dirOut = normalize(rd + bend * (0.55 * smoothstep(0.0, 0.12, thick)));
+  // an exit point resting on the ground always sees the (shadowed) ground right there, never the open backdrop
+  dirOut.y = min(dirOut.y, mix(1.0, -0.25, 1.0 - smoothstep(0.0, 0.04, pE.y)));
   let behind = scene(pE, dirOut, saturate(thick * 2.5), smoothstep(0.0, 0.15, thick));
   var col = L + T * behind;
 
@@ -761,7 +769,8 @@ fn fs(in: VsOut) -> @location(0) vec4f {
     else if (dbg < 3.5) { col = env * F; }
     else if (dbg < 4.5) { col = N * 0.5 + vec3f(0.5); }
     else if (dbg < 5.5) { col = vec3f(thick); }
-    else { col = T; }
+    else if (dbg < 6.5) { col = T; }
+    else { col = vec3f(1.0, 0.0, 1.0); }
     return vec4f(pow(clamp(col, vec3f(0.0), vec3f(1.0)), vec3f(1.0 / 2.2)), 1.0);
   }
 
@@ -822,7 +831,7 @@ fn lineColor(in: LineOut, alpha: f32, hotAlpha: f32) -> vec4f {
   let t = saturate(in.tension);
   let ink = vec3f(0.0242, 0.0110, 0.0052);                     // #2B1B10
   let hot = G.lineHot.rgb;
-  let k = smoothstep(0.05, 0.85, t);
+  let k = smoothstep(0.30, 0.95, t);
   let col = pow(mix(ink, hot, k), vec3f(1.0 / 2.2));           // display space (blending happens there)
   return vec4f(col, cover * mix(alpha, hotAlpha, k));
 }
@@ -1031,7 +1040,12 @@ class JellyRenderer {
   static async create(canvas, mesh, opts) {
     const o = opts || {};
     const gpu = typeof navigator !== 'undefined' ? navigator.gpu : undefined;
-    if (!gpu) throw gpuError('no-webgpu', 'WebGPU is not available in this browser.');
+    if (!gpu) {
+      const insecure = typeof window !== 'undefined' && window.isSecureContext === false;
+      throw gpuError('no-webgpu', insecure
+        ? 'WebGPU only works on secure pages. Open this page over https://, from localhost, or as a local file.'
+        : 'WebGPU is not available in this browser.');
+    }
     let adapter = null;
     // prefer the discrete GPU on dual-GPU laptops (Windows ignores the hint and only warns about it)
     const isWindows = /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '');
@@ -1044,13 +1058,20 @@ class JellyRenderer {
     let context = null;
     try { context = canvas.getContext('webgpu'); } catch (e) { context = null; }
     if (!context) { device.destroy(); throw gpuError('no-webgpu', 'This canvas cannot provide a WebGPU context.'); }
-    const r = new JellyRenderer(PRIVATE, canvas, mesh, o, device, context, gpu.getPreferredCanvasFormat());
+    const info = adapter.info || {};
+    const fallbackAdapter = Boolean(info.isFallbackAdapter || adapter.isFallbackAdapter);
+    const r = new JellyRenderer(PRIVATE, canvas, mesh, Object.assign({}, o, { _fallbackAdapter: fallbackAdapter }), device, context, gpu.getPreferredCanvasFormat());
     try {
       await r._init();
     } catch (e) {
       r.destroy();
       if (e && e.code) throw e;
       throw gpuError('no-device', 'WebGPU initialisation failed: ' + (e && e.message ? e.message : e), e);
+    }
+    if (r._lost) {                 // requestDevice() may hand out a device that is already lost
+      const why = r._lostInfo && r._lostInfo.message ? ' (' + r._lostInfo.message + ')' : '';
+      r.destroy();
+      throw gpuError('no-device', 'The WebGPU device was lost while the scene was starting' + why + '.');
     }
     return r;
   }
@@ -1062,10 +1083,16 @@ class JellyRenderer {
     this.device = device;
     this.context = context;
     this.format = format;
-    this.onDeviceLost = null;
+    this._onDeviceLost = null;
+    this._lostInfo = null;
+    this._lostTold = false;
     this.debug = Boolean(opts.debug);
     this.debugErrors = [];
     this.quality = opts.quality === 'low' || opts.quality === 'high' ? opts.quality : 'medium';
+    this.steps = this.quality === 'low' ? 9 : this.quality === 'high' ? 22 : 14;   // live: change any time (4..22)
+    this.gpuMs = 0;              // smoothed submit -> GPU-finished latency (ms), 0 until measured
+    this.onError = null;         // called once with an Error if the first frames fail validation
+    this.isFallbackAdapter = Boolean(opts._fallbackAdapter);
     this.subdivisions = Math.max(1, Math.min(5, (opts.subdivisions | 0) || 3));
     this.showMesh = false;
     this.debugView = 0;          // look-dev aid, see the header comment
@@ -1115,10 +1142,8 @@ class JellyRenderer {
 
     device.lost.then((info) => {
       this._lost = true;
-      if (this._destroyed) return;
-      if (typeof this.onDeviceLost === 'function') {
-        try { this.onDeviceLost(info); } catch (e) { console.error(e); }
-      }
+      this._lostInfo = info || null;
+      this._notifyLost();
     });
     this._onUncaptured = (ev) => {
       const msg = ev && ev.error && ev.error.message ? ev.error.message : String(ev);
@@ -1127,7 +1152,7 @@ class JellyRenderer {
     };
     device.addEventListener('uncapturederror', this._onUncaptured);
 
-    if (dbg) device.pushErrorScope('validation');
+    device.pushErrorScope('validation');
 
     const cfg = {
       phongAlpha: 0.72,
@@ -1331,7 +1356,7 @@ class JellyRenderer {
         vertex: { module: modBack, entryPoint: 'vs', buffers: surfBuffers },
         fragment: { module: modBack, entryPoint: 'fs', targets: [{ format: 'rgba16float' }] },
         primitive: { topology: 'triangle-list', cullMode: 'front', frontFace: 'ccw' },
-        depthStencil: { format: 'depth24plus', depthWriteEnabled: true, depthCompare: 'less' },
+        depthStencil: { format: 'depth24plus', depthWriteEnabled: true, depthCompare: 'greater' },
       }),
       device.createRenderPipelineAsync({
         label: 'backdrop', layout: layout(globalsOnlyLayout, sceneLayout),
@@ -1375,7 +1400,7 @@ class JellyRenderer {
     };
     this._backPass = {
       colorAttachments: [{ view: null, loadOp: 'clear', storeOp: 'store', clearValue: { r: 0, g: 0, b: 0, a: -1000 } }],
-      depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 1 },
+      depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 0 },
     };
     const b = this._bgSrgb;
     this._mainPass = {
@@ -1383,7 +1408,7 @@ class JellyRenderer {
       depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 1 },
     };
 
-    if (dbg) {
+    {
       const err = await device.popErrorScope();
       if (err) { this.debugErrors.push(err.message); throw new Error(err.message); }
     }
@@ -1426,7 +1451,20 @@ class JellyRenderer {
     this._mainPass.colorAttachments[0].view = this._msaaColor.createView();
     this._mainPass.depthStencilAttachment.view = this._msaaDepth.createView();
     this._targetsOk = true;
+    this._checkFrames = 2;                                         // validate the next frames drawn into the new targets
   }
+
+  /** Called once with the GPUDeviceLostInfo; a loss that happened before the handler was set is delivered late. */
+  get onDeviceLost() { return this._onDeviceLost; }
+  set onDeviceLost(fn) { this._onDeviceLost = fn; if (this._lost) Promise.resolve().then(() => this._notifyLost()); }
+  _notifyLost() {
+    if (this._destroyed || this._lostTold || typeof this._onDeviceLost !== 'function') return;
+    this._lostTold = true;
+    try { this._onDeviceLost(this._lostInfo); } catch (e) { console.error(e); }
+  }
+
+  /** true while something inside the renderer is still animating (palette cross-fade). */
+  get animating() { return this._palT < 1; }
 
   /** 'orange' | 'blood' | 'lemon'; cross-fades over ~0.5 s unless immediate. */
   setPalette(id, immediate) {
@@ -1438,6 +1476,7 @@ class JellyRenderer {
     packPalette(p, this._palTo);
     this.palette = id;
     this._palT = immediate ? 1 : 0;
+    this._lastTime = -1;          // the fade starts now, however long ago the last frame was drawn
   }
 
   setShowMesh(on) { this.showMesh = Boolean(on); }
@@ -1447,7 +1486,7 @@ class JellyRenderer {
    * @param {{positions: Float32Array, camera: object, time?: number, dt?: number, tension?: Float32Array}} frame
    */
   render(frame) {
-    if (this._destroyed || this._lost || !this._targetsOk || !frame || !frame.positions || !frame.camera) return;
+    if (this._destroyed || this._lost || this._failed || !this._targetsOk || !frame || !frame.positions || !frame.camera) return;
     const device = this.device, cam = frame.camera;
     const time = frame.time || 0;
     // the palette cross-fade follows the clock of `time` (so it also runs while
@@ -1463,8 +1502,10 @@ class JellyRenderer {
     device.queue.writeBuffer(this._pbuf, 0, this._pData);
     device.queue.writeBuffer(this._ubuf, 0, this._u);
 
+    const check = this._checkFrames > 0;
+    if (check) { this._checkFrames--; device.pushErrorScope('validation'); }
     let canvasTex;
-    try { canvasTex = this.context.getCurrentTexture(); } catch (e) { return; }
+    try { canvasTex = this.context.getCurrentTexture(); } catch (e) { if (check) device.popErrorScope().catch(() => {}); return; }
     this._mainPass.colorAttachments[0].resolveTarget = canvasTex.createView();
 
     const enc = device.createCommandEncoder();
@@ -1521,6 +1562,24 @@ class JellyRenderer {
     pass.end();
 
     device.queue.submit([enc.finish()]);
+
+    if (check) {
+      device.popErrorScope().then((err) => {
+        if (!err || this._failed || this._destroyed) return;
+        this._failed = true;                                       // stop drawing invalid frames
+        if (typeof this.onError === 'function') { try { this.onError(new Error(err.message)); } catch (e) { console.error(e); } }
+      }, () => {});
+    }
+    // how long the GPU takes to finish a frame (one probe in flight at a time)
+    if (!this._probing) {
+      this._probing = true;
+      const t0 = performance.now();
+      device.queue.onSubmittedWorkDone().then(() => {
+        this._probing = false;
+        const ms = performance.now() - t0;
+        this.gpuMs = this.gpuMs > 0 ? this.gpuMs + (ms - this.gpuMs) * 0.15 : ms;
+      }, () => { this._probing = false; });
+    }
   }
 
   destroy() {
@@ -1621,7 +1680,7 @@ class JellyRenderer {
     u[36] = up[0]; u[37] = up[1]; u[38] = up[2]; u[39] = Math.max(0.5, 0.6 * cssScale);
     // 40..51 body frame (written by _updateParticles)
     u[52] = this._shadowCx; u[53] = this._shadowCz; u[54] = 1 / SHADOW_EXTENT; u[55] = 0;
-    u[56] = SHADOW_SHEAR[0]; u[57] = SHADOW_SHEAR[1]; u[58] = this.debugView || 0; u[59] = 0;
+    u[56] = SHADOW_SHEAR[0]; u[57] = SHADOW_SHEAR[1]; u[58] = this.debugView || 0; u[59] = this.steps;
     u[60] = this._bg[0]; u[61] = this._bg[1]; u[62] = this._bg[2]; u[63] = 1 / 255;
     this._currentPalette(this._uPal);
   }

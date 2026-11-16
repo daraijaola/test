@@ -843,6 +843,33 @@ body {
   .cj-toggles { padding-top: 6px; padding-bottom: 6px; }
 }
 
+/* ───────────────────────────── tiny (narrow AND short: small windows, 200 % zoom) ───────────────────────────── */
+@media (max-width: 559px) and (max-height: 520px) {
+  .cj {
+    --cj-control: 34px;
+    --cj-thumb: 20px;
+    --cj-range-h: 34px;
+    --cj-title-size: clamp(26px, 9.5vh, 40px);
+  }
+  .cj-ui { padding-top: max(10px, env(safe-area-inset-top, 0px)); }
+  .cj-eyebrow { display: none; }
+  .cj-mast { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 14px; }
+  .cj-hint { margin-top: 0; font-size: 14px; gap: 8px; }
+  .cj-hint__rule { width: 14px; }
+  .cj-panel { gap: 2px 14px; padding: 6px 0 calc(6px + env(safe-area-inset-bottom, 0px)); }
+  .cj-field__head { margin-bottom: -10px; }
+  .cj-switch { min-height: 34px; }
+  .cj-preset > label { min-height: 34px; }
+  .cj-presets { margin-top: 0; }
+}
+
+/* The heading steps back while the slice is being pulled underneath it. */
+.cj-title, .cj-eyebrow { transition: opacity 0.25s var(--cj-ease); }
+.cj[data-under-title] .cj-title, .cj[data-under-title] .cj-eyebrow { opacity: 0.2; }
+
+/* A fallback that does not fit (small screens, long technical detail) scrolls instead of being cut off. */
+.cj-fallback { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
+
 /* ───────────────────────────── preferences ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .cj *, .cj *::before, .cj *::after {
@@ -853,6 +880,12 @@ body {
   .cj-btn:active, .cj[data-grabbing] .cj-hint { transform: none; }
 }
 @media (forced-colors: active) {
+  .cj-range::-webkit-slider-runnable-track { forced-color-adjust: none; background: ButtonText; }
+  .cj-range::-moz-range-track { background: ButtonText; }
+  .cj-range::-webkit-slider-thumb { forced-color-adjust: none; background: Highlight; border-color: ButtonText; box-shadow: 0 0 0 3px Canvas; }
+  .cj-range::-moz-range-thumb { background: Highlight; border-color: ButtonText; }
+  .cj-switch__track::after { forced-color-adjust: none; background: ButtonText; }
+  .cj-switch > input:checked ~ .cj-switch__track::after { background: HighlightText; }
   .cj-switch__track, .cj-btn { border-color: ButtonText; }
   .cj-switch > input:checked ~ .cj-switch__track { background: Highlight; }
   .cj-preset > label::before { forced-color-adjust: none; }

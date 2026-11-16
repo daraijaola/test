@@ -856,6 +856,33 @@ body {
   .cj-toggles { padding-top: 6px; padding-bottom: 6px; }
 }
 
+/* ───────────────────────────── tiny (narrow AND short: small windows, 200 % zoom) ───────────────────────────── */
+@media (max-width: 559px) and (max-height: 520px) {
+  .cj {
+    --cj-control: 34px;
+    --cj-thumb: 20px;
+    --cj-range-h: 34px;
+    --cj-title-size: clamp(26px, 9.5vh, 40px);
+  }
+  .cj-ui { padding-top: max(10px, env(safe-area-inset-top, 0px)); }
+  .cj-eyebrow { display: none; }
+  .cj-mast { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 14px; }
+  .cj-hint { margin-top: 0; font-size: 14px; gap: 8px; }
+  .cj-hint__rule { width: 14px; }
+  .cj-panel { gap: 2px 14px; padding: 6px 0 calc(6px + env(safe-area-inset-bottom, 0px)); }
+  .cj-field__head { margin-bottom: -10px; }
+  .cj-switch { min-height: 34px; }
+  .cj-preset > label { min-height: 34px; }
+  .cj-presets { margin-top: 0; }
+}
+
+/* The heading steps back while the slice is being pulled underneath it. */
+.cj-title, .cj-eyebrow { transition: opacity 0.25s var(--cj-ease); }
+.cj[data-under-title] .cj-title, .cj[data-under-title] .cj-eyebrow { opacity: 0.2; }
+
+/* A fallback that does not fit (small screens, long technical detail) scrolls instead of being cut off. */
+.cj-fallback { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
+
 /* ───────────────────────────── preferences ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .cj *, .cj *::before, .cj *::after {
@@ -866,6 +893,12 @@ body {
   .cj-btn:active, .cj[data-grabbing] .cj-hint { transform: none; }
 }
 @media (forced-colors: active) {
+  .cj-range::-webkit-slider-runnable-track { forced-color-adjust: none; background: ButtonText; }
+  .cj-range::-moz-range-track { background: ButtonText; }
+  .cj-range::-webkit-slider-thumb { forced-color-adjust: none; background: Highlight; border-color: ButtonText; box-shadow: 0 0 0 3px Canvas; }
+  .cj-range::-moz-range-thumb { background: Highlight; border-color: ButtonText; }
+  .cj-switch__track::after { forced-color-adjust: none; background: ButtonText; }
+  .cj-switch > input:checked ~ .cj-switch__track::after { background: HighlightText; }
   .cj-switch__track, .cj-btn { border-color: ButtonText; }
   .cj-switch > input:checked ~ .cj-switch__track { background: Highlight; }
   .cj-preset > label::before { forced-color-adjust: none; }
@@ -1501,7 +1534,7 @@ const DEFAULT_PARAMS = {
 
   // --- sticky base / homing ---
   anchorOmega: 300,            // rad/s of a base particle on its anchor spring
-  anchorHold: 230,             // total force the stuck base can hold before it starts to give
+  anchorHold: 290,             // total force the stuck base can hold before it starts to give
   anchorDamp: 50,              // 1/s dashpot between base particle and frame
   breakD1: 0.05, breakD2: 0.22,// mean base displacement where the tether starts / finishes fading
   tauBreak: 0.05, tauRecover: 0.35,
@@ -1515,7 +1548,7 @@ const DEFAULT_PARAMS = {
   homeFar: 2.5,                // beyond this distance the glide speeds up in proportion
 
   // --- grabbing ---
-  grabRadius: 0.27,
+  grabRadius: 0.36,             // REVIEW: was 0.27
   grabDepth: 0.45,             // distances through the thickness count this much: the patch is an ellipsoid ~0.6 deep
   grabStiffness: 4000,
   grabMaxForce: 150,
@@ -1527,10 +1560,14 @@ const DEFAULT_PARAMS = {
   // --- damping (functions of the Internal damping slider d) ---
   rigidFloor: 0.85,            // 1/s, always there: nothing may wobble for ever
   rigidDamp: [0.1, 1.4, 14],   // 1/s at d = 0, 0.5, 1 (times sqrt(stiffness scale): constant damping ratio)
-  edgeDamp: [0.0008, 0.004, 0.03], // s, stiffness-proportional
+  edgeDamp: [0.0008, 0.0015, 0.03], // s, stiffness-proportional   (REVIEW: was 0.004 in the middle)
   returnSpeed: [3.2, 2.6, 2.0],// cap on the speed of the elastic return, u/s
   returnRms: 0.42,             // the cap applies to the rms speed of the returning motion (x this factor) ...
   returnLocal: 1.2,            // ... and, a little looser, to every single particle
+  returnFree: 0.5,             // REVIEW: unchanged (0.75 gave livelier hard landings but 5x more inverted tets under fuzz)
+  homingPlate: 0.4,            // REVIEW: within this distance of home the gliding frame counts as the plate for damping
+  nudgeCeiling: 0.6,           // REVIEW: no extra lift from a nudge once the slice bottom is this high
+  regrip: 0,                   // REVIEW: re-grip while held (seconds of rest needed; 0 = off). Prototype only, trigger not robust yet
   returnHeldFactor: 2.5,       // looser while a finger is holding on (direct manipulation must not lag)
   globalDrag: 0.12,            // 1/s
   maxSpeed: 18,
@@ -1697,6 +1734,7 @@ class JellySim {
     this.homeAxis = new Float64Array([0, 1, 0]);
     this.homeAngle = 0;
     this.homeVMax = 1; this.homeAMax = 1;
+    this.homeSpan = 0;
 
     // ---- grabs -----------------------------------------------------------------
     this.grabs = [];
@@ -1705,7 +1743,7 @@ class JellySim {
       this.grabs.push({
         active: false, id: -1, count: 0,
         idx: new Int32Array(maxPatch), wt: new Float64Array(maxPatch),
-        mass: 0, ta: 0, tb: 0, tc: 0, b0: 0, b1: 0, b2: 0,
+        mass: 0, ta: 0, tb: 0, tc: 0, b0: 0, b1: 0, b2: 0, hx: 0, hy: 0, hz: 0,
         raw: new Float64Array(3), tgt: new Float64Array(3), tv: new Float64Array(3),
         force: 0,
       });
@@ -1820,7 +1858,16 @@ class JellySim {
     let cx = 0, cy = 0, cz = 0;
     for (let i = 0; i < n; i++) { const mi = this.mass[i]; cx += mi * x[i * 3]; cy += mi * x[i * 3 + 1]; cz += mi * x[i * 3 + 2]; }
     cx /= this.totalMass; cy /= this.totalMass; cz /= this.totalMass;
-    const hop = P.nudgeHop * Math.sqrt(s);
+    let hop = P.nudgeHop * Math.sqrt(s);
+    if (P.nudgeCeiling !== 0) {
+      // nudges must not stack into a launch: a slice that is already rising, or already
+      // well off the ground, gets the twist but (progressively) no extra lift
+      let lo = Infinity, vyc = 0;
+      for (let i = 0; i < n; i++) { if (x[i * 3 + 1] < lo) lo = x[i * 3 + 1]; vyc += this.mass[i] * v[i * 3 + 1]; }
+      vyc /= this.totalMass;
+      const ceil = P.nudgeCeiling === undefined ? 0.6 : P.nudgeCeiling;
+      hop = Math.max(0, hop * (1 - smoothstep(0.25 * ceil, ceil, lo)) - Math.max(0, vyc));
+    }
     const twist = P.nudgeTwist * s * sign;
     const tilt = P.nudgeTilt * s * (sign * 0.7 + r1 * 0.6);
     const lean = 0.5 * s * r2;
@@ -1917,6 +1964,7 @@ class JellySim {
     for (let k = 0; k < count; k++) { g.wt[k] /= atPick; gm += this.mass[g.idx[k]] * g.wt[k] * g.wt[k]; }
     g.count = count; g.mass = gm;                 // generalised mass of the bump
     g.ta = ta; g.tb = tb; g.tc = tc; g.b0 = b0; g.b1 = b1; g.b2 = b2;
+    g.hx = hx; g.hy = hy; g.hz = hz;              // the picked point in the home pose
     g.tgt[0] = px; g.tgt[1] = py; g.tgt[2] = pz;
     g.tv[0] = g.tv[1] = g.tv[2] = 0;
     g.force = 0;
@@ -2528,8 +2576,13 @@ class JellySim {
     const before = this.tether;
     if (this.mode === MODE_FREE) {
       this.tether = 0; this.ramp = 0; this.stick = 1;
-      if (grabbed) { this.tRelease = 0; this.tContact = 0; }
-      else {
+      if (grabbed) {
+        this.tRelease = 0;
+        // re-grip: a held slice that is set down on its cut face and kept still sticks again
+        // where it stands (the frame only glides home once it is let go)
+        if (P.regrip && this._baseResting()) { this.tContact += dt; if (this.tContact > P.regrip) this._beginHoming(); }
+        else this.tContact = 0;
+      } else {
         this.tRelease += dt;
         if (this.contactCount > 0) this.tContact += dt;
         if ((this.tRelease > P.homeDelay && this.tContact > P.homeContact) || this.tRelease > P.homeTimeout) this._beginHoming();
@@ -2542,7 +2595,7 @@ class JellySim {
       this.stick += (goal - this.stick) * Math.min(1, dt / tau);
       if (this.mode === MODE_HOMING) {
         this.homingT += dt;
-        this.ramp = smoothstep(0, P.homeRamp, this.homingT);
+        this.ramp = smoothstep(0, grabbed && P.regripRamp ? P.regripRamp : P.homeRamp, this.homingT);
         this._advanceHoming(dt);
       } else this.ramp = 1;
       this.tether = this.stick * this.ramp;
@@ -2596,6 +2649,7 @@ class JellySim {
     const far = Math.max(1, dist / P.homeFar);
     this.homeVMax = Math.min(P.homeSpeed * far / Math.max(dist, 1e-3), P.homeSpin / Math.max(angle, 1e-3));
     this.homeAMax = Math.min(P.homeAccel * far / Math.max(dist, 1e-3), P.homeSpinAccel / Math.max(angle, 1e-3));
+    this.homeSpan = Math.max(dist, angle);
     this.homeU = 1; this.homeUVel = 0;
     this.homingT = 0; this.ramp = 0; this.stick = 1; this.tether = 0;
     this.mode = MODE_HOMING;
@@ -2604,8 +2658,17 @@ class JellySim {
     for (let k = 0, nb3 = this.numBase * 3; k < nb3; k++) av[k] = 0;
   }
 
+  /** Most of the cut face lies on the ground and is (almost) not moving. */
+  _baseResting() {
+    const x = this.x, v = this.v, bi = this.baseIdx, nb = this.numBase;
+    let on = 0, sp = 0;
+    for (let k = 0; k < nb; k++) { const i3 = bi[k] * 3; if (x[i3 + 1] < 0.02) on++; sp += v[i3] * v[i3] + v[i3 + 1] * v[i3 + 1] + v[i3 + 2] * v[i3 + 2]; }
+    return on >= 0.7 * nb && sp < 0.36 * nb;          // rms speed of the base below 0.6 u/s
+  }
+
   _advanceHoming(dt) {
     const P = this.params, om = P.homeOmega;
+    if (P.regrip && this.grabCount > 0) { this.homeUVel = 0; this._placeFrame(dt); return; }   // held: the plate waits
     let acc = -2 * om * this.homeUVel - om * om * this.homeU;
     if (acc > this.homeAMax) acc = this.homeAMax; else if (acc < -this.homeAMax) acc = -this.homeAMax;
     this.homeUVel += acc * dt;
@@ -2667,6 +2730,27 @@ class JellySim {
       const s2 = tv[0] * tv[0] + tv[1] * tv[1] + tv[2] * tv[2];
       if (s2 > vmax * vmax) { const k = vmax / Math.sqrt(s2); tv[0] *= k; tv[1] *= k; tv[2] *= k; }
       t[0] += tv[0] * dt; t[1] += tv[1] * dt; t[2] += tv[2] * dt;
+    }
+    // Two fingers cannot bring their two pieces of jelly closer together than the material can be
+    // compressed: keep the targets at least minStretch x their home separation apart, or the
+    // patches are folded through each other and the tets between them stay inverted while held.
+    if (this.grabCount > 1 && P.grabMinSeparation !== 0) {
+      const ks = P.grabMinSeparation === undefined ? P.minStretch : P.grabMinSeparation;
+      for (let a = 0; a < MAX_GRABS; a++) {
+        const ga = this.grabs[a]; if (!ga.active) continue;
+        for (let b = a + 1; b < MAX_GRABS; b++) {
+          const gb = this.grabs[b]; if (!gb.active) continue;
+          const need = ks * Math.hypot(ga.hx - gb.hx, ga.hy - gb.hy, ga.hz - gb.hz);
+          let dx = gb.tgt[0] - ga.tgt[0], dy = gb.tgt[1] - ga.tgt[1], dz = gb.tgt[2] - ga.tgt[2];
+          let d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          if (d >= need) continue;
+          if (d < 1e-6) { dx = gb.hx - ga.hx; dy = gb.hy - ga.hy; dz = gb.hz - ga.hz; d = Math.sqrt(dx * dx + dy * dy + dz * dz); if (d < 1e-9) continue; }
+          const push = 0.5 * (need / d - (dx * dx + dy * dy + dz * dz > 0 ? Math.sqrt((gb.tgt[0] - ga.tgt[0]) ** 2 + (gb.tgt[1] - ga.tgt[1]) ** 2 + (gb.tgt[2] - ga.tgt[2]) ** 2) / d : 0));
+          ga.tgt[0] -= dx * push; ga.tgt[1] -= dy * push; ga.tgt[2] -= dz * push;
+          gb.tgt[0] += dx * push; gb.tgt[1] += dy * push; gb.tgt[2] += dz * push;
+          if (ga.tgt[1] < 0.1) ga.tgt[1] = 0.1; if (gb.tgt[1] < 0.1) gb.tgt[1] = 0.1;
+        }
+      }
     }
   }
 
@@ -2770,8 +2854,15 @@ class JellySim {
     // home pose); for a free body it is the rigidly fitted shape moving with the
     // body. There both ends close in on each other, so each gets half the speed.
     const P = this.params;
-    const b = this.mode === MODE_STUCK ? this.stick : 0, nb = 1 - b, stuck = b > 0.5;
-    const vret = this.returnSpeed * (0.5 + 0.5 * b) * (this.grabCount > 0 ? P.returnHeldFactor : 1);
+    // While the anchor frame is arriving home the plate is (almost) at rest again: damp against it,
+    // as when stuck, or the sway the glide kicks up rings undamped until the frame has fully arrived.
+    let b = 0;
+    if (this.mode === MODE_STUCK) b = this.stick;
+    else if (this.mode === MODE_HOMING && P.homingPlate) b = this.tether * (1 - smoothstep(P.homingPlate * 0.15, P.homingPlate, this.homeU * this.homeSpan));
+    const nb = 1 - b, stuck = b > 0.5;
+    const rf = P.returnFree === undefined ? 0.5 : P.returnFree;
+    const vret = this.returnSpeed * (rf + (1 - rf) * b) * (this.grabCount > 0 ? P.returnHeldFactor : 1);
+    const gate0 = P.returnGate0 === undefined ? 0.02 : P.returnGate0, gate1 = P.returnGate1 === undefined ? 0.08 : P.returnGate1, gate02 = gate0 * gate0, gate12 = gate1 * gate1, gateInv = 1 / (gate1 - gate0);
     const dt = this.substepDt, keep = 1 - kd;
     const D = this._dev, G = this._gate;
     let ke = 0;
@@ -2791,7 +2882,7 @@ class JellySim {
       // from the rest shape; free, only motion heading back (a landing has to be
       // able to squash at the speed it arrives with)
       let g = 0;
-      if (ul2 > 4e-4 && (stuck || dx * ux + dy * uy + dz * uz < 0)) g = ul2 < 0.0064 ? (Math.sqrt(ul2) - 0.02) / 0.06 : 1;
+      if (ul2 > gate02 && (stuck || dx * ux + dy * uy + dz * uz < 0)) g = ul2 < gate12 ? (Math.sqrt(ul2) - gate0) * gateInv : 1;
       G[i] = g;
       if (g > 0) ke += g * mass[i] * (dx * dx + dy * dy + dz * dz);
     }
@@ -3073,31 +3164,31 @@ const PALETTES = {
     rindAbs: [0.25, 3.4, 12.0], rindDensity: 11.0,
     rindSca: [1.00, 0.34, 0.02],
     deep: [0.50, 3.2, 8.0],
-    shadow: [0.16, 0.62, 1.35], shadowStrength: 1.0,
+    shadow: [0.02, 0.75, 2.2], shadowStrength: 1.0,
     lineHot: [1.0, 0.16, 0.30],
   },
   blood: {
-    fleshAbs: [1.45, 10.0, 7.5], fleshDensity: 0.42,
-    fleshSca: [1.00, 0.16, 0.13], mottle: 0.85,
-    fleshAbs2: [0.62, 5.2, 8.5], vesicle: 1.0,
+    fleshAbs: [4.2, 16.0, 10.0], fleshDensity: 0.42,
+    fleshSca: [0.72, 0.015, 0.05], mottle: 0.85,
+    fleshAbs2: [1.1, 6.0, 8.5], vesicle: 1.0,
     memAbs: [0.07, 0.30, 0.48], memDensity: 13.0,
     memSca: [0.93, 0.70, 0.56],
     rindAbs: [0.28, 4.4, 11.0], rindDensity: 11.0,
-    rindSca: [1.00, 0.26, 0.03],
-    deep: [0.85, 5.0, 5.6],
-    shadow: [0.26, 1.05, 1.25], shadowStrength: 1.0,
+    rindSca: [1.00, 0.20, 0.03],
+    deep: [1.8, 7.0, 7.0],
+    shadow: [0.16, 1.45, 1.6], shadowStrength: 1.0,
     lineHot: [1.0, 0.86, 0.25],
   },
   lemon: {
-    fleshAbs: [0.18, 0.46, 5.4], fleshDensity: 0.40,
-    fleshSca: [0.96, 0.84, 0.14], mottle: 0.2,
-    fleshAbs2: [0.14, 0.30, 6.5], vesicle: 1.0,
+    fleshAbs: [0.24, 0.80, 6.5], fleshDensity: 0.40,
+    fleshSca: [0.93, 0.86, 0.20], mottle: 0.2,
+    fleshAbs2: [0.20, 0.55, 7.0], vesicle: 1.0,
     memAbs: [0.05, 0.08, 0.36], memDensity: 13.0,
     memSca: [0.90, 0.86, 0.64],
-    rindAbs: [0.10, 0.30, 6.0], rindDensity: 11.0,
-    rindSca: [0.95, 0.82, 0.15],
-    deep: [0.20, 0.42, 4.2],
-    shadow: [0.08, 0.20, 1.05], shadowStrength: 0.92,
+    rindAbs: [0.10, 1.0, 9.0], rindDensity: 11.0,
+    rindSca: [1.00, 0.66, 0.035],
+    deep: [0.25, 0.75, 5.0],
+    shadow: [0.03, 0.28, 1.8], shadowStrength: 0.92,
     lineHot: [1.0, 0.18, 0.32],
   },
 };
@@ -3157,7 +3248,7 @@ struct Globals {
   bodyY: vec4f,
   bodyZ: vec4f,
   shadow: vec4f,     // xy: centre of the shadow map (world xz), z: 1 / half extent
-  shear: vec4f,      // xy: ground offset per unit height along the key light, z: debug view (0 = off)
+  shear: vec4f,      // xy: ground offset per unit height along the key light, z: debug view (0 = off), w: march steps
   bg: vec4f,         // backdrop colour (linear), w = dither amplitude
   fleshAbs: vec4f,   // rgb absorption, w scattering density
   fleshSca: vec4f,   // rgb scatter colour, w mottle amount
@@ -3395,12 +3486,15 @@ struct Bubbles { b: array<vec4f, ${c.numBubbles}>, sec: array<vec4f, 5> };
 @group(1) @binding(7) var<uniform> BUB: Bubbles;
 @group(2) @binding(0) var backTex: texture_2d<f32>;
 
-const STEPS = ${c.steps};
+const MAX_STEPS = 22;
 const NSEG = ${f(c.segments)};
 const HALF_T = ${f(c.thickness * 0.5)};
 const PITH_R = ${f(c.pithR)};
 const RIND_R = ${f(c.rindR)};
 const CORE_R = 0.085;
+// per-segment random, tabulated (the values the sin-hash produced on the reference renderer):
+// sin() of large arguments is not portable between GPUs
+const SEG_RND = array<f32, 7>(0.270020, 0.628906, 0.507813, 0.671875, 0.078125, 0.729492, 0.286133);
 const MEM_HALF = 0.0075;
 const SEG_ROUND = 0.050;
 const IOR = 1.36;
@@ -3448,7 +3542,7 @@ fn softbox(r: vec3f, d: vec3f, tx: vec3f, ty: vec3f, half: vec2f, feather: f32) 
 // shadow) below the horizon and three softboxes with feathered edges.
 fn envLight(r: vec3f, p: vec3f) -> vec3f {
   var e = G.bg.rgb * mix(0.55, 0.42, smoothstep(0.0, 0.9, r.y));
-  let floorMix = smoothstep(0.06, -0.20, r.y);
+  let floorMix = 1.0 - smoothstep(-0.20, 0.06, r.y);
   if (floorMix > 0.0) {
     let rr = normalize(vec3f(r.x, min(r.y, -0.06), r.z));
     let hit = p + rr * (max(p.y, 0.0) / -rr.y);
@@ -3500,7 +3594,7 @@ fn segments(m: vec3f, r: f32, lo: vec4f) -> Segs {
   var o: Segs;
   o.d = SEG_ROUND - length(q);
   o.a = a;
-  o.rnd = fract(sin(seg * 91.7 + 3.1) * 43758.5453);
+  o.rnd = SEG_RND[i32(seg)];
   return o;
 }
 
@@ -3589,8 +3683,9 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let hgt = micro.x;
   let dpx = dpdx(in.world);
   let dpy = dpdy(in.world);
-  let dhx = dpdx(hgt);
-  let dhy = dpdy(hgt);
+  // per-pixel forward differences of the relief (screen-space derivatives of hgt are constant per 2x2 quad -> blocky)
+  let dhx = microHeight(mA + dpdx(mA), footprint, loA).x - hgt;
+  let dhy = microHeight(mA + dpdy(mA), footprint, loA).x - hgt;
   let r1 = cross(dpy, Ng);
   let r2 = cross(Ng, dpx);
   let det = dot(dpx, r1);
@@ -3637,8 +3732,10 @@ fn fs(in: VsOut) -> @location(0) vec4f {
 
   // ---- march the straight material-space segment entry -> exit
   let jit = ign(in.clip.xy);
-  let ds = thick / f32(STEPS);
-  let dm = (mB - mA) / f32(STEPS);
+  let nSteps = clamp(i32(G.shear.w), 4, MAX_STEPS);
+  let fSteps = f32(nSteps);
+  let ds = thick / fSteps;
+  let dm = (mB - mA) / fSteps;
   var m = mA + dm * jit;
   // feature softness: a pixel at the surface, growing with depth (cloudy jelly)
   // and never thinner than what one march step can resolve across a membrane
@@ -3646,10 +3743,10 @@ fn fs(in: VsOut) -> @location(0) vec4f {
 
   let kappa = G.deep.rgb;
   // ground proximity: less light arrives low down on faces that look at the floor
-  let lowAO = mix(1.0, smoothstep(-0.02, 0.34, in.world.y), saturate(0.45 - N.y * 0.75));
+  let lowAO = mix(1.0, 0.55 + 0.45 * smoothstep(-0.02, 0.22, in.world.y), saturate(0.45 - N.y * 0.75));
   let eEntry = irradiance(N) * lowAO;
   // no light enters where the exit point rests on (or hovers just above) the ground
-  let eExit = irradiance(rd) * (1.10 * smoothstep(0.0, 0.20, pE.y));
+  let eExit = irradiance(rd) * (1.10 * mix(0.55, 1.0, smoothstep(0.0, 0.20, pE.y)));
   let cosN = max(NdV, 0.25);
   let stepEntry = exp(-kappa * (ds * cosN));
   let stepExit = exp(kappa * ds);
@@ -3676,20 +3773,20 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   let stepB = exp(-kappa * dm.z);
   let stepC = exp(-kappa * dm.y);
 
-  let lowTint = exp(-kappa * 0.20) * 0.72;
+  let lowTint = exp(-kappa * 0.30);
   let loB = loNoise(mB);
   var T = vec3f(1.0);
   var L = vec3f(0.0);
-  for (var i = 0; i < STEPS; i++) {
+  for (var i = 0; i < nSteps; i++) {
     let s = (f32(i) + jit) * ds;
-    let md = medium(m, soft0 + s * 0.035, mix(loA, loB, (f32(i) + jit) / f32(STEPS)));
+    let md = medium(m, soft0 + s * 0.035, mix(loA, loB, (f32(i) + jit) / fSteps));
     let nA = (G.bodyX.xyz * m.x + G.bodyY.xyz * m.y) / max(md.r, 1e-3);
     let eA = irradiance(nA) * (wA * exp(-kappa * max(1.0 - md.r, 0.0)));
     var lin = eEntry * aEntry + (eExit * aExit + eF * tF + eB * tB + eC * tC) * 0.5 + eA * 0.75;
     lin = mix(lin, vec3f(lin.r), md.pale * 0.45);                // pale tissue scatters the light before it reddens
     // the ground blocks the lower hemisphere: everything close to it receives less light
     // (what does arrive down there has mostly travelled through the body: it is warm)
-    let lift = smoothstep(-0.03, 0.22, mix(in.world.y, pE.y, (f32(i) + jit) / f32(STEPS)));
+    let lift = smoothstep(-0.03, 0.22, mix(in.world.y, pE.y, (f32(i) + jit) / fSteps));
     lin *= mix(lowTint, vec3f(1.0), max(lift, md.pale * 0.42));
     let ext = md.sa + vec3f(md.ss);
     let stepT = exp(-ext * ds);
@@ -3704,7 +3801,9 @@ fn fs(in: VsOut) -> @location(0) vec4f {
   }
 
   // ---- what is behind: the studio, bent by the jelly and dimmed by its transmittance
-  let dirOut = normalize(rd + bend * (0.55 * smoothstep(0.0, 0.12, thick)));
+  var dirOut = normalize(rd + bend * (0.55 * smoothstep(0.0, 0.12, thick)));
+  // an exit point resting on the ground always sees the (shadowed) ground right there, never the open backdrop
+  dirOut.y = min(dirOut.y, mix(1.0, -0.25, 1.0 - smoothstep(0.0, 0.04, pE.y)));
   let behind = scene(pE, dirOut, saturate(thick * 2.5), smoothstep(0.0, 0.15, thick));
   var col = L + T * behind;
 
@@ -3765,7 +3864,8 @@ fn fs(in: VsOut) -> @location(0) vec4f {
     else if (dbg < 3.5) { col = env * F; }
     else if (dbg < 4.5) { col = N * 0.5 + vec3f(0.5); }
     else if (dbg < 5.5) { col = vec3f(thick); }
-    else { col = T; }
+    else if (dbg < 6.5) { col = T; }
+    else { col = vec3f(1.0, 0.0, 1.0); }
     return vec4f(pow(clamp(col, vec3f(0.0), vec3f(1.0)), vec3f(1.0 / 2.2)), 1.0);
   }
 
@@ -3826,7 +3926,7 @@ fn lineColor(in: LineOut, alpha: f32, hotAlpha: f32) -> vec4f {
   let t = saturate(in.tension);
   let ink = vec3f(0.0242, 0.0110, 0.0052);                     // #2B1B10
   let hot = G.lineHot.rgb;
-  let k = smoothstep(0.05, 0.85, t);
+  let k = smoothstep(0.30, 0.95, t);
   let col = pow(mix(ink, hot, k), vec3f(1.0 / 2.2));           // display space (blending happens there)
   return vec4f(col, cover * mix(alpha, hotAlpha, k));
 }
@@ -4035,7 +4135,12 @@ class JellyRenderer {
   static async create(canvas, mesh, opts) {
     const o = opts || {};
     const gpu = typeof navigator !== 'undefined' ? navigator.gpu : undefined;
-    if (!gpu) throw gpuError('no-webgpu', 'WebGPU is not available in this browser.');
+    if (!gpu) {
+      const insecure = typeof window !== 'undefined' && window.isSecureContext === false;
+      throw gpuError('no-webgpu', insecure
+        ? 'WebGPU only works on secure pages. Open this page over https://, from localhost, or as a local file.'
+        : 'WebGPU is not available in this browser.');
+    }
     let adapter = null;
     // prefer the discrete GPU on dual-GPU laptops (Windows ignores the hint and only warns about it)
     const isWindows = /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '');
@@ -4048,13 +4153,20 @@ class JellyRenderer {
     let context = null;
     try { context = canvas.getContext('webgpu'); } catch (e) { context = null; }
     if (!context) { device.destroy(); throw gpuError('no-webgpu', 'This canvas cannot provide a WebGPU context.'); }
-    const r = new JellyRenderer(PRIVATE, canvas, mesh, o, device, context, gpu.getPreferredCanvasFormat());
+    const info = adapter.info || {};
+    const fallbackAdapter = Boolean(info.isFallbackAdapter || adapter.isFallbackAdapter);
+    const r = new JellyRenderer(PRIVATE, canvas, mesh, Object.assign({}, o, { _fallbackAdapter: fallbackAdapter }), device, context, gpu.getPreferredCanvasFormat());
     try {
       await r._init();
     } catch (e) {
       r.destroy();
       if (e && e.code) throw e;
       throw gpuError('no-device', 'WebGPU initialisation failed: ' + (e && e.message ? e.message : e), e);
+    }
+    if (r._lost) {                 // requestDevice() may hand out a device that is already lost
+      const why = r._lostInfo && r._lostInfo.message ? ' (' + r._lostInfo.message + ')' : '';
+      r.destroy();
+      throw gpuError('no-device', 'The WebGPU device was lost while the scene was starting' + why + '.');
     }
     return r;
   }
@@ -4066,10 +4178,16 @@ class JellyRenderer {
     this.device = device;
     this.context = context;
     this.format = format;
-    this.onDeviceLost = null;
+    this._onDeviceLost = null;
+    this._lostInfo = null;
+    this._lostTold = false;
     this.debug = Boolean(opts.debug);
     this.debugErrors = [];
     this.quality = opts.quality === 'low' || opts.quality === 'high' ? opts.quality : 'medium';
+    this.steps = this.quality === 'low' ? 9 : this.quality === 'high' ? 22 : 14;   // live: change any time (4..22)
+    this.gpuMs = 0;              // smoothed submit -> GPU-finished latency (ms), 0 until measured
+    this.onError = null;         // called once with an Error if the first frames fail validation
+    this.isFallbackAdapter = Boolean(opts._fallbackAdapter);
     this.subdivisions = Math.max(1, Math.min(5, (opts.subdivisions | 0) || 3));
     this.showMesh = false;
     this.debugView = 0;          // look-dev aid, see the header comment
@@ -4119,10 +4237,8 @@ class JellyRenderer {
 
     device.lost.then((info) => {
       this._lost = true;
-      if (this._destroyed) return;
-      if (typeof this.onDeviceLost === 'function') {
-        try { this.onDeviceLost(info); } catch (e) { console.error(e); }
-      }
+      this._lostInfo = info || null;
+      this._notifyLost();
     });
     this._onUncaptured = (ev) => {
       const msg = ev && ev.error && ev.error.message ? ev.error.message : String(ev);
@@ -4131,7 +4247,7 @@ class JellyRenderer {
     };
     device.addEventListener('uncapturederror', this._onUncaptured);
 
-    if (dbg) device.pushErrorScope('validation');
+    device.pushErrorScope('validation');
 
     const cfg = {
       phongAlpha: 0.72,
@@ -4335,7 +4451,7 @@ class JellyRenderer {
         vertex: { module: modBack, entryPoint: 'vs', buffers: surfBuffers },
         fragment: { module: modBack, entryPoint: 'fs', targets: [{ format: 'rgba16float' }] },
         primitive: { topology: 'triangle-list', cullMode: 'front', frontFace: 'ccw' },
-        depthStencil: { format: 'depth24plus', depthWriteEnabled: true, depthCompare: 'less' },
+        depthStencil: { format: 'depth24plus', depthWriteEnabled: true, depthCompare: 'greater' },
       }),
       device.createRenderPipelineAsync({
         label: 'backdrop', layout: layout(globalsOnlyLayout, sceneLayout),
@@ -4379,7 +4495,7 @@ class JellyRenderer {
     };
     this._backPass = {
       colorAttachments: [{ view: null, loadOp: 'clear', storeOp: 'store', clearValue: { r: 0, g: 0, b: 0, a: -1000 } }],
-      depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 1 },
+      depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 0 },
     };
     const b = this._bgSrgb;
     this._mainPass = {
@@ -4387,7 +4503,7 @@ class JellyRenderer {
       depthStencilAttachment: { view: null, depthLoadOp: 'clear', depthStoreOp: 'discard', depthClearValue: 1 },
     };
 
-    if (dbg) {
+    {
       const err = await device.popErrorScope();
       if (err) { this.debugErrors.push(err.message); throw new Error(err.message); }
     }
@@ -4430,7 +4546,20 @@ class JellyRenderer {
     this._mainPass.colorAttachments[0].view = this._msaaColor.createView();
     this._mainPass.depthStencilAttachment.view = this._msaaDepth.createView();
     this._targetsOk = true;
+    this._checkFrames = 2;                                         // validate the next frames drawn into the new targets
   }
+
+  /** Called once with the GPUDeviceLostInfo; a loss that happened before the handler was set is delivered late. */
+  get onDeviceLost() { return this._onDeviceLost; }
+  set onDeviceLost(fn) { this._onDeviceLost = fn; if (this._lost) Promise.resolve().then(() => this._notifyLost()); }
+  _notifyLost() {
+    if (this._destroyed || this._lostTold || typeof this._onDeviceLost !== 'function') return;
+    this._lostTold = true;
+    try { this._onDeviceLost(this._lostInfo); } catch (e) { console.error(e); }
+  }
+
+  /** true while something inside the renderer is still animating (palette cross-fade). */
+  get animating() { return this._palT < 1; }
 
   /** 'orange' | 'blood' | 'lemon'; cross-fades over ~0.5 s unless immediate. */
   setPalette(id, immediate) {
@@ -4442,6 +4571,7 @@ class JellyRenderer {
     packPalette(p, this._palTo);
     this.palette = id;
     this._palT = immediate ? 1 : 0;
+    this._lastTime = -1;          // the fade starts now, however long ago the last frame was drawn
   }
 
   setShowMesh(on) { this.showMesh = Boolean(on); }
@@ -4451,7 +4581,7 @@ class JellyRenderer {
    * @param {{positions: Float32Array, camera: object, time?: number, dt?: number, tension?: Float32Array}} frame
    */
   render(frame) {
-    if (this._destroyed || this._lost || !this._targetsOk || !frame || !frame.positions || !frame.camera) return;
+    if (this._destroyed || this._lost || this._failed || !this._targetsOk || !frame || !frame.positions || !frame.camera) return;
     const device = this.device, cam = frame.camera;
     const time = frame.time || 0;
     // the palette cross-fade follows the clock of `time` (so it also runs while
@@ -4467,8 +4597,10 @@ class JellyRenderer {
     device.queue.writeBuffer(this._pbuf, 0, this._pData);
     device.queue.writeBuffer(this._ubuf, 0, this._u);
 
+    const check = this._checkFrames > 0;
+    if (check) { this._checkFrames--; device.pushErrorScope('validation'); }
     let canvasTex;
-    try { canvasTex = this.context.getCurrentTexture(); } catch (e) { return; }
+    try { canvasTex = this.context.getCurrentTexture(); } catch (e) { if (check) device.popErrorScope().catch(() => {}); return; }
     this._mainPass.colorAttachments[0].resolveTarget = canvasTex.createView();
 
     const enc = device.createCommandEncoder();
@@ -4525,6 +4657,24 @@ class JellyRenderer {
     pass.end();
 
     device.queue.submit([enc.finish()]);
+
+    if (check) {
+      device.popErrorScope().then((err) => {
+        if (!err || this._failed || this._destroyed) return;
+        this._failed = true;                                       // stop drawing invalid frames
+        if (typeof this.onError === 'function') { try { this.onError(new Error(err.message)); } catch (e) { console.error(e); } }
+      }, () => {});
+    }
+    // how long the GPU takes to finish a frame (one probe in flight at a time)
+    if (!this._probing) {
+      this._probing = true;
+      const t0 = performance.now();
+      device.queue.onSubmittedWorkDone().then(() => {
+        this._probing = false;
+        const ms = performance.now() - t0;
+        this.gpuMs = this.gpuMs > 0 ? this.gpuMs + (ms - this.gpuMs) * 0.15 : ms;
+      }, () => { this._probing = false; });
+    }
   }
 
   destroy() {
@@ -4625,7 +4775,7 @@ class JellyRenderer {
     u[36] = up[0]; u[37] = up[1]; u[38] = up[2]; u[39] = Math.max(0.5, 0.6 * cssScale);
     // 40..51 body frame (written by _updateParticles)
     u[52] = this._shadowCx; u[53] = this._shadowCz; u[54] = 1 / SHADOW_EXTENT; u[55] = 0;
-    u[56] = SHADOW_SHEAR[0]; u[57] = SHADOW_SHEAR[1]; u[58] = this.debugView || 0; u[59] = 0;
+    u[56] = SHADOW_SHEAR[0]; u[57] = SHADOW_SHEAR[1]; u[58] = this.debugView || 0; u[59] = this.steps;
     u[60] = this._bg[0]; u[61] = this._bg[1]; u[62] = this._bg[2]; u[63] = 1 / 255;
     this._currentPalette(this._uPal);
   }
@@ -4843,6 +4993,21 @@ function initUI(handlers) {
   if (el.nudge) el.nudge.addEventListener('click', () => call('onNudge'));
   if (el.reset) el.reset.addEventListener('click', () => call('onReset'));
   if (el.pause) el.pause.addEventListener('click', () => setPaused(!values.paused, true));
+
+  // A second finger on a button, switch or swatch while the first one holds the slice:
+  // browsers only turn a lone finger's tap into a click, so do it for them.
+  if (el.panel) {
+    el.panel.addEventListener('touchend', (e) => {
+      if (!e.touches || e.touches.length === 0 || fallbackKind) return;   // lone finger: the browser clicks
+      const from = e.target && e.target.closest ? e.target.closest('button, label, input[type="checkbox"], input[type="radio"]') : null;
+      if (!from || from.disabled) return;
+      const t = e.changedTouches[0];
+      const under = doc.elementFromPoint(t.clientX, t.clientY);
+      if (!under || !(from === under || from.contains(under))) return;    // slid off: not a tap
+      if (e.cancelable) e.preventDefault();
+      from.click();
+    });
+  }
 
   // ── switches ───────────────────────────────────────────────────────────
   function bindSwitch(input, key, handlerName) {

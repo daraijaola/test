@@ -203,6 +203,21 @@ function initUI(handlers) {
   if (el.reset) el.reset.addEventListener('click', () => call('onReset'));
   if (el.pause) el.pause.addEventListener('click', () => setPaused(!values.paused, true));
 
+  // A second finger on a button, switch or swatch while the first one holds the slice:
+  // browsers only turn a lone finger's tap into a click, so do it for them.
+  if (el.panel) {
+    el.panel.addEventListener('touchend', (e) => {
+      if (!e.touches || e.touches.length === 0 || fallbackKind) return;   // lone finger: the browser clicks
+      const from = e.target && e.target.closest ? e.target.closest('button, label, input[type="checkbox"], input[type="radio"]') : null;
+      if (!from || from.disabled) return;
+      const t = e.changedTouches[0];
+      const under = doc.elementFromPoint(t.clientX, t.clientY);
+      if (!under || !(from === under || from.contains(under))) return;    // slid off: not a tap
+      if (e.cancelable) e.preventDefault();
+      from.click();
+    });
+  }
+
   // ── switches ───────────────────────────────────────────────────────────
   function bindSwitch(input, key, handlerName) {
     const set = (on, notify) => {
