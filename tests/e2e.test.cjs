@@ -125,7 +125,9 @@ async function main() {
     await page.evaluate(() => window.__citrus.app.stepFrames(40));
     const d = await displacement(s.i);
     check(`[${spot.name}] deformation originates at the grab point`, d.distOfMax < 0.4, `most-moved particle is ${f3(d.distOfMax)} from the grab (moved ${f3(d.maxD)})`);
-    check(`[${spot.name}] deformation falls off with distance`, d.far < d.near * 0.75 && d.maxD > 0.1, `near quartile ${f3(d.near)} vs far quartile ${f3(d.far)}`);
+    // the far quarter of the slice moves much less than the grabbed point, and less than the near quarter
+    check(`[${spot.name}] deformation falls off with distance`, d.maxD > 0.1 && d.far < d.maxD * 0.5 && d.far < d.near,
+      `grab moved ${f3(d.maxD)}, near quartile ${f3(d.near)}, far quartile ${f3(d.far)}`);
     check(`[${spot.name}] stays finite and un-inverted`, d.metrics.finite && d.metrics.minVolRatio > 0, `maxStretch ${f3(d.metrics.maxStretch)} minVol ${f3(d.metrics.minVolRatio)}`);
     await h.shot(path.join(SHOTS, `grab-${spot.name.replace(/\s+/g, '-')}.png`));
     await page.mouse.up();
@@ -133,25 +135,52 @@ async function main() {
   }
 
   // ── strong stretch, hold, release, decay ──
+  // Pull the top far beyond what the material allows. The slice must stretch a lot,
+  // stop at its limits (or let go of the ground) and never invert or blow up.
   await page.evaluate(() => { window.__citrus.sim.reset({ drop: false }); });
   await page.evaluate(() => window.__citrus.app.renderOnce());
   const top = await spotScreen({ x: 0.0, y: 0.7 });
   await page.mouse.move(top.x, top.y);
   await page.mouse.down();
+  const pullStats = { peak: 0, rel: 0, minVol: Infinity, finite: true };
+  const sample = async (frames) => {
+    const r = await page.evaluate((n) => {
+      const { sim } = window.__citrus;
+      const o = { peak: 0, rel: 0, minVol: Infinity, finite: true };
+      for (let i = 0; i < n; i++) {
+        sim.advance(1 / 60, 1);
+        const m = sim.metrics();
+        o.peak = Math.max(o.peak, m.maxStretch); o.rel = Math.max(o.rel, m.maxStretchRel || 0);
+        o.minVol = Math.min(o.minVol, m.minVolRatio); o.finite = o.finite && m.finite;
+      }
+      return o;
+    }, frames);
+    pullStats.peak = Math.max(pullStats.peak, r.peak); pullStats.rel = Math.max(pullStats.rel, r.rel);
+    pullStats.minVol = Math.min(pullStats.minVol, r.minVol); pullStats.finite = pullStats.finite && r.finite;
+  };
   for (let k = 1; k <= 12; k++) {
-    await page.mouse.move(top.x + 30 * k / 12, top.y - 330 * k / 12);
-    await page.evaluate(() => { for (let i = 0; i < 3; i++) window.__citrus.sim.advance(1 / 60, 1); });
+    await page.mouse.move(top.x + 30 * k / 12, top.y - 200 * k / 12);
+    await sample(3);
   }
-  await page.evaluate(() => window.__citrus.app.stepFrames(90));
-  const strong = await page.evaluate(() => window.__citrus.sim.metrics());
-  check('strong stretch: finite, limited, no inverted elements', strong.finite && strong.maxStretch < 3.2 && strong.minVolRatio > 0,
-    `maxStretch ${f3(strong.maxStretch)} minVolRatio ${f3(strong.minVolRatio)} restDeviation ${f3(strong.restDeviation)}`);
-  check('strong stretch: the slice really is stretched', strong.maxStretch > 1.25, `maxStretch ${f3(strong.maxStretch)}`);
+  await page.evaluate(() => window.__citrus.app.renderOnce());
   await h.shot(path.join(SHOTS, 'strong-stretch.png'));
   await page.evaluate(() => { window.__citrus.renderer.setShowMesh(true); window.__citrus.app.state.showMesh = true; });
   await page.evaluate(() => window.__citrus.app.renderOnce());
   await h.shot(path.join(SHOTS, 'strong-stretch-mesh.png'));
   await page.evaluate(() => { window.__citrus.renderer.setShowMesh(false); window.__citrus.app.state.showMesh = false; });
+  for (let k = 1; k <= 12; k++) {
+    await page.mouse.move(top.x + 30 + 20 * k / 12, top.y - 200 - 260 * k / 12);
+    await sample(3);
+  }
+  await sample(60);
+  await page.evaluate(() => window.__citrus.app.renderOnce());
+  const strong = await page.evaluate(() => ({ ...window.__citrus.sim.metrics() }));
+  check('strong stretch: the slice really stretches', pullStats.peak > 1.5, `peak stretch x${f3(pullStats.peak)}`);
+  check('strong stretch: constraints cap the stretch', pullStats.finite && pullStats.peak < 3.2 && pullStats.rel < 1.3,
+    `peak x${f3(pullStats.peak)}, worst edge at ${f3(pullStats.rel)} of its limit`);
+  check('strong stretch: no inverted elements', pullStats.minVol > 0, `smallest element volume ratio ${f3(pullStats.minVol)}`);
+  check('strong stretch: finite while held far away', strong.finite, `mode ${strong.mode} restDeviation ${f3(strong.restDeviation)}`);
+  await h.shot(path.join(SHOTS, 'pulled-off.png'));
 
   await page.mouse.up();
   const decay = await page.evaluate(() => {

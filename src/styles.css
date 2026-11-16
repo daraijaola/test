@@ -1,0 +1,860 @@
+/*
+ * styles.css — page chrome for Citrus Jelly.
+ *
+ * The WebGPU canvas fills the viewport; everything else floats over it.
+ * Layout modes (exposed to ui.js through --cj-mode on .cj):
+ *   top    default: heading top left, panel in a column on the right
+ *   wide   wide landscape: heading left, slice in the middle, panel right
+ *   dock   phones / portrait: heading on top, panel docked at the bottom
+ *   short  landscape phones: small heading, compact panel on the right
+ * Single light theme by design. Every colour is a custom property on :root.
+ */
+
+/* ───────────────────────────── tokens ───────────────────────────── */
+:root {
+  --paper: #F6F0E4;
+  --ink: #2B1B10;
+  --ink-2: #5C4F43;                       /* secondary text, 6.9:1 on paper */
+  --ink-3: #776A5E;                       /* quiet text and readouts, 4.6:1 on paper */
+  --ink-hover: #45301F;
+  --on-ink: #F6F0E4;
+  --line: rgba(43, 27, 16, 0.14);
+  --line-strong: rgba(43, 27, 16, 0.34);
+  --wash: rgba(43, 27, 16, 0.06);
+  --surface: rgba(246, 240, 228, 0.84);   /* the phone dock */
+  --frost: rgba(246, 240, 228, 0.6);      /* behind the desktop panel: invisible on paper */
+  --swatch-edge: rgba(43, 27, 16, 0.16);  /* keeps the lemon swatch defined on paper */
+  --opaque: #000;                         /* mask alpha only, never painted */
+  --focus: #2B1B10;
+
+  --orange: #F58A1F;
+  --orange-ink: #A84C08;
+  --blood: #D8402F;
+  --blood-ink: #B3261A;
+  --lemon: #F2CB2E;
+  --lemon-ink: #846500;
+  --accent: var(--orange);                /* follows the selected preset (ui.js) */
+  --accent-ink: var(--orange-ink);        /* text-safe companion of --accent */
+
+  --cj-serif-display: "CJ Fraunces Display", "CJ Fraunces Text", Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --cj-serif: "CJ Fraunces Text", Fraunces, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --cj-sans: "CJ Figtree", Figtree, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+html {
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* ───────────────────────────── frame ───────────────────────────── */
+.cj {
+  --cj-mode: top;
+  --cj-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --cj-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --cj-control: 40px;                     /* height of buttons / toggle rows */
+  --cj-thumb: 18px;
+  --cj-range-h: 28px;
+  --cj-title-size: clamp(60px, min(10vw, 15vh), 132px);
+
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--cj-sans);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  text-shadow: none;
+  direction: ltr;
+  font-kerning: normal;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+.cj *, .cj *::before, .cj *::after { box-sizing: border-box; }
+.cj [hidden] { display: none !important; }
+/* When the page is embedded in another document, keep that document's element
+   styles out. Same specificity as a single class, so the rules below still win. */
+.cj :where(header, section, div, p, h1, h2, ul, li, span, label, button, input, canvas) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-indent: 0;
+  text-align: inherit;
+  text-decoration: none;
+  text-shadow: none;
+  list-style: none;
+  float: none;
+  min-width: 0;
+  max-width: none;
+  vertical-align: baseline;
+}
+
+.cj-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* The overlay never takes pointers itself: only real controls do. */
+.cj-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "mast panel" "main panel";
+  column-gap: 28px;
+  padding-top: max(34px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(34px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 700px) {
+  .cj-ui {
+    padding-left: max(40px, env(safe-area-inset-left, 0px));
+    padding-right: max(40px, env(safe-area-inset-right, 0px));
+  }
+}
+
+.cj-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ───────────────────────────── masthead ───────────────────────────── */
+.cj-mast {
+  grid-area: mast;
+  align-self: start;
+  justify-self: start;
+  min-width: 0;
+  pointer-events: none;
+}
+
+.cj-eyebrow {
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.cj-eyebrow__sep { margin: 0 0.6em; color: var(--accent-ink); }
+
+.cj-title {
+  margin: 0 0 0 -0.068em;                 /* optical: pull the italic C onto the gutter */
+  font-family: var(--cj-serif-display);
+  font-style: italic;
+  font-weight: 360;
+  font-size: var(--cj-title-size);
+  line-height: 0.9;
+  letter-spacing: -0.028em;
+  font-optical-sizing: none;
+  font-feature-settings: "kern", "liga";
+  color: var(--ink);
+  white-space: nowrap;
+}
+.cj-title__stop {
+  color: var(--accent);
+  transition: color 0.5s var(--cj-ease);
+}
+
+.cj-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 0;
+  font-family: var(--cj-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: opacity 0.5s var(--cj-ease), transform 0.5s var(--cj-ease);
+}
+.cj-hint__rule {
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: var(--line-strong);
+}
+/* After the first grab the hint has done its job and steps back… */
+.cj[data-touched] .cj-hint { opacity: 0.6; }
+/* …and it gets out of the way completely while the slice is in hand. */
+.cj[data-grabbing] .cj-hint { opacity: 0; transform: translateX(-6px); transition-duration: 0.18s; }
+.cj[data-paused] .cj-hint { opacity: 1; }
+
+/* ───────────────────────────── panel ───────────────────────────── */
+.cj-panel {
+  grid-area: panel;
+  align-self: start;
+  justify-self: end;
+  position: relative;
+  width: 244px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;                   /* gaps fall through to the canvas */
+}
+/* No card. Just paper-tinted frost behind the column: on the backdrop it cannot
+   be seen, and when the slice is pulled across, the labels stay readable.
+   (Blur only: any colour filter here would tint the paper and reveal the box.) */
+.cj-panel::before {
+  content: "";
+  position: absolute;
+  inset: -26px -30px;
+  z-index: -1;
+  border-radius: 28px;
+  background: var(--frost);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  /* feathered edge, so the frost never reads as a box */
+  -webkit-mask-image: linear-gradient(to right, transparent, var(--opaque) 26px, var(--opaque) calc(100% - 26px), transparent),
+    linear-gradient(to bottom, transparent, var(--opaque) 22px, var(--opaque) calc(100% - 22px), transparent);
+  mask-image: linear-gradient(to right, transparent, var(--opaque) 26px, var(--opaque) calc(100% - 26px), transparent),
+    linear-gradient(to bottom, transparent, var(--opaque) 22px, var(--opaque) calc(100% - 22px), transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  pointer-events: none;
+}
+.cj-group {
+  pointer-events: auto;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.cj-panel > .cj-group:last-of-type { border-bottom: 1px solid var(--line); }
+
+/* sliders */
+.cj-sliders { display: grid; gap: 12px; padding-top: 14px; padding-bottom: 10px; }
+.cj-field { position: relative; min-width: 0; }
+.cj-field__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cj-field__label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.cj-field__value {
+  font-size: 12px;
+  line-height: 18px;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+}
+
+.cj-range {
+  --p: 0.5;
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: var(--cj-range-h);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+}
+.cj-range::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    var(--ink) 0, var(--ink) calc(var(--cj-thumb) / 2 + (100% - var(--cj-thumb)) * var(--p)),
+    var(--line-strong) calc(var(--cj-thumb) / 2 + (100% - var(--cj-thumb)) * var(--p)), var(--line-strong) 100%);
+}
+.cj-range::-moz-range-track {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+.cj-range::-moz-range-progress {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+.cj-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: var(--cj-thumb);
+  height: var(--cj-thumb);
+  margin-top: calc(1px - var(--cj-thumb) / 2);
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--paper);
+  transition: transform 0.2s var(--cj-spring), background-color 0.5s var(--cj-ease);
+}
+.cj-range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--cj-thumb);
+  height: var(--cj-thumb);
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--paper);
+  transition: transform 0.2s var(--cj-spring), background-color 0.5s var(--cj-ease);
+}
+@media (hover: hover) {
+  .cj-range:hover::-webkit-slider-thumb { transform: scale(1.12); }
+  .cj-range:hover::-moz-range-thumb { transform: scale(1.12); }
+}
+.cj-range:active::-webkit-slider-thumb { transform: scale(1.22, 1.08); }
+.cj-range:active::-moz-range-thumb { transform: scale(1.22, 1.08); }
+/* Focus ring drawn as a shadow: outlines on range thumbs are not painted everywhere. */
+.cj-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--focus); }
+.cj-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--focus); }
+
+/* buttons */
+.cj-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.cj-actions .cj-btn--primary { grid-column: 1 / -1; }
+
+.cj-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: var(--cj-control);
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background-color 0.2s var(--cj-ease), border-color 0.2s var(--cj-ease), color 0.2s var(--cj-ease), transform 0.32s var(--cj-spring);
+}
+@media (hover: hover) {
+  .cj-btn:hover { background: var(--wash); border-color: var(--ink); }
+  .cj-btn--primary:hover { background: var(--ink-hover); border-color: var(--ink-hover); }
+}
+/* A small jelly squish under the finger. */
+.cj-btn:active { transform: scale(1.025, 0.93); transition-duration: 0.2s, 0.2s, 0.2s, 0.07s; }
+.cj-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.cj-btn--primary { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+
+/* Paused: the button now reads "Resume" and carries a quiet tint of the accent. */
+.cj-btn--pause::before {
+  content: "";
+  flex: none;
+  width: 0;
+  height: 6px;
+  margin-right: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0;
+  transition: width 0.25s var(--cj-ease), margin 0.25s var(--cj-ease), opacity 0.25s var(--cj-ease);
+}
+.cj[data-paused] .cj-btn--pause {
+  border-color: var(--ink);
+  background: var(--accent);                               /* fallback without color-mix */
+  background: color-mix(in srgb, var(--accent) 34%, var(--paper));
+}
+.cj[data-paused] .cj-btn--pause::before { width: 6px; margin-right: 8px; opacity: 1; }
+
+/* switches */
+.cj-toggles { display: grid; gap: 2px; padding-top: 10px; padding-bottom: 10px; }
+.cj-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+}
+.cj-switch > input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.cj-switch > label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.cj-switch__track {
+  position: relative;
+  flex: none;
+  width: 36px;
+  height: 20px;
+  border: 1.5px solid var(--ink-3);
+  border-radius: 999px;
+  background: transparent;
+  transition: background-color 0.25s var(--cj-ease), border-color 0.25s var(--cj-ease);
+}
+.cj-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  margin-top: -5.5px;
+  border-radius: 50%;
+  background: var(--ink-3);
+  transition: transform 0.32s var(--cj-spring), background-color 0.25s var(--cj-ease);
+}
+@media (hover: hover) {
+  .cj-switch:hover .cj-switch__track { border-color: var(--ink); }
+  .cj-switch:hover .cj-switch__track::after { background: var(--ink); }
+}
+.cj-switch > input:checked ~ .cj-switch__track { background: var(--accent); border-color: var(--ink); }
+.cj-switch > input:checked ~ .cj-switch__track::after { background: var(--ink); transform: translateX(16px); }
+.cj-switch > input:active ~ .cj-switch__track::after { transform: scale(1.25, 0.9); }
+.cj-switch > input:checked:active ~ .cj-switch__track::after { transform: translateX(16px) scale(1.25, 0.9); }
+.cj-switch > input:focus-visible ~ .cj-switch__track { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* colour presets */
+.cj-presets {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px 18px;
+  padding-top: 16px;
+  padding-bottom: 14px;
+}
+.cj-preset { position: relative; min-width: 0; }
+.cj-preset--orange { --swatch: var(--orange); }
+.cj-preset--blood { --swatch: var(--blood); }
+.cj-preset--lemon { --swatch: var(--lemon); }
+.cj-preset > input {
+  position: absolute;
+  inset: -4px;
+  z-index: 1;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.cj-preset > label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-3);
+  white-space: nowrap;
+  transition: color 0.2s var(--cj-ease);
+}
+.cj-preset > label::before {
+  content: "";
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: inset 0 0 0 1px var(--swatch-edge), 0 0 0 3px var(--paper), 0 0 0 4px var(--paper);
+  transition: box-shadow 0.25s var(--cj-ease), transform 0.32s var(--cj-spring);
+}
+@media (hover: hover) {
+  .cj-preset:hover > label { color: var(--ink); }
+  .cj-preset:hover > label::before { transform: scale(1.06); }
+}
+.cj-preset > input:active + label::before { transform: scale(1.1, 0.92); }
+.cj-preset > input:checked + label { color: var(--ink); }
+.cj-preset > input:checked + label::before {
+  box-shadow: inset 0 0 0 1px var(--swatch-edge), 0 0 0 3px var(--paper), 0 0 0 4.5px var(--ink);
+}
+.cj-preset > input:focus-visible + label::before { outline: 2px solid var(--focus); outline-offset: 6.5px; }
+
+/* ───────────────────────────── fallback ───────────────────────────── */
+.cj-fallback {
+  grid-area: main;
+  align-self: start;
+  justify-self: start;
+  padding-top: clamp(36px, 9vh, 92px);
+  max-width: 37em;
+  margin: 0;
+  pointer-events: auto;
+  -webkit-user-select: text;
+  user-select: text;
+  outline: none;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.cj-fallback__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.cj-fallback__kicker::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+.cj-fallback__title {
+  margin: 0 0 16px;
+  font-family: var(--cj-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(25px, 3.1vw, 36px);
+  line-height: 1.14;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.cj-fallback__body { margin: 0 0 14px; max-width: 34em; text-wrap: pretty; }
+.cj-fallback__steps {
+  counter-reset: cj-step;
+  margin: 0 0 4px;
+  padding: 0;
+  max-width: 34em;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.cj-fallback__steps:empty { display: none; }
+.cj-fallback__steps > li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-wrap: pretty;
+  counter-increment: cj-step;
+}
+.cj-fallback__steps > li::before {
+  content: counter(cj-step, decimal-leading-zero);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  color: var(--ink-3);
+}
+.cj-fallback__reload { margin-top: 10px; padding: 0 22px; }
+.cj-fallback__detail {
+  margin: 18px 0 0;
+  max-width: 44em;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+/* In fallback the scene and everything that drives it step aside; the heading stays. */
+.cj[data-fallback] .cj-stage,
+.cj[data-fallback] .cj-panel,
+.cj[data-fallback] .cj-hint { display: none; }
+
+/* ───────────────────────────── entrance ───────────────────────────── */
+/* Opacity only: ui.js measures these boxes for getFreeRect(), so they must not move. */
+@keyframes cj-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cj-eyebrow, .cj-title, .cj-panel, .cj-fallback { animation: cj-fade 0.8s var(--cj-ease) backwards; }
+  .cj-title { animation-delay: 0.05s; }
+  .cj-panel { animation-delay: 0.18s; }
+  /* the hint has its own opacity states, so the fade sits on its parts */
+  .cj-hint__text, .cj-hint__rule { animation: cj-fade 0.8s var(--cj-ease) 0.16s backwards; }
+}
+
+/* ───────────────────────────── wide ───────────────────────────── */
+@media (min-width: 1200px) and (min-aspect-ratio: 3/2) and (min-height: 521px) {
+  .cj {
+    --cj-mode: wide;
+    --cj-title-size: clamp(96px, min(9.7vw, 19vh), 190px);
+  }
+  .cj-ui {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "mast main panel";
+    column-gap: 0;
+    padding-left: max(56px, env(safe-area-inset-left, 0px));
+    padding-right: max(56px, env(safe-area-inset-right, 0px));
+  }
+  .cj-mast { align-self: center; padding-bottom: 5vh; }
+  .cj-eyebrow { margin-bottom: 26px; }
+  /* Two staggered lines. The words stay inline and simply wrap (min-content), so the
+     heading still reads "Citrus Jelly." as one line of text to innerText and copy/paste. */
+  .cj-title { width: min-content; white-space: normal; line-height: 0.86; }
+  .cj-title__b { padding-left: 0.56em; }
+  .cj-hint { margin-top: 32px; }
+  .cj-panel { align-self: center; width: 252px; }
+  .cj-fallback { align-self: center; padding-top: 0; padding-left: clamp(48px, 7vw, 132px); padding-bottom: 5vh; }
+}
+@media (min-width: 1500px) and (min-aspect-ratio: 3/2) and (min-height: 521px) {
+  .cj-ui {
+    padding-left: max(72px, env(safe-area-inset-left, 0px));
+    padding-right: max(72px, env(safe-area-inset-right, 0px));
+  }
+  .cj-panel { width: 264px; }
+}
+
+/* ───────────────────────────── touch sizing ───────────────────────────── */
+@media (pointer: coarse) {
+  .cj {
+    --cj-control: 44px;
+    --cj-thumb: 24px;
+    --cj-range-h: 44px;
+  }
+  .cj-sliders { gap: 4px; padding-bottom: 4px; }
+  .cj-field__head { margin-bottom: -6px; }
+  .cj-switch { min-height: 44px; }
+  .cj-toggles { gap: 0; padding-top: 6px; padding-bottom: 6px; }
+  .cj-preset > input { inset: -9px -8px; width: calc(100% + 16px); height: calc(100% + 18px); }
+}
+
+/* ───────────────────────────── dock (phones, portrait) ───────────────────────────── */
+@media (max-width: 559px), (max-width: 699px) and (min-height: 521px), (max-aspect-ratio: 4/5) and (min-height: 521px) {
+  .cj {
+    --cj-mode: dock;
+    --cj-control: 44px;
+    --cj-thumb: 24px;
+    --cj-range-h: 44px;
+    --cj-title-size: clamp(44px, min(21.4vw, 12vh), 124px);
+  }
+  .cj-ui {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "mast" "main" "panel";
+    padding-top: max(18px, env(safe-area-inset-top, 0px));
+    padding-bottom: 0;
+  }
+  .cj-eyebrow { margin-bottom: 10px; font-size: 10px; }
+  .cj-hint { margin-top: 10px; font-size: 16px; gap: 10px; }
+  .cj-hint__rule { width: 20px; }
+
+  .cj-panel {
+    align-self: end;
+    justify-self: stretch;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px 14px;
+    padding: 12px 0 calc(10px + env(safe-area-inset-bottom, 0px));
+    pointer-events: auto;
+  }
+  /* A barely-there sheet, edge to edge, so labels stay legible when the slice passes behind.
+     (It reaches exactly over the gutters: much wider and some compositors drop the blur.) */
+  .cj-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(0px - max(16px, env(safe-area-inset-left, 0px)));
+    right: calc(0px - max(16px, env(safe-area-inset-right, 0px)));
+    z-index: -1;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+    pointer-events: auto;
+    background: var(--surface);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+  }
+  .cj-group, .cj-panel > .cj-group:last-of-type { padding: 0; border: 0; }
+
+  .cj-sliders { display: contents; }
+  .cj-field { grid-column: span 3; }
+  .cj-field__head { margin-bottom: -8px; }
+  .cj-field__label { font-size: 13px; }
+
+  .cj-actions { grid-column: 1 / -1; grid-template-columns: 1.55fr 1fr 1fr; gap: 8px; }
+  .cj-actions .cj-btn--primary { grid-column: auto; }
+  .cj-btn { padding: 0 10px; }
+
+  .cj-toggles { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  .cj-switch { min-height: 44px; }
+
+  .cj-presets { grid-column: 1 / -1; justify-content: space-between; gap: 0 10px; margin-top: -2px; }
+  .cj-preset > input { inset: 0 -5px; width: calc(100% + 10px); height: 100%; }
+  .cj-preset > label { flex-direction: row; align-items: center; gap: 8px; min-height: 44px; font-size: 13px; }
+  .cj-preset > label::before { width: 20px; height: 20px; }
+
+  .cj-fallback { align-self: start; padding: 26px 0 24px; font-size: 14.5px; }
+}
+/* Tablets held upright: same dock, with room to breathe. */
+@media (min-width: 700px) and (max-aspect-ratio: 4/5) and (min-height: 521px) {
+  .cj { --cj-title-size: clamp(88px, min(17vw, 12vh), 150px); }
+  .cj-ui { padding-top: max(34px, env(safe-area-inset-top, 0px)); }
+  .cj-eyebrow { margin-bottom: 14px; font-size: 11px; }
+  .cj-hint { margin-top: 16px; font-size: 18px; }
+  .cj-panel { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px 24px; padding-top: 18px; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .cj-panel::before {
+    left: calc(0px - max(40px, env(safe-area-inset-left, 0px)));
+    right: calc(0px - max(40px, env(safe-area-inset-right, 0px)));
+  }
+  .cj-field { grid-column: span 6; }
+  .cj-actions { grid-column: 1 / span 6; }
+  .cj-toggles { grid-column: 7 / -1; gap: 0 24px; }
+  .cj-presets { grid-column: 1 / -1; justify-content: flex-start; gap: 0 30px; margin-top: 0; }
+  .cj-fallback { padding-top: 48px; font-size: 15px; }
+}
+
+/* ───────────────────────────── short (landscape phones) ───────────────────────────── */
+@media (max-height: 520px) and (min-width: 560px) {
+  .cj {
+    --cj-mode: short;
+    --cj-control: 40px;
+    --cj-thumb: 22px;
+    --cj-range-h: 40px;
+    --cj-title-size: clamp(38px, 13.5vh, 60px);
+  }
+  .cj-ui {
+    column-gap: 16px;
+    padding-top: max(14px, env(safe-area-inset-top, 0px));
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .cj-eyebrow { display: none; }
+  .cj-hint { margin-top: 6px; font-size: 15px; gap: 8px; }
+  .cj-hint__rule { width: 16px; }
+
+  .cj-panel {
+    align-self: center;
+    width: 276px;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 14px;
+    overflow: visible;
+  }
+  .cj-group, .cj-panel > .cj-group:last-of-type { padding: 0; border: 0; }
+  .cj-sliders { display: contents; }
+  .cj-field { grid-column: span 1; pointer-events: auto; }
+  .cj-field__head { margin-bottom: -8px; }
+  .cj-field__label { font-size: 12.5px; }
+  .cj-actions { grid-column: 1 / -1; grid-template-columns: 1.6fr 1fr 1fr; gap: 6px; }
+  .cj-actions .cj-btn--primary { grid-column: auto; }
+  .cj-btn { padding: 0 8px; font-size: 13px; }
+  .cj-toggles { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 0 14px; padding: 0; }
+  .cj-switch { min-height: 40px; }
+  .cj-presets { grid-column: 1 / -1; justify-content: space-between; gap: 0 8px; }
+  .cj-preset > input { inset: 0 -4px; width: calc(100% + 8px); height: 100%; }
+  .cj-preset > label { flex-direction: row; align-items: center; gap: 7px; min-height: 40px; font-size: 12.5px; }
+  .cj-preset > label::before { width: 18px; height: 18px; }
+
+  .cj-fallback { align-self: start; padding-top: 12px; font-size: 13.5px; max-width: none; }
+  .cj-fallback__title { font-size: 22px; margin-bottom: 8px; max-width: 24em; }
+  .cj-fallback__kicker { margin-bottom: 8px; }
+  .cj-fallback__body { margin-bottom: 8px; }
+  .cj-fallback__steps > li { padding: 6px 0; }
+}
+
+/* Laptop windows that are short but not phone-short: tighten the column a little. */
+@media (min-height: 521px) and (max-height: 640px) and (min-width: 700px) and (min-aspect-ratio: 4/5) {
+  .cj-ui { padding-top: max(22px, env(safe-area-inset-top, 0px)); padding-bottom: max(22px, env(safe-area-inset-bottom, 0px)); }
+  .cj-group { padding-top: 11px; padding-bottom: 11px; }
+  .cj-sliders { gap: 6px; padding-bottom: 6px; }
+  .cj-toggles { padding-top: 6px; padding-bottom: 6px; }
+}
+
+/* ───────────────────────────── preferences ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cj *, .cj *::before, .cj *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .cj-btn:active, .cj[data-grabbing] .cj-hint { transform: none; }
+}
+@media (forced-colors: active) {
+  .cj-switch__track, .cj-btn { border-color: ButtonText; }
+  .cj-switch > input:checked ~ .cj-switch__track { background: Highlight; }
+  .cj-preset > label::before { forced-color-adjust: none; }
+  .cj-preset > input:checked + label { text-decoration: underline; }
+}
